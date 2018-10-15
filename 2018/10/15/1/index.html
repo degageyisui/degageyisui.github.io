@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>UpdateAfterEvent | 祎隋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！ 　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。">
+<meta name="keywords" content="概率期望,前缀和优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UpdateAfterEvent">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/1/index.html">
+<meta property="og:site_name" content="祎隋">
+<meta property="og:description" content="Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！ 　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-15T02:40:51.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UpdateAfterEvent">
+<meta name="twitter:description" content="Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！ 　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。">
+  
+    <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">祎隋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">祎隋如你，春风十里不及你</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/15/1/" class="article-date">
+  <time datetime="2018-10-14T23:54:54.000Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UpdateAfterEvent
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！</p>
+<p>　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。</p>
+<a id="more"></a>
+<p>　　对于一只当前在点i的松鼠，它在接下来的一个单位时间内等概率向相邻的点跳跃。更具体地讲，我们称与点i通过一条无向边直接相连的点为与i相邻的点，假设这样的点有p个，那么对于每一个与i相邻的点，在下一时刻都有1/p的概率跳到它。</p>
+<p>　　超萌小松鼠已知初始时刻（0时刻）每棵树上的松鼠分布情况，她想知道在T时刻，在同一棵树上的松鼠对数的期望。关于“松鼠对数”的解释：假设有4只松鼠在同一棵树上，那么我们称有6对在同一棵树上的松鼠。为了避免精度误差，我们将答案模10^9 + 7输出。</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>​          第一行三个数n，T。意义如题面中所述。接下来一行n个数，第i个数ai表示第i个点初始时刻有ai只松鼠。接下来n行，每行n个数，第i行第j个数如果为1表示点i与点j间有无向边相连，为0则表示没有。</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>​            输出一行一个数，表示T时刻在同一棵树上的松鼠对数的期望在模10^9 +7意义下的答案。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这道题考察了许多知识点，考察综合能力。</p>
+<p>首先，题目总体是考察概率期望，但切忌陷入思路死角，去求每棵树上的最终期望松鼠对数。实际上，我们对于每只松鼠，去求它到某点的概率p,那么每两只松鼠在某点的期望便是p1<em>p2</em>1（还有很多可转化为概率来做的期望题）由于要除法取模，要预先递推求出逆元，复习一下公式：inv[1]=1;inv[i]=(mod-mod/i)*inv[mod%i]%mod. </p>
+<p>那么对于松鼠到某点的概率求取，我们先O(N^2)求出最开始互相连点之间的概率，然后每一时刻，枚举中间点，进行概率传递，由于t比较大，可以用矩阵快速幂思想来将其优化到log2n级别。</p>
+<p>最后，由于我们计算期望是O（n^3）的，无法过n&lt;=1000的点，发现如下式子：</p>
+<p>设p(i,j)为i到j点的概率。假设计算终点在1，则ans=p(1,1)<em>p(2,1)+p(1,1)</em>p(3,1)<em>…..+p(1,1)</em>p(n,1)+p(2,1)<em>p(3,1)+p(2,1)</em>p(4,1)+…….发现可以转化为p(1,1)<em>(p(2,1)+p(3,1)+p(4,1)+….+p(n,1))+p(2,1)</em>(p(3,1)+p(4,1)+…..+p(n,1)).由此发现是可以前缀和优化的，由此只用枚举一点和终点，从而变成O(N^2).当然可以每个统计一次，然后最后除以2.貌似更方便哈…..</p>
+<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 1005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">1</span>e9+<span class="number">7</span>;</span><br><span class="line">struct matrix&#123;</span><br><span class="line">    ll a[maxn][maxn];</span><br><span class="line">&#125;nd,ans;</span><br><span class="line">int n,t,e[maxn][maxn];</span><br><span class="line">matrix operator *(matrix &amp;x,matrix &amp;y)&#123;</span><br><span class="line">    matrix c;</span><br><span class="line">    memset(c.a,<span class="number">0</span>,sizeof(c.a));</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">    <span class="keyword">for</span>(int k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        c.a[i][j]=(c.a[i][j]+(x.a[i][k]*y.a[k][j])%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">void pow(int t)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) ans.a[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(t)&#123;</span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1</span>) ans=ans*nd;<span class="regexp">//</span>最后为<span class="number">1</span> </span><br><span class="line">        nd=nd*nd;</span><br><span class="line">        t/=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll p[maxn][maxn],inv[maxn],v[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%lld"</span>,&amp;v[i]);</span><br><span class="line">    inv[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=<span class="number">1000</span>;i++) inv[i]=(mod-mod/i)*inv[mod%i]%mod;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) scanf(<span class="string">"%d"</span>,&amp;e[i][j]);</span><br><span class="line">    memset(nd.a,<span class="number">0</span>,sizeof(nd.a));</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        int res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)  res+=e[i][j];</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)  nd.a[i][j]=inv[res]*e[i][j];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span>(t&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        pow(t);</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) p[i][j]=ans.a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) p[i][j]=nd.a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ll calc=<span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ll t1=<span class="number">0</span>,t2=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            ll tt=(p[j][i]*v[j])%mod;</span><br><span class="line">            t1=(t1+tt)%mod;</span><br><span class="line">            t2=(t2+tt*p[j][i])%mod;</span><br><span class="line">        &#125;</span><br><span class="line">        calc=(calc+(t1*t1%mod-t2+mod)%mod*inv[<span class="number">2</span>]%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(<span class="string">"%lld"</span>,calc);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/15/1/" data-id="cjnaaqpux00008ct87d77n2nd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前缀和优化/">前缀和优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/概率期望/">概率期望</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/15/2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          最小瓶颈生成树
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/14/kk/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">祎隋</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/前缀和优化/" style="font-size: 10px;">前缀和优化</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 10px;">最小瓶颈生成树</a> <a href="/tags/概率期望/" style="font-size: 10px;">概率期望</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/15/2/">最小瓶颈生成树</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/15/1/">UpdateAfterEvent</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/14/kk/">祎隋</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 degage<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

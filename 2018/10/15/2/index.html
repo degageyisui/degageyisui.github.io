@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>最小瓶颈生成树 | 祎隋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下： 类比找第k大值的方法，首先随机一个边权w。 然后将不超过这个边权的边加入，遍历这张图。 如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。">
+<meta name="keywords" content="最小瓶颈生成树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小瓶颈生成树">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/2/index.html">
+<meta property="og:site_name" content="祎隋">
+<meta property="og:description" content="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下： 类比找第k大值的方法，首先随机一个边权w。 然后将不超过这个边权的边加入，遍历这张图。 如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-15T02:42:54.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最小瓶颈生成树">
+<meta name="twitter:description" content="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下： 类比找第k大值的方法，首先随机一个边权w。 然后将不超过这个边权的边加入，遍历这张图。 如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。">
+  
+    <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">祎隋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">祎隋如你，春风十里不及你</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="w-2" class="article article-type-w" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/15/2/" class="article-date">
+  <time datetime="2018-10-15T00:12:11.000Z" itemprop="datePublished">2018-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最小瓶颈生成树
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="所谓最小瓶颈生成树…-就是使得生成树树上最大边权值最小。"><a href="#所谓最小瓶颈生成树…-就是使得生成树树上最大边权值最小。" class="headerlink" title="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。"></a>所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。</h1><p>这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下：</p>
+<p>类比找第k大值的方法，首先随机一个边权w。</p>
+<p>然后将不超过这个边权的边加入，遍历这张图。</p>
+<p>如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。</p>
+<a id="more"></a>
+<p>否则将这些连通点缩起来，考虑边权大于w的边。</p>
+<p>每次将问题的规模缩小至一半。</p>
+<p>期望时间复杂度O(m)。</p>
+<h2 id="相关例题有两道："><a href="#相关例题有两道：" class="headerlink" title="相关例题有两道："></a>相关例题有两道：</h2><p>A.Hangar Hurdles (CERC 16)</p>
+<p>有一个n*n的网格图，上面有些格子可行，有些格子是障碍。 有Q个询问，想把一个正方形箱子从(r1,c1)推到(r2,c2)，问箱子最大的大小。（起点终点是正方形箱子的中点） N&lt;=1000 Q&lt;=300000</p>
+<p>B.洪蛤吨有一个宽度为L的管道，我们可以视其为一条y=L的直线与X轴所夹的部分。</p>
+<p>（所以这根管道的长度可以视为正无穷）</p>
+<p>这个管道中有个N个障碍点，第i个障碍点的坐标为(Xi,Yi)。</p>
+<p>已知有一个球体，能在不碰到障碍点的前提下，从管道的最左端走到最右端。（即从管道内横坐标负无穷的地方走到横坐标正无穷的地方）。</p>
+<p>求这个球体的直径最大是多少。为了避免精度误差，请输出答案保留三位小数的结果。</p>
+<h3 id="两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"><a href="#两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小" class="headerlink" title="两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"></a>两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小</h3><p>下面上一下t2的代码：（没有用最小瓶颈树优化，逃）<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 505</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct eage&#123;</span><br><span class="line">    int u,v;</span><br><span class="line">    double dist;</span><br><span class="line">&#125;e[maxn*maxn/<span class="number">2</span>+maxn*<span class="number">2</span>];</span><br><span class="line">bool cmp(eage a,eage b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a.dist&lt;b.dist;</span><br><span class="line">&#125;</span><br><span class="line">double dis(int x1,int y1,int x2,int y2)&#123;</span><br><span class="line">    <span class="keyword">return</span> sqrt(<span class="number">1.0</span>*(x1-x2)*(x1-x2)+<span class="number">1.0</span>*(y1-y2)*(y1-y2)); </span><br><span class="line">&#125;</span><br><span class="line">int fa[maxn];</span><br><span class="line">int find(int x)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">    int root=find(fa[x]);</span><br><span class="line">    fa[x]=root;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">void link(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">        fa[fx]=fy;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">int l,n;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    int pos=<span class="number">0</span>;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;l);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) fa[i]=i;<span class="regexp">//n</span>+<span class="number">1</span>是上，n+<span class="number">2</span>是下 </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%d%d"</span>,&amp;nd[i].x,&amp;nd[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">1</span>,l-nd[i].y&#125;;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">2</span>,nd[i].y&#125;;</span><br><span class="line">    <span class="keyword">for</span>(int j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int cnt=<span class="number">0</span>;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+pos+<span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=pos;i++)&#123;</span><br><span class="line">        int u=e[i].u,v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(check(u,v)) continue;</span><br><span class="line">        link(u,v);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(find(n+<span class="number">1</span>)==find(n+<span class="number">2</span>))&#123;<span class="regexp">//</span>只要上底和下底连接了就行 这样才能保证极大值可以通过</span><br><span class="line">                                 /<span class="regexp">/如果后面更大，那这里是过不了的 </span></span><br><span class="line"><span class="regexp">            printf("%.3f",e[i].dist);</span></span><br><span class="line"><span class="regexp">            break;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/15/2/" data-id="cjnaaqpv500018ct8tibcy38q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/15/1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">UpdateAfterEvent</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/前缀和优化/" style="font-size: 10px;">前缀和优化</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 10px;">最小瓶颈生成树</a> <a href="/tags/概率期望/" style="font-size: 10px;">概率期望</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/15/2/">最小瓶颈生成树</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/15/1/">UpdateAfterEvent</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/14/kk/">祎隋</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 degage<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
