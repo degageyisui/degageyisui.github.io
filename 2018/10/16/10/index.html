@@ -43,7 +43,7 @@
     
     <title>
         
-            tags | 
+            CF350E Wrong Floyd | 
         
         祎隋
     </title>
@@ -54,7 +54,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog">
+    <meta name="keywords" content="c++,blog,模拟,贪心">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -81,6 +81,9 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
             
         
 
@@ -217,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="祎隋">
-    <meta name="msapplication-starturl" content="http://yoursite.com/tags/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/10/16/10/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="祎隋">
@@ -232,13 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/tags/">
+    <meta property="og:url" content="http://yoursite.com/2018/10/16/10/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="tags | 祎隋">
+    <meta property="og:title" content="CF350E Wrong Floyd | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="这里是degage的代码仓库哦">
-    
+    <meta property="og:article:tag" content="模拟"> <meta property="og:article:tag" content="贪心"> 
 
+    
+        <meta property="article:published_time" content="Tue Oct 16 2018 23:13:17 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 16 2018 23:15:42 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -246,13 +252,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/tags/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/10/16/10/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/10/16/10/index.html",
+    "headline": "CF350E Wrong Floyd",
+    "datePublished": "Tue Oct 16 2018 23:13:17 GMT+0800",
+    "dateModified": "Tue Oct 16 2018 23:15:42 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "degage",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "祎隋",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",模拟,贪心c++,blog",
+    "description": "这里是degage的代码仓库哦",
+}
+</script>
 
 
     
@@ -288,60 +324,239 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hint"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#The-Code"><span class="post-toc-text">The Code</span></a></li></ol>
+    </ul>
+    
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Tags Cloud -->
-    <style>
-    #bottom{
-        position: relative;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (max-width: 480px) {
-        .material-tagscloud{
-            margin: 6em 2em 0;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    .material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-    }
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-    .material-tagscloud a:hover{
-        transition: .6s;
-        opacity: 1;
-        background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    }
-</style>
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
 
-<div class=" material-tagscloud">
-    <div class="material-post mdl-grid">
-        <a href="/tags/dp/" style="font-size: 25.5px; color: #4b4b4b">dp</a> <a href="/tags/set/" style="font-size: 16px; color: #757575">set</a> <a href="/tags/二进制/" style="font-size: 16px; color: #757575">二进制</a> <a href="/tags/倍增/" style="font-size: 16px; color: #757575">倍增</a> <a href="/tags/前缀和优化/" style="font-size: 16px; color: #757575">前缀和优化</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 16px; color: #757575">最小瓶颈生成树</a> <a href="/tags/杂诗/" style="font-size: 35px; color: #212121">杂诗</a> <a href="/tags/概率期望/" style="font-size: 25.5px; color: #4b4b4b">概率期望</a> <a href="/tags/模拟/" style="font-size: 35px; color: #212121">模拟</a> <a href="/tags/正睿/" style="font-size: 16px; color: #757575">正睿</a> <a href="/tags/离散化/" style="font-size: 16px; color: #757575">离散化</a> <a href="/tags/线段树/" style="font-size: 16px; color: #757575">线段树</a> <a href="/tags/贪心/" style="font-size: 35px; color: #212121">贪心</a> <a href="/tags/预处理/" style="font-size: 16px; color: #757575">预处理</a>
+        
+    
+            <p class="article-headline-p">
+                CF350E Wrong Floyd
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
     </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>degage</strong>
+        <span>10月 16, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/模拟/">模拟</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/贪心/">贪心</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=CF350E Wrong Floyd&url=http://yoursite.com/2018/10/16/10/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=CF350E Wrong Floyd&url=http://yoursite.com/2018/10/16/10/index.html&via=degage" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/10/16/10/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/10/16/10/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=CF350E Wrong Floyd&summary=这里是degage的代码仓库哦&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/10/16/10/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。</p>
+<h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>3&lt;=n&lt;=300 , 2&lt;=k&lt;=n2&lt;=k&lt;=n , n-1&lt;=m&lt;=n*(n-1)/2;</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更新它到其他点的距离）</p>
+<p>具体一下几个细节：</p>
+<p>1.判k==n或m&gt;最多可以构出的边maxm；</p>
+<p>maxm=(n-1)*(n-2)/2+num;（num:非标记点的数量）</p>
+<p>2.将随便一个标记点与所以非标记点连边；</p>
+<p>3.再随便一个非标记点与未加入图中的点连边来保证图的联通；</p>
+<p>4.最后随便加未加的边使边数凑够m即可；</p>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 310</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,m,k,x,num;</span><br><span class="line">bool vis[maxn],iss[maxn][maxn],viss[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) iss[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=k;i++) scanf(<span class="string">"%d"</span>,&amp;x),vis[x]=<span class="number">1</span>;</span><br><span class="line">    num=n-k;</span><br><span class="line">    int maxx=(n-<span class="number">1</span>)*(n-<span class="number">2</span>)/<span class="number">2</span>+num;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;maxx<span class="params">||</span>k==n)&#123;</span><br><span class="line">        printf(<span class="string">"-1"</span>);<span class="keyword">return</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    int t,tt=<span class="number">1</span>;int calc=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!vis[tt]) tt++; </span><br><span class="line">    viss[tt]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            t=i;</span><br><span class="line">            viss[t]=<span class="number">1</span>;</span><br><span class="line">            printf(<span class="string">"%d %d\n"</span>,t,tt);</span><br><span class="line">            iss[t][tt]=iss[tt][t]=<span class="number">1</span>;</span><br><span class="line">            calc++; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /<span class="regexp">/保证联通 </span></span><br><span class="line"><span class="regexp">    for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">        if(viss[i]) continue;</span></span><br><span class="line"><span class="regexp">        printf("%d %d\n",i,t); </span></span><br><span class="line"><span class="regexp">        iss[i][t]=iss[t][i]=1;</span></span><br><span class="line"><span class="regexp">        calc++;</span></span><br><span class="line"><span class="regexp">        if(calc==m) break;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">        if(calc==m) break;</span></span><br><span class="line"><span class="regexp">        if(i==tt) continue;</span></span><br><span class="line"><span class="regexp">        for(int j=1;j&lt;=n;j++)&#123;</span></span><br><span class="line"><span class="regexp">            if(j==tt) continue;</span></span><br><span class="line"><span class="regexp">            if(iss[i][j]) continue;</span></span><br><span class="line"><span class="regexp">            printf("%d %d\n",i,j);</span></span><br><span class="line"><span class="regexp">            calc++;</span></span><br><span class="line"><span class="regexp">            iss[i][j]=iss[j][i]=1;</span></span><br><span class="line"><span class="regexp">            if(calc==m) break;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+        
+    
+
+    
 </div>
 
 
-<script type="text/ls-javascript" id="page-tagcloud-script">
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() ) < $(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
+                
 
-    $(document).ready(function() {
-        adjustFooter();
-    });
-</script>
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
 
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/10/16/11/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
 
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/10/16/9/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -505,6 +720,14 @@ It will not impact the appearance and can give developers a lot of support :)
                     
 
                     
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
 
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
@@ -657,6 +880,10 @@ It will not impact the appearance and can give developers a lot of support :)
 <!-- Import prettify js  -->
 
     
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
 
 
 
@@ -669,6 +896,11 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
         
     
     
