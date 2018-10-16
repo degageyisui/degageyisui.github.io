@@ -43,7 +43,7 @@
     
     <title>
         
-            UpdateAfterEvent | 
+            数对子 | 
         
         祎隋
     </title>
@@ -53,9 +53,9 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！
-　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。">
-    <meta name="keywords" content="c++,blog,概率期望,前缀和优化">
+    <meta name="description" itemprop="description" content="Description我们定义一个数对 (x,y) 是好的，当且仅当 x≤y，且 x xor y的二进制表示下有奇数个 1
+现在给定 nn 个区间 [li,ri]，你需要对于每个 i∈[1,n]，输出有几对好的数 (x,y)满足 x 和 y 都在 [l1,r1]∪[l2,r2]…∪[li,ri]，即两个数都在前 i 个区间的并里">
+    <meta name="keywords" content="c++,blog,二进制,线段树">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -221,7 +221,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="祎隋">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2018/10/15/1/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/10/16/8/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="祎隋">
@@ -236,17 +236,17 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2018/10/15/1/">
+    <meta property="og:url" content="http://yoursite.com/2018/10/16/8/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="UpdateAfterEvent | 祎隋">
+    <meta property="og:title" content="数对子 | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！
-　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。">
-    <meta property="og:article:tag" content="概率期望"> <meta property="og:article:tag" content="前缀和优化"> 
+    <meta property="og:description" content="Description我们定义一个数对 (x,y) 是好的，当且仅当 x≤y，且 x xor y的二进制表示下有奇数个 1
+现在给定 nn 个区间 [li,ri]，你需要对于每个 i∈[1,n]，输出有几对好的数 (x,y)满足 x 和 y 都在 [l1,r1]∪[l2,r2]…∪[li,ri]，即两个数都在前 i 个区间的并里">
+    <meta property="og:article:tag" content="二进制"> <meta property="og:article:tag" content="线段树"> 
 
     
-        <meta property="article:published_time" content="Mon Oct 15 2018 07:54:54 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 19:16:10 GMT+0800">
+        <meta property="article:published_time" content="Tue Oct 16 2018 22:38:36 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 16 2018 22:57:46 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -254,7 +254,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2018/10/15/1/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2018/10/16/8/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -266,10 +266,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2018/10/15/1/index.html",
-    "headline": "UpdateAfterEvent",
-    "datePublished": "Mon Oct 15 2018 07:54:54 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 19:16:10 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2018/10/16/8/index.html",
+    "headline": "数对子",
+    "datePublished": "Tue Oct 16 2018 22:38:36 GMT+0800",
+    "dateModified": "Tue Oct 16 2018 22:57:46 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -287,9 +287,9 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",概率期望,前缀和优化c++,blog",
-    "description": "Description​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！
-　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。",
+    "keywords": ",二进制,线段树c++,blog",
+    "description": "Description我们定义一个数对 (x,y) 是好的，当且仅当 x≤y，且 x xor y的二进制表示下有奇数个 1
+现在给定 nn 个区间 [li,ri]，你需要对于每个 i∈[1,n]，输出有几对好的数 (x,y)满足 x 和 y 都在 [l1,r1]∪[l2,r2]…∪[li,ri]，即两个数都在前 i 个区间的并里",
 }
 </script>
 
@@ -354,7 +354,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Input"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Output"><span class="post-toc-text">Output</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#The-Code"><span class="post-toc-text">The Code</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Input"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Ouput"><span class="post-toc-text">Ouput</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hint"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tips"><span class="post-toc-text">tips</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正经题解开始："><span class="post-toc-text">正经题解开始：</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -386,7 +386,7 @@
         
     
             <p class="article-headline-p">
-                UpdateAfterEvent
+                数对子
             </p>
         </div>
 
@@ -405,7 +405,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>degage</strong>
-        <span>10月 15, 2018</span>
+        <span>10月 16, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/前缀和优化/">前缀和优化</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/概率期望/">概率期望</a>
+        <a class="post_tag-link" href="/tags/二进制/">二进制</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/线段树/">线段树</a>
     </ul>
     
 
@@ -446,7 +446,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=UpdateAfterEvent&url=http://yoursite.com/2018/10/15/1/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=数对子&url=http://yoursite.com/2018/10/16/8/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -455,7 +455,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=UpdateAfterEvent&url=http://yoursite.com/2018/10/15/1/index.html&via=degage" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=数对子&url=http://yoursite.com/2018/10/16/8/index.html&via=degage" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -464,7 +464,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/10/15/1/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/10/16/8/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -473,7 +473,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/10/15/1/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/10/16/8/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -485,7 +485,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=UpdateAfterEvent&summary=这里是degage的代码仓库哦&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/10/15/1/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=数对子&summary=这里是degage的代码仓库哦&pics=http://yoursite.com/img/favicon.png&url=http://yoursite.com/2018/10/16/8/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -504,19 +504,39 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>​       小松鼠打了10个小时的游戏，一脸满足。却发现周围再次围满了游客，逃！</p>
-<p>　　她发现整个西湖内的松鼠都以相同的速度在树之间跳跃。每跳跃一次花费一个单位的时间。我们可以把西湖抽象为一张n个点的无向图，初始时每个点上都有若干只松鼠，它们每单位时间都可以沿着一条无向边进行跳跃。</p>
-<a id="more"></a>
-<p>　　对于一只当前在点i的松鼠，它在接下来的一个单位时间内等概率向相邻的点跳跃。更具体地讲，我们称与点i通过一条无向边直接相连的点为与i相邻的点，假设这样的点有p个，那么对于每一个与i相邻的点，在下一时刻都有1/p的概率跳到它。</p>
-<p>　　超萌小松鼠已知初始时刻（0时刻）每棵树上的松鼠分布情况，她想知道在T时刻，在同一棵树上的松鼠对数的期望。关于“松鼠对数”的解释：假设有4只松鼠在同一棵树上，那么我们称有6对在同一棵树上的松鼠。为了避免精度误差，我们将答案模10^9 + 7输出。</p>
-<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>​          第一行三个数n，T。意义如题面中所述。接下来一行n个数，第i个数ai表示第i个点初始时刻有ai只松鼠。接下来n行，每行n个数，第i行第j个数如果为1表示点i与点j间有无向边相连，为0则表示没有。</p>
-<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>​            输出一行一个数，表示T时刻在同一棵树上的松鼠对数的期望在模10^9 +7意义下的答案。</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这道题考察了许多知识点，考察综合能力。</p>
-<p>首先，题目总体是考察概率期望，但切忌陷入思路死角，去求每棵树上的最终期望松鼠对数。实际上，我们对于每只松鼠，去求它到某点的概率p,那么每两只松鼠在某点的期望便是p1<em>p2</em>1（还有很多可转化为概率来做的期望题）由于要除法取模，要预先递推求出逆元，复习一下公式：inv[1]=1;inv[i]=(mod-mod/i)*inv[mod%i]%mod. </p>
-<p>那么对于松鼠到某点的概率求取，我们先O(N^2)求出最开始互相连点之间的概率，然后每一时刻，枚举中间点，进行概率传递，由于t比较大，可以用矩阵快速幂思想来将其优化到log2n级别。</p>
-<p>最后，由于我们计算期望是O（n^3）的，无法过n&lt;=1000的点，发现如下式子：</p>
-<p>设p(i,j)为i到j点的概率。假设计算终点在1，则ans=p(1,1)<em>p(2,1)+p(1,1)</em>p(3,1)<em>…..+p(1,1)</em>p(n,1)+p(2,1)<em>p(3,1)+p(2,1)</em>p(4,1)+…….发现可以转化为p(1,1)<em>(p(2,1)+p(3,1)+p(4,1)+….+p(n,1))+p(2,1)</em>(p(3,1)+p(4,1)+…..+p(n,1)).由此发现是可以前缀和优化的，由此只用枚举一点和终点，从而变成O(N^2).当然可以每个统计一次，然后最后除以2.貌似更方便哈…..</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 1005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">1</span>e9+<span class="number">7</span>;</span><br><span class="line">struct matrix&#123;</span><br><span class="line">    ll a[maxn][maxn];</span><br><span class="line">&#125;nd,ans;</span><br><span class="line">int n,t,e[maxn][maxn];</span><br><span class="line">matrix operator *(matrix &amp;x,matrix &amp;y)&#123;</span><br><span class="line">    matrix c;</span><br><span class="line">    memset(c.a,<span class="number">0</span>,sizeof(c.a));</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">    <span class="keyword">for</span>(int k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">        c.a[i][j]=(c.a[i][j]+(x.a[i][k]*y.a[k][j])%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line">void pow(int t)&#123;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) ans.a[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(t)&#123;</span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1</span>) ans=ans*nd;<span class="regexp">//</span>最后为<span class="number">1</span> </span><br><span class="line">        nd=nd*nd;</span><br><span class="line">        t/=<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll p[maxn][maxn],inv[maxn],v[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;t);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%lld"</span>,&amp;v[i]);</span><br><span class="line">    inv[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=<span class="number">1000</span>;i++) inv[i]=(mod-mod/i)*inv[mod%i]%mod;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) scanf(<span class="string">"%d"</span>,&amp;e[i][j]);</span><br><span class="line">    memset(nd.a,<span class="number">0</span>,sizeof(nd.a));</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        int res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)  res+=e[i][j];</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)  nd.a[i][j]=inv[res]*e[i][j];</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span>(t&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        pow(t);</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) p[i][j]=ans.a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) p[i][j]=nd.a[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ll calc=<span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ll t1=<span class="number">0</span>,t2=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            ll tt=(p[j][i]*v[j])%mod;</span><br><span class="line">            t1=(t1+tt)%mod;</span><br><span class="line">            t2=(t2+tt*p[j][i])%mod;</span><br><span class="line">        &#125;</span><br><span class="line">        calc=(calc+(t1*t1%mod-t2+mod)%mod*inv[<span class="number">2</span>]%mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(<span class="string">"%lld"</span>,calc);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>我们定义一个数对 (x,y) 是好的，当且仅当 x≤y，且 x xor y的二进制表示下有奇数个 1</p>
+<p>现在给定 nn 个区间 [li,ri]，你需要对于每个 i∈[1,n]，输出有几对好的数 (x,y)满足 x 和 y 都在 [l1,r1]∪[l2,r2]…∪[li,ri]，即两个数都在前 i 个区间的并里<br><a id="more"></a></p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行一个正整数 n</p>
+<p>接下来 n 行每行两个整数 [li,ri]，表示第 i个区间，保证 li≤ri</p>
+<h1 id="Ouput"><a href="#Ouput" class="headerlink" title="Ouput"></a>Ouput</h1><p>输出 n 行，第 i行一个整数表示有几对好的数 (x,y) 满足 x,y 都在前 i 个区间的并里</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3</p>
+<p>1 7</p>
+<p>3 10</p>
+<p>9 20</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>12</p>
+<p>25</p>
+<p>100</p>
+<h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 30%30% 的数据，有 1≤n≤1001≤n≤100，1≤li≤ri≤1001≤li≤ri≤100</p>
+<p>对于 50%50% 的数据，有 1≤n≤10001≤n≤1000，1≤li≤ri≤232−11≤li≤ri≤232−1</p>
+<p>对于 100%100% 的数据，有 1≤n≤1051≤n≤105, 1≤li≤ri≤232−11≤li≤ri≤232−1</p>
+<p>时间限制：2s</p>
+<p>空间限制：512MB</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>先补充几个小知识点（快速求出一个数的二进制中有多少个1）:</p>
+<p>x=x&amp;(x-1)（递归求法，适用于单个数）</p>
+<p>表达式的意思就是:把x的二进制表示 从低位开始，将遇到的第一个为1的 二进制位 置0。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int calc=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(x) x=x&amp;(x-<span class="number">1</span>),calc++;</span><br><span class="line">calc即为所求值</span><br></pre></td></tr></table></figure>
+<p>求0到x中有多少二进制含1个数为奇数的：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">long long calc(long long x)</span><br><span class="line">&#123;</span><br><span class="line">    long long tmp=x,tot=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(tmp)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp&amp;<span class="number">1</span>)tot++;</span><br><span class="line">        tmp<span class="meta">&gt;&gt;=</span><span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (x<span class="meta">&gt;&gt;</span><span class="number">1</span>)+((x&amp;<span class="number">1</span>) <span class="params">||</span> (tot&amp;<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line">证明：<span class="number">00</span> <span class="number">01</span> <span class="number">10</span> <span class="number">11</span> <span class="number">100</span> <span class="number">101</span> <span class="number">110</span> <span class="number">111</span>....继续下去可以发现规律是偶奇奇偶奇偶偶奇....</span><br><span class="line">所以x<span class="meta">&gt;&gt;</span><span class="number">1</span>之前一半的，如果x为奇数（会少算一个）或其本身有奇数个<span class="number">1</span>得加上</span><br></pre></td></tr></table></figure>
+<p>所以说探究性质a老哥(这个性质也可以记住)</p>
+<p>p.s.当线段树叶子节点有n个时，应开总共2^(log2n+1)个点，即2*n个点</p>
+<h2 id="正经题解开始："><a href="#正经题解开始：" class="headerlink" title="正经题解开始："></a>正经题解开始：</h2><p>首先，对于每个数对（x,y）, 若要x xor y的二进制表示下有奇数个 1，则必定一者含奇数个1，一者含偶数个。</p>
+<p>证明：若两个都为奇数，1.则奇减奇等于偶（重叠个数为奇个）2.奇减偶先为奇（重叠个数为偶数个），奇加奇等于偶</p>
+<p>​           若两个都为偶数，则可同上证明</p>
+<p>​           一奇一偶，1.奇减奇等于偶，偶减奇等于奇，奇加偶等于奇2.奇减偶等于奇，偶减偶等于偶，偶加奇等于奇</p>
+<p>所以我们采取线段树来维护区间含奇数个1和含偶数个1的个数，对于区间l,r，则用上述中所介绍的calc函数，来calc(r)-calc(l-1)得到奇数个1个数以及r-l+1-（calc(r)-calc(l-1)）得到偶数个1个数</p>
+<p>每次输入一个区间加进去统计一个区间，然后输出总的相乘即可。p.s.线段树很好的解决了区间相交的问题，在以及统计过的区间标记vis[now]=1;</p>
+<p>上代码：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 100005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">ll num[maxn&lt;&lt;<span class="number">4</span>][<span class="number">2</span>];</span><br><span class="line">int lc[maxn&lt;&lt;<span class="number">4</span>],rc[maxn&lt;&lt;<span class="number">4</span>],rt=<span class="number">0</span>,np=<span class="number">0</span>;</span><br><span class="line">int n;</span><br><span class="line">bool vis[maxn&lt;&lt;<span class="number">4</span>];</span><br><span class="line">void upload(int now)&#123;</span><br><span class="line">    num[now][<span class="number">0</span>]=num[lc[now]][<span class="number">0</span>]+num[rc[now]][<span class="number">0</span>];</span><br><span class="line">    num[now][<span class="number">1</span>]=num[lc[now]][<span class="number">1</span>]+num[rc[now]][<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line">ll calc(ll x)</span><br><span class="line">&#123;</span><br><span class="line">    ll t=x,tot=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(t)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1</span>)tot++;</span><br><span class="line">        t<span class="meta">&gt;&gt;=</span><span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (x<span class="meta">&gt;&gt;</span><span class="number">1</span>)+((x&amp;<span class="number">1</span>) <span class="params">||</span> (tot&amp;<span class="number">1</span>));</span><br><span class="line">&#125;</span><br><span class="line">void update(int &amp;now,ll l,ll r,ll x,ll y)&#123;</span><br><span class="line">    <span class="keyword">if</span>(!now) now=++np;</span><br><span class="line">    <span class="keyword">if</span>(vis[now]) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=x&amp;&amp;r&lt;=y)&#123;</span><br><span class="line">        num[now][<span class="number">1</span>]=calc(r)-calc(l-<span class="number">1</span>);</span><br><span class="line">        num[now][<span class="number">0</span>]=r-l+<span class="number">1</span>-num[now][<span class="number">1</span>];</span><br><span class="line">        vis[now]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ll m=(l+r)<span class="meta">&gt;&gt;</span><span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(y&lt;=m)update(lc[now],l,m,x,y);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(x&gt;m)update(rc[now],m+<span class="number">1</span>,r,x,y);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        update(lc[now],l,m,x,y);</span><br><span class="line">        update(rc[now],m+<span class="number">1</span>,r,x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    upload(now);</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    ll L,R,mx=<span class="number">1</span>ll&lt;&lt;<span class="number">32</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%lld%lld"</span>,&amp;L,&amp;R);</span><br><span class="line">        update(rt,<span class="number">1</span>,mx,L,R);</span><br><span class="line">        printf(<span class="string">"%lld\n"</span>,num[<span class="number">1</span>][<span class="number">0</span>]*num[<span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
     
@@ -537,21 +557,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/10/15/2/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/10/14/kk/" id="post_nav-older" class="next-content">
+        <a href="/2018/10/16/7/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
