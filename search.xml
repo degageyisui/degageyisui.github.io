@@ -7,6 +7,16 @@
       <categories>
         <category>noip模拟赛</category>
       </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>dijsktra</tag>
+        <tag>spfa</tag>
+        <tag>slf优化</tag>
+        <tag>缩点</tag>
+        <tag>拓扑</tag>
+        <tag>DAG图</tag>
+        <tag>set</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[noip模拟赛1]]></title>
@@ -90,8 +100,8 @@
         <category>CF</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>概率期望</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -133,6 +143,22 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[正睿普转提9.16]]></title>
+    <url>%2F2018%2F10%2F15%2F14%2F</url>
+    <content type="text"><![CDATA[代码记录…T1#include&lt;bits/stdc++.h&gt;#define maxn 100005using namespace std;typedef long long ll;int n,fa[maxn],ch[maxn][2],x;ll st[maxn],a[maxn];int top=0;void dfs(int i)&#123; if(ch[i][0]) dfs(ch[i][0]); st[++top]=a[i]; if(ch[i][1]) dfs(ch[i][1]);&#125; ll q[maxn];int rear=0;void run(ll x)&#123; /*if(x&gt;=q[rear])&#123; q[++rear]=x; return; &#125; int l=1,r=rear,mid; while(l&lt;=r)&#123; mid=(l+r)&gt;&gt;1; if(q[mid-1]&lt;=x&amp;&amp;x&lt;q[mid])&#123;q[mid]=x;return;&#125; if(x&lt;q[mid-1]) r=mid-1; else l=mid+1; &#125;*/ int t=upper_bound(q+1,q+rear+1,x)-q; if(t==rear+1) q[++rear]=x; else q[t]=x;//将刚好大于它的代替，这里是运用了贪心思想a&#125;void init()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%lld",&amp;a[i]); for(int i=2;i&lt;=n;i++)&#123; scanf("%d%d",&amp;fa[i],&amp;x); ch[fa[i]][x]=i; &#125; dfs(1); for(ll i=1;i&lt;=top;i++) st[i]=st[i]-i; q[0]=-10000000000; for(int i=1;i&lt;=top;i++) run(st[i]); int ans=n-rear; printf("%d",ans);&#125;int main()&#123; init(); return 0;&#125; T2#include&lt;bits/stdc++.h&gt;#define maxn 500005using namespace std;int n,a[maxn],np=0,rt=0;int gcd(int x,int y)&#123; if(y==0) return x; else return gcd(y,x%y);&#125;int minv[maxn][20],gcdd[maxn][20],logg[maxn],w[25];void ready()&#123; w[0]=1; logg[0]=-1; for(int i=1;i&lt;=20;i++) w[i]=w[i-1]*2; for(int i=1;i&lt;=maxn-5;i++) logg[i]=logg[i/2]+1; for(int i=1;i&lt;=n;i++)&#123; minv[i][0]=gcdd[i][0]=a[i]; &#125; for(int i=1;i&lt;=logg[n];i++)//加个1保个险 for(int j=1;j&lt;=n;j++) if(j+w[i]-1&lt;=n)&#123; minv[j][i]=min(minv[j][i-1],minv[j+w[i-1]][i-1]);//本来是j+(1&lt;&lt;(i-1))-1+1 gcdd[j][i]=gcd(gcdd[j][i-1],gcdd[j+w[i-1]][i-1]); &#125; &#125;int cd1(int i,int j)&#123; int len=j-i+1; int t=logg[len]; return min(minv[i][t],minv[j-w[t]+1][t]);&#125;int cd2(int i,int j)&#123; int len=j-i+1; int t=logg[len]; return gcd(gcdd[i][t],gcdd[j-w[t]+1][t]);&#125;int st[maxn],top=0,yb[maxn],topp=0;bool check(int mid)&#123; topp=0; bool ok=false; for(int i=1;i&lt;=n-mid+1;i++)&#123; int j=i+mid-1; if(cd1(i,j)==cd2(i,j))&#123; ok=true; yb[++topp]=i; &#125; &#125; if(ok)&#123; top=0; for(int i=1;i&lt;=topp;i++) st[++top]=yb[i]; return true; &#125; return false;&#125;void run()&#123; int A=1,B=n,mid,ans; while(A&lt;=B)&#123; mid=A+B&gt;&gt;1; if(check(mid)) ans=mid,A=mid+1; else B=mid-1; &#125; printf("%d %d\n",top,ans-1);//L-R for(int i=1;i&lt;=top;i++) printf("%d ",st[i]);&#125; void init()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); ready(); run(); &#125;int main()&#123; init(); return 0;&#125; T3#include&lt;bits/stdc++.h&gt;#define maxn 55using namespace std;typedef long long ll;const ll mod=1e9+7;ll c[maxn][maxn],dp[maxn][maxn];int p[maxn],n;void ready()&#123; for(int i=0;i&lt;=50;i++)&#123; c[i][0]=1; for(int j=1;j&lt;=i;j++) c[i][j]=(c[i-1][j-1]+c[i-1][j])%mod; &#125;&#125;ll dfs(int len,int now)&#123; if(dp[len][now]!=-1) return dp[len][now]; if(len==1) return dp[len][now]=1; ll ans=0;int j,k,pos=0,t[maxn];//pos和t只有内定了给，不然要重 函数递归时会改变 for(int i=1;i&lt;=n;i++) if(p[i]&gt;=now&amp;&amp;p[i]&lt;now+len) t[++pos]=p[i];//pos==len for(int i=1;i&lt;pos;i++)&#123; swap(t[i],t[i+1]);//枚举交换的位置 for(j=1;j&lt;=i;j++)//判断是否满足 if(t[j]&gt;=now+i) break;//最多为now+i-1; for(k=i+1;k&lt;=pos;k++) if(t[k]&lt;now+i) break;//最小为now+i; if(j&gt;i&amp;&amp;k&gt;pos)&#123; ll t1=dfs(i,now); ll t2=dfs(pos-i,now+i); ans=(ans+t1*t2%mod*c[pos-2][i-1]%mod)%mod;//第一个:now~now+i-1 第二个now+i~now+len-1; //在这之前进行n-2次交换,前i-1次选择前面来处理前面的i个 &#125; swap(t[i],t[i+1]); &#125; return dp[len][now]=ans; &#125;void init()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;p[i]); memset(dp,-1,sizeof(dp)); dfs(n,0); if(dp[n][0]==-1) printf("%d",0); else printf("%lld",dp[n][0]);&#125;int main()&#123; ready(); init(); return 0;&#125; T4#include&lt;bits/stdc++.h&gt;#define maxn 305using namespace std;int n,m,k;double a[maxn],b[maxn*maxn];//b:(k-x,m-x)/(k,m) 而x最多为n^2void ready()&#123; a[0]=1.0; for(int i=1;i&lt;=n;i++) a[i]=a[i-1]*(n-i+1)*1.0/i; b[0]=1; for(int i=1;i&lt;=n*n;i++) b[i]=b[i-1]*(k-i+1)*1.0/(m-i+1); &#125; void outt()&#123; printf("1"); for(int i=1;i&lt;=99;i++) printf("0");&#125;int main()&#123; scanf("%d%d%d",&amp;n,&amp;m,&amp;k); ready(); double ans=0; for(int i=0;i&lt;=n;i++) for(int j=0;j&lt;=n;j++)&#123; int x=(i+j)*n-i*j; if(x&gt;k) break;//再加只会更多 ans+=a[i]*a[j]*b[x]; &#125; if(ans&gt;1e99) outt(); else printf("%lf",ans); return 0;&#125;]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>概率期望</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
+        <tag>LIS</tag>
+        <tag>ST表</tag>
+        <tag>二分答案</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[最小瓶颈生成树]]></title>
     <url>%2F2018%2F10%2F15%2F2%2F</url>
     <content type="text"><![CDATA[所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下： 类比找第k大值的方法，首先随机一个边权w。 然后将不超过这个边权的边加入，遍历这张图。 如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。 否则将这些连通点缩起来，考虑边权大于w的边。 每次将问题的规模缩小至一半。 期望时间复杂度O(m)。 相关例题有两道：A.Hangar Hurdles (CERC 16) 有一个n*n的网格图，上面有些格子可行，有些格子是障碍。 有Q个询问，想把一个正方形箱子从(r1,c1)推到(r2,c2)，问箱子最大的大小。（起点终点是正方形箱子的中点） N&lt;=1000 Q&lt;=300000 B.洪蛤吨有一个宽度为L的管道，我们可以视其为一条y=L的直线与X轴所夹的部分。 （所以这根管道的长度可以视为正无穷） 这个管道中有个N个障碍点，第i个障碍点的坐标为(Xi,Yi)。 已知有一个球体，能在不碰到障碍点的前提下，从管道的最左端走到最右端。（即从管道内横坐标负无穷的地方走到横坐标正无穷的地方）。 求这个球体的直径最大是多少。为了避免精度误差，请输出答案保留三位小数的结果。 两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小下面上一下t2的代码：（没有用最小瓶颈树优化，逃） #include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;cctype&gt;#include&lt;set&gt;#include&lt;algorithm&gt;#include&lt;map&gt;#include&lt;queue&gt;#define maxn 505using namespace std;struct eage&#123; int u,v; double dist;&#125;e[maxn*maxn/2+maxn*2];bool cmp(eage a,eage b)&#123; return a.dist&lt;b.dist;&#125;double dis(int x1,int y1,int x2,int y2)&#123; return sqrt(1.0*(x1-x2)*(x1-x2)+1.0*(y1-y2)*(y1-y2)); &#125;int fa[maxn];int find(int x)&#123; if(fa[x]==x) return x; int root=find(fa[x]); fa[x]=root; return root;&#125;void link(int x,int y)&#123; int fx=find(x),fy=find(y); if(fx!=fy)&#123; fa[fx]=fy; &#125; &#125;bool check(int x,int y)&#123; int fx=find(x),fy=find(y); if(fx!=fy) return false; return true;&#125;int l,n;struct node&#123; int x,y;&#125;nd[maxn];void init()&#123; int pos=0; scanf("%d%d",&amp;n,&amp;l); for(int i=1;i&lt;=n+2;i++) fa[i]=i;//n+1是上，n+2是下 for(int i=1;i&lt;=n;i++)&#123; scanf("%d%d",&amp;nd[i].x,&amp;nd[i].y); &#125; for(int i=1;i&lt;=n;i++)&#123; e[++pos]=(eage)&#123;i,n+1,l-nd[i].y&#125;; e[++pos]=(eage)&#123;i,n+2,nd[i].y&#125;; for(int j=i+1;j&lt;=n;j++)&#123; e[++pos]=(eage)&#123;i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)&#125;; &#125; &#125; int cnt=0; sort(e+1,e+pos+1,cmp); for(int i=1;i&lt;=pos;i++)&#123; int u=e[i].u,v=e[i].v; if(check(u,v)) continue; link(u,v); cnt++; if(find(n+1)==find(n+2))&#123;//只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 printf("%.3f",e[i].dist); break; &#125; &#125;&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -167,13 +193,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
