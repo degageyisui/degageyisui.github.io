@@ -9,13 +9,13 @@
       </categories>
       <tags>
         <tag>dp</tag>
+        <tag>set</tag>
         <tag>dijsktra</tag>
         <tag>spfa</tag>
         <tag>slf优化</tag>
         <tag>缩点</tag>
         <tag>拓扑</tag>
         <tag>DAG图</tag>
-        <tag>set</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +100,8 @@
         <category>CF</category>
       </categories>
       <tags>
-        <tag>概率期望</tag>
         <tag>dp</tag>
+        <tag>概率期望</tag>
       </tags>
   </entry>
   <entry>
@@ -150,9 +150,9 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>概率期望</tag>
         <tag>数学</tag>
         <tag>dp</tag>
+        <tag>概率期望</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
