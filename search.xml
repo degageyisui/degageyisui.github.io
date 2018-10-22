@@ -88,9 +88,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
-        <tag>dp</tag>
         <tag>离线</tag>
         <tag>数学</tag>
+        <tag>dp</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -211,8 +211,8 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>dp</tag>
         <tag>数学</tag>
+        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
