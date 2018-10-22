@@ -43,7 +43,7 @@
     
     <title>
         
-            最小瓶颈生成树 | 
+            ZJOI2006 书架 | 
         
         祎隋
     </title>
@@ -53,11 +53,8 @@
     <link rel="icon" href="/img/favicon.png">
 
     <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下：
-类比找第k大值的方法，首先随机一个边权w。
-然后将不超过这个边权的边加入，遍历这张图。
-如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。">
-    <meta name="keywords" content="c++,blog,最小瓶颈生成树">
+    <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
+    <meta name="keywords" content="c++,blog,平衡树">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -223,7 +220,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="祎隋">
-    <meta name="msapplication-starturl" content="www.degage.xyz/2018/10/15/2/">
+    <meta name="msapplication-starturl" content="www.degage.xyz/2018/10/22/19/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="祎隋">
@@ -238,19 +235,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="www.degage.xyz/2018/10/15/2/">
+    <meta property="og:url" content="www.degage.xyz/2018/10/22/19/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="最小瓶颈生成树 | 祎隋">
+    <meta property="og:title" content="ZJOI2006 书架 | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下：
-类比找第k大值的方法，首先随机一个边权w。
-然后将不超过这个边权的边加入，遍历这张图。
-如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。">
-    <meta property="og:article:tag" content="最小瓶颈生成树"> 
+    <meta property="og:description" content="这里是degage的代码仓库哦">
+    <meta property="og:article:tag" content="平衡树"> 
 
     
-        <meta property="article:published_time" content="Mon Oct 15 2018 08:12:11 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 20:04:44 GMT+0800">
+        <meta property="article:published_time" content="Mon Oct 22 2018 11:23:17 GMT+0800">
+        <meta property="article:modified_time" content="Mon Oct 22 2018 11:30:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -258,7 +252,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="www.degage.xyz/2018/10/15/2/index.html" />
+        <link rel="canonical" href="www.degage.xyz/2018/10/22/19/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -270,10 +264,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "www.degage.xyz/2018/10/15/2/index.html",
-    "headline": "最小瓶颈生成树",
-    "datePublished": "Mon Oct 15 2018 08:12:11 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 20:04:44 GMT+0800",
+    "mainEntityOfPage": "www.degage.xyz/2018/10/22/19/index.html",
+    "headline": "ZJOI2006 书架",
+    "datePublished": "Mon Oct 22 2018 11:23:17 GMT+0800",
+    "dateModified": "Mon Oct 22 2018 11:30:43 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -291,11 +285,8 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",最小瓶颈生成树c++,blog",
-    "description": "所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下：
-类比找第k大值的方法，首先随机一个边权w。
-然后将不超过这个边权的边加入，遍历这张图。
-如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。",
+    "keywords": ",平衡树c++,blog",
+    "description": "这里是degage的代码仓库哦",
 }
 </script>
 
@@ -360,7 +351,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#所谓最小瓶颈生成树…-就是使得生成树树上最大边权值最小。"><span class="post-toc-text">所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关例题有两道："><span class="post-toc-text">相关例题有两道：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"><span class="post-toc-text">两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小</span></a></li></ol></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Input"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Output"><span class="post-toc-text">Output</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hint"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li></ol>
     </ul>
     
 
@@ -392,7 +383,7 @@
         
     
             <p class="article-headline-p">
-                最小瓶颈生成树
+                ZJOI2006 书架
             </p>
         </div>
 
@@ -411,7 +402,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>degage</strong>
-        <span>10月 15, 2018</span>
+        <span>10月 22, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -435,7 +426,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a>
+        <a class="post_tag-link" href="/tags/平衡树/">平衡树</a>
     </ul>
     
 
@@ -452,7 +443,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=最小瓶颈生成树&url=www.degage.xyz/2018/10/15/2/index.html&pic=www.degage.xyz/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=ZJOI2006 书架&url=www.degage.xyz/2018/10/22/19/index.html&pic=www.degage.xyz/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -461,7 +452,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=最小瓶颈生成树&url=www.degage.xyz/2018/10/15/2/index.html&via=degage" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=ZJOI2006 书架&url=www.degage.xyz/2018/10/22/19/index.html&via=degage" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -470,7 +461,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=www.degage.xyz/2018/10/15/2/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=www.degage.xyz/2018/10/22/19/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -479,7 +470,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=www.degage.xyz/2018/10/15/2/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=www.degage.xyz/2018/10/22/19/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -491,7 +482,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=最小瓶颈生成树&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/15/2/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=ZJOI2006 书架&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/22/19/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -510,23 +501,23 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="所谓最小瓶颈生成树…-就是使得生成树树上最大边权值最小。"><a href="#所谓最小瓶颈生成树…-就是使得生成树树上最大边权值最小。" class="headerlink" title="所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。"></a>所谓最小瓶颈生成树….就是使得生成树树上最大边权值最小。</h1><p>这里主要介绍一种期望O（M）（线性）的求法，其实主要就是二分，具体思路如下：</p>
-<p>类比找第k大值的方法，首先随机一个边权w。</p>
-<p>然后将不超过这个边权的边加入，遍历这张图。</p>
-<p>如果图连通，那么瓶颈不超过w，于是只需考虑边权不超过w的边。</p>
-<a id="more"></a>
-<p>否则将这些连通点缩起来，考虑边权大于w的边。</p>
-<p>每次将问题的规模缩小至一半。</p>
-<p>期望时间复杂度O(m)。</p>
-<h2 id="相关例题有两道："><a href="#相关例题有两道：" class="headerlink" title="相关例题有两道："></a>相关例题有两道：</h2><p>A.Hangar Hurdles (CERC 16)</p>
-<p>有一个n*n的网格图，上面有些格子可行，有些格子是障碍。 有Q个询问，想把一个正方形箱子从(r1,c1)推到(r2,c2)，问箱子最大的大小。（起点终点是正方形箱子的中点） N&lt;=1000 Q&lt;=300000</p>
-<p>B.洪蛤吨有一个宽度为L的管道，我们可以视其为一条y=L的直线与X轴所夹的部分。</p>
-<p>（所以这根管道的长度可以视为正无穷）</p>
-<p>这个管道中有个N个障碍点，第i个障碍点的坐标为(Xi,Yi)。</p>
-<p>已知有一个球体，能在不碰到障碍点的前提下，从管道的最左端走到最右端。（即从管道内横坐标负无穷的地方走到横坐标正无穷的地方）。</p>
-<p>求这个球体的直径最大是多少。为了避免精度误差，请输出答案保留三位小数的结果。</p>
-<h3 id="两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"><a href="#两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小" class="headerlink" title="两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"></a>两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小</h3><p>下面上一下t2的代码：（没有用最小瓶颈树优化，逃）</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cctype&gt;</span></span><br><span class="line"><span class="comment">#include&lt;set&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;map&gt;</span></span><br><span class="line"><span class="comment">#include&lt;queue&gt;</span></span><br><span class="line"><span class="comment">#define maxn 505</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct eage&#123;</span><br><span class="line">    int u,v;</span><br><span class="line">    double dist;</span><br><span class="line">&#125;e[maxn*maxn/<span class="number">2</span>+maxn*<span class="number">2</span>];</span><br><span class="line">bool cmp(eage a,eage b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a.dist&lt;b.dist;</span><br><span class="line">&#125;</span><br><span class="line">double dis(int x1,int y1,int x2,int y2)&#123;</span><br><span class="line">    <span class="keyword">return</span> sqrt(<span class="number">1.0</span>*(x1-x2)*(x1-x2)+<span class="number">1.0</span>*(y1-y2)*(y1-y2)); </span><br><span class="line">&#125;</span><br><span class="line">int fa[maxn];</span><br><span class="line">int find(int x)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">    int root=find(fa[x]);</span><br><span class="line">    fa[x]=root;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">void link(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">        fa[fx]=fy;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">int l,n;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    int pos=<span class="number">0</span>;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;l);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) fa[i]=i;<span class="regexp">//n</span>+<span class="number">1</span>是上，n+<span class="number">2</span>是下 </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%d%d"</span>,&amp;nd[i].x,&amp;nd[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">1</span>,l-nd[i].y&#125;;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">2</span>,nd[i].y&#125;;</span><br><span class="line">    <span class="keyword">for</span>(int j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int cnt=<span class="number">0</span>;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+pos+<span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=pos;i++)&#123;</span><br><span class="line">        int u=e[i].u,v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(check(u,v)) continue;</span><br><span class="line">        link(u,v);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(find(n+<span class="number">1</span>)==find(n+<span class="number">2</span>))&#123;<span class="regexp">//</span>只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 </span><br><span class="line">            printf(<span class="string">"%.3f"</span>,e[i].dist);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>小T有一个很大的书柜。这个书柜的构造有些独特，即书柜里的书是从上至下堆放成一列。她用1到n的正整数给每本书都编了号。</p>
+<p>小T在看书的时候，每次取出一本书，看完后放回书柜然后再拿下一本。由于这些书太有吸引力了，所以她看完后常常会忘记原来是放在书柜的什么位置。不过小T的记忆力是非常好的，所以每次放书的时候至少能够将那本书放在拿出来时的位置附近，比如说她拿的时候这本书上面有X本书，那么放回去时这本书上面就只可能有X-1、X或X+1本书。</p>
+<p>当然也有特殊情况，比如在看书的时候突然电话响了或者有朋友来访。这时候粗心的小T会随手把书放在书柜里所有书的最上面或者最下面，然后转身离开。</p>
+<p>久而久之，小T的书柜里的书的顺序就会越来越乱，找到特定的编号的书就变得越来越困难。于是她想请你帮她编写一个图书管理程序，处理她看书时的一些操作，以及回答她的两个提问：(1)编号为X的书在书柜的什么位置；(2)从上到下第i本书的编号是多少。</p>
+<h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行有两个数n，m，分别表示书的个数以及命令的条数；第二行为n个正整数：第i个数表示初始时从上至下第i个位置放置的书的编号；第三行到m+2行，每行一条命令。命令有5种形式：</p>
+<p>1． Top S——表示把编号为S的书放在最上面。</p>
+<p>2． Bottom S——表示把编号为S的书放在最下面。</p>
+<p>3． Insert S T——T∈{-1，0，1}，若编号为S的书上面有X本书，则这条命令表示把这本书放回去后它的上面有X+T本书；</p>
+<p>4． Ask S——询问编号为S的书的上面目前有多少本书。</p>
+<p>5． Query S——询问从上面数起的第S本书的编号。</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>对于每一条Ask或Query语句你应该输出一行，一个数，代表询问的答案。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>10 10<br>1 3 2 7 5 8 10 4 9 6<br>Query 3<br>Top 5<br>Ask 6<br>Bottom 3<br>Ask 3<br>Top 6<br>Insert 4 -1<br>Query 5<br>Query 2<br>Ask 2</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>2<br>9<br>9<br>7<br>5<br>3</p>
+<h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>100%的数据，n,m &lt;= 80000</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>一道裸的线段平衡树题a…..<br>先上一波权值平衡树的板子（实际操作中可以按情况修改）<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;climits&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 1000000+5 </span></span><br><span class="line">int fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn],cnt[maxn],val[maxn];</span><br><span class="line">int rt=<span class="number">0</span>,np=<span class="number">0</span>;</span><br><span class="line">bool check(int x)&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line">void link(int x,int y,bool kind)&#123;</span><br><span class="line">	fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line">void upload(int x)&#123;</span><br><span class="line">	sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+cnt[x];</span><br><span class="line">&#125;</span><br><span class="line">void rotate(int x)&#123;</span><br><span class="line">	int y=fa[x],z=fa[y];</span><br><span class="line">	bool kind=check(x);</span><br><span class="line">	int k=ch[x][!kind];</span><br><span class="line">	link(k,y,kind);</span><br><span class="line">	link(x,z,check(y));</span><br><span class="line">	link(y,x,!kind);</span><br><span class="line">	upload(y);upload(x); </span><br><span class="line">&#125;</span><br><span class="line">void splay(int x,int goal)&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">    	int y=fa[x],z=fa[y];</span><br><span class="line">    	<span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x)<span class="symbol">:rotate</span>(y);</span><br><span class="line">    	rotate(x);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line">void find(int x)&#123;</span><br><span class="line">	int now=rt;</span><br><span class="line">	<span class="keyword">while</span>(ch[now][x&gt;val[now]]&amp;&amp;val[now]!=x)</span><br><span class="line">	  now=ch[now][x&gt;val[now]];</span><br><span class="line">	splay(now,<span class="number">0</span>);  </span><br><span class="line">&#125;</span><br><span class="line">void insert(int x)&#123;</span><br><span class="line">	int now=rt,f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(now&amp;&amp;val[now]!=x) f=now,now=ch[now][x&gt;val[now]];</span><br><span class="line">	<span class="keyword">if</span>(now) cnt[now]++;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		now=++np;</span><br><span class="line">		val[now]=x;</span><br><span class="line">		<span class="keyword">if</span>(f) ch[f][x&gt;val[f]]=now;</span><br><span class="line">		fa[now]=f;</span><br><span class="line">		cnt[now]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int prnx(int x,bool f)&#123;</span><br><span class="line">	find(x);</span><br><span class="line">	int now=rt;</span><br><span class="line">	<span class="keyword">if</span>(val[now]&gt;x&amp;&amp;f<span class="params">||</span>val[now]&lt;x&amp;&amp;!f) <span class="keyword">return</span> now;</span><br><span class="line">	now=ch[now][f];</span><br><span class="line">	<span class="keyword">while</span>(ch[now][!f]) now=ch[now][!f];</span><br><span class="line">	<span class="keyword">return</span> now; </span><br><span class="line">&#125;</span><br><span class="line">void del(int x)&#123;</span><br><span class="line">	int pre=prnx(x,<span class="number">0</span>),last=prnx(x,<span class="number">1</span>);</span><br><span class="line">	splay(pre,<span class="number">0</span>);splay(last,pre);</span><br><span class="line">	int delt=ch[last][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(cnt[delt])&#123;cnt[delt]--;splay(delt,<span class="number">0</span>);&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		ch[last][<span class="number">0</span>]=<span class="number">0</span>;splay(last,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int kth(int now,int k)&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">	<span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+cnt[now]&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-cnt[now]);</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> val[now];</span><br><span class="line">&#125;</span><br><span class="line">int kth(int x)&#123;</span><br><span class="line">	int now=rt,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x&lt;val[now]) now=ch[now][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ans+=ch[now][<span class="number">0</span>]?sz[ch[now][<span class="number">0</span>]]<span class="symbol">:</span><span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(val[now]==x)&#123;splay(now,<span class="number">0</span>);<span class="keyword">return</span> ans+<span class="number">1</span>;&#125;</span><br><span class="line">			ans+=cnt[now];</span><br><span class="line">			now=ch[now][<span class="number">1</span>]; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	insert(INT_MIN);</span><br><span class="line">	insert(INT_MAX);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) insert(i);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) kth(rt,i); </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这道题是线段平衡树，对于每个操作画下图，想一下就欧克了，没什么好说的….</p>
+<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 80005</span></span><br><span class="line">int n,m,np=<span class="number">0</span>,rt=<span class="number">0</span>;</span><br><span class="line">int fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn];</span><br><span class="line">int val[maxn],rk[maxn];</span><br><span class="line">bool check(int x)&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line">void link(int x,int y,bool kind)&#123;</span><br><span class="line">    fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line">void upload(int x)&#123;</span><br><span class="line">    sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">void rotate(int x)&#123;</span><br><span class="line">    int y=fa[x];</span><br><span class="line">    int z=fa[y];</span><br><span class="line">    bool kind=check(x);</span><br><span class="line">    int k=ch[x][!kind];</span><br><span class="line">    link(k,y,kind);</span><br><span class="line">    link(x,z,check(y));</span><br><span class="line">    link(y,x,!kind);</span><br><span class="line">    upload(y);upload(x);	</span><br><span class="line">&#125;</span><br><span class="line">void splay(int x,int goal)&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">        int y=fa[x],z=fa[y];</span><br><span class="line">        <span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x)<span class="symbol">:rotate</span>(y);</span><br><span class="line">        rotate(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line">void insert(int x)&#123;</span><br><span class="line">    int now=rt,f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(now) f=now,now=ch[now][<span class="number">1</span>];</span><br><span class="line">    now=++np;</span><br><span class="line">    link(now,f,<span class="number">1</span>);</span><br><span class="line">    splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int nxt(int x,bool f)&#123;<span class="regexp">//</span>前提要将x旋转到根 </span><br><span class="line">    x=ch[x][f];</span><br><span class="line">    <span class="keyword">while</span>(ch[x][!f]) x=ch[x][!f];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line">void del(int x)&#123;</span><br><span class="line">    splay(x,<span class="number">0</span>);</span><br><span class="line">    int pre=nxt(x,<span class="number">0</span>),nxtt=nxt(x,<span class="number">1</span>);</span><br><span class="line">    splay(pre,<span class="number">0</span>);splay(nxtt,pre);</span><br><span class="line">    ch[nxtt][<span class="number">0</span>]=<span class="number">0</span>;splay(nxtt,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int kth(int now,int k)&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">    <span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+<span class="number">1</span>&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> now;</span><br><span class="line">&#125; </span><br><span class="line">int s,k;</span><br><span class="line">char op[<span class="number">10</span>];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=n+<span class="number">1</span>;i++) scanf(<span class="string">"%d"</span>,&amp;val[i]),rk[val[i]]=i;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) insert(i);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%s"</span>,op);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'T'</span>)&#123;</span><br><span class="line">            scanf(<span class="string">"%d"</span>,&amp;s);</span><br><span class="line">            int t=rk[s];</span><br><span class="line">            del(t);</span><br><span class="line">            /*splay(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">            int nxtt=nxt(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(nxtt,<span class="number">0</span>);splay(<span class="number">1</span>,nxtt);</span><br><span class="line">            link(t,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(1,0);</span></span><br><span class="line"><span class="regexp">            int nxtt=nxt(1,1);</span></span><br><span class="line"><span class="regexp">            splay(nxtt,1);</span></span><br><span class="line"><span class="regexp">            link(t,nxtt,0);</span></span><br><span class="line"><span class="regexp">            splay(t,0); </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='B')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            del(t);</span></span><br><span class="line"><span class="regexp">            /</span>*splay(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            int pre=nxt(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(pre,<span class="number">0</span>);splay(n+<span class="number">2</span>,pre);</span><br><span class="line">            link(t,n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(n+2,0);</span></span><br><span class="line"><span class="regexp">            int pre=nxt(n+2,0);</span></span><br><span class="line"><span class="regexp">            splay(pre,n+2);</span></span><br><span class="line"><span class="regexp">            link(t,pre,1);</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='I')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d%d",&amp;s,&amp;k);</span></span><br><span class="line"><span class="regexp">            if(k==0) continue;</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            if(k==1)&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,1);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">            else&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,0);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='A')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",sz[ch[t][0]]-1);/</span><span class="regexp">/减去最开始加入的1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='Q')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",val[kth(rt,s+1)]);/</span><span class="regexp">/减去1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
 
         
     
@@ -547,21 +538,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/10/15/14/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/10/15/1/" id="post_nav-older" class="next-content">
+        <a href="/2018/10/22/18/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
