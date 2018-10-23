@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[翻转]]></title>
+    <url>%2F2018%2F10%2F23%2F25%2F</url>
+    <content type="text"><![CDATA[Description小c有两个长为n的01串A和B。她可以进行下列3种操作，按任意顺序：1.把A循环左移一位2.把A循环右移一位3.选择一个$B_i$=1的i，翻转$A_i$（令$A_i=1-A_i$）求让A串变得和B串相等需要的最少步数。无解输出-1。 Sample Input10101100 Sample Output3 Hint1&lt;=n&lt;=2000 Solutionemmmmmmmm这道题首先判无解情况，即B全为0而A不全为0。 然后看到2000的数据，O(N)枚举一波最终的位置。然后对于每一个与$B_i$不等的$A_i$看它是往左移还是右移再移回，然后贪心取最大的，边移边翻转，最后ans=变化个数+移动个数+（最大左移+最大右移）$\times$2.注意小于等于移动个数且同向的就不必计入了…移动过程中就换了，详见代码注释。 这样加上排序复杂度为$n^2logn$，完全能过2333 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 2005using namespace std;char s[maxn],ss[maxn];int n,lm[maxn],rm[maxn];struct node&#123; int l,r; friend bool operator&lt;(node a,node b)&#123; return a.l&lt;b.l; &#125;&#125;;vector&lt;node&gt;q;void ready()&#123; for(int i=0;i&lt;n;i++)&#123; int now=i; while(ss[now]!='1') rm[i]++,now=(now+1)%n; now=i; while(ss[now]!='1') lm[i]++,now=(now-1+n)%n; &#125;&#125;void init()&#123; scanf("%s%s",s,ss); n=strlen(s); bool ok1=false; for(int i=0;i&lt;n;i++) if(s[i]=='1')&#123;ok1=true;break;&#125; bool ok2=true; for(int i=0;i&lt;n;i++) if(ss[i]=='1')&#123;ok2=false;break;&#125; if(ok1&amp;&amp;ok2)&#123;printf("-1");return;&#125; ready(); int cnt,maxx;int ans=0x3f3f3f3f; for(int move=-n+1;move&lt;=n-1;move++)&#123;//左移n-1次，右移n-1次 int maxx=abs(move);cnt=0;//统计要修改的步数 q.clear(); for(int i=0;i&lt;n;i++)&#123; if(s[i]==ss[(i+move+n)%n]) continue; cnt++; if(move&lt;=0&amp;&amp;lm[i]&lt;=maxx) continue; if(move&gt;=0&amp;&amp;rm[i]&lt;=maxx) continue;//途中移动翻转 q.push_back((node)&#123;lm[i],rm[i]&#125;); &#125; sort(q.begin(),q.end()); int maxy=0,minn=0x3f3f3f3f; for(int i=q.size()-1;i&gt;=0;i--)&#123; minn=min(minn,q[i].l+maxy); maxy=max(maxy,q[i].r);//后一步更新，使覆盖完 &#125; minn=min(minn,maxy);//还有最后一个没判到 ans=min(ans,minn*2+cnt+maxx); //来回走两遍aQAQ &#125; printf("%d",ans);&#125;int main()&#123; init(); return 0;&#125;]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[小W与面试]]></title>
     <url>%2F2018%2F10%2F23%2F24%2F</url>
     <content type="text"><![CDATA[Desciption小W因为染色的时候算错了一位数，所以自闭了。他决定不再染布了，去找工作。 在面试的时候，面试官问了他这样一个问题： 给定一个长度为 n 的序列 ai，求: $\Sigma_{ia_j}{a_i xor a_j}$小W发现他不会做，想求助于你。 Input第一行一个正整数 n。 第二行 n 个整数，表示 $a_i$。 Output一个整数表示答案。 Sample Input22 1 Sample Output3 Hint对于 30% 的数据，满足 n≤5000。 对于 100% 的数据，满足 1≤n≤105,1≤ai≤105。 时间限制：1 s 空间限制：512 MB Solution考虑按位计算贡献，设c{[i]}{[j]}[0/1]表示值在[$x-2^k+1,x$]范围内的第j位为0/1的个数，用树状数组来维护，从后往前依次加入。 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 100005using namespace std;typedef long long ll;ll c[maxn][20][2],w[20];int n,a[maxn];void ready()&#123; w[0]=1; for(int i=1;i&lt;=17;i++) w[i]=w[i-1]*2;&#125;void update(int x,int d,int f)&#123; while(x&lt;=maxn-5)&#123; c[x][d][f]+=1; x+=(x&amp;-x); &#125;&#125;ll sum(int x,int d,int f)&#123; ll ret=0; while(x&gt;0)&#123; ret+=c[x][d][f]; x-=(x&amp;-x); &#125; return ret*w[d];&#125;void init()&#123; ll ans=0; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); for(int i=n;i&gt;=1;i--)&#123; for(int j=0;j&lt;=17;j++)&#123; if(a[i]&amp;(1&lt;&lt;j))&#123; ans+=sum(a[i]-1,j,0); update(a[i],j,1); &#125; else&#123; ans+=sum(a[i]-1,j,1); update(a[i],j,0); &#125; &#125; &#125; printf("%lld",ans);&#125; int main()&#123; ready(); init(); return 0;&#125;]]></content>
@@ -150,9 +162,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
+        <tag>dp</tag>
         <tag>离线</tag>
         <tag>数学</tag>
-        <tag>dp</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -273,8 +285,8 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
         <tag>dp</tag>
+        <tag>数学</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
