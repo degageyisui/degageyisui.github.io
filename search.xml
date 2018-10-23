@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Sirni]]></title>
     <url>%2F2018%2F10%2F23%2F23%2F</url>
-    <content type="text"><![CDATA[Description有 n 个点，每个点有个权值 p1, p2, . . . , pn。这些点之间两两有边，对于点 i, j，这两个点之间的边权为 min($p_imodp_j,p_jmodp_i$)。问把这些点连通的最小代价和是多少，也就是问这个完全图的最小生成树的边权和。 Input第一行一个正整数 n，接下来 n 行每行一个整数，表示这些点的权值。30% 的数据- n ≤ 103。40% 的数据- pi ≤ 106。100% 的数据- 1 ≤ n ≤ 105, pi ≤ 106。 Output一行表示答案 Sample Input34915 Sample Output4 Hint时间限制：5s空间限制：768MB Solution]]></content>
+    <content type="text"><![CDATA[Description有 n 个点，每个点有个权值 p1, p2, . . . , pn。这些点之间两两有边，对于点 i, j，这两个点之间的边权为 min($p_imodp_j,p_jmodp_i$)。问把这些点连通的最小代价和是多少，也就是问这个完全图的最小生成树的边权和。 Input第一行一个正整数 n，接下来 n 行每行一个整数，表示这些点的权值。30% 的数据- n ≤ 103。40% 的数据- pi ≤ 106。100% 的数据- 1 ≤ n ≤ 105, pi ≤ 106。 Output一行表示答案 Sample Input34915 Sample Output4 Hint时间限制：5s空间限制：768MB Solution首先会发现每条边边权为$p_imodp_j (p_i&gt;p_j)$，因为小数模大数为小数，大数模小数小于小数。然后先将点排序离散化去重（相同点权两点之间距离为0），然后从小到大对于每个$p_i$，我们设其值为x，那么会从x-2x,2x-3x……选出一个点连边作为最优值（见图，解释在下）：对于每一段，我们肯定首选第一个大于它的是最小的，如图中x-2x的$p_j$，然后对于$p_k$，我们选择不连边而让$p_j$去连更优，如图中绿色段为$p_j$连$p_k$代价，而蓝色段为x连$p_k$代价，可见前者更优，然后我们一共会连$\sum\lfloor\frac{mx}{p_i}\rfloor$条边，将它放大为调和级数求和$plogp$，所以用kruskal可以$plog^2p$求出…. 然后对于连边直接先预处理每个区间第一个选的，然后O（n）搞好. 上代码： #include&lt;bits/stdc++.h&gt;using namespace std;#define maxn 100005#define maxm 10000005typedef long long ll;int n,a[maxn],nxtt[maxm],pos[maxm],fa[maxn];int find(int x)&#123; if(fa[x]==x) return x; int root=find(fa[x]); fa[x]=root; return root;&#125;bool check(int x,int y)&#123; int fx=find(x),fy=find(y); if(fx!=fy) return false; return true;&#125;void link(int x,int y)&#123; int fx=find(x),fy=find(y); if(fx!=fy)&#123; fa[fx]=fy; &#125;&#125;struct eage&#123; int u,v,len; friend bool operator&lt;(eage a,eage b)&#123; return a.len&lt;b.len; &#125;&#125;e[maxm*4];int np=0;void init()&#123; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); for(int i=1;i&lt;=n;i++) fa[i]=i; sort(a+1,a+n+1); int cnt=unique(a+1,a+n+1)-a-1; for(int i=1;i&lt;=cnt;i++) nxtt[a[i]]=a[i],pos[a[i]]=i; for(int i=maxm-2;i&gt;=1;i--) if(!nxtt[i]) nxtt[i]=nxtt[i+1],pos[i]=pos[i+1]; for(int i=1;i&lt;cnt;i++)&#123; e[++np]=(eage)&#123;i,i+1,a[i+1]%a[i]&#125;;//过掉x for(int j=2*a[i];j&lt;maxm;j+=a[i])&#123;//从2x开始找 if(!nxtt[j]) break;//后面没有了 if(nxtt[j]&gt;=j+a[i]) continue; e[++np]=(eage)&#123;i,pos[nxtt[j]],nxtt[j]%a[i]&#125;; &#125; &#125; sort(e+1,e+np+1); int calc=0;ll ans=0; for(int i=1;i&lt;=np;i++)&#123; int u=e[i].u,v=e[i].v;ll c=e[i].len; if(check(u,v)) continue; link(u,v); calc++; ans+=c; if(calc==cnt-1)&#123;printf("%lld",ans);return;&#125; &#125; &#125;int main()&#123; init(); return 0;&#125;]]></content>
       <categories>
         <category>正睿</category>
       </categories>
@@ -303,13 +303,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
