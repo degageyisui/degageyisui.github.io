@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[重排]]></title>
+    <url>%2F2018%2F10%2F23%2F26%2F</url>
+    <content type="text"><![CDATA[Description你拿到了一串可以拯救世界的数，不过这串数字被重新排列过了，你想要把它恢复到原始的样子。 你现在知道两个很大的数 A 和 B，他们都没有前导0。其中，A是拯救世界的数（也没有前导0）重排后的一个数。拯救世界的数虽然很大，但是也不会超过数 B。现在你想恢复拯救世界的数，求不超过 B 的最大的一个由 A 重新排列的数是什么。 注意，重新排列指的是 A 的数位重新排列，比如123可以重排成321，并且要保证重排后没有前导0。答案保证有解。 Input第一行一个整数 TT 表示数据组数。 后面2T行，第2i行表示第i个点的数 A，第2i+1行表示第i个点的数 B。 Output共 T行，每行一个数表示答案。 Sample Input312123123123300 Sample Output1123231 Hint对于20%的数据，数 A、B的位数 ≤10。 对于另外30%的数据，数 A、B的位数 ≤18。 对于另外10%的数据，数 B 除了第一位非零，其他位都是零。 对于另外10%的数据，数 A、B的位数 ≤100。 对于100%的数据，数 A、B的位数≤500，T≤5。 时间限制：2s空间限制：512MB Solution首先看A，B的长度，若$len_a&lt;len_b$，那肯定a重排后比b小，所以我们贪心从大到小排后输出。而如果相等，那么我们对于每一位都去枚举它跟谁交换，直到刚好满足小于等于B，当然这里是排了序从大到小枚举的，这样暴力是能过的但是较慢。 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 505using namespace std;char a[maxn],b[maxn];int t;bool cmp(char a,char b)&#123; return a&gt;b;&#125;void init()&#123; scanf("%d",&amp;t); for(int p=1;p&lt;=t;p++)&#123; scanf("%s%s",a+1,b+1); int len=strlen(a+1),len2=strlen(b+1); if(len&lt;len2)&#123; sort(a+1,a+len+1,cmp); printf("%s\n",a+1); &#125; else&#123; for(int i=1;i&lt;=len;i++) for(int j=len;j&gt;=i;j--)&#123;//枚举每位交换并保证刚刚最大 sort(a+i,a+len+1); swap(a[i],a[j]); sort(a+i+1,a+len+1); if(strcmp(b+1,a+1)&gt;=0) break; &#125; printf("%s\n",a+1); &#125; &#125;&#125;int main()&#123; init(); return 0;&#125; 然后是比较快的做法：]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[翻转]]></title>
     <url>%2F2018%2F10%2F23%2F25%2F</url>
     <content type="text"><![CDATA[Description小c有两个长为n的01串A和B。她可以进行下列3种操作，按任意顺序：1.把A循环左移一位2.把A循环右移一位3.选择一个$B_i$=1的i，翻转$A_i$（令$A_i=1-A_i$）求让A串变得和B串相等需要的最少步数。无解输出-1。 Sample Input10101100 Sample Output3 Hint1&lt;=n&lt;=2000 Solutionemmmmmmmm这道题首先判无解情况，即B全为0而A不全为0。 然后看到2000的数据，O(N)枚举一波最终的位置。然后对于每一个与$B_i$不等的$A_i$看它是往左移还是右移再移回，然后贪心取最大的，边移边翻转，最后ans=变化个数+移动个数+（最大左移+最大右移）$\times$2.注意小于等于移动个数且同向的就不必计入了…移动过程中就换了，详见代码注释。 这样加上排序复杂度为$n^2logn$，完全能过2333 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 2005using namespace std;char s[maxn],ss[maxn];int n,lm[maxn],rm[maxn];struct node&#123; int l,r; friend bool operator&lt;(node a,node b)&#123; return a.l&lt;b.l; &#125;&#125;;vector&lt;node&gt;q;void ready()&#123; for(int i=0;i&lt;n;i++)&#123; int now=i; while(ss[now]!='1') rm[i]++,now=(now+1)%n; now=i; while(ss[now]!='1') lm[i]++,now=(now-1+n)%n; &#125;&#125;void init()&#123; scanf("%s%s",s,ss); n=strlen(s); bool ok1=false; for(int i=0;i&lt;n;i++) if(s[i]=='1')&#123;ok1=true;break;&#125; bool ok2=true; for(int i=0;i&lt;n;i++) if(ss[i]=='1')&#123;ok2=false;break;&#125; if(ok1&amp;&amp;ok2)&#123;printf("-1");return;&#125; ready(); int cnt,maxx;int ans=0x3f3f3f3f; for(int move=-n+1;move&lt;=n-1;move++)&#123;//左移n-1次，右移n-1次 int maxx=abs(move);cnt=0;//统计要修改的步数 q.clear(); for(int i=0;i&lt;n;i++)&#123; if(s[i]==ss[(i+move+n)%n]) continue; cnt++; if(move&lt;=0&amp;&amp;lm[i]&lt;=maxx) continue; if(move&gt;=0&amp;&amp;rm[i]&lt;=maxx) continue;//途中移动翻转 q.push_back((node)&#123;lm[i],rm[i]&#125;); &#125; sort(q.begin(),q.end()); int maxy=0,minn=0x3f3f3f3f; for(int i=q.size()-1;i&gt;=0;i--)&#123; minn=min(minn,q[i].l+maxy); maxy=max(maxy,q[i].r);//后一步更新，使覆盖完 &#125; minn=min(minn,maxy);//还有最后一个没判到 ans=min(ans,minn*2+cnt+maxx); //来回走两遍aQAQ &#125; printf("%d",ans);&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -162,9 +174,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
-        <tag>dp</tag>
         <tag>离线</tag>
         <tag>数学</tag>
+        <tag>dp</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -234,8 +246,8 @@
         <category>CF</category>
       </categories>
       <tags>
-        <tag>概率期望</tag>
         <tag>dp</tag>
+        <tag>概率期望</tag>
       </tags>
   </entry>
   <entry>
@@ -284,9 +296,9 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>概率期望</tag>
-        <tag>dp</tag>
         <tag>数学</tag>
+        <tag>dp</tag>
+        <tag>概率期望</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
