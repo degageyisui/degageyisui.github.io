@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[彩虹糖]]></title>
+    <url>%2F2018%2F10%2F24%2F29%2F</url>
+    <content type="text"><![CDATA[Description有1~m之间的整数，A有$tot_a$个，B有$tot_b$个，不会有两个相同的数字出现。有n堆数字，从A开始操作，它能对一堆彩虹糖进行操作当且仅当它有这个数字，并将其分为新的两堆非空的数字。两人都使用最优策略，当一人无法操作时另一人获胜。 Inputn,m$tot_a$$a_i$$tot_b$$b_i$$p_i$ Output一行表示游戏结果，A胜输出”Pomegranate”,B胜输出”Orange”. Hint$n&lt;=10^6,m&lt;=10^4$ Solution首先，我们要探究性质，了解到每一堆先选后选无关系，因为总会按最优策略一样分解产生相同贡献。然后我们设f(x)表示x这堆对先手造成多走的贡献，那么A肯定想要最大化f(i)，而B则想要最小化f(i)，而恰好这里的每个拥有的数都是唯一的，所以很好处理(抽空了解一下博弈论的SG函数和超现实数，如果这里数会重貌似就要超现实数？？？).这里的f(i)是拥有可加性的，分解嘛。对于每个A拥有的f(i):$f_i=max(f_i,f_j+f_{i-j}+1)$对于每个B拥有的f(i):$f_i=min(f_i,f_j+f_{i-j}-1)$ 这样对于每一个$p_i$我们将贡献加起来如果最终&lt;=0就B赢，否则A赢，A先走嘛 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 1000005#define maxm 10005using namespace std;int n,m,tota,totb,a[maxm],b[maxm],p[maxn];int visa[maxm],f[maxm];void init()&#123; scanf("%d%d",&amp;n,&amp;m); scanf("%d",&amp;tota); for(int i=1;i&lt;=tota;i++)&#123; scanf("%d",&amp;a[i]); visa[a[i]]=1; &#125; scanf("%d",&amp;totb); for(int i=1;i&lt;=totb;i++)&#123; scanf("%d",&amp;b[i]); visa[b[i]]=-1; &#125; for(int i=1;i&lt;=n;i++) scanf("%d",&amp;p[i]); for(int i=2;i&lt;=m;i++)&#123; if(!visa[i]) continue; for(int j=1;j&lt;i;j++)&#123; if(visa[i]==1) f[i]=max(f[i],f[i-j]+f[j]+1); else f[i]=min(f[i],f[i-j]+f[j]-1); &#125; &#125; int ans=0; for(int i=1;i&lt;=n;i++)&#123; if(p[i]&gt;m) continue; ans+=f[p[i]]; &#125; if(ans&lt;=0) printf("Orange"); else printf("Pomegranate");&#125;int main()&#123; init(); return 0;&#125;]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>博弈论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[分解]]></title>
     <url>%2F2018%2F10%2F24%2F28%2F</url>
     <content type="text"><![CDATA[Description你有一个数字n，你想把它表达成若干个数字加一的乘积，也就是$n=(x_1+1)∗(x_2+1)∗⋯∗(x_k+1)$。 问$x_1+x_2+⋯+x_k$有多少种不同的取值。 Input一个整数n Output第一行输出一个整数表示不同取值个数。 第二行输出若干个用空格隔开的整数，表示不同的取值，从小到大输出。 Sample Input12 Sample Output44 5 6 11 Hint对于 100% 的数据，有 $1≤n≤10^9$。时间限制：2s空间限制：512MB Solution不难想到可以爆搜将x不断分解，当然爆搜也有巧妙性，看一下这段代码及注释： #include&lt;bits/stdc++.h&gt;using namespace std;set&lt;int&gt;s;int n;void dfs(int now,int x,int ss)&#123; s.insert(now+ss-1); for(int i=x;i*i&lt;=now;i++)&#123;//x使不重复枚举 if(now%i==0) dfs(now/i,i,ss+i-1);//ss+i-1使后者的i在统计时先被减过1 &#125;&#125;void init()&#123; scanf("%d",&amp;n); dfs(n,2,0); printf("%d\n",s.size()); for(set&lt;int&gt;::iterator it=s.begin();it!=s.end();it++) printf("%d ",*it);&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -53,7 +65,7 @@
   <entry>
     <title><![CDATA[小W与面试]]></title>
     <url>%2F2018%2F10%2F23%2F24%2F</url>
-    <content type="text"><![CDATA[Desciption小W因为染色的时候算错了一位数，所以自闭了。他决定不再染布了，去找工作。 在面试的时候，面试官问了他这样一个问题： 给定一个长度为 n 的序列 ai，求: $\Sigma_{ia_j}{a_i xor a_j}$小W发现他不会做，想求助于你。 Input第一行一个正整数 n。 第二行 n 个整数，表示 $a_i$。 Output一个整数表示答案。 Sample Input22 1 Sample Output3 Hint对于 30% 的数据，满足 n≤5000。 对于 100% 的数据，满足 1≤n≤105,1≤ai≤105。 时间限制：1 s 空间限制：512 MB Solution考虑按位计算贡献，设c{[i]}{[j]}[0/1]表示值在[$x-2^k+1,x$]范围内的第j位为0/1的个数，用树状数组来维护，从后往前依次加入。 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 100005using namespace std;typedef long long ll;ll c[maxn][20][2],w[20];int n,a[maxn];void ready()&#123; w[0]=1; for(int i=1;i&lt;=17;i++) w[i]=w[i-1]*2;&#125;void update(int x,int d,int f)&#123; while(x&lt;=maxn-5)&#123; c[x][d][f]+=1; x+=(x&amp;-x); &#125;&#125;ll sum(int x,int d,int f)&#123; ll ret=0; while(x&gt;0)&#123; ret+=c[x][d][f]; x-=(x&amp;-x); &#125; return ret*w[d];&#125;void init()&#123; ll ans=0; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); for(int i=n;i&gt;=1;i--)&#123; for(int j=0;j&lt;=17;j++)&#123; if(a[i]&amp;(1&lt;&lt;j))&#123; ans+=sum(a[i]-1,j,0); update(a[i],j,1); &#125; else&#123; ans+=sum(a[i]-1,j,1); update(a[i],j,0); &#125; &#125; &#125; printf("%lld",ans);&#125; int main()&#123; ready(); init(); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[Desciption小W因为染色的时候算错了一位数，所以自闭了。他决定不再染布了，去找工作。 在面试的时候，面试官问了他这样一个问题： 给定一个长度为 n 的序列 ai，求: $\sum_{ia_j}{a_i xor a_j}$小W发现他不会做，想求助于你。 Input第一行一个正整数 n。 第二行 n 个整数，表示 $a_i$。 Output一个整数表示答案。 Sample Input22 1 Sample Output3 Hint对于 30% 的数据，满足 n≤5000。 对于 100% 的数据，满足 1≤n≤105,1≤ai≤105。 时间限制：1 s 空间限制：512 MB Solution考虑按位计算贡献，设c{[i]}{[j]}[0/1]表示值在[$x-2^k+1,x$]范围内的第j位为0/1的个数，用树状数组来维护，从后往前依次加入。 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 100005using namespace std;typedef long long ll;ll c[maxn][20][2],w[20];int n,a[maxn];void ready()&#123; w[0]=1; for(int i=1;i&lt;=17;i++) w[i]=w[i-1]*2;&#125;void update(int x,int d,int f)&#123; while(x&lt;=maxn-5)&#123; c[x][d][f]+=1; x+=(x&amp;-x); &#125;&#125;ll sum(int x,int d,int f)&#123; ll ret=0; while(x&gt;0)&#123; ret+=c[x][d][f]; x-=(x&amp;-x); &#125; return ret*w[d];&#125;void init()&#123; ll ans=0; scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); for(int i=n;i&gt;=1;i--)&#123; for(int j=0;j&lt;=17;j++)&#123; if(a[i]&amp;(1&lt;&lt;j))&#123; ans+=sum(a[i]-1,j,0); update(a[i],j,1); &#125; else&#123; ans+=sum(a[i]-1,j,1); update(a[i],j,0); &#125; &#125; &#125; printf("%lld",ans);&#125; int main()&#123; ready(); init(); return 0;&#125;]]></content>
       <categories>
         <category>正睿</category>
       </categories>
@@ -370,13 +382,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
