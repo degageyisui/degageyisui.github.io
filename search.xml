@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[序列]]></title>
+    <url>%2F2018%2F10%2F24%2F30%2F</url>
+    <content type="text"><![CDATA[Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1&lt;t_2&lt;⋯&lt;t_k$，且$a_{t1}&lt;a_{t2}&lt;⋯&lt;a_{tk}$。 Input第一行两个整数n,x，接下来一行n个正整数$a_1,a_2,…,a_n$。 注意：你可以把数字改成负数。 Output输出一个整数，表示答案，即最长的LIS长度。 Sample Input7 57 3 5 2 7 3 4 Sample Output5 Hint对于 100% 的数据，有$1≤n≤200000,0≤x≤109,1≤a_i≤10^9$。时间限制：2s空间限制：512MB Solution首先我们对于要选择的区间l,r考虑，发现以l为起点开始增加，肯定要包含其后的最长上升序列，然后再尽可能贪心的增加最大，使前面有更多满足的。所以我们对于每一个i统计一下它加上x后前面最长的LIS和后面最长的LIS，这样依次取最大就好。 然后对于求LIS，用二分查找和贪心nlogn求，反向求下降也是一样的，只要理解本质。tips:注意lower_bound和upper_bound两个求&gt;=和&gt;，前者是用于严格上升子序列，而后者是非严格，可以想象一下。举个栗子:3 4 6 现在加入4，如果严格为2，否则为3. 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 200005using namespace std;int n,a[maxn],hm[maxn],x;int st[maxn],top=0;bool cmp(int a,int b)&#123; return a&gt;b;&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;x); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;a[i]); for(int i=n;i&gt;=1;i--)&#123; int t=lower_bound(st+1,st+top+1,a[i],cmp)-st; if(t&gt;top) st[++top]=a[i];else st[t]=a[i];//贪心 hm[i]=t; &#125; top=0; int ans=0; for(int i=1;i&lt;=n;i++)&#123; int t=lower_bound(st+1,st+top+1,a[i]+x)-st; ans=max(ans,t+hm[i]-1); t=lower_bound(st+1,st+top+1,a[i])-st; if(t&gt;top) st[++top]=a[i];else st[t]=a[i]; &#125; printf("%d",ans);&#125; int main()&#123; init(); return 0;&#125;]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>LIS</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[彩虹糖]]></title>
     <url>%2F2018%2F10%2F24%2F29%2F</url>
     <content type="text"><![CDATA[Description有1~m之间的整数，A有$tot_a$个，B有$tot_b$个，不会有两个相同的数字出现。有n堆数字，从A开始操作，它能对一堆彩虹糖进行操作当且仅当它有这个数字，并将其分为新的两堆非空的数字。两人都使用最优策略，当一人无法操作时另一人获胜。 Inputn,m$tot_a$$a_i$$tot_b$$b_i$$p_i$ Output一行表示游戏结果，A胜输出”Pomegranate”,B胜输出”Orange”. Hint$n&lt;=10^6,m&lt;=10^4$ Solution首先，我们要探究性质，了解到每一堆先选后选无关系，因为总会按最优策略一样分解产生相同贡献。然后我们设f(x)表示x这堆对先手造成多走的贡献，那么A肯定想要最大化f(i)，而B则想要最小化f(i)，而恰好这里的每个拥有的数都是唯一的，所以很好处理(抽空了解一下博弈论的SG函数和超现实数，如果这里数会重貌似就要超现实数？？？).这里的f(i)是拥有可加性的，分解嘛。对于每个A拥有的f(i):$f_i=max(f_i,f_j+f_{i-j}+1)$对于每个B拥有的f(i):$f_i=min(f_i,f_j+f_{i-j}-1)$ 这样对于每一个$p_i$我们将贡献加起来如果最终&lt;=0就B赢，否则A赢，A先走嘛 上代码：#include&lt;bits/stdc++.h&gt;#define maxn 1000005#define maxm 10005using namespace std;int n,m,tota,totb,a[maxm],b[maxm],p[maxn];int visa[maxm],f[maxm];void init()&#123; scanf("%d%d",&amp;n,&amp;m); scanf("%d",&amp;tota); for(int i=1;i&lt;=tota;i++)&#123; scanf("%d",&amp;a[i]); visa[a[i]]=1; &#125; scanf("%d",&amp;totb); for(int i=1;i&lt;=totb;i++)&#123; scanf("%d",&amp;b[i]); visa[b[i]]=-1; &#125; for(int i=1;i&lt;=n;i++) scanf("%d",&amp;p[i]); for(int i=2;i&lt;=m;i++)&#123; if(!visa[i]) continue; for(int j=1;j&lt;i;j++)&#123; if(visa[i]==1) f[i]=max(f[i],f[i-j]+f[j]+1); else f[i]=min(f[i],f[i-j]+f[j]-1); &#125; &#125; int ans=0; for(int i=1;i&lt;=n;i++)&#123; if(p[i]&gt;m) continue; ans+=f[p[i]]; &#125; if(ans&lt;=0) printf("Orange"); else printf("Pomegranate");&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -382,13 +395,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
