@@ -358,13 +358,18 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[timeline]]></title>
-    <url>%2Ftimeline%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[timeline]]></title>
+    <url>%2Ftimeline%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
