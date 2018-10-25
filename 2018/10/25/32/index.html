@@ -244,7 +244,7 @@
 
     
         <meta property="article:published_time" content="Thu Oct 25 2018 15:37:01 GMT+0800">
-        <meta property="article:modified_time" content="Thu Oct 25 2018 15:44:06 GMT+0800">
+        <meta property="article:modified_time" content="Thu Oct 25 2018 15:59:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -267,7 +267,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/25/32/index.html",
     "headline": "红绿灯",
     "datePublished": "Thu Oct 25 2018 15:37:01 GMT+0800",
-    "dateModified": "Thu Oct 25 2018 15:44:06 GMT+0800",
+    "dateModified": "Thu Oct 25 2018 15:59:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -300,7 +300,23 @@
 
     <!-- Custom Head -->
     
+    
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/1cd7b396.js","daovoice")</script>
+    
+    daovoice('init', {
+        app_id: "1cd7b396",
+        user_id: "NO_89757", // 必填: 该用户在您系统上的唯一ID
+        email: "1494476174@qq.com", // 选填:  该用户在您系统上的主邮箱
+        name: "Degage", // 选填: 用户名
+        signed_up: 1449821660 // 选填: 用户的注册时间，用Unix时间戳表示
+      });
+      daovoice('update');
 
+      daovoice('init', {
+        app_id: "1cd7b396"
+      });
+      daovoice('update');
+      
 </head>
 
 
@@ -513,7 +529,7 @@
 <h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3 2<br>1 2 3 3 0 2<br>2 3 7 3 1 2</p>
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>0<br>3<br>14</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于100%的数据，$n≤5\times10^5,m≤10^6,0≤l_i≤r_i&lt;k_i≤20,1≤d≤106$<br>时间限制： 3s<br>空间限制： 512MB</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>因为每天边权都是正的，先到等红绿灯总不比后到更差，所以可以跑一遍dij，主要处理一下每条边的耗费时间，注意细节。p.s.代码中计算长度时有小技巧，巧妙的避免了求刚好走完时的多走的路程。（这种减1的小技巧在其他题也适用）</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>因为每天边权都是正的，先到等红绿灯总不比后到更差，所以可以跑一遍dij，主要处理一下每条边的耗费时间，注意细节。p.s.代码中计算长度时有小技巧，巧妙的避免了求刚好走完时的多走的路程，而将其转化为和其他一样的最后走一段l+len，<del>妙a</del>。（这种减1的小技巧在其他题也适用）</p>
 <p>上代码:<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 500005</span></span><br><span class="line"><span class="comment">#define maxm 1000005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">struct eage&#123;</span><br><span class="line">	int to,<span class="keyword">next</span>;ll len;int k,l,r;</span><br><span class="line">&#125;e[maxm&lt;&lt;<span class="number">1</span>];</span><br><span class="line">int np=<span class="number">0</span>,first[maxn];</span><br><span class="line">void add(int u,int v,ll len,int k,int l,int r)&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u],len,k,l,r&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line">int n,m,x,y,a1,a2,a3;ll z;</span><br><span class="line">struct node&#123;</span><br><span class="line">	ll v;int id;</span><br><span class="line">	friend bool operator&lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.v&gt;b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt;q;</span><br><span class="line">ll dist[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">ll calc(int k,int l,int r,ll len,ll now)&#123;</span><br><span class="line">	ll dis=<span class="number">0</span>;</span><br><span class="line">	now=now%k;</span><br><span class="line">	<span class="keyword">if</span>(now&lt;l) dis+=(l-now),now=l; </span><br><span class="line">	<span class="keyword">if</span>(now&lt;=r)&#123;</span><br><span class="line">		int mv=r-now+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(mv&gt;=len) <span class="keyword">return</span> len+dis;<span class="regexp">//</span>直接走达 </span><br><span class="line">		dis+=mv;</span><br><span class="line">		len-=mv;now=r+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(now!=k)&#123;</span><br><span class="line">		dis+=k-now;</span><br><span class="line">	&#125;</span><br><span class="line">	int d=r-l+<span class="number">1</span>;</span><br><span class="line">	int cnt=(len-<span class="number">1</span>)/d;</span><br><span class="line">	len=(len-<span class="number">1</span>)%d+<span class="number">1</span>;</span><br><span class="line">	dis+=(ll)<span class="number">1</span>ll*cnt*k;</span><br><span class="line">	dis+=(l+len);</span><br><span class="line">	<span class="keyword">return</span> dis;</span><br><span class="line">&#125;</span><br><span class="line">void dij()&#123;</span><br><span class="line">	memset(dist,<span class="number">0x3f</span>,sizeof(dist));</span><br><span class="line">	memset(vis,<span class="number">0</span>,sizeof(vis));</span><br><span class="line">	dist[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	q.push((node)&#123;dist[<span class="number">1</span>],<span class="number">1</span>&#125;);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		node t=q.top();q.pop();</span><br><span class="line">		int i=t.id;</span><br><span class="line">		<span class="keyword">if</span>(vis[i]) continue;</span><br><span class="line">		vis[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">			int j=e[p].to;</span><br><span class="line">			ll dis=calc(e[p].k,e[p].l,e[p].r,e[p].len,t.v); </span><br><span class="line">		    <span class="keyword">if</span>(dist[j]&gt;dis+dist[i])&#123;</span><br><span class="line">		    	dist[j]=dis+dist[i];</span><br><span class="line">		    	q.push((node)&#123;dist[j],j&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d%lld%d%d%d"</span>,&amp;x,&amp;y,&amp;z,&amp;a1,&amp;a2,&amp;a3);</span><br><span class="line">		add(x,y,z,a1,a2,a3);</span><br><span class="line">		add(y,x,z,a1,a2,a3);</span><br><span class="line">	&#125;</span><br><span class="line">	dij();</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) printf(<span class="string">"%lld\n"</span>,dist[i]);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         
