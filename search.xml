@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[逃脱]]></title>
+    <url>%2F2018%2F10%2F28%2F33%2F</url>
+    <content type="text"><![CDATA[Description小 M 的宠物猫 CC 昨天干了背叛主人的事，于是她逃到一个远方的迷宫躲藏了起来。这个迷宫包含 N（用 1..N 编号） 个路口和 N-1 条连接两个路口的双向隧道。 所以每两个路口之间都有唯一的路径。每个只与一条隧道相连的路口都是迷宫的出口。小 M 非常生气， 决定派出一些小狗从不同的出口出发尝试抓住 CC。 小狗和 CC 的移动速度相同（在每个单位时间内，每个小狗都可以从一个路口移动到相邻的一个路口，同时 CC 也可以这么做，当然他们在任意单位时间都可以不移动，停留在原来的路口上）。 小狗们和 CC 总是知道对方在哪里。如果在任意时刻，某个小狗和 CC 处于同一个路口或在穿过同一个隧道， 小狗就可以抓住 CC。反过来，如果 CC 在小狗们抓住她之前到达一个出口， 于是 CC 就逃脱了。CC 不确定她能否成功逃脱，这取决于小狗的数量。给定 CC 当前所在的路口 S，帮助小 M 确定为了抓住 CC 所需要的小狗的最小数量。假定小狗们会自己选择最佳的方案来安排他们出发的出口。 Input输入的第一行包含 N 和 S，分别表示路口数目和 CC 当前所在路口的编号。接下来的 N–1 行，每行有两个整数（在 1~N 范围内）描述连接两个路口的一条隧道。 Output输出为了确保抓住 CC 所需的小狗的最小数量 Sample Input7 11 21 33 43 54 65 7 Sample Output3 Hint对于 20%的数据： N≤3 00对于 50%的数据： N≤5 000对于 100%的数据： N≤100 000 Solution首先对于起点即为出口的特判，当且仅当起点只有一个儿子，这时只需一只狗即可。然后发现最坏情况是每个叶子节点都要一只狗，但狗可以跑过去拦截，所以将顶点与叶子节点路程割半，然后可以颜色染上下半段部分（使用树上倍增精准定位）当发现遍历到染过的时可以减1（用这次染色代替那次）如此下来便最优。而由于是触碰返回，所以复杂度实际上是O（n）的。 上代码：#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cctype&gt;#include&lt;vector&gt;#include&lt;queue&gt;#include&lt;set&gt;#define maxn 100005 using namespace std;struct eage&#123; int to,next;&#125;e[maxn&lt;&lt;1];int np=0,first[maxn];void add(int u,int v)&#123; e[++np]=(eage)&#123;v,first[u]&#125;; first[u]=np; &#125;int n,s,x,y,dep[maxn],fa[maxn][18];int st[maxn],top=0;bool ok=false;void dfs(int i,int f,int d)&#123; dep[i]=d;fa[i][0]=f; for(int j=1;j&lt;=17;j++) fa[i][j]=fa[fa[i][j-1]][j-1]; int chd=0; for(int p=first[i];p;p=e[p].next)&#123; int j=e[p].to; if(j==f) continue; chd++; dfs(j,i,d+1); &#125; if(i==s&amp;&amp;chd==1) ok=true; if(chd==0) st[++top]=i;&#125;/*int lca(int u,int v)&#123; if(dep[u]&lt;dep[v]) swap(u,v); int x=dep[u]-dep[v]; for(int i=0;i&lt;=17;i++)&#123; if((1&lt;&lt;i)&amp;x) u=fa[u][i]; &#125; if(u==v) return u; for(int i=17;i&gt;=0;i--)&#123; if(fa[u][i]!=fa[v][i]) u=fa[u][i],v=fa[v][i]; &#125; return fa[u][0];&#125;*/bool color[maxn];int ans=0;void dfss(int i)&#123; if(color[i])&#123;ans--;return;&#125; color[i]=1; for(int p=first[i];p;p=e[p].next)&#123; int j=e[p].to; if(j==fa[i][0])continue; dfss(j); &#125;&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;s); for(int i=1;i&lt;n;i++)&#123; scanf("%d%d",&amp;x,&amp;y); add(x,y);add(y,x); &#125; dfs(s,0,0); if(ok==true) printf("1"); else&#123; for(int i=1;i&lt;=top;i++)&#123; int x=dep[st[i]]-dep[s]; x=x/2; int u=st[i]; for(int j=0;j&lt;=17;j++)&#123; if(x&amp;(1&lt;&lt;j)) u=fa[u][j]; &#125; ans++; dfss(u); &#125; printf("%d",ans); &#125;&#125;int main()&#123;//实际复杂度只要O(n) 因为触碰返回 //freopen("escaping.in","r",stdin); //freopen("escaping.out","w",stdout); init(); return 0;&#125;]]></content>
+      <categories>
+        <category>noip模拟赛</category>
+      </categories>
+      <tags>
+        <tag>dfs</tag>
+        <tag>树上倍增</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[红绿灯]]></title>
     <url>%2F2018%2F10%2F25%2F32%2F</url>
     <content type="text"><![CDATA[Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。 小R根据这些资料，很快便规划出了最短路径，然而很快，小R便发现他忽略一个至关重要的东西：红绿灯。 为了简化为题，我们假定每一条边上都有一个红绿灯，每一个红绿灯都可以用ki,li,riki,li,ri来定义，即只有在时刻数模kiki的值在区间[li,ri][li,ri]的时刻，小R才能在这条边上移动（每一时刻小R能前进1单位长度）。 举个例子，现在有一条长度为7的边，小R到达它其中一个端点的时刻是3，k=3,l=1,r=2k=3,l=1,r=2，小R想要通过这条边。首先他等到了时刻4，然后再这条边上前进了2单位长度，然后他又必须停下1单位时间，然后再前进两个单位…最终小R到达另一个端点的时刻为14。 现在小R打算知道从1到这张图的每一个顶点最少要花多少时间，你可以告诉他吗？（假设小R在第0时刻出发） Input第一行输入两个整数n,m。 接下来m行每行6个整数$u_i,v_i,d_i,k_i,l_i,r_i$描述了一条边。保证存在一种方案可以在有限的时间内到达每一个节点。 Output输出n行，第i行表示到达第i个点的最少时间。 Sample Input3 21 2 3 3 0 22 3 7 3 1 2 Sample Output0314 Hint对于100%的数据，$n≤5\times10^5,m≤10^6,0≤l_i≤r_i&lt;k_i≤20,1≤d≤106$时间限制： 3s空间限制： 512MB Solution因为每天边权都是正的，先到等红绿灯总不比后到更差，所以可以跑一遍dij，主要处理一下每条边的耗费时间，注意细节。p.s.代码中计算长度时有小技巧，巧妙的避免了求刚好走完时的多走的路程，而将其转化为和其他一样的最后走一段l+len，妙a。（这种减1的小技巧在其他题也适用） 上代码:#include&lt;bits/stdc++.h&gt;#define maxn 500005#define maxm 1000005using namespace std;typedef long long ll;struct eage&#123; int to,next;ll len;int k,l,r;&#125;e[maxm&lt;&lt;1];int np=0,first[maxn];void add(int u,int v,ll len,int k,int l,int r)&#123; e[++np]=(eage)&#123;v,first[u],len,k,l,r&#125;; first[u]=np;&#125;int n,m,x,y,a1,a2,a3;ll z;struct node&#123; ll v;int id; friend bool operator&lt;(node a,node b)&#123; return a.v&gt;b.v; &#125;&#125;;priority_queue&lt;node&gt;q;ll dist[maxn];bool vis[maxn];ll calc(int k,int l,int r,ll len,ll now)&#123; ll dis=0; now=now%k; if(now&lt;l) dis+=(l-now),now=l; if(now&lt;=r)&#123; int mv=r-now+1; if(mv&gt;=len) return len+dis;//直接走达 dis+=mv; len-=mv;now=r+1; &#125; if(now!=k)&#123; dis+=k-now; &#125; int d=r-l+1; int cnt=(len-1)/d; len=(len-1)%d+1; dis+=(ll)1ll*cnt*k; dis+=(l+len); return dis;&#125;void dij()&#123; memset(dist,0x3f,sizeof(dist)); memset(vis,0,sizeof(vis)); dist[1]=0; q.push((node)&#123;dist[1],1&#125;); while(!q.empty())&#123; node t=q.top();q.pop(); int i=t.id; if(vis[i]) continue; vis[i]=1; for(int p=first[i];p;p=e[p].next)&#123; int j=e[p].to; ll dis=calc(e[p].k,e[p].l,e[p].r,e[p].len,t.v); if(dist[j]&gt;dis+dist[i])&#123; dist[j]=dis+dist[i]; q.push((node)&#123;dist[j],j&#125;); &#125; &#125; &#125;&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;m); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d%lld%d%d%d",&amp;x,&amp;y,&amp;z,&amp;a1,&amp;a2,&amp;a3); add(x,y,z,a1,a2,a3); add(y,x,z,a1,a2,a3); &#125; dij(); for(int i=1;i&lt;=n;i++) printf("%lld\n",dist[i]);&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -30,8 +42,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>LIS</tag>
+        <tag>贪心</tag>
         <tag>二分查找</tag>
       </tags>
   </entry>
@@ -245,11 +257,11 @@
         <category>noip模拟赛</category>
       </categories>
       <tags>
+        <tag>数学</tag>
+        <tag>dp</tag>
         <tag>模拟</tag>
         <tag>贪心</tag>
         <tag>离线</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -338,7 +350,7 @@
   <entry>
     <title><![CDATA[树]]></title>
     <url>%2F2018%2F10%2F16%2F4%2F</url>
-    <content type="text"><![CDATA[The Solutionemmmmmmmm，这道题题意读错了a，有点难受…很考细节的一道题，同时告诉我们细节题要对拍。首先我们要维护的是最大的剩余空间，但实质上是最大的最近距离，比如区间所剩为5和4，实际上它们的最近距离都为2。在设定友好函数时要注意。在处理好一般操作之后是特判，主要就是对于两端的处理，因为它们是独立成段的(图中红色部分)，所以只要红色长度大于最近距离即更优。最后要注意标号尽可能小的细节。 The Code#include&lt;bits/stdc++.h&gt;#define maxn 200005using namespace std;struct node&#123; int l,r; friend bool operator &lt;(node a,node b)&#123; if((a.r-a.l)/2!=(b.r-b.l)/2)return (a.r-a.l)/2&gt;(b.r-b.l)/2; //排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 else return a.l&lt;b.l; &#125;&#125;;set&lt;node&gt;s;set&lt;node&gt;::iterator it;int n,m,x,y;map&lt;int,int&gt;mp;int pre[maxn],next[maxn],st[maxn],rk[maxn];int np=0; void init()&#123; scanf("%d%d",&amp;n,&amp;m); s.insert((node)&#123;0,n+1&#125;); pre[0]=0;next[0]=n+1;pre[n+1]=0;next[n+1]=n+1; for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d",&amp;x,&amp;y); /*if(x==1)&#123; if(t.l==0&amp;&amp;t.r==n+1)&#123; st[np]=1; rk[1]=np; next[0]=1; next[1]=n+1; pre[n+1]=1; s.erase((node)&#123;0,n+1&#125;); s.insert((node)&#123;0,1&#125;);s.insert((node)&#123;1,n+1&#125;); printf("1\n");continue; &#125; if(t.l==1&amp;&amp;t.r==n+1)&#123; st[np]=n; rk[n]=np; pre[n]=1; next[n]=n+1; pre[n+1]=n; next[0]=1; s.erase((node)&#123;1,n+1&#125;); s.insert((node)&#123;1,n&#125;);s.insert((node)&#123;n,n+1&#125;); printf("%d\n",n);continue; &#125;*/ if(x==1)&#123; mp[y]=++np; it=s.begin(); node t=*it; int len=(t.r-t.l)/2; bool ok1=false,ok2=false; int len1=0,len2=0; if(!rk[1]) len1=next[0]-1;if(!rk[n]) len2=n-pre[n+1]; if(len2&gt;len1) ok2=true;else ok1=true;//标号 if(!rk[1]&amp;&amp;ok1)&#123;//要考虑两端点的问题 if(next[0]-1&gt;=len)&#123;//标号优先 st[np]=1; rk[1]=np; next[1]=next[0];pre[next[0]]=1;next[0]=1; s.erase((node)&#123;0,next[1]&#125;); s.insert((node)&#123;0,1&#125;); s.insert((node)&#123;1,next[1]&#125;); printf("1\n");continue; &#125; &#125; if(!rk[n]&amp;&amp;ok2)&#123; if(n-pre[n+1]&gt;len)&#123; st[np]=n; rk[n]=np; pre[n]=pre[n+1];next[pre[n+1]]=n;pre[n+1]=n; s.erase((node)&#123;pre[n],n+1&#125;); s.insert((node)&#123;n,n+1&#125;); s.insert((node)&#123;pre[n],n&#125;); printf("%d\n",n);continue; &#125; &#125; int position=t.l+len;rk[position]=np;st[np]=position; pre[position]=t.l;next[position]=t.r;pre[t.r]=position; next[t.l]=position; printf("%d\n",position); s.erase((node)&#123;pre[position],next[position]&#125;); s.insert((node)&#123;pre[position],position&#125;); s.insert((node)&#123;position,next[position]&#125;); &#125; else&#123; int t=st[mp[y]]; s.erase((node)&#123;pre[t],t&#125;); s.erase((node)&#123;t,next[t]&#125;); s.insert((node)&#123;pre[t],next[t]&#125;); rk[t]=0; next[pre[t]]=next[t]; pre[next[t]]=pre[t]; pre[t]=next[t]=0; &#125; &#125;&#125;int main()&#123; init(); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[The Solutionemmmmmmmm，这道题题意读错了a，有点难受…很考细节的一道题，同时告诉我们细节题要对拍。首先我们要维护的是最大的剩余空间，但实质上是最大的最近距离，比如区间所剩为5和4，实际上它们的最近距离都为2。在设定友好函数时要注意。在处理好一般操作之后是特判，主要就是对于两端的处理，因为它们是独立成段的(图中红色部分)，所以只要红色长度大于最近距离即更优。垃圾贴图库炸了，已换图床不会再出现此种情况最后要注意标号尽可能小的细节。 The Code#include&lt;bits/stdc++.h&gt;#define maxn 200005using namespace std;struct node&#123; int l,r; friend bool operator &lt;(node a,node b)&#123; if((a.r-a.l)/2!=(b.r-b.l)/2)return (a.r-a.l)/2&gt;(b.r-b.l)/2; //排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 else return a.l&lt;b.l; &#125;&#125;;set&lt;node&gt;s;set&lt;node&gt;::iterator it;int n,m,x,y;map&lt;int,int&gt;mp;int pre[maxn],next[maxn],st[maxn],rk[maxn];int np=0; void init()&#123; scanf("%d%d",&amp;n,&amp;m); s.insert((node)&#123;0,n+1&#125;); pre[0]=0;next[0]=n+1;pre[n+1]=0;next[n+1]=n+1; for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d",&amp;x,&amp;y); /*if(x==1)&#123; if(t.l==0&amp;&amp;t.r==n+1)&#123; st[np]=1; rk[1]=np; next[0]=1; next[1]=n+1; pre[n+1]=1; s.erase((node)&#123;0,n+1&#125;); s.insert((node)&#123;0,1&#125;);s.insert((node)&#123;1,n+1&#125;); printf("1\n");continue; &#125; if(t.l==1&amp;&amp;t.r==n+1)&#123; st[np]=n; rk[n]=np; pre[n]=1; next[n]=n+1; pre[n+1]=n; next[0]=1; s.erase((node)&#123;1,n+1&#125;); s.insert((node)&#123;1,n&#125;);s.insert((node)&#123;n,n+1&#125;); printf("%d\n",n);continue; &#125;*/ if(x==1)&#123; mp[y]=++np; it=s.begin(); node t=*it; int len=(t.r-t.l)/2; bool ok1=false,ok2=false; int len1=0,len2=0; if(!rk[1]) len1=next[0]-1;if(!rk[n]) len2=n-pre[n+1]; if(len2&gt;len1) ok2=true;else ok1=true;//标号 if(!rk[1]&amp;&amp;ok1)&#123;//要考虑两端点的问题 if(next[0]-1&gt;=len)&#123;//标号优先 st[np]=1; rk[1]=np; next[1]=next[0];pre[next[0]]=1;next[0]=1; s.erase((node)&#123;0,next[1]&#125;); s.insert((node)&#123;0,1&#125;); s.insert((node)&#123;1,next[1]&#125;); printf("1\n");continue; &#125; &#125; if(!rk[n]&amp;&amp;ok2)&#123; if(n-pre[n+1]&gt;len)&#123; st[np]=n; rk[n]=np; pre[n]=pre[n+1];next[pre[n+1]]=n;pre[n+1]=n; s.erase((node)&#123;pre[n],n+1&#125;); s.insert((node)&#123;n,n+1&#125;); s.insert((node)&#123;pre[n],n&#125;); printf("%d\n",n);continue; &#125; &#125; int position=t.l+len;rk[position]=np;st[np]=position; pre[position]=t.l;next[position]=t.r;pre[t.r]=position; next[t.l]=position; printf("%d\n",position); s.erase((node)&#123;pre[position],next[position]&#125;); s.insert((node)&#123;pre[position],position&#125;); s.insert((node)&#123;position,next[position]&#125;); &#125; else&#123; int t=st[mp[y]]; s.erase((node)&#123;pre[t],t&#125;); s.erase((node)&#123;t,next[t]&#125;); s.insert((node)&#123;pre[t],next[t]&#125;); rk[t]=0; next[pre[t]]=next[t]; pre[next[t]]=pre[t]; pre[t]=next[t]=0; &#125; &#125;&#125;int main()&#123; init(); return 0;&#125;]]></content>
       <categories>
         <category>正睿</category>
       </categories>
@@ -356,8 +368,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>dp</tag>
+        <tag>贪心</tag>
         <tag>正睿</tag>
       </tags>
   </entry>
@@ -370,11 +382,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -417,8 +429,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
+    <title><![CDATA[timeline]]></title>
+    <url>%2Ftimeline%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
@@ -427,8 +439,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[timeline]]></title>
-    <url>%2Ftimeline%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
