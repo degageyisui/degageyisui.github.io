@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[选择难题]]></title>
+    <url>%2F2018%2F10%2F29%2F36%2F</url>
+    <content type="text"><![CDATA[DescriptionZZr经过努力奋斗终于考入了UKP University！ 初来乍到的ZZr很快发现自己的智商水平是远超同学的，于是他选了三门极具难度的数学课：离散数学、数学分析、高等代数。学习数学是一定要通过做练习来提高成绩的，于是ZZr购买了一套奇怪的练习题，这套练习题被分为了p节。每节都有三道难题，分别是关于离散数学、数学分析和高等代数的。第ii节中的三道题的难度分别为$a_i,b_i,c_i$。其中ai表示离散数学对应题目的难度，bi表示数学分析对应题目的难度，ci表示高等代数对应题目的难度，ai,bi,ci都是非负整数。 然而ZZr毕竟才艺出众，丰富的社团活动让他并没有多少时间做练习，于是他决定只从每节中选且仅选一道题来完成。但ZZr发现自己竟然忙到选择题目的时间都没有，于是他委托作为舍友的你帮他选择。 经过研究发现，完成这套奇怪的练习题获得的总能力提高度D有一个奇怪的计算方式：总能力提高度为三门学科各自的能力提高度之和，而每门学科的能力提高度为所做的该学科难题中的难度的最大值，如果该学科没有做题，则其能力提高度为0。为了避免被ZZr远远甩下，你决定好好研究一下帮ZZr如何选择题目，使得ZZr能获得的总能力提高度最小，并计算出这个最小值。 Input输入的第一行包含一个正整数n，表示这套练习题共有n节。 接下来共n行，每行包含三个非负整数ai,bi,ci，其含义如上文所述。 Output输出包含一个正整数D，表示ZZr能获得的最小总能力提高度。 Sample Input31 2 1001 100 3100 4 5 Sample Output5 Hint全部测试点：$n&lt;=10^6,a_i,b_i,c_i&lt;=10^8$。 时空限制：2s/1GB Solution首先观察这题数据范围，会发现特别限制$diff(a_i)$，在考场上就想着用$diff(a_i) \ast n$的算法，结果思路是正确的！那么我们发现这道题是一个三元组，不太好搞，所以枚举maxa来限制一维，所以小于等于maxa的三元组就被干掉了。剩下便是二元组，那么对于两个二元组$(b_i,c_i)(b_j,c_j)$如果$b_i&lt;=b_j\&amp;c_i&lt;=c_j$那么前者就是无用的，因为后者将它覆盖，那么我们若将二元组按b_i为第一关键字从小到大排序，就会发现第二维是单减的(要不然它就无用了). 所以我们可以一边遍历n来找出$min(b_i+c_{i+1})​$即为最佳的maxb和maxc选项，可以想象一下，两侧都比它们小。 那么这样我们就能达到$diff(a_i) \ast n$的复杂度，但这对于$n=10^6$还远远不够，那么不是O(n)就是$nlog_n$了。那么我们用set来将后面的n尽量降到$log_n$： 用lower_bound来找到第一个大于等于$b_i$的点，如果$c_i$小于它的话那么i无用，所以不加入，否则向前找无用的删除，再用另一个multiset来维护最小值，要注意细节实现. 这样的话每个点都最多加入一次，删除一次，所以复杂度是logn的。 上代码： #include&lt;bits/stdc++.h&gt;using namespace std;#define maxn 1000006#define inf 0x3f3f3f3fstruct node&#123; int a,b,c; friend bool operator&lt;(node x,node y)&#123; if(x.a!=y.a) return x.a&gt;y.a; else return x.b&lt;y.b; &#125;&#125;nd[maxn];int n;void _scanf(int &amp;x)&#123; x=0; char c=getchar(); while(c&gt;'9'||c&lt;'0') c=getchar(); while(c&gt;='0'&amp;&amp;c&lt;='9')&#123;x=x*10+c-'0';c=getchar();&#125;&#125;struct nd1&#123; int b,c; friend bool operator&lt;(nd1 x,nd1 y)&#123; if(x.b!=y.b)return x.b&lt;y.b; else return x.c&gt;y.c; &#125;&#125;;set&lt;nd1&gt;s;set&lt;nd1&gt;::iterator it,itt,kk;multiset&lt;int&gt;minn;int ans=0x3f3f3f3f;void init()&#123; _scanf(n); for(int i=1;i&lt;=n;i++)&#123; _scanf(nd[i].a);_scanf(nd[i].b);_scanf(nd[i].c); &#125; sort(nd+1,nd+n+1); s.insert((nd1)&#123;0,inf&#125;);s.insert((nd1)&#123;inf,0&#125;); minn.insert(0); for(int i=1;i&lt;=n;i++)&#123;//枚举maxa是多少 if(nd[i].a!=nd[i-1].a) ans=min(ans,nd[i].a+*minn.begin()); nd1 t=(nd1)&#123;nd[i].b,nd[i].c&#125;; it=s.lower_bound(t); kk=it;it--; //printf("%d %d",it-&gt;b,it-&gt;c); if(nd[i].c&lt;kk-&gt;c) continue;//不要加入 int tmp=nd[i].c,pre=kk-&gt;c; while(it-&gt;c&lt;tmp)&#123; minn.erase(minn.find(pre+it-&gt;b)); pre=it-&gt;c; itt=it; it--; s.erase(itt); &#125; minn.erase(minn.find(pre+it-&gt;b)); s.insert(t); minn.insert(it-&gt;b+nd[i].c); minn.insert(nd[i].b+kk-&gt;c); &#125; //在外面判a不选 ans=min(ans,*minn.begin()); printf("%d",ans); &#125;int main()&#123; //freopen("1.txt","r",stdin); //freopen("2.txt","w",stdout); init(); return 0;&#125;]]></content>
+      <categories>
+        <category>noip模拟赛</category>
+      </categories>
+      <tags>
+        <tag>set</tag>
+        <tag>二元组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[squirrel]]></title>
+    <url>%2F2018%2F10%2F29%2F35%2F</url>
+    <content type="text"><![CDATA[Description小B在University of Stupid Aliens玩耍时目睹了一群松鼠传话的一幕！ 作为一个杰出的语言学家，小B发现了松鼠传话时有如下规律：有nn只松鼠站在一条直线上，从左到右依次编号为1,2,3,…,n。每只松鼠所说的话可以被看作是一个整数。设编号为ii的松鼠说的话为$s_i$。编号为1,2的松鼠要说的话可以被分别认为是某一常数a的某次幂（即分别为$a^{m_1}和a^{m_2}$）。 但松鼠们的大脑容量有限，所以在一切计算过程中它们会将所计算的结果取除以某一正整数pp的余数（即modp）。注意，编号为1,21,2的松鼠在计算幂时也会取余数（即$s_1, s_2$分别为$a^{m_1}modp和a^{m_2}modp$）。 接下来，编号为i(i≥3)的松鼠要说的话是站在它左边的第二只松鼠的话α次方乘左边的第一只松鼠的话β次方。也就是说，有$s_i=s^α_{i−2}⋅s^β_{i−1}modp(i≥3)$。小B对松鼠们传话的方式十分痴迷，他现在已经知道前两只松鼠说话的内容，他想让你告诉他任意一只他指定的松鼠将会说什么。（你可以认为这里的松鼠有足够多只。） Input输入的第一行包含六个正整数$a,m_1,m_2,α,β,p$。各字母的含义如上文所述。 第二行包含一个正整数K，表示小B的问题个数。接下来K行每行一个正整数$b_1,b_2,…,b_K$，表示小B想知道编号为$b_i$的松鼠所说的话。 Output输出包含K行。每行一个整数，第ii行表示编号为$b_i$的松鼠所说的话。 Sample Input2 1 1 1 1 107523456 Sample Output2483242 Hint对于全部数据，$a&lt;p&lt;=5∗10^3,K&lt;=10^3$。 时空限制：1s/512MB Solution首先给出两个降幂公式:欧拉降幂公式：$a^{x}mod p = a^{x \mod \phi_{p}+\phi_{p} }mod p (x ≥ \phi_{p})$。其中$\phi_{p}$为欧拉函数，其意义是小于等于p且与p互质的数的个数。请注意该公式的成立条件：x≥$\phi_{p}$。 当p是质数时，该公式可简化为费马小定理：$a^x \mod p = a^{x \mod (p−1) }mod p$。此公式对任意的x均成立，不需要满足x≥p−1。 首先我们发现p是在5000以内的，那么跑一遍欧拉函数即可。然后分别动用两个公式可以将幂降到很小，然后用快速幂只需几十次就可以计算出。这里给出快速幂非递归写法.ll qkpow(ll k,int pos)&#123; ll ans=1,base=k; while(pos)&#123; if(pos&amp;1)ans=ans*base%mod; base=base*base%mod; pos=pos&gt;&gt;1; &#125; return ans;&#125; 发现$b_i$很大，肯定就tm想到循环节，事实上只要m1和m2再次出现就会循环，而由于p&lt;=5000，所以最多有$5000^2$种，所以可以很短时间求出，再一次输出即可，注意细节实现，比如前面的一些q可能还没开始循环，要单独输出比如4 3 7 4 3，对于1的询问就不能再mod。 上代码： #include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;algorithm&gt;#include&lt;vector&gt; #include&lt;cctype&gt;#include&lt;queue&gt;#include&lt;set&gt;#include&lt;map&gt;using namespace std;typedef long long ll;int phi[5005];bool isp[5005];void ready(int n)&#123; memset(isp,1,sizeof(isp)); for(int i=1;i&lt;=n;i++) phi[i]=i; isp[0]=isp[1]=0 ; for(int i=2;i&lt;=n;i++)if(isp[i])&#123; phi[i]=phi[i]/i*(i-1); for(int k=2;k*i&lt;=n;k++) &#123; isp[i*k]=0; phi[i*k]=phi[i*k]/i*(i-1); &#125; &#125;&#125;ll a,mod,m1,m2,alpha,beita;int k;ll q[1005];struct node&#123; int x,y; friend bool operator&lt;(node a,node b)&#123; if(a.x!=b.x) return a.x&lt;b.x; else return a.y&lt;b.y; &#125;&#125;;ll qkpow(ll t,int pos)&#123; if(pos==0) return 1; if(pos==1) return t; ll tt=qkpow(t,pos/2); if(pos&amp;1) return tt*tt%mod*t%mod; else return tt*tt%mod;&#125;int zq,qd;ll t1,t2;map&lt;node,int&gt;mp;map&lt;int,ll&gt;mpv;void solve1()&#123;//费马小定理 m1=m1%(mod-1);m2=m2%(mod-1); alpha=alpha%(mod-1);beita=beita%(mod-1); t1=qkpow(a,m1);t2=qkpow(a,m2);mpv[1]=t1; int pos=3;int ans; while(1)&#123; node t=(node)&#123;m1,m2&#125;; if(!mp.count(t)) mp[t]=pos-1,mpv[pos-1]=qkpow(a,m2); else&#123; zq=pos-1-mp[t],qd=mp[t]-1;//哥哥a,眼睛好点吧 break; &#125; ans=(m1*alpha+m2*beita)%(mod-1); m1=m2;m2=ans; pos++; &#125;&#125;int px;int calc(ll x)&#123; if(x&gt;=px) return x%px+px; return x; &#125;void solve2()&#123;//欧拉函数 px=phi[mod]; m1=calc(m1),m2=calc(m2); alpha=calc(alpha);beita=calc(beita); t1=qkpow(a,m1);mpv[1]=t1; int pos=3;int ans; while(1)&#123; node t=(node)&#123;m1,m2&#125;; if(!mp.count(t)) mp[t]=pos-1,mpv[pos-1]=qkpow(a,m2); else&#123; zq=pos-1-mp[t],qd=mp[t]-1;//哥哥a,眼睛好点吧 break; &#125; ans=calc(m1*alpha+m2*beita); m1=m2;m2=ans; //printf("%d %d %lld\n",m1,m2,qkpow(a,m2)); pos++; &#125;&#125;void init()&#123; scanf("%lld%lld%lld%lld%lld%lld",&amp;a,&amp;m1,&amp;m2,&amp;alpha,&amp;beita,&amp;mod); scanf("%d",&amp;k); for(int i=1;i&lt;=k;i++) scanf("%lld",&amp;q[i]); if(isp[mod]) solve1(); else solve2(); for(int i=1;i&lt;=k;i++)&#123; if(q[i]&gt;=qd)&#123; int kk=(q[i]-qd+1)%zq; if(kk==0) kk=zq; kk=qd+kk-1; printf("%lld\n",mpv[kk]); &#125; else printf("%lld\n",mpv[q[i]]); &#125;&#125;int main()&#123; //freopen("squirrel.in","r",stdin); //freopen("squirrel.out","w",stdout); ready(5000); init(); return 0;&#125;]]></content>
+      <categories>
+        <category>noip模拟赛</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>欧拉函数</tag>
+        <tag>费马小定理</tag>
+        <tag>map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[密码锁]]></title>
+    <url>%2F2018%2F10%2F29%2F34%2F</url>
+    <content type="text"><![CDATA[Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。 你的任务很简单，帮助小M计算最少需要多少步才能打开密码锁，或者如果无解的话，请输出−1。 Input输入的第一行有三个正整数N,K,S，他们的意义如题目所述。 第二行有K个正整数，表示开关$x_1,x_2,x_3,…,x_k$必须为开，保证$x_i$两两不同。 第三行有S个正整数，其中第ii个表示$size_i$，可能有重复的$size_i$可能有重复。 Output输出文件仅一行一个整数，表示答案。 Sample Input10 8 21 2 3 5 6 7 8 93 5 Sample Output2 Hint对于50%的数据，1≤N≤20，1≤K≤5，1≤S≤3； 对于另外20%的数据，1≤N≤10000，1≤K≤5，1≤S≤30； 对于100%的数据，1≤N≤10000，1≤K≤10，1≤S≤100。 时空限制：1s/512MB Solution首先会注意到这题的数据范围，前50%用撞鸭dp就可以过但要注意群体异或避免逐个修改。(考试时真的傻了)即$(1&lt;&lt;sz_i)&lt;&lt;j$这样可以刚好异或一段。 其次观察到k最大只有10，那么撞鸭上限是20，随后又会想到这里每覆盖一段实际上是加1，而又要mod2，发现是个01差分。那我们先将其中要开的开关在段中绘好，那么最终就是要将其变为全0.将其转化为差分数组，最多就会有20个1，每赋一段l,r，会在l处+1,r+1处+1，相当于将l处的1转化到r+1,若r+1也为1就消为了0，实际上我们将所有1匹配即可。然后可以bfs记录一遍dist{i,j}，只需要O(n)跑。最后用一个撞鸭dp来记录所有点全部匹配的最小步数即可。 注意这里裸的dp是$总状态数\ast(2\ast k)^2$，所以我们先固定一个新增加的元素，然后枚举与它匹配的元素来达到最小，从而变成了$总状态数\ast2\ast k$. 上代码：#include&lt;bits/stdc++.h&gt;#define maxk 10005#define maxs 10005#define maxn 10005using namespace std;int n,k,s,x[maxk],sz[maxs];int a[maxn];int e[35][35];int dist[maxn];bool vis[maxn];int pos[maxn],np=0;void bfs(int s)&#123; queue&lt;int&gt;q; memset(dist,0x3f,sizeof(dist)); memset(vis,0,sizeof(vis)); q.push(s); dist[s]=0;vis[s]=1; while(!q.empty())&#123; int t=q.front();q.pop(); for(int i=1;i&lt;=s;i++)&#123; int tt=t+sz[i]; if(tt&lt;=n+1&amp;&amp;!vis[tt])&#123; dist[tt]=dist[t]+1; vis[tt]=1; q.push(tt); &#125; &#125; for(int i=1;i&lt;=s;i++)&#123; int tt=t-sz[i]; if(tt&gt;=1&amp;&amp;!vis[tt])&#123; vis[tt]=1; dist[tt]=dist[t]+1; q.push(tt); &#125; &#125; &#125; for(int i=1;i&lt;=n+1;i++)&#123; if(!a[i]) continue; e[pos[s]][pos[i]]=dist[i]; &#125;&#125;int dp[1&lt;&lt;22];void init()&#123; scanf("%d%d%d",&amp;n,&amp;k,&amp;s); for(int i=1;i&lt;=k;i++) scanf("%d",&amp;x[i]),a[x[i]]=1; for(int i=1;i&lt;=s;i++) scanf("%d",&amp;sz[i]); sort(sz+1,sz+s+1);s=unique(sz+1,sz+s+1)-sz-1; for(int i=n+1;i&gt;=1;i--) a[i]^=a[i-1];//不会影响前面 for(int i=1;i&lt;=n+1;i++) if(a[i]) pos[i]=++np; for(int i=1;i&lt;=n+1;i++) if(a[i]) bfs(i); memset(dp,0x3f,sizeof(dp)); dp[0]=0; int all=(1&lt;&lt;np)-1; for(int i=0;i&lt;=all;i++)&#123; int pre=-1; for(int j=1;j&lt;=np;j++)&#123; if(!(i&amp;(1&lt;&lt;(j-1))))continue; if(pre==-1) pre=j; else dp[i]=min(dp[i],dp[i-(1&lt;&lt;(j-1))-(1&lt;&lt;(pre-1))]+e[j][pre]); &#125; &#125; if(dp[all]==0x3f3f3f3f) printf("-1"); else printf("%d",dp[all]);&#125;int main()&#123; init(); return 0;&#125;]]></content>
+      <categories>
+        <category>noip模拟赛</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+        <tag>差分</tag>
+        <tag>bfs</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[逃脱]]></title>
     <url>%2F2018%2F10%2F28%2F33%2F</url>
     <content type="text"><![CDATA[Description小 M 的宠物猫 CC 昨天干了背叛主人的事，于是她逃到一个远方的迷宫躲藏了起来。这个迷宫包含 N（用 1..N 编号） 个路口和 N-1 条连接两个路口的双向隧道。 所以每两个路口之间都有唯一的路径。每个只与一条隧道相连的路口都是迷宫的出口。小 M 非常生气， 决定派出一些小狗从不同的出口出发尝试抓住 CC。 小狗和 CC 的移动速度相同（在每个单位时间内，每个小狗都可以从一个路口移动到相邻的一个路口，同时 CC 也可以这么做，当然他们在任意单位时间都可以不移动，停留在原来的路口上）。 小狗们和 CC 总是知道对方在哪里。如果在任意时刻，某个小狗和 CC 处于同一个路口或在穿过同一个隧道， 小狗就可以抓住 CC。反过来，如果 CC 在小狗们抓住她之前到达一个出口， 于是 CC 就逃脱了。CC 不确定她能否成功逃脱，这取决于小狗的数量。给定 CC 当前所在的路口 S，帮助小 M 确定为了抓住 CC 所需要的小狗的最小数量。假定小狗们会自己选择最佳的方案来安排他们出发的出口。 Input输入的第一行包含 N 和 S，分别表示路口数目和 CC 当前所在路口的编号。接下来的 N–1 行，每行有两个整数（在 1~N 范围内）描述连接两个路口的一条隧道。 Output输出为了确保抓住 CC 所需的小狗的最小数量 Sample Input7 11 21 33 43 54 65 7 Sample Output3 Hint对于 20%的数据： N≤3 00对于 50%的数据： N≤5 000对于 100%的数据： N≤100 000 Solution首先对于起点即为出口的特判，当且仅当起点只有一个儿子，这时只需一只狗即可。然后发现最坏情况是每个叶子节点都要一只狗，但狗可以跑过去拦截，所以将顶点与叶子节点路程割半，然后可以颜色染上下半段部分（使用树上倍增精准定位）当发现遍历到染过的时可以减1（用这次染色代替那次）如此下来便最优。而由于是触碰返回，所以复杂度实际上是O（n）的。 上代码：#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;cctype&gt;#include&lt;vector&gt;#include&lt;queue&gt;#include&lt;set&gt;#define maxn 100005 using namespace std;struct eage&#123; int to,next;&#125;e[maxn&lt;&lt;1];int np=0,first[maxn];void add(int u,int v)&#123; e[++np]=(eage)&#123;v,first[u]&#125;; first[u]=np; &#125;int n,s,x,y,dep[maxn],fa[maxn][18];int st[maxn],top=0;bool ok=false;void dfs(int i,int f,int d)&#123; dep[i]=d;fa[i][0]=f; for(int j=1;j&lt;=17;j++) fa[i][j]=fa[fa[i][j-1]][j-1]; int chd=0; for(int p=first[i];p;p=e[p].next)&#123; int j=e[p].to; if(j==f) continue; chd++; dfs(j,i,d+1); &#125; if(i==s&amp;&amp;chd==1) ok=true; if(chd==0) st[++top]=i;&#125;/*int lca(int u,int v)&#123; if(dep[u]&lt;dep[v]) swap(u,v); int x=dep[u]-dep[v]; for(int i=0;i&lt;=17;i++)&#123; if((1&lt;&lt;i)&amp;x) u=fa[u][i]; &#125; if(u==v) return u; for(int i=17;i&gt;=0;i--)&#123; if(fa[u][i]!=fa[v][i]) u=fa[u][i],v=fa[v][i]; &#125; return fa[u][0];&#125;*/bool color[maxn];int ans=0;void dfss(int i)&#123; if(color[i])&#123;ans--;return;&#125; color[i]=1; for(int p=first[i];p;p=e[p].next)&#123; int j=e[p].to; if(j==fa[i][0])continue; dfss(j); &#125;&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;s); for(int i=1;i&lt;n;i++)&#123; scanf("%d%d",&amp;x,&amp;y); add(x,y);add(y,x); &#125; dfs(s,0,0); if(ok==true) printf("1"); else&#123; for(int i=1;i&lt;=top;i++)&#123; int x=dep[st[i]]-dep[s]; x=x/2; int u=st[i]; for(int j=0;j&lt;=17;j++)&#123; if(x&amp;(1&lt;&lt;j)) u=fa[u][j]; &#125; ans++; dfss(u); &#125; printf("%d",ans); &#125;&#125;int main()&#123;//实际复杂度只要O(n) 因为触碰返回 //freopen("escaping.in","r",stdin); //freopen("escaping.out","w",stdout); init(); return 0;&#125;]]></content>
@@ -42,8 +81,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>LIS</tag>
         <tag>贪心</tag>
+        <tag>LIS</tag>
         <tag>二分查找</tag>
       </tags>
   </entry>
@@ -257,10 +296,10 @@
         <category>noip模拟赛</category>
       </categories>
       <tags>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>模拟</tag>
         <tag>贪心</tag>
+        <tag>dp</tag>
+        <tag>数学</tag>
         <tag>离线</tag>
         <tag>正难则反</tag>
       </tags>
@@ -368,8 +407,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>贪心</tag>
+        <tag>dp</tag>
         <tag>正睿</tag>
       </tags>
   </entry>
@@ -382,11 +421,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
+        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
         <tag>数学</tag>
-        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -424,16 +463,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[timeline]]></title>
-    <url>%2Ftimeline%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
@@ -441,6 +470,16 @@
   <entry>
     <title><![CDATA[links]]></title>
     <url>%2Flinks%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[timeline]]></title>
+    <url>%2Ftimeline%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
