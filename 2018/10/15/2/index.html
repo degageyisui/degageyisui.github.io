@@ -539,6 +539,31 @@
                 <!-- Post Comments -->
                 
                     
+    <div id="gitalk-container">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script type="text/javascript">
+var gitalk = new Gitalk({
+  clientID: 'OAuth Application Client ID',   //自行修改
+  clientSecret: 'OAuth Application Client Secret',  //自行修改
+  repo: 'GitHub repo',  //自行修改
+  owner: 'GitHub repo owner',  //自行修改
+  admin: ['GitHub repo owner and collaborators, only these guys can initialize github issues'],  //自行修改
+  id: location.pathname,
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-container{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
                 
             </div>
 
@@ -729,17 +754,8 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Sidebar Divider -->
 
-    <div class="sidebar-divider"></div>
-
 
 <!-- Theme Material -->
-
-    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
-        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
-            主题 - Material
-            <span class="sidebar-badge badge-circle">i</span>
-        </div>
-    </a>
 
 
 <!-- Help & Support -->
@@ -909,6 +925,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
+
+
+   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 
 
 
