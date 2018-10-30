@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[40]]></title>
+    <title><![CDATA[当那一天来临]]></title>
+    <url>%2F2018%2F10%2F30%2F41%2F</url>
+    <content type="text"><![CDATA[Description一条线段上有n个点，每个点有一个权值，要是一个人经过一个权值为w的点，那么他的金钱就增加w（w可以为负数）。现在Jack最开始在1号点，Rose最开始在n号点（此时Jack只有1号点的金钱，Rose只有n号点的金钱），他们要走到某个站点相会，整个过程中只能相向而行，并且每一次走一个点。首先是Jack选择自己向右走一个点或者让Rose向左做一个点；接着是Rose选择让Jack向右走一个点或者自己向左走一个点；接着又是Jack选择，直到两个人相遇。现在两人都采用最优策略，问相遇之后他们谁金钱多。如果Jack比Rose的金钱多，输出“win”，相等输出“tie”，少则输出“lose”。（T组数据，T≤10,1≤n≤10000） Sample Input341 3 2 341 2 2 35-1 -2 -1 -1 -1 Sample Outputwintielose Hint对于100%的数据，1&lt;=N&lt;=10000. Solution首先我们可以将题目的选项实际化，让自己走就是正常，让别人走就是让终点往自己这边移动，然后我们发现答案只与最终相遇位置有关。那么举几个例子，发现在n为偶数时，先手能够决定终点是在n/2+1或者n/2.而在n为奇数时，若先手先让自己走，那么后手能决定终点在n/2+1或n/2+1+1;若先手先让对面走，那么后手能决定终点在n/2+1或n/2。(所以大力分情况讨论即可)实际上n为奇数就是-1变成n为偶数然后交换先手权罢了。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 10005 using namespace std; int t,n,a[maxn],sum1,sum2; void init(){ sum1=sum2=0; scanf(&quot;%d&quot;,&amp;n); int z=n/2+1; for(int i=1;i&lt;=n;i++){ scanf(&quot;%d&quot;,&amp;a[i]); if(i&lt;=z) sum1+=a[i]; if(i&gt;=z) sum2+=a[i]; } if(n&amp;1){ int t=sum1-sum2; int changez=-a[z]-a[z-1]; int changey=a[z]+a[z+1]; int change=max(changey,changez);//由先手决定 t=min(t,t+change);//由后手决定 if(t&gt;0) printf(&quot;win\n&quot;); if(t==0) printf(&quot;tie\n&quot;); if(t&lt;0) printf(&quot;lose\n&quot;); } else{ int t=sum1-sum2; int change=-a[z]-a[z-1]; if(change&gt;0) t+=change; if(t&gt;0) printf(&quot;win\n&quot;); if(t==0) printf(&quot;tie\n&quot;); if(t&lt;0) printf(&quot;lose\n&quot;); } } int main(){ scanf(&quot;%d&quot;,&amp;t); for(int i=1;i&lt;=t;i++) init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>博弈论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[假如战争今天爆发]]></title>
     <url>%2F2018%2F10%2F30%2F40%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[假如战争今天爆发生活欺骗了你 Description有n件物品，每件物品要被三个机器一次加工（即是说，只有被第一个机器加工后才能被第二个机器加工，被第二个机器加工后才能被第三个机器加工）。第i件物品被三个机器加工所需要的时间分别为$A_i,B_i,C_i$，保证 $min(C_i)≥max(B_i)$。每个机器同一时刻只能加工一件物品，求让每件物品都被三个机器加工完所需要的最少时间。$（1≤n≤100000,0&lt;A_i,B_i,C_i&lt;106）$ Sample Input35 3 43 2 93 4 8 Sample Output26 Solution首先可以假设已经排好了顺序，那么计算最终时间，设dp(i,j)表示第i个被第j个机器加完工的时间，那么:$dp[i][j]=max(dp[i][j-1],dp[i-1][j])+a_{ij}​$，那我们把它转移到图上面即从(1,1)到(n,3)，每次可以从左边或上边转移过来，实际上就发现是求最长路，如图：那么对于绿色和黄色的我们交换其间任意两个是没有影响的，而对于蓝色和黄色处便会有影响，这便是决定排列顺序的，所以当i要排在j前面的条件如下：$max(a_{i1}+a_{i2}+a_{i3}+a_{j3},a_{i1}+a_{j1}+a_{j2}+a_{j3})&lt;=max(a_{j1}+a_{j2}+a_{j3}+a_{i3},a_{j1}+a_{i1}+a_{i2}+a_{i3})$max(a_{i2}+a_{i3},a_{j1}+a_{j2})+a_{i1}+a_{j3}&lt;=max(a_{j2}+a_{j3},a_{i1}+a_{i2})+a_{j1}+a_{i3}$设$a_{i1}+a_{i2}$为$A_i$，$a_{i2}+a_{i3}$为$B_i$，那么，转化为：$max(B_i,A_j)+A_i-B_i&lt;=max(B_j,A_i)+A_j-B_j$进一步转化为：$max(-A_j,-B_i)&lt;=max(-A_i,-B_j)$那么以这个为关键字排序就欧克了，就可以得到最终的最优排列顺序。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 100005 using namespace std; typedef long long ll; ll suma[maxn],sumc[maxn]; struct node{ int a,b,c; friend bool operator&lt;(node x,node y){ int ai=x.a+x.b,aj=y.a+y.b,bi=x.b+x.c,bj=y.b+y.c; return max(-aj,-bi)&lt;=max(-ai,-bj); } }nd[maxn]; int n; void init(){ scanf(&quot;%d&quot;,&amp;n); for(int i=1;i&lt;=n;i++) scanf(&quot;%d%d%d&quot;,&amp;nd[i].a,&amp;nd[i].b,&amp;nd[i].c); sort(nd+1,nd+n+1); ll ta=0,tb=0,tc=0; for(int i=1;i&lt;=n;i++){ ta+=nd[i].a; if(tb&lt;ta) tb=ta; tb+=nd[i].b; if(tc&lt;tb) tc=tb; tc+=nd[i].c; } printf(&quot;%lld&quot;,tc); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>dp</tag>
+        <tag>最长路</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[强军战歌]]></title>
@@ -15,8 +34,8 @@
       <tags>
         <tag>dp</tag>
         <tag>LIS</tag>
-        <tag>离散化</tag>
         <tag>树状数组</tag>
+        <tag>离散化</tag>
       </tags>
   </entry>
   <entry>
@@ -341,9 +360,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
-        <tag>离线</tag>
-        <tag>数学</tag>
         <tag>dp</tag>
+        <tag>数学</tag>
+        <tag>离线</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -464,11 +483,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
         <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -506,11 +525,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[links]]></title>
     <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
@@ -523,6 +537,11 @@
   <entry>
     <title><![CDATA[timeline]]></title>
     <url>%2Ftimeline%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>

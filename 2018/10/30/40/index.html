@@ -45,7 +45,7 @@
     
     <title>
         
-            40 | 
+            假如战争今天爆发 | 
         
         祎隋
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog">
+    <meta name="keywords" content="c++,blog,贪心,dp,最长路">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -229,14 +229,14 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="www.degage.xyz/2018/10/30/40/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="40 | 祎隋">
+    <meta property="og:title" content="假如战争今天爆发 | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="这里是degage的代码仓库哦">
-    
+    <meta property="og:article:tag" content="贪心"> <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="最长路"> 
 
     
         <meta property="article:published_time" content="Tue Oct 30 2018 17:48:28 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 30 2018 17:48:28 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 23:19:42 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -257,9 +257,9 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "mainEntityOfPage": "www.degage.xyz/2018/10/30/40/index.html",
-    "headline": "40",
+    "headline": "假如战争今天爆发",
     "datePublished": "Tue Oct 30 2018 17:48:28 GMT+0800",
-    "dateModified": "Tue Oct 30 2018 17:48:28 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 23:19:42 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -277,7 +277,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": "c++,blog",
+    "keywords": ",贪心,dp,最长路c++,blog",
     "description": "这里是degage的代码仓库哦",
 }
 </script>
@@ -336,6 +336,15 @@
     <!-- Left aligned menu below button -->
     
     
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li></ol>
+    </ul>
+    
 
 
 
@@ -365,7 +374,7 @@
         
     
             <p class="article-headline-p">
-                40
+                假如战争今天爆发
             </p>
         </div>
 
@@ -402,6 +411,15 @@
 
     <!-- Tags (bookmark) -->
     
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/dp/">dp</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/最长路/">最长路</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/贪心/">贪心</a>
+    </ul>
+    
 
     <!-- Share -->
     
@@ -418,7 +436,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=40&url=www.degage.xyz/2018/10/30/40/index.html&pic=www.degage.xyz/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=假如战争今天爆发&url=www.degage.xyz/2018/10/30/40/index.html&pic=www.degage.xyz/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -427,7 +445,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=40&url=www.degage.xyz/2018/10/30/40/index.html&via=degage" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=假如战争今天爆发&url=www.degage.xyz/2018/10/30/40/index.html&via=degage" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -457,7 +475,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=40&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/30/40/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=假如战争今天爆发&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/30/40/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -476,7 +494,46 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p><font color="green">假如<del>战争今天爆发</del>生活欺骗了你</font></p>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>有n件物品，每件物品要被三个机器一次加工（即是说，只有被第一个机器加工后才能被第二个机器加工，被第二个机器加工后才能被第三个机器加工）。第i件物品被三个机器加工所需要的时间分别为$A_i,B_i,C_i$，保证 $min(C_i)≥max(B_i)$。每个机器同一时刻只能加工一件物品，求让每件物品都被三个机器加工完所需要的最少时间。$（1≤n≤100000,0&lt;A_i,B_i,C_i&lt;106）$</p>
+<h1 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h1><p>3<br>5 3 4<br>3 2 9<br>3 4 8</p>
+<h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>26</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先可以假设已经排好了顺序，那么计算最终时间，设dp(i,j)表示第i个被第j个机器加完工的时间，那么:<br>$dp[i][j]=max(dp[i][j-1],dp[i-1][j])+a_{ij}​$，那我们把它转移到图上面即从(1,1)到(n,3)，每次可以从左边或上边转移过来，实际上就发现是求最长路，如图：<br><img src="https://s1.ax1x.com/2018/10/30/iRAukV.png" alt=""><br>那么对于绿色和黄色的我们交换其间任意两个是没有影响的，而对于蓝色和黄色处便会有影响，这便是决定排列顺序的，所以当i要排在j前面的条件如下：<br>$max(a_{i1}+a_{i2}+a_{i3}+a_{j3},a_{i1}+a_{j1}+a_{j2}+a_{j3})&lt;=max(a_{j1}+a_{j2}+a_{j3}+a_{i3},a_{j1}+a_{i1}+a_{i2}+a_{i3})<br>$max(a_{i2}+a_{i3},a_{j1}+a_{j2})+a_{i1}+a_{j3}&lt;=max(a_{j2}+a_{j3},a_{i1}+a_{i2})+a_{j1}+a_{i3}$<br>设$a_{i1}+a_{i2}$为$A_i$，$a_{i2}+a_{i3}$为$B_i$，那么，转化为：<br>$max(B_i,A_j)+A_i-B_i&lt;=max(B_j,A_i)+A_j-B_j$<br>进一步转化为：<br>$max(-A_j,-B_i)&lt;=max(-A_i,-B_j)$<br>那么以这个为关键字排序就欧克了，就可以得到最终的最优排列顺序。</p>
+<p>上代码：</p>
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+#define maxn 100005
+using namespace std;
+typedef long long ll;
+ll suma[maxn],sumc[maxn];
+struct node{
+    int a,b,c;
+    friend bool operator&lt;(node x,node y){
+        int ai=x.a+x.b,aj=y.a+y.b,bi=x.b+x.c,bj=y.b+y.c;
+        return max(-aj,-bi)&lt;=max(-ai,-bj);
+    }
+}nd[maxn];
+int n;
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d%d%d&quot;,&amp;nd[i].a,&amp;nd[i].b,&amp;nd[i].c);
+    sort(nd+1,nd+n+1);
+    ll ta=0,tb=0,tc=0;
+    for(int i=1;i&lt;=n;i++){
+        ta+=nd[i].a;
+        if(tb&lt;ta) tb=ta;
+        tb+=nd[i].b;
+        if(tc&lt;tb) tc=tb;
+        tc+=nd[i].c;
+    }
+    printf(&quot;%lld&quot;,tc);
+} 
+int main(){
+    init();    
+
+    return 0;
+}
+</code></pre>
+
         
     
 
@@ -520,6 +577,14 @@ gitalk.render('gitalk-container')
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2018/10/30/41/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -619,7 +684,7 @@ gitalk.render('gitalk-container')
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">41</span></a>
+                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">42</span></a>
             </ul>
         </li>
         
@@ -637,7 +702,7 @@ gitalk.render('gitalk-container')
             </a>
             <ul class="dropdown-menu">
                 <li>
-                <a class="sidebar_archives-link" href="/categories/CF/">CF<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Noi-ac/">Noi.ac<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/noip模拟赛/">noip模拟赛<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/杂诗/">杂诗<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/正睿/">正睿<span class="sidebar_archives-count">23</span></a>
+                <a class="sidebar_archives-link" href="/categories/CF/">CF<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Noi-ac/">Noi.ac<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/noip模拟赛/">noip模拟赛<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/杂诗/">杂诗<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/正睿/">正睿<span class="sidebar_archives-count">25</span></a>
             </ul>
         </li>
         
@@ -914,6 +979,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="[object Object]?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
 <!-- Bing Background -->
