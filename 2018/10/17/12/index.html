@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 17 2018 19:10:23 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 17 2018 22:44:16 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:49:01 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/17/12/index.html",
     "headline": "noip模拟赛1",
     "datePublished": "Wed Oct 17 2018 19:10:23 GMT+0800",
-    "dateModified": "Wed Oct 17 2018 22:44:16 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:49:01 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -502,7 +502,7 @@
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤10<br>对于 100%的数据： N≤100 000</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>比较水的一道贪心a，只是要注意细节，维护两个东西：最小费用和最小字典序。<br>显然最小费用优先级更大。我们枚举相同的k个数字从0到9，对于每一个确定的st,<br>用i=0~9依次考虑变的数字，注意先执行st+i，再执行st-i以保证字典序最优。<br>然后对于小于st的从后往前改，大于st的从前往后改来保证字典序。</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>（想好细节,think twice,code once）<br>上代码：</p>
-<h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;iostream&gt;
+<h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-c++">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;algorithm&gt;
@@ -621,7 +621,7 @@ int main(){
 <h2 id="Hint-1"><a href="#Hint-1" class="headerlink" title="Hint"></a>Hint</h2><p>对于 20%的数据： N,Q≤3 00<br>对于 50%的数据： N,Q≤5 000<br>对于 100%的数据： N,Q≤100 000</p>
 <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>首先会想到离线处理，再根据单调性，想到用并查集维护，将大于等于k的边所连接的点加入并查集，<br>这样对于每个联通块，其中任意两点都是符合“战略相关性”大于等于k的，所以对于每个询问，答案<br>就是v所在联通块点个数减1即可。</p>
 <p>上代码：</p>
-<h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 #define maxn 100005
 struct eage{
@@ -696,7 +696,7 @@ int main(){
 <h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><p>真的是数学问题吗？？？首先要明白一点，合法的是要求至少有一个长度为K的相同颜色的块。（这个都没有想出来我好蒻A qwq）<br>然后正难则反，我们只要求出不合法的总个数，然后用总的方法数减去不合法的即为合法的方案数，那么这里用dp,设f[i]为前i个<br>不合法的方案数，那么就不会出现连续k个，所以：<br>$f[i]=f[i-1] \ast m （i&lt;k）​$</p>
 <p>$f[i]=(f[i-1]+f[i-2]+…+f[i-k+1]) \ast (m-1) (i&gt;=k)$  第i个和第i-k个必须不一样<br>再简单加个滑动窗口就可以O(n)过了233333</p>
 <h3 id="tips-1"><a href="#tips-1" class="headerlink" title="tips"></a>tips</h3><p>题目中有mod的话，一般不是dp就是数学（套路！！！）<br>上代码：</p>
-<h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 10000005
 using namespace std;
 typedef long long ll;

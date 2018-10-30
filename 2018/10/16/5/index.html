@@ -238,7 +238,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 20:34:00 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 20:46:57 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:46:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -261,7 +261,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/16/5/index.html",
     "headline": "卡常数",
     "datePublished": "Tue Oct 16 2018 20:34:00 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 20:46:57 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:46:43 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -511,7 +511,7 @@
 <p>空间限制： 512MB</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>woc这道题思路很Nice啊。<br>首先会想到肯定每个数进行一定次数之后会循环(不然就没法做了a)。<br>然后这里应该要想到我们对当前的数求循环的时候，我们事实上已经对所有经过的数求出来<br>了，这样稍微处理一下就可以保证每个数只被访问一次。<br>但这样还是会T a。。。<br>于是探究性质：发现对于一个x进行a+b次操作等于先将x进行a次操作，再进行b次操作，或者反过来，再进一步想到可以倍增预处理(Nice啊).这样就欧克了a(注意倍增不要写错a在刷状态的时候QAQ)</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>1.以后遇到这种性质都可以考虑倍增(LCA也有这种性质嘛)<br>2.补充一下姿势（雾<br>%nd 输出的整型宽度至少为n位，右对齐，%5d即宽度至少为5位，位数大于5则输出实际位数<br>%0nd 用得比较多，表示输出的整型宽度至少为n位，不足n位用0填充<br>printf（”%05d”,1）输出：00001<br>printf（”%5d”,1）输出：<em>**</em>1（$*$为空格）</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 100005
 using namespace std;
 int n,x,c;

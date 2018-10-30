@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 23 2018 20:22:00 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 23 2018 20:38:21 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:51:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/23/25/index.html",
     "headline": "翻转",
     "datePublished": "Tue Oct 23 2018 20:22:00 GMT+0800",
-    "dateModified": "Tue Oct 23 2018 20:38:21 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:51:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -502,7 +502,7 @@
 <p>然后看到2000的数据，O(N)枚举一波最终的位置。然后对于每一个与$B_i$不等的$A_i$看它是往左移还是右移再移回，然后贪心取最大的，边移边翻转，最后ans=变化个数+移动个数+（最大左移+最大右移）$\times$2.注意小于等于移动个数且同向的就不必计入了…移动过程中就换了，详见代码注释。</p>
 <p>这样加上排序复杂度为$n^2logn$，完全能过2333</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 2005
 using namespace std;
 char s[maxn],ss[maxn];

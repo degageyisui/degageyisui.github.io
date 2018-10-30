@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 29 2018 08:03:15 GMT+0800">
-        <meta property="article:modified_time" content="Mon Oct 29 2018 17:10:53 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:53:02 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/29/34/index.html",
     "headline": "密码锁",
     "datePublished": "Mon Oct 29 2018 08:03:15 GMT+0800",
-    "dateModified": "Mon Oct 29 2018 17:10:53 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:53:02 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -509,7 +509,7 @@
 <p>其次观察到k最大只有10，那么撞鸭上限是20，随后又会想到这里每覆盖一段实际上是加1，而又要mod2，发现是个01差分。那我们先将其中要开的开关在段中绘好，那么最终就是要将其变为全0.将其转化为差分数组，最多就会有20个1，每赋一段l,r，会在l处+1,r+1处+1，相当于将l处的1转化到r+1,若r+1也为1就消为了0，实际上我们将所有1匹配即可。然后可以bfs记录一遍dist{i,j}，只需要O(n)跑。最后用一个撞鸭dp来记录所有点全部匹配的最小步数即可。</p>
 <p>注意这里裸的dp是$总状态数\ast(2\ast k)^2$，所以我们先固定一个新增加的元素，然后枚举与它匹配的元素来达到最小，从而变成了$总状态数\ast2\ast k$.</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxk 10005
 #define maxs 10005
 #define maxn 10005

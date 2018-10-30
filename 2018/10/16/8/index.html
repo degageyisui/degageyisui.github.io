@@ -238,7 +238,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 22:38:36 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 22:57:46 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:47:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -261,7 +261,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/16/8/index.html",
     "headline": "数对子",
     "datePublished": "Tue Oct 16 2018 22:38:36 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 22:57:46 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:47:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -517,12 +517,12 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>先补充几个小知识点（快速求出一个数的二进制中有多少个1）:</p>
 <p>x=x&amp;(x-1)（递归求法，适用于单个数）</p>
 <p>表达式的意思就是:把x的二进制表示 从低位开始，将遇到的第一个为1的 二进制位 置0。</p>
-<pre><code class="lang-ruby">int calc=0;
+<pre><code class="lang-c++">int calc=0;
 while(x) x=x&amp;(x-1),calc++;
 calc即为所求值
 </code></pre>
 <p>求0到x中有多少二进制含1个数为奇数的：</p>
-<pre><code class="lang-ruby">long long calc(long long x)
+<pre><code class="lang-c++">long long calc(long long x)
 {
     long long tmp=x,tot=0;
     while(tmp)
@@ -544,7 +544,7 @@ calc即为所求值
 <p>所以我们采取线段树来维护区间含奇数个1和含偶数个1的个数，对于区间l,r，则用上述中所介绍的calc函数，来calc(r)-calc(l-1)得到奇数个1个数以及r-l+1-（calc(r)-calc(l-1)）得到偶数个1个数</p>
 <p>每次输入一个区间加进去统计一个区间，然后输出总的相乘即可。p.s.线段树很好的解决了区间相交的问题，在以及统计过的区间标记vis[now]=1;</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 100005
 using namespace std;
 typedef long long ll;

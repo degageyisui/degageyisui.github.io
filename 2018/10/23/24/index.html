@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 23 2018 17:43:08 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 24 2018 18:04:21 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:51:35 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/23/24/index.html",
     "headline": "小W与面试",
     "datePublished": "Tue Oct 23 2018 17:43:08 GMT+0800",
-    "dateModified": "Wed Oct 24 2018 18:04:21 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:51:35 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -496,7 +496,7 @@
     
         <h1 id="Desciption"><a href="#Desciption" class="headerlink" title="Desciption"></a>Desciption</h1><p>小W因为染色的时候算错了一位数，所以自闭了。他决定不再染布了，去找工作。</p>
 <p>在面试的时候，面试官问了他这样一个问题：</p>
-<p>给定一个长度为 n 的序列 ai，求: $\sum_{i<j,a_i>a_j}{a_i xor a_j}$<br>小W发现他不会做，想求助于你。</j,a_i></p>
+<p>给定一个长度为 n 的序列 ai，求: $\sum_{i<j,a_i>a_j} a_i xor a_j $<br>小W发现他不会做，想求助于你。</j,a_i></p>
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行一个正整数 n。</p>
 <p>第二行 n 个整数，表示 $a_i$。</p>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>一个整数表示答案。</p>
@@ -508,7 +508,7 @@
 <p>空间限制：512 MB</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑按位计算贡献，设c{[i]}{[j]}[0/1]表示值在[$x-2^k+1,x$]范围内的第j位为0/1的个数，用树状数组来维护，从后往前依次加入。</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 100005
 using namespace std;
 typedef long long ll;

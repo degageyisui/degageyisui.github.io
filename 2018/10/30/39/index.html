@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 30 2018 17:26:39 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 30 2018 17:48:15 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:53:53 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/30/39/index.html",
     "headline": "强军战歌",
     "datePublished": "Tue Oct 30 2018 17:26:39 GMT+0800",
-    "dateModified": "Tue Oct 30 2018 17:48:15 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:53:53 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -504,7 +504,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$1&lt;=n&lt;=2000,1&lt;=A_i&lt;=2000$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>探究问题本质，发现是删掉数后刚好(首次)是个非严格LIS，那么我们如果去掉刚好这个限制，总方案数就会是$\sum_{i=1}^{n} cnt_i \ast (n-i)!$，其中$cnt_i$为长度为i的LIS个数，那么显然这样是不行的，因为有很多不合法的计入了。<br>那么什么样的是不合法的呢，即已经是LIS之后还继续删除，这样的数即为$\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$，注意这里1的没有计入，因为1删完之后就没了a23333.<br>综上，$ans=\sum_{i=1}^{n} cnt_i \ast (n-i)!-\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$.<br>然后是对于$cnt_i$的计算，我们设dp(i,j)表示以i结尾长度为j的LIS个数，那么：<br>(tips:可以了解一下这个思路，以后统计找结尾和长度以便于统计，因为LIS结尾要求递增，可以dp)<br>$dp[i][j]+=dp[k][j-1] k在j前面且a[k]&lt;=a[j]$<br>由于范围限制，我们使用树状数组来维护将其优化到$n^2logn$，那么这里需要离散化来确定哪些比它小。(详见代码注释)</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 2005 
 using namespace std;
 typedef long long ll;

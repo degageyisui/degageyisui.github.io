@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 23 2018 11:14:24 GMT+0800">
-        <meta property="article:modified_time" content="Mon Oct 29 2018 07:57:28 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:50:53 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/23/23/index.html",
     "headline": "Sirni",
     "datePublished": "Tue Oct 23 2018 11:14:24 GMT+0800",
-    "dateModified": "Mon Oct 29 2018 07:57:28 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:50:53 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -503,7 +503,7 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先会发现每条边边权为$p_imodp_j (p_i&gt;p_j)$，因为小数模大数为小数，大数模小数小于小数。然后先将点排序离散化去重（相同点权两点之间距离为0），然后从小到大对于每个$p_i$，我们设其值为x，那么会从x-2x,2x-3x……选出一个点连边作为最优值（见图，解释在下）：<br><img src="https://s1.ax1x.com/2018/10/29/igtwND.png" alt="">对于每一段，我们肯定首选第一个大于它的是最小的，如图中x-2x的$p_j$，然后对于$p_k$，我们选择不连边而让$p_j$去连更优，如图中绿色段为$p_j$连$p_k$代价，而蓝色段为x连$p_k$代价，可见前者更优，然后我们一共会连$\sum\lfloor\frac{mx}{p_i}\rfloor$条边，将它放大为调和级数求和$plogp$，所以用kruskal可以$plog^2p$求出….</p>
 <p>然后对于连边直接先预处理每个区间第一个选的，然后O（n）搞好.</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 #define maxn 100005
 #define maxm 10000005

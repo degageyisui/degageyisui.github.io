@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 22 2018 08:07:15 GMT+0800">
-        <meta property="article:modified_time" content="Mon Oct 22 2018 11:30:25 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:50:00 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/22/18/index.html",
     "headline": "SCOI2011 糖果",
     "datePublished": "Mon Oct 22 2018 08:07:15 GMT+0800",
-    "dateModified": "Mon Oct 22 2018 11:30:25 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:50:00 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -505,7 +505,7 @@
 <p>对于所有的数据，保证 K&lt;=100000，1&lt;=X&lt;=5，1&lt;=A, B&lt;=N</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，这道题要看出是一个差分约束系统，而求至少便是求最小值，所以应转化为$d[j]&gt;=d[i]+Wij$，<del>这样跑最长路(只有用spfa)并且判0环就行了</del>，然而发现这样只会有60，<br>因为数据大和毒，导致判0环会炸。然后发现可以强联通分量缩点，那么每个分量的值肯定是一样的，如果边中有1就说明不符合。最后加一个超级起点，从它开始拓扑加dp就能过了。</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 150005
 using namespace std;
 int n,m,op,a,b;

@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 23:13:07 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 23:20:17 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:47:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/16/9/index.html",
     "headline": "32.Sort",
     "datePublished": "Tue Oct 16 2018 23:13:07 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 23:20:17 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:47:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -509,7 +509,7 @@
 <p>运行时，必须保证 sort.in 为一个合法的输入，且需保证 sort.out 符合题目中描述的输出格式，否则出现任何结果均有可能。</p>
 <p>2.对于所有测试数据，保证 1≤n≤500001≤n≤50000，且 0≤ai≤1090≤ai≤109。</p>
 <p>（附checker.cpp）</p>
-<pre><code class="lang-ruby">#include &lt;algorithm&gt;
+<pre><code class="lang-c++">#include &lt;algorithm&gt;
 #include &lt;cstdio&gt;
 int arr[50005];
 int main()
@@ -575,7 +575,7 @@ checker
 <p>先将给定数列进行离散化，每次选定一个中间的数，将小于等于它的排在左边，大于它的排在右边，再依次递归两边就可以了；</p>
 <p>主要是复杂度（进行操作的次数）证明a….    排一遍要n，由于其非01性，所以进行log2n次的n排，故排一遍将l到r以stdd为标准换为左边小于等于stdd，右边大于等于stdd的操作数为Θ(nlog2n) ；</p>
 <p>T(n) = 2T(n/2) + Θ(nlog2n),可以解得 T(n) = Θ(nlog22n) ； tql%%%<br>上代码。</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 50005
 using namespace std;
 int n,pos[maxn];

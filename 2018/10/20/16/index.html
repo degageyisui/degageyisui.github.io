@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Sat Oct 20 2018 16:39:17 GMT+0800">
-        <meta property="article:modified_time" content="Sat Oct 20 2018 16:54:25 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:49:39 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/20/16/index.html",
     "headline": "键盘",
     "datePublished": "Sat Oct 20 2018 16:39:17 GMT+0800",
-    "dateModified": "Sat Oct 20 2018 16:54:25 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:49:39 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -497,7 +497,7 @@
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>现在文本框中有一个 x 个字符的字符串,希望在经过一系列操作后得到看到<br>一个长度恰好为 n 的字符串。<br>现可以有 5 种操作:<br>1.敲击 1 次键盘,输入一个字符<br>2.敲击 2 次键盘(Ctrl+A),选中所有已经输入的字符<br>3.敲击 2 次键盘(Ctrl+C),复制所有选中的字符到剪贴板<br>4.敲击 2 次键盘(Ctrl+V),把剪贴板中的所有字符输出(不清空剪贴板)<br>5.敲击 1 次键盘(Backspace),若没有选中字符则删除一个字符否则删除所<br>有选中的字符<br>选中状态仅影响复制操作。<br>问至少敲击几次键盘才能得到一个长度为 n 的字符串。</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 100%的数据 $n,x&lt;=10^6$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这道题思路很nice啊，如果不考虑backspace操作的话，那么是可以递推来做的。但如果有的话，那么可以3次清空为0，然后一直乘2大约140步左右可以大于$10^6$，也就是说极限步数是<br>n+143，实际上会远远不到这个上限，那么若x能到y则连一条边，由调和级数算下来(缩放)大约为nlogn，再最短路跑一遍大约$nlog^2n$，因为上限远远没满卡一下常数能过。(主要为这方面题提供一种思路)</p>
-<h3 id="dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好"><a href="#dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好" class="headerlink" title="dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)"></a>dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)</h3><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<h3 id="dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好"><a href="#dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好" class="headerlink" title="dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)"></a>dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)</h3><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 2000305
 using namespace std;
 int n,x,dist[maxn];

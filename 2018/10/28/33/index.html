@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 28 2018 14:05:01 GMT+0800">
-        <meta property="article:modified_time" content="Sun Oct 28 2018 14:19:27 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:52:53 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/28/33/index.html",
     "headline": "逃脱",
     "datePublished": "Sun Oct 28 2018 14:05:01 GMT+0800",
-    "dateModified": "Sun Oct 28 2018 14:19:27 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:52:53 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -502,7 +502,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 20%的数据： N≤3 00<br>对于 50%的数据： N≤5 000<br>对于 100%的数据： N≤100 000</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于起点即为出口的特判，当且仅当起点只有一个儿子，这时只需一只狗即可。<br>然后发现最坏情况是每个叶子节点都要一只狗，但狗可以跑过去拦截，所以将顶点与叶子节点路程割半，然后可以颜色染上下半段部分（使用树上倍增精准定位）当发现遍历到染过的时可以减1（用这次染色代替那次）如此下来便最优。<br>而由于是触碰返回，所以复杂度实际上是O（n）的。</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;iostream&gt;
+<pre><code class="lang-c++">#include&lt;iostream&gt;
 #include&lt;cstdio&gt;
 #include&lt;cstring&gt;
 #include&lt;algorithm&gt;

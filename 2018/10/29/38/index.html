@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 29 2018 21:19:17 GMT+0800">
-        <meta property="article:modified_time" content="Mon Oct 29 2018 22:50:58 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:53:41 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/29/38/index.html",
     "headline": "已经没有什么好害怕的了",
     "datePublished": "Mon Oct 29 2018 21:19:17 GMT+0800",
-    "dateModified": "Mon Oct 29 2018 22:50:58 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:53:41 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -498,7 +498,7 @@
 <p>共T组数据，对于每组数据，输出一个整数表示答案，令$ans_i$为经过第i个位置的子串个数，那么你需要输出$\sum^{n}_{i=1}(i×ans_i mod 1e9+7)$。$（1≤T≤10,n≤10^6）$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于每一个合法的串内部扩起来的，我们对它所涵盖的加1，那么会想到差分，如图:<br><img src="https://s1.ax1x.com/2018/10/29/i2dUXj.png" alt=""><br>即为差分的方式:在左端点加1，在右端点+1的地方减1.<br>首先是可以暴力维护的，但是肯定会超时，那么我使用递推来将其优化到O(n).</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 1000005
 using namespace std;
 typedef long long ll;

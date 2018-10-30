@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Wed Oct 24 2018 23:17:49 GMT+0800">
-        <meta property="article:modified_time" content="Wed Oct 24 2018 23:31:09 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:52:34 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/24/30/index.html",
     "headline": "序列",
     "datePublished": "Wed Oct 24 2018 23:17:49 GMT+0800",
-    "dateModified": "Wed Oct 24 2018 23:31:09 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:52:34 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -505,7 +505,7 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先我们对于要选择的区间l,r考虑，发现以l为起点开始增加，肯定要包含其后的最长上升序列，然后再尽可能贪心的增加最大，使前面有更多满足的。所以我们对于每一个i统计一下它加上x后前面最长的LIS和后面最长的LIS，这样依次取最大就好。</p>
 <p>然后对于求LIS，用二分查找和贪心nlogn求，反向求下降也是一样的，只要理解本质。<br>tips:注意lower_bound和upper_bound两个求&gt;=和&gt;，前者是用于严格上升子序列，而后者是非严格，可以想象一下。举个栗子:3 4 6 现在加入4，如果严格为2，否则为3.</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 200005
 using namespace std;
 int n,a[maxn],hm[maxn],x;

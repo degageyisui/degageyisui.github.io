@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Sat Oct 20 2018 23:47:38 GMT+0800">
-        <meta property="article:modified_time" content="Sat Oct 20 2018 23:54:58 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:49:50 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/20/17/index.html",
     "headline": "约束",
     "datePublished": "Sat Oct 20 2018 23:47:38 GMT+0800",
-    "dateModified": "Sat Oct 20 2018 23:54:58 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:49:50 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -502,7 +502,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 30%的数据， n&lt;=10<br>对于 100%的数据， n&lt;=100000</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>发现一个点最多连向另外一个点，可以想一下发现是环加内向树。<br>那么对于入度为0的点便只能加入B集合，那么a[x]定可以为A集合，所以拓扑排序，将遇到的<br>为标记的或x和a[x]都为B的，将a[x]加入A。<br>最后剩下环，将环上的B集合的标记清空(这样可以更大)，然后以环上的A集合点向没有标记的点<br>蔓延赋值，最后就能得到最佳情况。</p>
 <p>上代码：</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 100005
 using namespace std;
 int n,x,rd[maxn],a[maxn];

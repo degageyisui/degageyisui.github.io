@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Thu Oct 25 2018 15:37:01 GMT+0800">
-        <meta property="article:modified_time" content="Thu Oct 25 2018 21:01:40 GMT+0800">
+        <meta property="article:modified_time" content="Tue Oct 30 2018 19:52:44 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/25/32/index.html",
     "headline": "红绿灯",
     "datePublished": "Thu Oct 25 2018 15:37:01 GMT+0800",
-    "dateModified": "Thu Oct 25 2018 21:01:40 GMT+0800",
+    "dateModified": "Tue Oct 30 2018 19:52:44 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -508,7 +508,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于100%的数据，$n≤5\times10^5,m≤10^6,0≤l_i≤r_i&lt;k_i≤20,1≤d≤106$<br>时间限制： 3s<br>空间限制： 512MB</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>因为每天边权都是正的，先到等红绿灯总不比后到更差，所以可以跑一遍dij，主要处理一下每条边的耗费时间，注意细节。p.s.代码中计算长度时有小技巧，巧妙的避免了求刚好走完时的多走的路程，而将其转化为和其他一样的最后走一段l+len，<del>妙a</del>。（这种减1的小技巧在其他题也适用）</p>
 <p>上代码:</p>
-<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 500005
 #define maxm 1000005
 using namespace std;
