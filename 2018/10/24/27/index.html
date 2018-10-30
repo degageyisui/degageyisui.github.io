@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -521,7 +507,112 @@
 <p>可以变形成$\sum_{i=0}^{m}C_{n}^i \times C_{m}^{i} = C_{m+n}^m$ (n&gt;=m)</p>
 <p>然后代入本题将那坨组合数变为$C_{l_1+l_2}^{l_1}$。然后O(n)预处理，O(1)就可以求出。</p>
 <p>上代码：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 200005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">998244353</span>;</span><br><span class="line">int n,m,x,y;</span><br><span class="line">ll w[maxn],jc[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line">ll exgcd(ll a,ll b,ll &amp;x,ll &amp;y)&#123;</span><br><span class="line">	<span class="keyword">if</span>(b==<span class="number">0</span>)&#123;x=<span class="number">1</span>;y=<span class="number">0</span>;<span class="keyword">return</span> a;&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		ll g=exgcd(b,a%b,x,y);</span><br><span class="line">		ll t=x;</span><br><span class="line">		x=y;</span><br><span class="line">		y=t-a/b*y;</span><br><span class="line">		<span class="keyword">return</span> g;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">ll niy(ll k)&#123;</span><br><span class="line">	ll a=k,b=-mod,x,y;</span><br><span class="line">	ll g=exgcd(a,b,x,y);</span><br><span class="line">	ll x<span class="number">0</span>=<span class="number">1</span>/g*x;</span><br><span class="line">	ll t=b/g;</span><br><span class="line">	<span class="keyword">if</span>(t&lt;<span class="number">0</span>) t=-t;</span><br><span class="line">	ll ans=(x<span class="number">0</span>%t+t)%t;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line">void ready()&#123;</span><br><span class="line">	w[<span class="number">0</span>]=<span class="number">1</span>ll;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=maxn-<span class="number">5</span>;i++) w[i]=w[i-<span class="number">1</span>]*<span class="number">2</span>ll%mod;</span><br><span class="line">	jc[<span class="number">0</span>]=<span class="number">1</span>ll;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=<span class="number">400000</span>;i++) jc[i]=jc[i-<span class="number">1</span>]*i%mod;</span><br><span class="line">&#125;</span><br><span class="line">struct eage&#123;</span><br><span class="line">    int to,<span class="keyword">next</span>; </span><br><span class="line">&#125;e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line">int np=<span class="number">0</span>,first[maxn];</span><br><span class="line">void add(int u,int v)&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u]&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125; </span><br><span class="line">int dep[maxn],fa[maxn][<span class="number">19</span>];</span><br><span class="line">void dfs(int i,int f,int d)&#123;</span><br><span class="line">	dep[i]=d;</span><br><span class="line">	fa[i][<span class="number">0</span>]=f;</span><br><span class="line">	<span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=<span class="number">18</span>;j++) fa[i][j]=fa[fa[i][j-<span class="number">1</span>]][j-<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">		int j=e[p].to;</span><br><span class="line">		<span class="keyword">if</span>(j==f) continue;</span><br><span class="line">		dfs(j,i,d+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line">int lca(int u,int v)&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[u]&lt;dep[v]) swap(u,v);</span><br><span class="line">	int x=dep[u]-dep[v];</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">18</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;i)&amp;x) u=fa[u][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(u==v) <span class="keyword">return</span> u;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">18</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(fa[u][i]!=fa[v][i])</span><br><span class="line">		u=fa[u][i],v=fa[v][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fa[u][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		add(x,y);add(y,x);</span><br><span class="line">	&#125;</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line">	dfs(<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">	ll t=w[n-<span class="number">1</span>];</span><br><span class="line">	ll inv=niy(t);<span class="regexp">//</span>分母 </span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		<span class="keyword">if</span>(dep[x]&lt;dep[y]) swap(x,y);</span><br><span class="line">		int z=lca(x,y);</span><br><span class="line">		<span class="keyword">if</span>(z==y)&#123;</span><br><span class="line">			ll k=dep[x]-dep[y];</span><br><span class="line">			k=n-<span class="number">1</span>-k;</span><br><span class="line">			ll kk=w[k];</span><br><span class="line">		    ll ans=kk*inv%mod;</span><br><span class="line">		    printf(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ll k=dep[x]+dep[y]-<span class="number">2</span>*dep[z];</span><br><span class="line">			k=n-<span class="number">1</span>-k;</span><br><span class="line">			ll t1=w[k];<span class="regexp">//</span>后项 </span><br><span class="line">			int l1=dep[x]-dep[z],l2=dep[y]-dep[z];</span><br><span class="line">			ll fz=jc[l1+l2],fm=jc[l1]*jc[l2]%mod;</span><br><span class="line">			ll niyy=niy(fm);</span><br><span class="line">			ll ans1=fz*niyy%mod;</span><br><span class="line">			ans1=ans1*t1%mod;</span><br><span class="line">			ans1=ans1*inv%mod;</span><br><span class="line">			printf(<span class="string">"%lld\n"</span>,ans1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	ready();</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 200005
+using namespace std;
+typedef long long ll;
+const ll mod=998244353;
+int n,m,x,y;
+ll w[maxn],jc[maxn&lt;&lt;1];
+ll exgcd(ll a,ll b,ll &amp;x,ll &amp;y){
+    if(b==0){x=1;y=0;return a;}
+    else{
+        ll g=exgcd(b,a%b,x,y);
+        ll t=x;
+        x=y;
+        y=t-a/b*y;
+        return g;
+    }
+}
+ll niy(ll k){
+    ll a=k,b=-mod,x,y;
+    ll g=exgcd(a,b,x,y);
+    ll x0=1/g*x;
+    ll t=b/g;
+    if(t&lt;0) t=-t;
+    ll ans=(x0%t+t)%t;
+    return ans;
+}
+void ready(){
+    w[0]=1ll;
+    for(int i=1;i&lt;=maxn-5;i++) w[i]=w[i-1]*2ll%mod;
+    jc[0]=1ll;
+    for(ll i=1;i&lt;=400000;i++) jc[i]=jc[i-1]*i%mod;
+}
+struct eage{
+    int to,next; 
+}e[maxn&lt;&lt;1];
+int np=0,first[maxn];
+void add(int u,int v){
+    e[++np]=(eage){v,first[u]};
+    first[u]=np;
+} 
+int dep[maxn],fa[maxn][19];
+void dfs(int i,int f,int d){
+    dep[i]=d;
+    fa[i][0]=f;
+    for(int j=1;j&lt;=18;j++) fa[i][j]=fa[fa[i][j-1]][j-1];
+    for(int p=first[i];p;p=e[p].next){
+        int j=e[p].to;
+        if(j==f) continue;
+        dfs(j,i,d+1);
+    }
+} 
+int lca(int u,int v){
+    if(dep[u]&lt;dep[v]) swap(u,v);
+    int x=dep[u]-dep[v];
+    for(int i=0;i&lt;=18;i++){
+        if((1&lt;&lt;i)&amp;x) u=fa[u][i];
+    }
+    if(u==v) return u;
+    for(int i=18;i&gt;=0;i--){
+        if(fa[u][i]!=fa[v][i])
+        u=fa[u][i],v=fa[v][i];
+    }
+    return fa[u][0];
+}
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;n;i++){
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        add(x,y);add(y,x);
+    }
+    scanf(&quot;%d&quot;,&amp;m);
+    dfs(1,0,0);
+    ll t=w[n-1];
+    ll inv=niy(t);//分母 
+    for(int i=1;i&lt;=m;i++){
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        if(dep[x]&lt;dep[y]) swap(x,y);
+        int z=lca(x,y);
+        if(z==y){
+            ll k=dep[x]-dep[y];
+            k=n-1-k;
+            ll kk=w[k];
+            ll ans=kk*inv%mod;
+            printf(&quot;%lld\n&quot;,ans);
+        }
+        else{
+            ll k=dep[x]+dep[y]-2*dep[z];
+            k=n-1-k;
+            ll t1=w[k];//后项 
+            int l1=dep[x]-dep[z],l2=dep[y]-dep[z];
+            ll fz=jc[l1+l2],fm=jc[l1]*jc[l2]%mod;
+            ll niyy=niy(fm);
+            ll ans1=fz*niyy%mod;
+            ans1=ans1*t1%mod;
+            ans1=ans1*inv%mod;
+            printf(&quot;%lld\n&quot;,ans1);
+        }
+    }
+}
+int main(){
+    ready();
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -945,12 +1036,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -962,13 +1051,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1032,21 +1118,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

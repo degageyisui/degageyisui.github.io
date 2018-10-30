@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -516,8 +502,102 @@
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>现在文本框中有一个 x 个字符的字符串,希望在经过一系列操作后得到看到<br>一个长度恰好为 n 的字符串。<br>现可以有 5 种操作:<br>1.敲击 1 次键盘,输入一个字符<br>2.敲击 2 次键盘(Ctrl+A),选中所有已经输入的字符<br>3.敲击 2 次键盘(Ctrl+C),复制所有选中的字符到剪贴板<br>4.敲击 2 次键盘(Ctrl+V),把剪贴板中的所有字符输出(不清空剪贴板)<br>5.敲击 1 次键盘(Backspace),若没有选中字符则删除一个字符否则删除所<br>有选中的字符<br>选中状态仅影响复制操作。<br>问至少敲击几次键盘才能得到一个长度为 n 的字符串。</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 100%的数据 $n,x&lt;=10^6$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>这道题思路很nice啊，如果不考虑backspace操作的话，那么是可以递推来做的。但如果有的话，那么可以3次清空为0，然后一直乘2大约140步左右可以大于$10^6$，也就是说极限步数是<br>n+143，实际上会远远不到这个上限，那么若x能到y则连一条边，由调和级数算下来(缩放)大约为nlogn，再最短路跑一遍大约$nlog^2n$，因为上限远远没满卡一下常数能过。(主要为这方面题提供一种思路)</p>
-<h3 id="dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好"><a href="#dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好" class="headerlink" title="dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)"></a>dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 2000305</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,x,dist[maxn];</span><br><span class="line">struct node&#123;</span><br><span class="line">	int v,id;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.v&gt;b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt;q; </span><br><span class="line">bool vis[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;x,&amp;n);</span><br><span class="line">	memset(dist,<span class="number">0x3f</span>,sizeof(dist));</span><br><span class="line">	<span class="keyword">if</span>(x&gt;n)&#123;</span><br><span class="line">	   dist[n]=x-n;</span><br><span class="line">	   dist[<span class="number">0</span>]=<span class="number">3</span>;</span><br><span class="line">	   q.push((node)&#123;dist[<span class="number">0</span>],<span class="number">0</span>&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		dist[n]=n-x;dist[x]=<span class="number">0</span>;q.push((node)&#123;dist[x],x&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		node t=q.top();q.pop();</span><br><span class="line">		int i=t.id;<span class="keyword">if</span>(vis[i]) continue;</span><br><span class="line">		vis[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(i&lt;n) <span class="keyword">if</span>(dist[i+<span class="number">1</span>]&gt;dist[i]+<span class="number">1</span>)&#123;dist[i+<span class="number">1</span>]=dist[i]+<span class="number">1</span>;q.push((node)&#123;dist[i+<span class="number">1</span>],i+<span class="number">1</span>&#125;);&#125;;</span><br><span class="line">		<span class="keyword">if</span>(i==<span class="number">0</span>) continue;</span><br><span class="line">		<span class="keyword">if</span>(dist[i-<span class="number">1</span>]&gt;dist[i]+<span class="number">1</span>)&#123;dist[i-<span class="number">1</span>]=dist[i]+<span class="number">1</span>;q.push((node)&#123;dist[i-<span class="number">1</span>],i-<span class="number">1</span>&#125;);&#125;;</span><br><span class="line">		int len=<span class="number">4</span>;</span><br><span class="line">		int m=<span class="number">2</span>*i;</span><br><span class="line">		<span class="keyword">while</span>(m&lt;=n)&#123;</span><br><span class="line">			<span class="keyword">if</span>(dist[m]&gt;dist[i]+len+<span class="number">2</span>)&#123;</span><br><span class="line">				dist[m]=dist[i]+len+<span class="number">2</span>;q.push((node)&#123;dist[m],m&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">			m=m+i;len+=<span class="number">2</span>; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(dist[n]&gt;dist[i]+len+<span class="number">2</span>+m-n) dist[n]=dist[i]+len+<span class="number">2</span>+m-n;<span class="regexp">//</span>超过的最快方法 </span><br><span class="line">	&#125; </span><br><span class="line">	printf(<span class="string">"%d"</span>,dist[n]);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="spfa-而spfa由于直接按加的顺序展开所以会好很多…"><a href="#spfa-而spfa由于直接按加的顺序展开所以会好很多…" class="headerlink" title="spfa(而spfa由于直接按加的顺序展开所以会好很多…)"></a>spfa(而spfa由于直接按加的顺序展开所以会好很多…)</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 2000305</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,x,dist[maxn];</span><br><span class="line">/*struct node&#123;</span><br><span class="line">	int v,id;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.v&gt;b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/priority_queue&lt;node&gt;q; </span></span><br><span class="line"><span class="regexp">queue&lt;int&gt;q;</span></span><br><span class="line"><span class="regexp">bool vis[maxn];</span></span><br><span class="line"><span class="regexp">void init()&#123;</span></span><br><span class="line"><span class="regexp">	scanf("%d%d",&amp;x,&amp;n);</span></span><br><span class="line"><span class="regexp">	memset(dist,0x3f,sizeof(dist));</span></span><br><span class="line"><span class="regexp">	if(x&gt;n)&#123;</span></span><br><span class="line"><span class="regexp">	   dist[n]=x-n;</span></span><br><span class="line"><span class="regexp">	   dist[0]=3;</span></span><br><span class="line"><span class="regexp">	   q.push(0);vis[0]=1;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	else&#123;</span></span><br><span class="line"><span class="regexp">		dist[n]=n-x;dist[x]=0;q.push(x);vis[x]=1;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	while(!q.empty())&#123;</span></span><br><span class="line"><span class="regexp">		int i=q.front();q.pop();</span></span><br><span class="line"><span class="regexp">		vis[i]=0;</span></span><br><span class="line"><span class="regexp">		if(i&lt;n) if(dist[i+1]&gt;dist[i]+1)&#123;dist[i+1]=dist[i]+1;if(!vis[i+1]) vis[i+1]=1,q.push(i+1);&#125;;</span></span><br><span class="line"><span class="regexp">		if(i==0) continue;</span></span><br><span class="line"><span class="regexp">		if(dist[i-1]&gt;dist[i]+1)&#123;dist[i-1]=dist[i]+1;if(!vis[i-1]) vis[i-1]=1,q.push(i-1);&#125;;</span></span><br><span class="line"><span class="regexp">		int len=4;</span></span><br><span class="line"><span class="regexp">		int m=2*i;</span></span><br><span class="line"><span class="regexp">		while(m&lt;=n)&#123;</span></span><br><span class="line"><span class="regexp">			if(dist[m]&gt;dist[i]+len+2)&#123;</span></span><br><span class="line"><span class="regexp">				dist[m]=dist[i]+len+2;if(!vis[m]) vis[m]=1,q.push(m);</span></span><br><span class="line"><span class="regexp">			&#125;</span></span><br><span class="line"><span class="regexp">			m=m+i;len+=2; </span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">		if(dist[n]&gt;dist[i]+len+2+m-n) dist[n]=dist[i]+len+2+m-n;/</span><span class="regexp">/超过的最快方法 </span></span><br><span class="line"><span class="regexp">	&#125; </span></span><br><span class="line"><span class="regexp">	printf("%d",dist[n]);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好"><a href="#dij代码-会T三个点qwq，可能以为1-5操作距离太近不太友好" class="headerlink" title="dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)"></a>dij代码(会T三个点qwq，可能以为1,5操作距离太近不太友好)</h3><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 2000305
+using namespace std;
+int n,x,dist[maxn];
+struct node{
+    int v,id;
+    friend bool operator &lt;(node a,node b){
+        return a.v&gt;b.v;
+    }
+};
+priority_queue&lt;node&gt;q; 
+bool vis[maxn];
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+    memset(dist,0x3f,sizeof(dist));
+    if(x&gt;n){
+       dist[n]=x-n;
+       dist[0]=3;
+       q.push((node){dist[0],0});
+    }
+    else{
+        dist[n]=n-x;dist[x]=0;q.push((node){dist[x],x});
+    }
+    while(!q.empty()){
+        node t=q.top();q.pop();
+        int i=t.id;if(vis[i]) continue;
+        vis[i]=1;
+        if(i&lt;n) if(dist[i+1]&gt;dist[i]+1){dist[i+1]=dist[i]+1;q.push((node){dist[i+1],i+1});};
+        if(i==0) continue;
+        if(dist[i-1]&gt;dist[i]+1){dist[i-1]=dist[i]+1;q.push((node){dist[i-1],i-1});};
+        int len=4;
+        int m=2*i;
+        while(m&lt;=n){
+            if(dist[m]&gt;dist[i]+len+2){
+                dist[m]=dist[i]+len+2;q.push((node){dist[m],m});
+            }
+            m=m+i;len+=2; 
+        }
+        if(dist[n]&gt;dist[i]+len+2+m-n) dist[n]=dist[i]+len+2+m-n;//超过的最快方法 
+    } 
+    printf(&quot;%d&quot;,dist[n]);
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
+<h3 id="spfa-而spfa由于直接按加的顺序展开所以会好很多…"><a href="#spfa-而spfa由于直接按加的顺序展开所以会好很多…" class="headerlink" title="spfa(而spfa由于直接按加的顺序展开所以会好很多…)"></a>spfa(而spfa由于直接按加的顺序展开所以会好很多…)</h3><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 2000305
+using namespace std;
+int n,x,dist[maxn];
+/*struct node{
+    int v,id;
+    friend bool operator &lt;(node a,node b){
+        return a.v&gt;b.v;
+    }
+};*/
+//priority_queue&lt;node&gt;q; 
+queue&lt;int&gt;q;
+bool vis[maxn];
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;x,&amp;n);
+    memset(dist,0x3f,sizeof(dist));
+    if(x&gt;n){
+       dist[n]=x-n;
+       dist[0]=3;
+       q.push(0);vis[0]=1;
+    }
+    else{
+        dist[n]=n-x;dist[x]=0;q.push(x);vis[x]=1;
+    }
+    while(!q.empty()){
+        int i=q.front();q.pop();
+        vis[i]=0;
+        if(i&lt;n) if(dist[i+1]&gt;dist[i]+1){dist[i+1]=dist[i]+1;if(!vis[i+1]) vis[i+1]=1,q.push(i+1);};
+        if(i==0) continue;
+        if(dist[i-1]&gt;dist[i]+1){dist[i-1]=dist[i]+1;if(!vis[i-1]) vis[i-1]=1,q.push(i-1);};
+        int len=4;
+        int m=2*i;
+        while(m&lt;=n){
+            if(dist[m]&gt;dist[i]+len+2){
+                dist[m]=dist[i]+len+2;if(!vis[m]) vis[m]=1,q.push(m);
+            }
+            m=m+i;len+=2; 
+        }
+        if(dist[n]&gt;dist[i]+len+2+m-n) dist[n]=dist[i]+len+2+m-n;//超过的最快方法 
+    } 
+    printf(&quot;%d&quot;,dist[n]);
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -941,12 +1021,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -958,13 +1036,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1028,21 +1103,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

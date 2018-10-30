@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -522,7 +508,62 @@
 <p>2.将随便一个标记点与所以非标记点连边；</p>
 <p>3.再随便一个非标记点与未加入图中的点连边来保证图的联通；</p>
 <p>4.最后随便加未加的边使边数凑够m即可；</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 310</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,m,k,x,num;</span><br><span class="line">bool vis[maxn],iss[maxn][maxn],viss[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) iss[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=k;i++) scanf(<span class="string">"%d"</span>,&amp;x),vis[x]=<span class="number">1</span>;</span><br><span class="line">    num=n-k;</span><br><span class="line">    int maxx=(n-<span class="number">1</span>)*(n-<span class="number">2</span>)/<span class="number">2</span>+num;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;maxx<span class="params">||</span>k==n)&#123;</span><br><span class="line">        printf(<span class="string">"-1"</span>);<span class="keyword">return</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    int t,tt=<span class="number">1</span>;int calc=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!vis[tt]) tt++; </span><br><span class="line">    viss[tt]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            t=i;</span><br><span class="line">            viss[t]=<span class="number">1</span>;</span><br><span class="line">            printf(<span class="string">"%d %d\n"</span>,t,tt);</span><br><span class="line">            iss[t][tt]=iss[tt][t]=<span class="number">1</span>;</span><br><span class="line">            calc++; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /<span class="regexp">/保证联通 </span></span><br><span class="line"><span class="regexp">    for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">        if(viss[i]) continue;</span></span><br><span class="line"><span class="regexp">        printf("%d %d\n",i,t); </span></span><br><span class="line"><span class="regexp">        iss[i][t]=iss[t][i]=1;</span></span><br><span class="line"><span class="regexp">        calc++;</span></span><br><span class="line"><span class="regexp">        if(calc==m) break;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">        if(calc==m) break;</span></span><br><span class="line"><span class="regexp">        if(i==tt) continue;</span></span><br><span class="line"><span class="regexp">        for(int j=1;j&lt;=n;j++)&#123;</span></span><br><span class="line"><span class="regexp">            if(j==tt) continue;</span></span><br><span class="line"><span class="regexp">            if(iss[i][j]) continue;</span></span><br><span class="line"><span class="regexp">            printf("%d %d\n",i,j);</span></span><br><span class="line"><span class="regexp">            calc++;</span></span><br><span class="line"><span class="regexp">            iss[i][j]=iss[j][i]=1;</span></span><br><span class="line"><span class="regexp">            if(calc==m) break;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 310
+using namespace std;
+int n,m,k,x,num;
+bool vis[maxn],iss[maxn][maxn],viss[maxn];
+void init(){
+    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k);
+    for(int i=1;i&lt;=n;i++) iss[i][i]=1;
+    for(int i=1;i&lt;=k;i++) scanf(&quot;%d&quot;,&amp;x),vis[x]=1;
+    num=n-k;
+    int maxx=(n-1)*(n-2)/2+num;
+    if(m&gt;maxx||k==n){
+        printf(&quot;-1&quot;);return;
+    } 
+    int t,tt=1;int calc=0;
+    while(!vis[tt]) tt++; 
+    viss[tt]=1;
+    for(int i=1;i&lt;=n;i++){
+        if(!vis[i]){
+            t=i;
+            viss[t]=1;
+            printf(&quot;%d %d\n&quot;,t,tt);
+            iss[t][tt]=iss[tt][t]=1;
+            calc++; 
+        }
+    }
+
+    //保证联通 
+    for(int i=1;i&lt;=n;i++){
+        if(viss[i]) continue;
+        printf(&quot;%d %d\n&quot;,i,t); 
+        iss[i][t]=iss[t][i]=1;
+        calc++;
+        if(calc==m) break;
+    }
+
+
+    for(int i=1;i&lt;=n;i++){
+        if(calc==m) break;
+        if(i==tt) continue;
+        for(int j=1;j&lt;=n;j++){
+            if(j==tt) continue;
+            if(iss[i][j]) continue;
+            printf(&quot;%d %d\n&quot;,i,j);
+            calc++;
+            iss[i][j]=iss[j][i]=1;
+            if(calc==m) break;
+        }
+    }
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -946,12 +987,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -963,13 +1002,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1013,21 +1049,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

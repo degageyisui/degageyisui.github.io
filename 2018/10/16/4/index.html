@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -514,7 +500,108 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h1 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h1><p>emmmmmmmm，这道题题意读错了a，有点难受…很考细节的一道题，同时告诉我们细节题要对拍。<br>首先我们要维护的是最大的剩余空间，但实质上是最大的最近距离，比如区间所剩为5和4，实际上它们的最近距离都为2。在设定友好函数时要注意。<br><a id="more"></a><br>在处理好一般操作之后是特判，主要就是对于两端的处理，因为它们是独立成段的(图中红色部分)，所以只要红色长度大于最近距离即更优。<br><del><font color="green">垃圾贴图库炸了，已换图床不会再出现此种情况</font></del><br>最后要注意标号尽可能小的细节。</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 200005</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int l,r;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">	<span class="keyword">if</span>((a.r-a.l)/<span class="number">2</span>!=(b.r-b.l)/<span class="number">2</span>)<span class="keyword">return</span> (a.r-a.l)/<span class="number">2</span>&gt;(b.r-b.l)/<span class="number">2</span>;</span><br><span class="line">  /<span class="regexp">/排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 </span></span><br><span class="line"><span class="regexp">	else return a.l&lt;b.l;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">set&lt;node&gt;s;</span></span><br><span class="line"><span class="regexp">set&lt;node&gt;::iterator it;</span></span><br><span class="line"><span class="regexp">int n,m,x,y;</span></span><br><span class="line"><span class="regexp">map&lt;int,int&gt;mp;</span></span><br><span class="line"><span class="regexp">int pre[maxn],next[maxn],st[maxn],rk[maxn];</span></span><br><span class="line"><span class="regexp">int np=0; </span></span><br><span class="line"><span class="regexp">void init()&#123;</span></span><br><span class="line"><span class="regexp">	scanf("%d%d",&amp;n,&amp;m);</span></span><br><span class="line"><span class="regexp">	s.insert((node)&#123;0,n+1&#125;);</span></span><br><span class="line"><span class="regexp">	pre[0]=0;next[0]=n+1;pre[n+1]=0;next[n+1]=n+1;</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=m;i++)&#123;</span></span><br><span class="line"><span class="regexp">		scanf("%d%d",&amp;x,&amp;y);</span></span><br><span class="line"><span class="regexp">		/</span>*<span class="keyword">if</span>(x==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(t.l==<span class="number">0</span>&amp;&amp;t.r==n+<span class="number">1</span>)&#123;</span><br><span class="line">				st[np]=<span class="number">1</span>;</span><br><span class="line">				rk[<span class="number">1</span>]=np;</span><br><span class="line">				<span class="keyword">next</span>[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">next</span>[<span class="number">1</span>]=n+<span class="number">1</span>;</span><br><span class="line">				pre[n+<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">				s.erase((node)&#123;<span class="number">0</span>,n+<span class="number">1</span>&#125;);</span><br><span class="line">				s.insert((node)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);s.insert((node)&#123;<span class="number">1</span>,n+<span class="number">1</span>&#125;);</span><br><span class="line">				printf(<span class="string">"1\n"</span>);continue;</span><br><span class="line">			&#125;	</span><br><span class="line">			<span class="keyword">if</span>(t.l==<span class="number">1</span>&amp;&amp;t.r==n+<span class="number">1</span>)&#123;</span><br><span class="line">				st[np]=n;</span><br><span class="line">				rk[n]=np;</span><br><span class="line">				pre[n]=<span class="number">1</span>;</span><br><span class="line">				<span class="keyword">next</span>[n]=n+<span class="number">1</span>;</span><br><span class="line">				pre[n+<span class="number">1</span>]=n;</span><br><span class="line">				<span class="keyword">next</span>[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">				s.erase((node)&#123;<span class="number">1</span>,n+<span class="number">1</span>&#125;);</span><br><span class="line">				s.insert((node)&#123;<span class="number">1</span>,n&#125;);s.insert((node)&#123;n,n+<span class="number">1</span>&#125;);</span><br><span class="line">				printf(<span class="string">"%d\n"</span>,n);continue;</span><br><span class="line">			&#125;*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">			if(x==1)&#123;</span></span><br><span class="line"><span class="regexp">			mp[y]=++np;</span></span><br><span class="line"><span class="regexp">			it=s.begin();</span></span><br><span class="line"><span class="regexp">			node t=*it;</span></span><br><span class="line"><span class="regexp">			int len=(t.r-t.l)/</span><span class="number">2</span>;</span><br><span class="line">			bool ok1=<span class="literal">false</span>,ok2=<span class="literal">false</span>;</span><br><span class="line">			int len1=<span class="number">0</span>,len2=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!rk[<span class="number">1</span>]) len1=<span class="keyword">next</span>[<span class="number">0</span>]-<span class="number">1</span>;<span class="keyword">if</span>(!rk[n]) len2=n-pre[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(len2&gt;len1) ok2=<span class="literal">true</span>;<span class="keyword">else</span> ok1=<span class="literal">true</span>;<span class="regexp">//</span>标号 </span><br><span class="line">			<span class="keyword">if</span>(!rk[<span class="number">1</span>]&amp;&amp;ok1)&#123;<span class="regexp">//</span>要考虑两端点的问题</span><br><span class="line">				<span class="keyword">if</span>(<span class="keyword">next</span>[<span class="number">0</span>]-<span class="number">1</span>&gt;=len)&#123;<span class="regexp">//</span>标号优先 </span><br><span class="line">					st[np]=<span class="number">1</span>;</span><br><span class="line">				    rk[<span class="number">1</span>]=np;</span><br><span class="line">				    <span class="keyword">next</span>[<span class="number">1</span>]=<span class="keyword">next</span>[<span class="number">0</span>];pre[<span class="keyword">next</span>[<span class="number">0</span>]]=<span class="number">1</span>;<span class="keyword">next</span>[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">				    s.erase((node)&#123;<span class="number">0</span>,<span class="keyword">next</span>[<span class="number">1</span>]&#125;);</span><br><span class="line">				    s.insert((node)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;<span class="number">1</span>,<span class="keyword">next</span>[<span class="number">1</span>]&#125;);</span><br><span class="line">				    printf(<span class="string">"1\n"</span>);continue;</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(!rk[n]&amp;&amp;ok2)&#123;</span><br><span class="line">				<span class="keyword">if</span>(n-pre[n+<span class="number">1</span>]&gt;len)&#123;</span><br><span class="line">					st[np]=n;</span><br><span class="line">				    rk[n]=np;</span><br><span class="line">				    pre[n]=pre[n+<span class="number">1</span>];<span class="keyword">next</span>[pre[n+<span class="number">1</span>]]=n;pre[n+<span class="number">1</span>]=n;</span><br><span class="line">				    s.erase((node)&#123;pre[n],n+<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;n,n+<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;pre[n],n&#125;);</span><br><span class="line">				    printf(<span class="string">"%d\n"</span>,n);continue;</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">		int position=t.l+len;rk[position]=np;st[np]=position;</span><br><span class="line">    pre[position]=t.l;<span class="keyword">next</span>[position]=t.r;pre[t.r]=position;</span><br><span class="line">	  <span class="keyword">next</span>[t.l]=position;	</span><br><span class="line">		printf(<span class="string">"%d\n"</span>,position);	</span><br><span class="line">		s.erase((node)&#123;pre[position],<span class="keyword">next</span>[position]&#125;); </span><br><span class="line">		s.insert((node)&#123;pre[position],position&#125;);</span><br><span class="line">    s.insert((node)&#123;position,<span class="keyword">next</span>[position]&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">		int t=st[mp[y]];</span><br><span class="line">		s.erase((node)&#123;pre[t],t&#125;);</span><br><span class="line">		s.erase((node)&#123;t,<span class="keyword">next</span>[t]&#125;);</span><br><span class="line">		s.insert((node)&#123;pre[t],<span class="keyword">next</span>[t]&#125;);</span><br><span class="line">		rk[t]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">next</span>[pre[t]]=<span class="keyword">next</span>[t];</span><br><span class="line">		pre[<span class="keyword">next</span>[t]]=pre[t];</span><br><span class="line">		pre[t]=<span class="keyword">next</span>[t]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 200005
+using namespace std;
+struct node{
+    int l,r;
+    friend bool operator &lt;(node a,node b){
+    if((a.r-a.l)/2!=(b.r-b.l)/2)return (a.r-a.l)/2&gt;(b.r-b.l)/2;
+  //排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 
+    else return a.l&lt;b.l;
+    }
+};
+set&lt;node&gt;s;
+set&lt;node&gt;::iterator it;
+int n,m,x,y;
+map&lt;int,int&gt;mp;
+int pre[maxn],next[maxn],st[maxn],rk[maxn];
+int np=0; 
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    s.insert((node){0,n+1});
+    pre[0]=0;next[0]=n+1;pre[n+1]=0;next[n+1]=n+1;
+    for(int i=1;i&lt;=m;i++){
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        /*if(x==1){
+            if(t.l==0&amp;&amp;t.r==n+1){
+                st[np]=1;
+                rk[1]=np;
+                next[0]=1;
+                next[1]=n+1;
+                pre[n+1]=1;
+                s.erase((node){0,n+1});
+                s.insert((node){0,1});s.insert((node){1,n+1});
+                printf(&quot;1\n&quot;);continue;
+            }    
+            if(t.l==1&amp;&amp;t.r==n+1){
+                st[np]=n;
+                rk[n]=np;
+                pre[n]=1;
+                next[n]=n+1;
+                pre[n+1]=n;
+                next[0]=1;
+                s.erase((node){1,n+1});
+                s.insert((node){1,n});s.insert((node){n,n+1});
+                printf(&quot;%d\n&quot;,n);continue;
+            }*/
+            if(x==1){
+            mp[y]=++np;
+            it=s.begin();
+            node t=*it;
+            int len=(t.r-t.l)/2;
+            bool ok1=false,ok2=false;
+            int len1=0,len2=0;
+            if(!rk[1]) len1=next[0]-1;if(!rk[n]) len2=n-pre[n+1];
+            if(len2&gt;len1) ok2=true;else ok1=true;//标号 
+            if(!rk[1]&amp;&amp;ok1){//要考虑两端点的问题
+                if(next[0]-1&gt;=len){//标号优先 
+                    st[np]=1;
+                    rk[1]=np;
+                    next[1]=next[0];pre[next[0]]=1;next[0]=1;
+                    s.erase((node){0,next[1]});
+                    s.insert((node){0,1});
+                    s.insert((node){1,next[1]});
+                    printf(&quot;1\n&quot;);continue;
+                } 
+            }
+            if(!rk[n]&amp;&amp;ok2){
+                if(n-pre[n+1]&gt;len){
+                    st[np]=n;
+                    rk[n]=np;
+                    pre[n]=pre[n+1];next[pre[n+1]]=n;pre[n+1]=n;
+                    s.erase((node){pre[n],n+1});
+                    s.insert((node){n,n+1});
+                    s.insert((node){pre[n],n});
+                    printf(&quot;%d\n&quot;,n);continue;
+                } 
+            }
+        int position=t.l+len;rk[position]=np;st[np]=position;
+    pre[position]=t.l;next[position]=t.r;pre[t.r]=position;
+      next[t.l]=position;    
+        printf(&quot;%d\n&quot;,position);    
+        s.erase((node){pre[position],next[position]}); 
+        s.insert((node){pre[position],position});
+    s.insert((node){position,next[position]});
+        }
+        else{
+        int t=st[mp[y]];
+        s.erase((node){pre[t],t});
+        s.erase((node){t,next[t]});
+        s.insert((node){pre[t],next[t]});
+        rk[t]=0;
+        next[pre[t]]=next[t];
+        pre[next[t]]=pre[t];
+        pre[t]=next[t]=0;
+        }
+    }
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -938,12 +1025,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -955,13 +1040,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1005,21 +1087,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

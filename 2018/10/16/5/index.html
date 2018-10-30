@@ -84,11 +84,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -445,15 +440,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -530,7 +516,48 @@
 <p>空间限制： 512MB</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>woc这道题思路很Nice啊。<br>首先会想到肯定每个数进行一定次数之后会循环(不然就没法做了a)。<br>然后这里应该要想到我们对当前的数求循环的时候，我们事实上已经对所有经过的数求出来<br>了，这样稍微处理一下就可以保证每个数只被访问一次。<br>但这样还是会T a。。。<br>于是探究性质：发现对于一个x进行a+b次操作等于先将x进行a次操作，再进行b次操作，或者反过来，再进一步想到可以倍增预处理(Nice啊).这样就欧克了a(注意倍增不要写错a在刷状态的时候QAQ)</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>1.以后遇到这种性质都可以考虑倍增(LCA也有这种性质嘛)<br>2.补充一下姿势（雾<br>%nd 输出的整型宽度至少为n位，右对齐，%5d即宽度至少为5位，位数大于5则输出实际位数<br>%0nd 用得比较多，表示输出的整型宽度至少为n位，不足n位用0填充<br>printf（”%05d”,1）输出：00001<br>printf（”%5d”,1）输出：<em>**</em>1（$*$为空格）</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 100005</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,x,c;</span><br><span class="line">int g[<span class="number">100005</span>][<span class="number">31</span>],mx,mn,a[<span class="number">7</span>];</span><br><span class="line">int cmp(int x,int y)&#123;</span><br><span class="line">	<span class="keyword">return</span> x&gt;y;</span><br><span class="line">&#125;</span><br><span class="line">int f(int x)&#123;</span><br><span class="line">    memset(a,<span class="number">0</span>,sizeof(a));</span><br><span class="line">    int pos=<span class="number">6</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)&#123;</span><br><span class="line">    	a[--pos]=x%<span class="number">10</span>;x/=<span class="number">10</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	sort(a+<span class="number">1</span>,a+<span class="number">6</span>);mn=a[<span class="number">1</span>]*<span class="number">10000</span>+a[<span class="number">2</span>]*<span class="number">1000</span>+a[<span class="number">3</span>]*<span class="number">100</span>+a[<span class="number">4</span>]*<span class="number">10</span>+a[<span class="number">5</span>];</span><br><span class="line">	sort(a+<span class="number">1</span>,a+<span class="number">6</span>,cmp);mx=a[<span class="number">1</span>]*<span class="number">10000</span>+a[<span class="number">2</span>]*<span class="number">1000</span>+a[<span class="number">3</span>]*<span class="number">100</span>+a[<span class="number">4</span>]*<span class="number">10</span>+a[<span class="number">5</span>];</span><br><span class="line">	<span class="keyword">return</span> mx-mn;</span><br><span class="line">&#125;</span><br><span class="line">void pre()&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">99999</span>;i++) g[i][<span class="number">0</span>]=f(i);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=<span class="number">30</span>;j++)</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">99999</span>;i++) g[i][j]=g[g[i][j-<span class="number">1</span>]][j-<span class="number">1</span>]; </span><br><span class="line">&#125;</span><br><span class="line">bool vis[<span class="number">31</span>];</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;c);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">30</span>;i++) <span class="keyword">if</span>(c&amp;(<span class="number">1</span>&lt;&lt;i)) vis[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">		<span class="keyword">for</span>(int j=<span class="number">0</span>;j&lt;=<span class="number">30</span>;j++) <span class="keyword">if</span>(vis[j]) x=g[x][j];</span><br><span class="line">		printf(<span class="string">"%05d\n"</span>,x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	pre();</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 100005
+using namespace std;
+int n,x,c;
+int g[100005][31],mx,mn,a[7];
+int cmp(int x,int y){
+    return x&gt;y;
+}
+int f(int x){
+    memset(a,0,sizeof(a));
+    int pos=6;
+    while(x){
+        a[--pos]=x%10;x/=10;
+    } 
+    sort(a+1,a+6);mn=a[1]*10000+a[2]*1000+a[3]*100+a[4]*10+a[5];
+    sort(a+1,a+6,cmp);mx=a[1]*10000+a[2]*1000+a[3]*100+a[4]*10+a[5];
+    return mx-mn;
+}
+void pre(){
+    for(int i=0;i&lt;=99999;i++) g[i][0]=f(i);
+
+    for(int j=1;j&lt;=30;j++)
+    for(int i=0;i&lt;=99999;i++) g[i][j]=g[g[i][j-1]][j-1]; 
+}
+bool vis[31];
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;c);
+    for(int i=0;i&lt;=30;i++) if(c&amp;(1&lt;&lt;i)) vis[i]=1;
+    for(int i=1;i&lt;=n;i++){
+        scanf(&quot;%d&quot;,&amp;x);
+        for(int j=0;j&lt;=30;j++) if(vis[j]) x=g[x][j];
+        printf(&quot;%05d\n&quot;,x);
+    }
+}
+int main(){
+    pre();
+    init();
+
+    return 0;
+}
+</code></pre>
+
         
     
 
@@ -953,12 +980,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -970,13 +995,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1020,21 +1042,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

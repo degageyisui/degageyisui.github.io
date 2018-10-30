@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -516,7 +502,44 @@
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定一个长度为n只包含左括号和右括号的序列，现在小R想要知道经过每一个位置的合法子串有多少个（空串是一个合法的串，如果A和B都是合法的串，那么(A)和AB都是合法的串）。</p>
 <p>共T组数据，对于每组数据，输出一个整数表示答案，令$ans_i$为经过第i个位置的子串个数，那么你需要输出$\sum^{n}_{i=1}(i×ans_i mod 1e9+7)$。$（1≤T≤10,n≤10^6）$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于每一个合法的串内部扩起来的，我们对它所涵盖的加1，那么会想到差分，如图:<br><img src="https://s1.ax1x.com/2018/10/29/i2dUXj.png" alt=""><br>即为差分的方式:在左端点加1，在右端点+1的地方减1.<br>首先是可以暴力维护的，但是肯定会超时，那么我使用递推来将其优化到O(n).</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 1000005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">1000000007</span>;</span><br><span class="line">int t;</span><br><span class="line">char s[maxn];</span><br><span class="line">int st[maxn],top=<span class="number">0</span>,q[maxn],h[maxn],pre[maxn],<span class="keyword">next</span>[maxn];</span><br><span class="line">ll val[maxn];<span class="regexp">//q</span>,<span class="symbol">h:</span>前后括号 </span><br><span class="line">void init()&#123;</span><br><span class="line">	memset(h,<span class="number">0</span>,sizeof(h));</span><br><span class="line">	memset(q,<span class="number">0</span>,sizeof(q));</span><br><span class="line">	memset(pre,<span class="number">0</span>,sizeof(pre));</span><br><span class="line">	memset(<span class="keyword">next</span>,<span class="number">0</span>,sizeof(<span class="keyword">next</span>));</span><br><span class="line">	scanf(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">	int len=strlen(s+<span class="number">1</span>);</span><br><span class="line">	top=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;s[i];i++)&#123;</span><br><span class="line">       <span class="keyword">if</span>(s[i]==<span class="string">'('</span>) st[++top]=i;</span><br><span class="line">       <span class="keyword">else</span>	<span class="keyword">if</span>(top) h[st[top]]=i+<span class="number">1</span>,q[i+<span class="number">1</span>]=st[top],top--;<span class="regexp">//</span>标记后一个括号和前一个括号 </span><br><span class="line">	&#125;</span><br><span class="line">	int i; </span><br><span class="line">	<span class="keyword">for</span>(i=len+<span class="number">1</span>;i&gt;=<span class="number">1</span>;i--)&#123;<span class="keyword">next</span>[i]++;<span class="keyword">next</span>[q[i]]+=<span class="keyword">next</span>[i];&#125; /<span class="regexp">/对前面括号造成贡献</span></span><br><span class="line"><span class="regexp">	for(i=1;s[i];i++)&#123;pre[i]--;pre[h[i]]+=pre[i];&#125; /</span><span class="regexp">/对后面括号造成贡献 </span></span><br><span class="line"><span class="regexp">    for(i=1;s[i];i++) val[i]=pre[i]+next[i];</span></span><br><span class="line"><span class="regexp">    for(i=1;s[i];i++) val[i]+=val[i-1];/</span><span class="regexp">/差分 </span></span><br><span class="line"><span class="regexp">    ll ans=0;</span></span><br><span class="line"><span class="regexp">    for(i=1;s[i];i++) ans=(ans+val[i]*1ll*i%mod);</span></span><br><span class="line"><span class="regexp">    printf("%lld\n",ans);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">	scanf("%d",&amp;t);</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=t;i++) init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 1000005
+using namespace std;
+typedef long long ll;
+const ll mod=1000000007;
+int t;
+char s[maxn];
+int st[maxn],top=0,q[maxn],h[maxn],pre[maxn],next[maxn];
+ll val[maxn];//q,h:前后括号 
+void init(){
+    memset(h,0,sizeof(h));
+    memset(q,0,sizeof(q));
+    memset(pre,0,sizeof(pre));
+    memset(next,0,sizeof(next));
+    scanf(&quot;%s&quot;,s+1);
+    int len=strlen(s+1);
+    top=0;
+    for(int i=1;s[i];i++){
+       if(s[i]==&#39;(&#39;) st[++top]=i;
+       else    if(top) h[st[top]]=i+1,q[i+1]=st[top],top--;//标记后一个括号和前一个括号 
+    }
+    int i; 
+    for(i=len+1;i&gt;=1;i--){next[i]++;next[q[i]]+=next[i];} //对前面括号造成贡献
+    for(i=1;s[i];i++){pre[i]--;pre[h[i]]+=pre[i];} //对后面括号造成贡献 
+    for(i=1;s[i];i++) val[i]=pre[i]+next[i];
+    for(i=1;s[i];i++) val[i]+=val[i-1];//差分 
+    ll ans=0;
+    for(i=1;s[i];i++) ans=(ans+val[i]*1ll*i%mod);
+    printf(&quot;%lld\n&quot;,ans);
+}
+int main(){
+    scanf(&quot;%d&quot;,&amp;t);
+    for(int i=1;i&lt;=t;i++) init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -940,12 +963,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -957,13 +978,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1027,21 +1045,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

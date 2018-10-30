@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -521,7 +507,117 @@
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤10<br>对于 100%的数据： N≤100 000</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>比较水的一道贪心a，只是要注意细节，维护两个东西：最小费用和最小字典序。<br>显然最小费用优先级更大。我们枚举相同的k个数字从0到9，对于每一个确定的st,<br>用i=0~9依次考虑变的数字，注意先执行st+i，再执行st-i以保证字典序最优。<br>然后对于小于st的从后往前改，大于st的从前往后改来保证字典序。</p>
 <h4 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h4><p>（想好细节,think twice,code once）<br>上代码：</p>
-<h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cctype&gt;</span></span><br><span class="line"><span class="comment">#include&lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include&lt;queue&gt;</span></span><br><span class="line"><span class="comment">#include&lt;map&gt;</span></span><br><span class="line"><span class="comment">#include&lt;set&gt; </span></span><br><span class="line"><span class="comment">#define maxn 100005</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,k;</span><br><span class="line">char s[maxn];</span><br><span class="line">char ss[maxn];</span><br><span class="line">char tt[maxn];</span><br><span class="line">int cnt[<span class="number">10</span>];</span><br><span class="line">int minn=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">int yb[<span class="number">10</span>];</span><br><span class="line">int calc[<span class="number">10</span>];</span><br><span class="line">bool cmp()&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(tt[i]&lt;ss[i]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(tt[i]&gt;ss[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	scanf(<span class="string">"%s"</span>,s+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) cnt[s[i]-<span class="string">'0'</span>]++,ss[i]=<span class="string">'9'</span>;<span class="regexp">//</span>最大化 </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(int st=<span class="number">0</span>;st&lt;=<span class="number">9</span>;st++)&#123;</span><br><span class="line">		int t=k;<span class="regexp">//</span>要变的个数 </span><br><span class="line">		int ans=<span class="number">0</span>;<span class="regexp">//</span>要花的钱 </span><br><span class="line">		<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">9</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(cnt[st]&gt;=t) <span class="keyword">break</span>;</span><br><span class="line">				t-=cnt[st];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				int t1=st+i,t2=st-i;</span><br><span class="line">				<span class="keyword">if</span>(t1&lt;=<span class="number">9</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(cnt[t1]&gt;=t)&#123;ans+=t*i;<span class="keyword">break</span>;&#125;</span><br><span class="line">					t-=cnt[t1];ans+=cnt[t1]*i;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(t2&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(cnt[t2]&gt;=t)&#123;ans+=t*i;<span class="keyword">break</span>;&#125;</span><br><span class="line">					t-=cnt[t2];ans+=cnt[t2]*i;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		minn=min(minn,ans);</span><br><span class="line">	    calc[st]=ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(int st=<span class="number">0</span>;st&lt;=<span class="number">9</span>;st++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(calc[st]==minn)&#123;</span><br><span class="line">		<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) tt[i]=s[i];</span><br><span class="line">		memset(yb,<span class="number">0</span>,sizeof(yb));</span><br><span class="line">		int t=k;<span class="regexp">//</span>要变的个数 </span><br><span class="line">		<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">9</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">if</span>(cnt[st]&gt;=t) <span class="keyword">break</span>;</span><br><span class="line">				t-=cnt[st];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span>&#123;</span><br><span class="line">				int t1=st+i,t2=st-i;</span><br><span class="line">				<span class="keyword">if</span>(t1&lt;=<span class="number">9</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(cnt[t1]&gt;=t)&#123;yb[t1]=t;<span class="keyword">break</span>;&#125;</span><br><span class="line">					t-=cnt[t1];yb[t1]=cnt[t1];</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(t2&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">					<span class="keyword">if</span>(cnt[t2]&gt;=t)&#123;yb[t2]=t;<span class="keyword">break</span>;&#125;</span><br><span class="line">					t-=cnt[t2];yb[t2]=cnt[t2];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">9</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(yb[i])&#123;</span><br><span class="line">				<span class="keyword">if</span>(i&gt;st)&#123;</span><br><span class="line">					<span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=n;j++) <span class="keyword">if</span>(s[j]==(i+<span class="string">'0'</span>)) <span class="keyword">if</span>(yb[i])tt[j]=st+<span class="string">'0'</span>,yb[i]--; <span class="keyword">else</span>&#123;<span class="keyword">break</span>;&#125; </span><br><span class="line">				&#125; </span><br><span class="line">				<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">for</span>(int j=n;j&gt;=<span class="number">1</span>;j--) <span class="keyword">if</span>(s[j]==(i+<span class="string">'0'</span>)) <span class="keyword">if</span>(yb[i])tt[j]=st+<span class="string">'0'</span>,yb[i]--; <span class="keyword">else</span>&#123;<span class="keyword">break</span>;&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(cmp()) <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) ss[i]=tt[i];	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"%d\n"</span>,minn);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) printf(<span class="string">"%c"</span>,ss[i]);</span><br><span class="line">    /*memset(dp,<span class="number">0x3f</span>,sizeof(dp));</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++) dp[<span class="number">0</span>][i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=min(i,k);j++)</span><br><span class="line">    <span class="keyword">for</span>(int kk=<span class="number">1</span>;kk&lt;=<span class="number">9</span>;kk++)&#123;</span><br><span class="line">    	dp[j][kk]=min(dp[j][kk],dp[j-<span class="number">1</span>][kk]+abs(s[i]-<span class="string">'0'</span>-kk)); </span><br><span class="line">    &#125;</span><br><span class="line">    int minn=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++) minn=min(minn,dp[k][i]);</span><br><span class="line">    printf(<span class="string">"%d"</span>,minn);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/freopen("canteen.in","r",stdin);</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/freopen("canteen.out","w",stdout);</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cctype&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+#include&lt;set&gt; 
+#define maxn 100005
+using namespace std;
+int n,k;
+char s[maxn];
+char ss[maxn];
+char tt[maxn];
+int cnt[10];
+int minn=0x3f3f3f3f;
+int yb[10];
+int calc[10];
+bool cmp(){
+    for(int i=1;i&lt;=n;i++){
+        if(tt[i]&lt;ss[i]) return true;
+        else if(tt[i]&gt;ss[i]) return false;
+    }
+    return false;
+}
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+    scanf(&quot;%s&quot;,s+1);
+    for(int i=1;i&lt;=n;i++) cnt[s[i]-&#39;0&#39;]++,ss[i]=&#39;9&#39;;//最大化 
+
+    for(int st=0;st&lt;=9;st++){
+        int t=k;//要变的个数 
+        int ans=0;//要花的钱 
+        for(int i=0;i&lt;=9;i++){
+            if(i==0){
+                if(cnt[st]&gt;=t) break;
+                t-=cnt[st];
+            }
+            else{
+                int t1=st+i,t2=st-i;
+                if(t1&lt;=9){
+                    if(cnt[t1]&gt;=t){ans+=t*i;break;}
+                    t-=cnt[t1];ans+=cnt[t1]*i;
+                }
+                if(t2&gt;=0){
+                    if(cnt[t2]&gt;=t){ans+=t*i;break;}
+                    t-=cnt[t2];ans+=cnt[t2]*i;
+                }
+            }
+        }
+        minn=min(minn,ans);
+        calc[st]=ans;
+    }
+    for(int st=0;st&lt;=9;st++){
+        if(calc[st]==minn){
+        for(int i=1;i&lt;=n;i++) tt[i]=s[i];
+        memset(yb,0,sizeof(yb));
+        int t=k;//要变的个数 
+        for(int i=0;i&lt;=9;i++){
+            if(i==0){
+                if(cnt[st]&gt;=t) break;
+                t-=cnt[st];
+            }
+            else{
+                int t1=st+i,t2=st-i;
+                if(t1&lt;=9){
+                    if(cnt[t1]&gt;=t){yb[t1]=t;break;}
+                    t-=cnt[t1];yb[t1]=cnt[t1];
+                }
+                if(t2&gt;=0){
+                    if(cnt[t2]&gt;=t){yb[t2]=t;break;}
+                    t-=cnt[t2];yb[t2]=cnt[t2];
+                }
+            }
+        }
+        for(int i=0;i&lt;=9;i++){
+            if(yb[i]){
+                if(i&gt;st){
+                    for(int j=1;j&lt;=n;j++) if(s[j]==(i+&#39;0&#39;)) if(yb[i])tt[j]=st+&#39;0&#39;,yb[i]--; else{break;} 
+                } 
+                else{
+                    for(int j=n;j&gt;=1;j--) if(s[j]==(i+&#39;0&#39;)) if(yb[i])tt[j]=st+&#39;0&#39;,yb[i]--; else{break;}
+                }
+            }
+        }
+        if(cmp()) for(int i=1;i&lt;=n;i++) ss[i]=tt[i];    
+        }
+    }
+    printf(&quot;%d\n&quot;,minn);
+    for(int i=1;i&lt;=n;i++) printf(&quot;%c&quot;,ss[i]);
+    /*memset(dp,0x3f,sizeof(dp));
+    for(int i=1;i&lt;=9;i++) dp[0][i]=0;
+    for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=min(i,k);j++)
+    for(int kk=1;kk&lt;=9;kk++){
+        dp[j][kk]=min(dp[j][kk],dp[j-1][kk]+abs(s[i]-&#39;0&#39;-kk)); 
+    }
+    int minn=0x3f3f3f3f;
+    for(int i=1;i&lt;=9;i++) minn=min(minn,dp[k][i]);
+    printf(&quot;%d&quot;,minn);*/
+}
+int main(){
+    //freopen(&quot;canteen.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;canteen.out&quot;,&quot;w&quot;,stdout);
+    init();
+
+    return 0;
+}
+</code></pre>
 <h1 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h1><h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>小 M 新设计了一款战略游戏。<br>游戏的地图包含有 N 个阵地（用 1..N 编号），用 N-1 条战略交通线把它<br>们连接起来， 地图中任意两个阵地都能直接或间接地相互到达。 小 M 为每<br>条交通线设定一个名为“战略重要性”的参数，它是一个正整数，且这个<br>数值越大，说明这条交通线的战略重要性越大。 小 M 还设计了一个阵地间<br>的“战略相关性”的度量标准， 那就是两个阵地间路径上“战略重要性”<br>最小的交通线。<br>小 M 已经完成了游戏大多数模块的代码， 还有一个在线查询模块没有完<br>成，即对于用户查询： k， v，表示查询与阵地 v“战略相关性” 不小于 k 的<br>阵地的数目。<br>由于小 M 还要负责游戏的推广， 所以这个查询模块的代码就交给你了。</p>
 <h2 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 strategy.in。<br>第一行输入包含 N 和 Q。 接下来的 N-1 行描述地图中的交通线。 每行<br>包括三个整数 pi,qi 和 ri ( 1≤pi,qi≤N， ri&lt;=1000000000 )，表示阵地 pi 和 qi<br>的战略重要性为 ri 。接下来的 Q 行描述了 Q 次查询。 每行包含两个整数，<br>k 和 v (1≤k≤1,000,000,000, 1≤v≤N )，表示一次查询。</p>
 <h2 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h2><p>输出文件名为 strategy.out。<br>输出 Q 行。在第 i 行输出第 i 次查询的的答案。</p>
@@ -530,7 +626,72 @@
 <h2 id="Hint-1"><a href="#Hint-1" class="headerlink" title="Hint"></a>Hint</h2><p>对于 20%的数据： N,Q≤3 00<br>对于 50%的数据： N,Q≤5 000<br>对于 100%的数据： N,Q≤100 000</p>
 <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>首先会想到离线处理，再根据单调性，想到用并查集维护，将大于等于k的边所连接的点加入并查集，<br>这样对于每个联通块，其中任意两点都是符合“战略相关性”大于等于k的，所以对于每个询问，答案<br>就是v所在联通块点个数减1即可。</p>
 <p>上代码：</p>
-<h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 100005</span></span><br><span class="line">struct eage&#123;</span><br><span class="line">	int u,v,len;</span><br><span class="line">	friend bool operator &lt;(eage a,eage b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.len&gt;b.len;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;e[maxn];</span><br><span class="line">int np=<span class="number">0</span>;</span><br><span class="line">int n,q,x,y,z,fa[maxn],sz[maxn];</span><br><span class="line">struct node&#123;</span><br><span class="line">	int id,k,v,ans;</span><br><span class="line">	friend bool operator&lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.k&gt;b.k;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">bool cmp(node a,node b)&#123;</span><br><span class="line">	<span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line">int find(int i)&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[i]==i) <span class="keyword">return</span> i;</span><br><span class="line">	int root=find(fa[i]);</span><br><span class="line">	fa[i]=root;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">void link(int x,int y)&#123;</span><br><span class="line">	int fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">		fa[fx]=fy;</span><br><span class="line">		sz[fy]+=sz[fx];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int y)&#123;</span><br><span class="line">	int fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i,sz[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		e[++np]=(eage)&#123;x,y,z&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d"</span>,&amp;nd[i].k,&amp;nd[i].v);nd[i].id=i;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(e+<span class="number">1</span>,e+np+<span class="number">1</span>);sort(nd+<span class="number">1</span>,nd+q+<span class="number">1</span>);</span><br><span class="line">	int j=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;=np&amp;&amp;e[j].len&gt;=nd[i].k)&#123;</span><br><span class="line">			link(e[j].u,e[j].v);</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		nd[i].ans=sz[find(nd[i].v)]-<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(nd+<span class="number">1</span>,nd+q+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++) printf(<span class="string">"%d\n"</span>,nd[i].ans);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="The-Code-1"><a href="#The-Code-1" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+#define maxn 100005
+struct eage{
+    int u,v,len;
+    friend bool operator &lt;(eage a,eage b){
+        return a.len&gt;b.len;
+    }
+}e[maxn];
+int np=0;
+int n,q,x,y,z,fa[maxn],sz[maxn];
+struct node{
+    int id,k,v,ans;
+    friend bool operator&lt;(node a,node b){
+        return a.k&gt;b.k;
+    }
+}nd[maxn];
+bool cmp(node a,node b){
+    return a.id&lt;b.id;
+}
+int find(int i){
+    if(fa[i]==i) return i;
+    int root=find(fa[i]);
+    fa[i]=root;
+    return root;
+}
+void link(int x,int y){
+    int fx=find(x),fy=find(y);
+    if(fx!=fy){
+        fa[fx]=fy;
+        sz[fy]+=sz[fx];
+    }
+}
+bool check(int x,int y){
+    int fx=find(x),fy=find(y);
+    if(fx!=fy) return false;
+    return true;
+}
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);
+    for(int i=1;i&lt;=n;i++) fa[i]=i,sz[i]=1;
+    for(int i=1;i&lt;n;i++){
+        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+        e[++np]=(eage){x,y,z};
+    }
+    for(int i=1;i&lt;=q;i++){
+        scanf(&quot;%d%d&quot;,&amp;nd[i].k,&amp;nd[i].v);nd[i].id=i;
+    }
+    sort(e+1,e+np+1);sort(nd+1,nd+q+1);
+    int j=1;
+    for(int i=1;i&lt;=q;i++){
+        while(j&lt;=np&amp;&amp;e[j].len&gt;=nd[i].k){
+            link(e[j].u,e[j].v);
+            j++;
+        }
+        nd[i].ans=sz[find(nd[i].v)]-1;
+    }
+    sort(nd+1,nd+q+1,cmp);
+    for(int i=1;i&lt;=q;i++) printf(&quot;%d\n&quot;,nd[i].ans);
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 <h1 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h1><h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>小 Y 正用图章和颜料在草稿纸上乱涂颜色。对于数学敏感的他，突然发<br>现这是一个有意思的数学问题：<br>给出有 N 个格子的纸、宽度为 K 个格子的图章和 M 种不同的颜色，每<br>次用图章把纸上连续的 K 个格子上染任意一种颜色，最后把纸涂满，那么<br>小 Y 想知道最后纸上的颜色序列有多少种不同的情况？</p>
 <h2 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 paint.in<br>输入数据仅一行，包含三个整数 N,M,K，他们中间用一个空格分开，分<br>别表示纸张的长度，颜色数目和图章的宽度。</p>
 <h2 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h2><p>输入文件名为 paint.out<br>输出文件仅一行，一个非负整数，表示答案。这个数可能很大，请模<br>1000000007 后输出。</p>
@@ -540,7 +701,39 @@
 <h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><p>真的是数学问题吗？？？首先要明白一点，合法的是要求至少有一个长度为K的相同颜色的块。（这个都没有想出来我好蒻A qwq）<br>然后正难则反，我们只要求出不合法的总个数，然后用总的方法数减去不合法的即为合法的方案数，那么这里用dp,设f[i]为前i个<br>不合法的方案数，那么就不会出现连续k个，所以：<br>$f[i]=f[i-1] \ast m （i&lt;k）​$</p>
 <p>$f[i]=(f[i-1]+f[i-2]+…+f[i-k+1]) \ast (m-1) (i&gt;=k)$  第i个和第i-k个必须不一样<br>再简单加个滑动窗口就可以O(n)过了233333</p>
 <h3 id="tips-1"><a href="#tips-1" class="headerlink" title="tips"></a>tips</h3><p>题目中有mod的话，一般不是dp就是数学（套路！！！）<br>上代码：</p>
-<h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 10000005</span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">1000000007</span>;</span><br><span class="line">int n,m,k;</span><br><span class="line">ll dp[maxn];</span><br><span class="line">ll qkpow(ll t,int pos)&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">1</span>) <span class="keyword">return</span> t%mod;</span><br><span class="line">	ll tt=qkpow(t,pos/<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">if</span>(pos&amp;<span class="number">1</span>) <span class="keyword">return</span> tt*tt%mod*t%mod;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> tt*tt%mod;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">	ll all=qkpow(m,n);</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	ll sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;k;i++) dp[i]=dp[i-<span class="number">1</span>]*m%mod,sum=(sum+dp[i])%mod;</span><br><span class="line">	<span class="keyword">for</span>(int i=k;i&lt;=n;i++)&#123;</span><br><span class="line">		dp[i]=(sum)*(m-<span class="number">1</span>)%mod;</span><br><span class="line">		sum=(sum+dp[i]-dp[i-k+<span class="number">1</span>]+mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=(all-dp[n]+mod)%mod;</span><br><span class="line">	printf(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="The-Code-2"><a href="#The-Code-2" class="headerlink" title="The Code"></a>The Code</h2><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 10000005
+using namespace std;
+typedef long long ll;
+const ll mod=1000000007;
+int n,m,k;
+ll dp[maxn];
+ll qkpow(ll t,int pos){
+    if(pos==0) return 1;
+    if(pos==1) return t%mod;
+    ll tt=qkpow(t,pos/2);
+    if(pos&amp;1) return tt*tt%mod*t%mod;
+    else return tt*tt%mod;
+}
+void init(){
+    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k);
+    ll all=qkpow(m,n);
+    dp[0]=1;
+    ll sum=0;
+    for(int i=1;i&lt;k;i++) dp[i]=dp[i-1]*m%mod,sum=(sum+dp[i])%mod;
+    for(int i=k;i&lt;=n;i++){
+        dp[i]=(sum)*(m-1)%mod;
+        sum=(sum+dp[i]-dp[i-k+1]+mod)%mod;
+    }
+    ll ans=(all-dp[n]+mod)%mod;
+    printf(&quot;%lld&quot;,ans);
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 <h3 id="小结：总结套路a鸽子，多想想那些大佬是怎么思考的。（think-twice-code-once）"><a href="#小结：总结套路a鸽子，多想想那些大佬是怎么思考的。（think-twice-code-once）" class="headerlink" title="小结：总结套路a鸽子，多想想那些大佬是怎么思考的。（think twice,code once）"></a>小结：总结套路a鸽子，多想想那些大佬是怎么思考的。（think twice,code once）</h3>
         
     
@@ -964,12 +1157,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -981,13 +1172,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1051,21 +1239,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -523,7 +509,61 @@
 <font color="red">~~有时间一定要了解下qwq~~</font>
 
 <p>然后貌似用莫队可以随随便便过，直接开始离散化一下，然后莫队一波就欧克了，O($n\sqrt{n}$)还是能过的。</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 500005</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,q,a[maxn],blog[maxn],t[maxn],c[maxn];</span><br><span class="line">int calc=<span class="number">0</span>;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int l,r,id,ans;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(blog[a.l]==blog[b.l]) <span class="keyword">return</span> a.r&lt;b.r;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> a.l&lt;b.l;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">bool cmp(node a,node b)&#123;</span><br><span class="line">	<span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line">void update1(int i)&#123;</span><br><span class="line">	c[a[i]]--;</span><br><span class="line">	<span class="keyword">if</span>(c[a[i]]==<span class="number">1</span>) calc--;</span><br><span class="line">	<span class="keyword">if</span>(c[a[i]]==<span class="number">2</span>) calc++;</span><br><span class="line">&#125;</span><br><span class="line">void update2(int i)&#123;</span><br><span class="line">	c[a[i]]++;</span><br><span class="line">	<span class="keyword">if</span>(c[a[i]]==<span class="number">2</span>) calc++;</span><br><span class="line">	<span class="keyword">if</span>(c[a[i]]==<span class="number">3</span>) calc--;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;q);</span><br><span class="line">	int blo=sqrt(n);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%d"</span>,&amp;a[i]),blog[i]=(i-<span class="number">1</span>)/blo+<span class="number">1</span>,t[i]=a[i];</span><br><span class="line">	sort(t+<span class="number">1</span>,t+n+<span class="number">1</span>);</span><br><span class="line">	int cnt=unique(t+<span class="number">1</span>,t+n+<span class="number">1</span>)-t-<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		a[i]=lower_bound(t+<span class="number">1</span>,t+cnt+<span class="number">1</span>,a[i])-t;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++) scanf(<span class="string">"%d%d"</span>,&amp;nd[i].l,&amp;nd[i].r),nd[i].id=i;</span><br><span class="line">    sort(nd+<span class="number">1</span>,nd+q+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	int l=<span class="number">1</span>,r=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(l&lt;nd[i].l) update1(l),l++;</span><br><span class="line">		<span class="keyword">while</span>(r&gt;nd[i].r) update1(r),r--;</span><br><span class="line">		<span class="keyword">while</span>(l&gt;nd[i].l) update2(l-<span class="number">1</span>),l--;</span><br><span class="line">		<span class="keyword">while</span>(r&lt;nd[i].r) update2(r+<span class="number">1</span>),r++;</span><br><span class="line">		nd[i].ans=calc;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(nd+<span class="number">1</span>,nd+q+<span class="number">1</span>,cmp);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=q;i++) printf(<span class="string">"%d\n"</span>,nd[i].ans); </span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 500005
+using namespace std;
+int n,q,a[maxn],blog[maxn],t[maxn],c[maxn];
+int calc=0;
+struct node{
+    int l,r,id,ans;
+    friend bool operator &lt;(node a,node b){
+        if(blog[a.l]==blog[b.l]) return a.r&lt;b.r;
+        else return a.l&lt;b.l;
+    }
+}nd[maxn];
+bool cmp(node a,node b){
+    return a.id&lt;b.id;
+}
+void update1(int i){
+    c[a[i]]--;
+    if(c[a[i]]==1) calc--;
+    if(c[a[i]]==2) calc++;
+}
+void update2(int i){
+    c[a[i]]++;
+    if(c[a[i]]==2) calc++;
+    if(c[a[i]]==3) calc--;
+}
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;q);
+    int blo=sqrt(n);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]),blog[i]=(i-1)/blo+1,t[i]=a[i];
+    sort(t+1,t+n+1);
+    int cnt=unique(t+1,t+n+1)-t-1;
+    for(int i=1;i&lt;=n;i++){
+        a[i]=lower_bound(t+1,t+cnt+1,a[i])-t;
+    }
+    for(int i=1;i&lt;=q;i++) scanf(&quot;%d%d&quot;,&amp;nd[i].l,&amp;nd[i].r),nd[i].id=i;
+    sort(nd+1,nd+q+1);
+
+    int l=1,r=0;
+    for(int i=1;i&lt;=q;i++){
+        while(l&lt;nd[i].l) update1(l),l++;
+        while(r&gt;nd[i].r) update1(r),r--;
+        while(l&gt;nd[i].l) update2(l-1),l--;
+        while(r&lt;nd[i].r) update2(r+1),r++;
+        nd[i].ans=calc;
+    }
+    sort(nd+1,nd+q+1,cmp);
+    for(int i=1;i&lt;=q;i++) printf(&quot;%d\n&quot;,nd[i].ans); 
+}
+int main(){
+    init();
+
+    return 0; 
+}
+</code></pre>
 
         
     
@@ -947,12 +987,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -964,13 +1002,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1034,21 +1069,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

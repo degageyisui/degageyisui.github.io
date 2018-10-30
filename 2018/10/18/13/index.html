@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog,dp,dijsktra,spfa,slf优化,缩点,拓扑,DAG图,set">
+    <meta name="keywords" content="c++,blog,dp,拓扑,dijsktra,spfa,slf优化,缩点,DAG图,set">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -82,11 +82,6 @@
         <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
-        
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
         
 
     
@@ -242,7 +237,7 @@
     <meta property="og:title" content="noip模拟赛2 | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="这里是degage的代码仓库哦">
-    <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="dijsktra"> <meta property="og:article:tag" content="spfa"> <meta property="og:article:tag" content="slf优化"> <meta property="og:article:tag" content="缩点"> <meta property="og:article:tag" content="拓扑"> <meta property="og:article:tag" content="DAG图"> <meta property="og:article:tag" content="set"> 
+    <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="拓扑"> <meta property="og:article:tag" content="dijsktra"> <meta property="og:article:tag" content="spfa"> <meta property="og:article:tag" content="slf优化"> <meta property="og:article:tag" content="缩点"> <meta property="og:article:tag" content="DAG图"> <meta property="og:article:tag" content="set"> 
 
     
         <meta property="article:published_time" content="Thu Oct 18 2018 19:35:45 GMT+0800">
@@ -287,7 +282,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",dp,dijsktra,spfa,slf优化,缩点,拓扑,DAG图,setc++,blog",
+    "keywords": ",dp,拓扑,dijsktra,spfa,slf优化,缩点,DAG图,setc++,blog",
     "description": "这里是degage的代码仓库哦",
 }
 </script>
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -520,7 +506,50 @@
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>4</p>
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤20<br>对于 100%的数据： N≤100 000， K≤20</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>一道水水的dp啊qwq，刷表和i-1到i转移都可以。注意细节…O($n \ast k$)实现就欧克。</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cctype&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;queue&gt;</span></span><br><span class="line"><span class="comment">#include&lt;map&gt;</span></span><br><span class="line"><span class="comment">#include&lt;set&gt;</span></span><br><span class="line"><span class="comment">#include&lt;vector&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 100005</span></span><br><span class="line">int n,k,a[maxn],dp[maxn][<span class="number">22</span>][<span class="number">3</span>];<span class="regexp">//</span><span class="number">0</span><span class="symbol">:</span>石头,<span class="number">1</span>：剪刀,<span class="number">2</span><span class="symbol">:</span>布 </span><br><span class="line">char s[<span class="number">2</span>];</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;scanf(<span class="string">"%s"</span>,s);<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'H'</span>)a[i]=<span class="number">0</span>;<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'S'</span>) a[i]=<span class="number">1</span>;<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'P'</span>) a[i]=<span class="number">2</span>;&#125;;</span><br><span class="line">	/<span class="regexp">/dp[0][0][0]=dp[0][0][1]=dp[0][0][2]=0;</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=n;i++)</span></span><br><span class="line"><span class="regexp">	for(int j=0;j&lt;=min(i,k);j++)</span></span><br><span class="line"><span class="regexp">	for(int kk=0;kk&lt;=2;kk++)&#123;/</span><span class="regexp">/枚举上一个的手势 </span></span><br><span class="line"><span class="regexp">		int f=0;</span></span><br><span class="line"><span class="regexp">		if(a[i]==2&amp;&amp;kk==1) f=1; </span></span><br><span class="line"><span class="regexp">		if(a[i]==1&amp;&amp;kk==0) f=1;</span></span><br><span class="line"><span class="regexp">		if(a[i]==0&amp;&amp;kk==2) f=1;</span></span><br><span class="line"><span class="regexp">		dp[i][j][kk]=max(dp[i][j][kk],dp[i-1][j][kk]+f);/</span><span class="regexp">/不换</span></span><br><span class="line"><span class="regexp">		int tt=(a[i]-1+3)%3;</span></span><br><span class="line"><span class="regexp">		if(j&gt;=1)&#123;</span></span><br><span class="line"><span class="regexp">			if(tt==kk) continue;/</span><span class="regexp">/不换..对身体好 </span></span><br><span class="line"><span class="regexp">			dp[i][j][tt]=max(dp[i][j][tt],dp[i-1][j-1][kk]+1); </span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	int maxx=0;</span></span><br><span class="line"><span class="regexp">	for(int i=0;i&lt;=2;i++) maxx=max(maxx,dp[n][k][i]);</span></span><br><span class="line"><span class="regexp">	printf("%d",maxx);</span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/freopen("game.in","r",stdin);</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/freopen("game.out","w",stdout);</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="lang-ruby">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cctype&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+#include&lt;queue&gt;
+#include&lt;map&gt;
+#include&lt;set&gt;
+#include&lt;vector&gt;
+using namespace std;
+#define maxn 100005
+int n,k,a[maxn],dp[maxn][22][3];//0:石头,1：剪刀,2:布 
+char s[2];
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
+    for(int i=1;i&lt;=n;i++){scanf(&quot;%s&quot;,s);if(s[0]==&#39;H&#39;)a[i]=0;if(s[0]==&#39;S&#39;) a[i]=1;if(s[0]==&#39;P&#39;) a[i]=2;};
+    //dp[0][0][0]=dp[0][0][1]=dp[0][0][2]=0;
+    for(int i=1;i&lt;=n;i++)
+    for(int j=0;j&lt;=min(i,k);j++)
+    for(int kk=0;kk&lt;=2;kk++){//枚举上一个的手势 
+        int f=0;
+        if(a[i]==2&amp;&amp;kk==1) f=1; 
+        if(a[i]==1&amp;&amp;kk==0) f=1;
+        if(a[i]==0&amp;&amp;kk==2) f=1;
+        dp[i][j][kk]=max(dp[i][j][kk],dp[i-1][j][kk]+f);//不换
+        int tt=(a[i]-1+3)%3;
+        if(j&gt;=1){
+            if(tt==kk) continue;//不换..对身体好 
+            dp[i][j][tt]=max(dp[i][j][tt],dp[i-1][j-1][kk]+1); 
+        }
+    }
+    int maxx=0;
+    for(int i=0;i&lt;=2;i++) maxx=max(maxx,dp[n][k][i]);
+    printf(&quot;%d&quot;,maxx);
+} 
+int main(){
+    //freopen(&quot;game.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;game.out&quot;,&quot;w&quot;,stdout);
+    init();
+
+    return 0;
+}
+</code></pre>
 <h1 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h1><h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>为补贴家用，小 M 终于谋得一份兼职——牛奶销售员。<br>小 M 打算把牛奶销售到 N 个城市，这 N 个城市编号为 1..N。这些城市<br>之间有 R 条高速公路和 P 条泥泞小道连接。每条高速路或泥泞小道连接 N<br>个城市中的 A 和 B， 需要的花费为 C，对于高速路的花费 C， 一定是大于等<br>于 0 的；然而对于泥泞小道，由于边远城市的人民感谢送奶工的辛劳，会<br>额外付更多的奶钱， 所以有些小道的花费可能为负数（表示有收益）。高速<br>公路是双向的，可以从 A 走到 B，也可以从 B 走到 A；然后泥泞小道则不是<br>双向的，只能从 A 走到 B。事实上， 由于泥泞道路经过的都是蛮荒之地，所<br>以政府为了社会和谐，出台了一些政策保证： 如果一条泥泞小道可以从 A<br>到 B，那么保证不可能通过高速路或泥泞小道从 B 再回到 A。<br>小 M 的销售中心在城市 S，现在他想知道，把牛奶从 S 送到每个城市的<br>最小花费的，或者根本就不能送到。</p>
 <h2 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 sales.in。<br>输入的第 1 行包含四个空格隔开的整数: N, R, P 和 S，他们的意义如题<br>目描述。 第 2 到 R+1 行每行含三个空格隔开的整数： A, B 和 C，表示一条高<br>速公路双向连接城市 A 和 B，需要的花费为 C。 第 R+2 到 R+P+1 行每行包含<br>三个空格隔开的整数： A, B 和 C，表示一条泥泞小道可以从城市 A 到 B，需<br>要的花费为 C。</p>
 <h2 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h2><p>输出文件名为 sales.out。<br>输出有 N 行，每行一个整数，第 i 行表示从 S 到达城市 i 的最小花费，<br>如果不存在输出”NO PATH”。</p>
@@ -528,7 +557,137 @@
 <h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>NO PATH<br>NO PATH<br>5<br>0<br>-95<br>-100</p>
 <h2 id="Hint-1"><a href="#Hint-1" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤10 000<br>对于 100%的数据： 1≤N≤25,000 , 1≤P,R≤50,000<br>高速公路的 C： 0≤C≤10,000<br>泥泞小道的 C： -10,000≤C≤10,000</p>
 <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>这道题真的傻缺了啊qwq，别人想的是有负权边不能跑dij，我tm想的是没有负环直接跑dij，感觉复杂度差不多就直接交上去了哇qwq。实际上你的复杂度超乎你想象。<br><strong>开始正经：</strong><br>这道题有两种解法：<br>1.spfa+slf优化，好像勉强过得到？直接用双端队列deque维护一下。slf优化还是能加就加吧，毕竟挺简单的。不过关于spfa，<font color="red"><del>它已经死了.</del></font>所以稳妥一点还是用dij吧，对身体好a.<br>2.dij+缩点+拓扑：woc这个思路真的很nice啊，首先发现可以缩点连成一个DAG图，然后对于每个联通块单独跑dij，这样算下来总复杂度也就nlogn左右（事实证明真的跑得飞快！法1时间几乎是它的十倍）.然后就是注意细节的实现，也为这种<strong>混合图</strong>提供了一种思路。当把所有的入边处理完之后用vector记录入点，就可以队首存入多个起点，一次dij跑完，复杂度被大大减少.（可以回顾noip2017逛公园）.</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 25005</span></span><br><span class="line"><span class="comment">#define maxm 150005</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct eage&#123;</span><br><span class="line">	int to,<span class="keyword">next</span>,len;</span><br><span class="line">&#125;e[maxm];</span><br><span class="line">int np=<span class="number">0</span>,first[maxn];</span><br><span class="line">void add(int u,int v,int len)&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u],len&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line">int n,r,p,s,x,y,z,dfn[maxn],low[maxn],belong[maxn],cc=<span class="number">0</span>,clock<span class="number">_</span>=<span class="number">0</span>;</span><br><span class="line">int st[maxn],top=<span class="number">0</span>,rd[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">vector&lt;int&gt;g[maxn];</span><br><span class="line">struct noded&#123;</span><br><span class="line">	int from,to,len;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;noded&gt;b[maxn];</span><br><span class="line">void dfs(int i,int f)&#123;</span><br><span class="line">	vis[i]=<span class="number">1</span>;</span><br><span class="line">	st[++top]=i;</span><br><span class="line">	low[i]=dfn[i]=++clock<span class="number">_</span>;</span><br><span class="line">	<span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">		int j=e[p].to;</span><br><span class="line">		<span class="keyword">if</span>(vis[j])&#123;</span><br><span class="line">			<span class="keyword">if</span>(!belong[j]) low[i]=min(low[i],dfn[j]);</span><br><span class="line">			continue;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(j,i);</span><br><span class="line">		low[i]=min(low[i],low[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(low[i]==dfn[i])&#123;</span><br><span class="line">	    cc++;</span><br><span class="line">	    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	    	int t=st[top--];</span><br><span class="line">	    	belong[t]=cc;</span><br><span class="line">	    	<span class="keyword">if</span>(t==i) <span class="keyword">break</span>;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int dist[maxn];</span><br><span class="line">bool viss[maxn];</span><br><span class="line">struct node&#123;</span><br><span class="line">	int v,id;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.v&gt;b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">void dij(int s)&#123;</span><br><span class="line">    priority_queue&lt;node&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;g[s].size();i++)&#123;</span><br><span class="line">		int t=g[s][i];</span><br><span class="line">		q.push((node)&#123;dist[t],t&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		node t=q.top();q.pop();</span><br><span class="line">		int i=t.id;</span><br><span class="line">		<span class="keyword">if</span>(viss[i]) continue;</span><br><span class="line">		viss[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">			int j=e[p].to,c=e[p].len;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]!=belong[i]) continue;</span><br><span class="line">			<span class="keyword">if</span>(dist[j]&gt;dist[i]+c)&#123;</span><br><span class="line">				dist[j]=dist[i]+c;</span><br><span class="line">				q.push((node)&#123;dist[j],j&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125; </span><br><span class="line">queue&lt;int&gt;qq;</span><br><span class="line">void work()&#123;</span><br><span class="line">	memset(viss,<span class="number">0</span>,sizeof(viss));</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) dist[i]=<span class="number">1000000007</span>;</span><br><span class="line">	g[belong[s]].push_back(s);</span><br><span class="line">	dist[s]=<span class="number">0</span>;</span><br><span class="line">	qq.push(belong[s]);</span><br><span class="line">	<span class="keyword">while</span>(!qq.empty())&#123;</span><br><span class="line">	   int i=qq.front();qq.pop();</span><br><span class="line">	   dij(i);</span><br><span class="line">	   <span class="keyword">for</span>(int j=<span class="number">0</span>;j&lt;b[i].size();j++)&#123;</span><br><span class="line">	   	noded tt=b[i][j];</span><br><span class="line">	   	int t1=tt.from,t2=tt.to,c=tt.len;</span><br><span class="line">	   	dist[t2]=min(dist[t2],dist[t1]+c);</span><br><span class="line">	   	g[belong[t2]].push_back(t2);</span><br><span class="line">	   	rd[belong[t2]]--;</span><br><span class="line">	   	<span class="keyword">if</span>(rd[belong[t2]]==<span class="number">0</span>) qq.push(belong[t2]);</span><br><span class="line">	   &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    	<span class="keyword">if</span>(dist[i]==<span class="number">1000000007</span>) printf(<span class="string">"NO PATH\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> printf(<span class="string">"%d\n"</span>,dist[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line">void run()&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) continue;</span><br><span class="line">		<span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">			int j=e[p].to;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]!=belong[i])&#123;</span><br><span class="line">				/<span class="regexp">/g[belong[i]].push_back(belong[j]);</span></span><br><span class="line"><span class="regexp">				b[belong[i]].push_back((noded)&#123;i,j,e[p].len&#125;);</span></span><br><span class="line"><span class="regexp">				rd[belong[j]]++;</span></span><br><span class="line"><span class="regexp">			&#125;</span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	work();</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">void init()&#123;</span></span><br><span class="line"><span class="regexp">	scanf("%d%d%d%d",&amp;n,&amp;r,&amp;p,&amp;s);</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=r;i++)&#123;</span></span><br><span class="line"><span class="regexp">		scanf("%d%d%d",&amp;x,&amp;y,&amp;z);</span></span><br><span class="line"><span class="regexp">		add(x,y,z);</span></span><br><span class="line"><span class="regexp">		add(y,x,z);</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=p;i++)&#123;</span></span><br><span class="line"><span class="regexp">		scanf("%d%d%d",&amp;x,&amp;y,&amp;z);</span></span><br><span class="line"><span class="regexp">		add(x,y,z);</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	dfs(s,0);</span></span><br><span class="line"><span class="regexp">	run();</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 25005
+#define maxm 150005
+using namespace std;
+struct eage{
+    int to,next,len;
+}e[maxm];
+int np=0,first[maxn];
+void add(int u,int v,int len){
+    e[++np]=(eage){v,first[u],len};
+    first[u]=np;
+}
+int n,r,p,s,x,y,z,dfn[maxn],low[maxn],belong[maxn],cc=0,clock_=0;
+int st[maxn],top=0,rd[maxn];
+bool vis[maxn];
+vector&lt;int&gt;g[maxn];
+struct noded{
+    int from,to,len;
+};
+vector&lt;noded&gt;b[maxn];
+void dfs(int i,int f){
+    vis[i]=1;
+    st[++top]=i;
+    low[i]=dfn[i]=++clock_;
+    for(int p=first[i];p;p=e[p].next){
+        int j=e[p].to;
+        if(vis[j]){
+            if(!belong[j]) low[i]=min(low[i],dfn[j]);
+            continue;
+        }
+        dfs(j,i);
+        low[i]=min(low[i],low[j]);
+    }
+    if(low[i]==dfn[i]){
+        cc++;
+        while(1){
+            int t=st[top--];
+            belong[t]=cc;
+            if(t==i) break;
+        } 
+    }
+}
+int dist[maxn];
+bool viss[maxn];
+struct node{
+    int v,id;
+    friend bool operator &lt;(node a,node b){
+        return a.v&gt;b.v;
+    }
+};
+void dij(int s){
+    priority_queue&lt;node&gt;q;
+    for(int i=0;i&lt;g[s].size();i++){
+        int t=g[s][i];
+        q.push((node){dist[t],t});
+    }
+    while(!q.empty()){
+        node t=q.top();q.pop();
+        int i=t.id;
+        if(viss[i]) continue;
+        viss[i]=1;
+        for(int p=first[i];p;p=e[p].next){
+            int j=e[p].to,c=e[p].len;
+            if(belong[j]!=belong[i]) continue;
+            if(dist[j]&gt;dist[i]+c){
+                dist[j]=dist[i]+c;
+                q.push((node){dist[j],j});
+            }
+        }
+    }    
+} 
+queue&lt;int&gt;qq;
+void work(){
+    memset(viss,0,sizeof(viss));
+    for(int i=1;i&lt;=n;i++) dist[i]=1000000007;
+    g[belong[s]].push_back(s);
+    dist[s]=0;
+    qq.push(belong[s]);
+    while(!qq.empty()){
+       int i=qq.front();qq.pop();
+       dij(i);
+       for(int j=0;j&lt;b[i].size();j++){
+           noded tt=b[i][j];
+           int t1=tt.from,t2=tt.to,c=tt.len;
+           dist[t2]=min(dist[t2],dist[t1]+c);
+           g[belong[t2]].push_back(t2);
+           rd[belong[t2]]--;
+           if(rd[belong[t2]]==0) qq.push(belong[t2]);
+       }
+    } 
+    for(int i=1;i&lt;=n;i++){
+        if(dist[i]==1000000007) printf(&quot;NO PATH\n&quot;);
+        else printf(&quot;%d\n&quot;,dist[i]);
+    }
+} 
+void run(){
+    for(int i=1;i&lt;=n;i++){
+        if(!vis[i]) continue;
+        for(int p=first[i];p;p=e[p].next){
+            int j=e[p].to;
+            if(belong[j]!=belong[i]){
+                //g[belong[i]].push_back(belong[j]);
+                b[belong[i]].push_back((noded){i,j,e[p].len});
+                rd[belong[j]]++;
+            }
+        }
+    }
+
+    work();
+}
+void init(){
+    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;r,&amp;p,&amp;s);
+    for(int i=1;i&lt;=r;i++){
+        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+        add(x,y,z);
+        add(y,x,z);
+    }
+    for(int i=1;i&lt;=p;i++){
+        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
+        add(x,y,z);
+    }
+    dfs(s,0);
+    run();
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 <h1 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h1><h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>小 Y 同学手上有两类线段，分别为 A 线段和 B 线段。<br>A 线段的有n种，第i种有$s_i$条，其左端点和右端点为$a_i$和$b_i$，他们都是109<br>范围内的正整数，且一定有$a_i$ ≤ $b_i$。 B 线段的有m种，第i种有$k_i$条，其左端<br>点和右端点为$l_i$和$r_i$，他们也是109范围内的正整数，且一定有$l_i$ ≤$r_i$。 小 Y<br>还规定，如果一条 A 线段($a_i$, $b_i$)能匹配一条 B 线段($l_i$, $r_i$)，当且仅当$l_i$ ≤ $a_i$≤<br>$b_i$ ≤ $r_i$。<br>现在小 Y 需要你判断能否为所有的 A 线段都指定一条与之匹配的 B 线段。<br>注意，无论是 A 线段还是 B 线段，每条都只能匹配一次，且仅能匹配一次。</p>
 <h2 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 machine.in<br>输入的第 1 行是一个整数T，表示数据组数。每组数据的第 1 行有两个<br>整数n, m，分别表 A 类线段和 B 类线段的种类数。接下来n行，每行 3 个整<br>数ai、 bi、 si，描述一种 A 类线段。接下来 m 行，每行三个整数li、 ri、 ki，<br>描述一种 B 类线段。</p>
 <h2 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h2><p>输入文件名为 machine.out<br>仅输出共T行，每行一个字符串，若可以实现则输出 Yes，否则输出<br>No。</p>
@@ -537,7 +696,57 @@
 <h2 id="Hint-2"><a href="#Hint-2" class="headerlink" title="Hint"></a>Hint</h2><p>对于所有数据保证有：<br>1 ≤ $s_i$, $k_i$ ≤ 109，<br>1 ≤ t≤ 50，<br>1 ≤ n, m ≤ 50000。<br>一个测试点中，所有n的和不超过 4000000，所有m的和也不超过 4000000。</p>
 <h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><p>还是一道套路题a，用set维护直接nlognA了啊（没办法蒟蒻太蒻了）。稍微注意线段维护的细节，按照左端点排序，相同排右端点。然后用两个指针维护，对于每个i，将l小于等于它的加入到multiset里面（以右端点为关键字）然后每次lower_bound找一下就欧克了啊qwq.<br>(勉哥说对于每个被删掉的指针要查询它的下一个必须要预先处理好)</p>
 <h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>线段类的有很多问题可以总结a….上一次居然被那个线段贪心给卡了qwq(处理不重叠的最多线段)就是右端点排个序，左端点大的就可以加进去，贪贪贪</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 50005</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct node&#123;</span><br><span class="line">	int l,r,w;</span><br><span class="line">	friend bool operator &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a.l!=b.l)<span class="keyword">return</span> a.l&lt;b.l;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> a.r&lt;b.r;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;nda[maxn],ndb[maxn];</span><br><span class="line">struct noded&#123;</span><br><span class="line">	int r,w;</span><br><span class="line">	friend bool operator &lt;(noded a,noded b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.r&lt;b.r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">multiset&lt;noded&gt;s;</span><br><span class="line">multiset&lt;noded&gt;<span class="symbol">:</span><span class="symbol">:iterator</span> it,itt;</span><br><span class="line">int t,n,m;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%d%d%d"</span>,&amp;nda[i].l,&amp;nda[i].r,&amp;nda[i].w);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++) scanf(<span class="string">"%d%d%d"</span>,&amp;ndb[i].l,&amp;ndb[i].r,&amp;ndb[i].w);</span><br><span class="line">	sort(nda+<span class="number">1</span>,nda+n+<span class="number">1</span>);</span><br><span class="line">	sort(ndb+<span class="number">1</span>,ndb+m+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	s.clear();</span><br><span class="line">	int j=<span class="number">1</span>;<span class="regexp">//b</span>的序号 </span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="regexp">//a</span>的序号 </span><br><span class="line">		<span class="keyword">while</span>(j&lt;=m&amp;&amp;ndb[j].l&lt;=nda[i].l) s.insert((noded)&#123;ndb[j].r,ndb[j].w&#125;),j++; </span><br><span class="line">		noded tt=(noded)&#123;nda[i].r,<span class="number">0</span>&#125;;</span><br><span class="line">	    it=s.lower_bound(tt);</span><br><span class="line">		<span class="keyword">if</span>(it==s.<span class="keyword">end</span>()) &#123;printf(<span class="string">"No\n"</span>);<span class="keyword">return</span>;&#125; </span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		noded t=*it; s.erase(it);</span><br><span class="line">		<span class="keyword">if</span>(t.w&gt;=nda[i].w)&#123;t.w-=nda[i].w,nda[i].w=<span class="number">0</span>,s.insert((noded)&#123;t.r,t.w&#125;);<span class="keyword">break</span>;&#125;</span><br><span class="line">		<span class="keyword">else</span> nda[i].w-=t.w;</span><br><span class="line">		it=s.lower_bound(tt);</span><br><span class="line">		<span class="keyword">if</span>(it==s.<span class="keyword">end</span>())  &#123;printf(<span class="string">"No\n"</span>);<span class="keyword">return</span>;&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"Yes\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 50005
+using namespace std;
+struct node{
+    int l,r,w;
+    friend bool operator &lt;(node a,node b){
+        if(a.l!=b.l)return a.l&lt;b.l;
+        else return a.r&lt;b.r;    
+    }
+}nda[maxn],ndb[maxn];
+struct noded{
+    int r,w;
+    friend bool operator &lt;(noded a,noded b){
+        return a.r&lt;b.r;
+    }
+};
+multiset&lt;noded&gt;s;
+multiset&lt;noded&gt;::iterator it,itt;
+int t,n,m;
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d%d%d&quot;,&amp;nda[i].l,&amp;nda[i].r,&amp;nda[i].w);
+    for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;ndb[i].l,&amp;ndb[i].r,&amp;ndb[i].w);
+    sort(nda+1,nda+n+1);
+    sort(ndb+1,ndb+m+1);
+
+    s.clear();
+    int j=1;//b的序号 
+    for(int i=1;i&lt;=n;i++){//a的序号 
+        while(j&lt;=m&amp;&amp;ndb[j].l&lt;=nda[i].l) s.insert((noded){ndb[j].r,ndb[j].w}),j++; 
+        noded tt=(noded){nda[i].r,0};
+        it=s.lower_bound(tt);
+        if(it==s.end()) {printf(&quot;No\n&quot;);return;} 
+        while(1){
+        noded t=*it; s.erase(it);
+        if(t.w&gt;=nda[i].w){t.w-=nda[i].w,nda[i].w=0,s.insert((noded){t.r,t.w});break;}
+        else nda[i].w-=t.w;
+        it=s.lower_bound(tt);
+        if(it==s.end())  {printf(&quot;No\n&quot;);return;} 
+        }
+    }
+    printf(&quot;Yes\n&quot;);
+}
+int main(){
+    scanf(&quot;%d&quot;,&amp;t);
+    for(int i=1;i&lt;=t;i++)
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -961,12 +1170,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -978,13 +1185,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1028,21 +1232,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

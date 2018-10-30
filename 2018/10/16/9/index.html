@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -527,11 +513,126 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>1.下发文件中提供了 checker.cpp，该程序将对于其所在目录下的 sort.in，判断其所在目录下的 sort.out 是否为一个正确的操作序列。若正确，将给出该操作序列的代价。若不正确，将给出错误信息。选手可以借助该程序来更好地检查自己的程序是否正确。</p>
 <p>运行时，必须保证 sort.in 为一个合法的输入，且需保证 sort.out 符合题目中描述的输出格式，否则出现任何结果均有可能。</p>
 <p>2.对于所有测试数据，保证 1≤n≤500001≤n≤50000，且 0≤ai≤1090≤ai≤109。</p>
-<p>（附checker.cpp）<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include &lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include &lt;cstdio&gt;</span></span><br><span class="line">int arr[<span class="number">50005</span>];</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    FILE *fin = fopen(<span class="string">"sort.in"</span>, <span class="string">"r"</span>), *fout = fopen(<span class="string">"sort.out"</span>, <span class="string">"r"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!fin)</span><br><span class="line">    &#123;</span><br><span class="line">        puts(<span class="string">"INVALID : File sort.in not found."</span>);</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!fout)</span><br><span class="line">    &#123;</span><br><span class="line">        puts(<span class="string">"INVALID : File sort.out not found."</span>);</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    int n;</span><br><span class="line">    fscanf(fin, <span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        fscanf(fin, <span class="string">"%d"</span>, arr + i);</span><br><span class="line">    int l, r, sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (~fscanf(fout, <span class="string">"%d%d"</span>, &amp;l, &amp;r))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (l == -<span class="number">1</span> &amp;&amp; r == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        sum += r - l + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (l &lt;= <span class="number">0</span> <span class="params">||</span> l &gt; n)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(<span class="string">"INVALID : l = %d is not in range [1, %d].\n"</span>, l, n);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (r &lt;= <span class="number">0</span> <span class="params">||</span> r &gt; n)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(<span class="string">"INVALID : r = %d is not in range [1, %d].\n"</span>, r, n);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (l &gt; r)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(<span class="string">"INVALID : %d = l &gt; r = %d.\n"</span>, l, r);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (sum &gt; <span class="number">20000000</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            puts(<span class="string">"INVALID : Too much cost."</span>);</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        std::reverse(arr + --l, arr + r);</span><br><span class="line">    &#125;</span><br><span class="line">    bool f = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        f &amp;= arr[i] &gt;= arr[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span> (!f)</span><br><span class="line">    &#123;</span><br><span class="line">        puts(<span class="string">"INVALID : Not sorted."</span>);</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(<span class="string">"VALID : Total cost is %d.\n"</span>, sum);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checker</span><br></pre></td></tr></table></figure></p>
+<p>（附checker.cpp）</p>
+<pre><code class="lang-ruby">#include &lt;algorithm&gt;
+#include &lt;cstdio&gt;
+int arr[50005];
+int main()
+{
+    FILE *fin = fopen(&quot;sort.in&quot;, &quot;r&quot;), *fout = fopen(&quot;sort.out&quot;, &quot;r&quot;);
+    if (!fin)
+    {
+        puts(&quot;INVALID : File sort.in not found.&quot;);
+        return -1;
+    }
+    if (!fout)
+    {
+        puts(&quot;INVALID : File sort.out not found.&quot;);
+        return -1;
+    }
+    int n;
+    fscanf(fin, &quot;%d&quot;, &amp;n);
+    for (int i = 0; i &lt; n; i++)
+        fscanf(fin, &quot;%d&quot;, arr + i);
+    int l, r, sum = 0;
+    while (~fscanf(fout, &quot;%d%d&quot;, &amp;l, &amp;r))
+    {
+        if (l == -1 &amp;&amp; r == -1)
+            break;
+        sum += r - l + 1;
+        if (l &lt;= 0 || l &gt; n)
+        {
+            printf(&quot;INVALID : l = %d is not in range [1, %d].\n&quot;, l, n);
+            return -1;
+        }
+        if (r &lt;= 0 || r &gt; n)
+        {
+            printf(&quot;INVALID : r = %d is not in range [1, %d].\n&quot;, r, n);
+            return -1;
+        }
+        if (l &gt; r)
+        {
+            printf(&quot;INVALID : %d = l &gt; r = %d.\n&quot;, l, r);
+            return -1;
+        }
+        if (sum &gt; 20000000)
+        {
+            puts(&quot;INVALID : Too much cost.&quot;);
+            return -1;
+        }
+        std::reverse(arr + --l, arr + r);
+    }
+    bool f = true;
+    for (int i = 1; i &lt; n; i++)
+        f &amp;= arr[i] &gt;= arr[i - 1];
+    if (!f)
+    {
+        puts(&quot;INVALID : Not sorted.&quot;);
+        return -1;
+    }
+    printf(&quot;VALID : Total cost is %d.\n&quot;, sum);
+    return 0;
+}
+
+checker
+</code></pre>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>本题算是一个比较新颖的题目，实际上是用这种翻转来模拟实现归并排序:</p>
 <p>先将给定数列进行离散化，每次选定一个中间的数，将小于等于它的排在左边，大于它的排在右边，再依次递归两边就可以了；</p>
 <p>主要是复杂度（进行操作的次数）证明a….    排一遍要n，由于其非01性，所以进行log2n次的n排，故排一遍将l到r以stdd为标准换为左边小于等于stdd，右边大于等于stdd的操作数为Θ(nlog2n) ；</p>
-<p>T(n) = 2T(n/2) + Θ(nlog2n),可以解得 T(n) = Θ(nlog22n) ； tql%%%<br>上代码。<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 50005</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,pos[maxn];</span><br><span class="line">struct node&#123;</span><br><span class="line">    int v,id;</span><br><span class="line">    friend bool operator&lt;(node a,node b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a.v&lt;b.v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">int stdd;</span><br><span class="line">void run(int l,int r)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span>;</span><br><span class="line">    int mid=l+r<span class="meta">&gt;&gt;</span><span class="number">1</span>;</span><br><span class="line">    run(l,mid);run(mid+<span class="number">1</span>,r);</span><br><span class="line">    </span><br><span class="line">    int L,R;<span class="regexp">//</span>要翻转的区间 </span><br><span class="line">    L=R=mid;<span class="regexp">//</span>L和R的初值 </span><br><span class="line">    int i=mid,j=mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&gt;=l&amp;&amp;pos[i]&gt;stdd) L=i--;</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=r&amp;&amp;pos[j]&lt;=stdd) R=j++;</span><br><span class="line">    <span class="keyword">if</span>(L!=R)&#123;</span><br><span class="line">        printf(<span class="string">"%d %d\n"</span>,L,R);</span><br><span class="line">        reverse(pos+L,pos+R+<span class="number">1</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">void msort(int l,int r)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    int mid=stdd=(l+r)<span class="meta">&gt;&gt;</span><span class="number">1</span>;</span><br><span class="line">    run(l,r);<span class="regexp">//</span>将l到r以stdd为标准换为左边小于等于stdd，右边大于等于stdd</span><br><span class="line"> </span><br><span class="line">    msort(l,mid);msort(mid+<span class="number">1</span>,r);    </span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%d"</span>,&amp;nd[i].v);nd[i].id=i;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(nd+<span class="number">1</span>,nd+n+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) pos[nd[i].id]=i;<span class="regexp">//</span>离散化位置确定 </span><br><span class="line">    </span><br><span class="line">    msort(<span class="number">1</span>,n);</span><br><span class="line">    printf(<span class="string">"-1 -1\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    /<span class="regexp">/freopen("sort.in","r",stdin);</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/freopen("sort.out","w",stdout);</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>T(n) = 2T(n/2) + Θ(nlog2n),可以解得 T(n) = Θ(nlog22n) ； tql%%%<br>上代码。</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 50005
+using namespace std;
+int n,pos[maxn];
+struct node{
+    int v,id;
+    friend bool operator&lt;(node a,node b){
+        return a.v&lt;b.v;
+    }
+}nd[maxn];
+int stdd;
+void run(int l,int r){
+    if(l==r) return;
+    int mid=l+r&gt;&gt;1;
+    run(l,mid);run(mid+1,r);
+
+    int L,R;//要翻转的区间 
+    L=R=mid;//L和R的初值 
+    int i=mid,j=mid+1;
+    while(i&gt;=l&amp;&amp;pos[i]&gt;stdd) L=i--;
+    while(j&lt;=r&amp;&amp;pos[j]&lt;=stdd) R=j++;
+    if(L!=R){
+        printf(&quot;%d %d\n&quot;,L,R);
+        reverse(pos+L,pos+R+1);
+    } 
+} 
+void msort(int l,int r){
+    if(l==r) return;
+
+    int mid=stdd=(l+r)&gt;&gt;1;
+    run(l,r);//将l到r以stdd为标准换为左边小于等于stdd，右边大于等于stdd
+
+    msort(l,mid);msort(mid+1,r);    
+}
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++){
+        scanf(&quot;%d&quot;,&amp;nd[i].v);nd[i].id=i;
+    }
+    sort(nd+1,nd+n+1);
+    for(int i=1;i&lt;=n;i++) pos[nd[i].id]=i;//离散化位置确定 
+
+    msort(1,n);
+    printf(&quot;-1 -1\n&quot;);
+}
+int main(){
+    //freopen(&quot;sort.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;sort.out&quot;,&quot;w&quot;,stdout);
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -955,12 +1056,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -972,13 +1071,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1022,21 +1118,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

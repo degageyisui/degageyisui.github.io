@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -520,7 +506,49 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>13.000000 </p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑E[i]（i为逆序对个数）的最小期望步数，则E[0]=0,E[1]=1;那么每一次Jeff肯定是交换使逆序对减少一个而Furik则有50%减少一个50%增加一个，故$E[i]=1/2<em>(E[i-2]+1)+1/2</em>(E[i-1+1]+1)$;化简得$E[i]=E[i-2]+4$;</p>
 <p>故模拟归并排序求一次逆序对个数便可实现。</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 3005</span></span><br><span class="line">using namespace std;</span><br><span class="line">int n,a[maxn],t[maxn];</span><br><span class="line">int msort(int l,int r)&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    int m=l+r<span class="meta">&gt;&gt;</span><span class="number">1</span>;</span><br><span class="line">    int t1=msort(l,m);</span><br><span class="line">    int t2=msort(m+<span class="number">1</span>,r);</span><br><span class="line">    </span><br><span class="line">    int t3=<span class="number">0</span>;</span><br><span class="line">    int i=l,j=m+<span class="number">1</span>,k=l;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=m&amp;&amp;j&lt;=r)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;a[j])&#123;</span><br><span class="line">            t3+=m-i+<span class="number">1</span>;</span><br><span class="line">            t[k++]=a[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            t[k++]=a[i++];<span class="regexp">//</span>本来就应该小于 </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=m) t[k++]=a[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=r) t[k++]=a[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(int p=l;p&lt;=r;p++) a[p]=t[p];<span class="regexp">//</span>调整</span><br><span class="line">    <span class="keyword">return</span> t1+t2+t3; </span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    int nd=msort(<span class="number">1</span>,n);</span><br><span class="line">    <span class="keyword">if</span>(nd&amp;<span class="number">1</span>)&#123;</span><br><span class="line">        printf(<span class="string">"%lf"</span>,(double)(<span class="number">2</span>*nd-<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> printf(<span class="string">"%lf"</span>,(double)<span class="number">2</span>*nd);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 3005
+using namespace std;
+int n,a[maxn],t[maxn];
+int msort(int l,int r){
+    if(l==r) return 0;
+
+    int m=l+r&gt;&gt;1;
+    int t1=msort(l,m);
+    int t2=msort(m+1,r);
+
+    int t3=0;
+    int i=l,j=m+1,k=l;
+    while(i&lt;=m&amp;&amp;j&lt;=r){
+        if(a[i]&gt;a[j]){
+            t3+=m-i+1;
+            t[k++]=a[j++];
+        }
+        else{
+            t[k++]=a[i++];//本来就应该小于 
+        }
+    }
+    while(i&lt;=m) t[k++]=a[i++];
+    while(j&lt;=r) t[k++]=a[j++];
+
+    for(int p=l;p&lt;=r;p++) a[p]=t[p];//调整
+    return t1+t2+t3; 
+}
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+    int nd=msort(1,n);
+    if(nd&amp;1){
+        printf(&quot;%lf&quot;,(double)(2*nd-1));
+    }
+    else printf(&quot;%lf&quot;,(double)2*nd);
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -944,12 +972,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -961,13 +987,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1011,21 +1034,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -520,7 +506,96 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>3</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 20%的数据： N≤3 00<br>对于 50%的数据： N≤5 000<br>对于 100%的数据： N≤100 000</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于起点即为出口的特判，当且仅当起点只有一个儿子，这时只需一只狗即可。<br>然后发现最坏情况是每个叶子节点都要一只狗，但狗可以跑过去拦截，所以将顶点与叶子节点路程割半，然后可以颜色染上下半段部分（使用树上倍增精准定位）当发现遍历到染过的时可以减1（用这次染色代替那次）如此下来便最优。<br>而由于是触碰返回，所以复杂度实际上是O（n）的。</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cctype&gt;</span></span><br><span class="line"><span class="comment">#include&lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include&lt;queue&gt;</span></span><br><span class="line"><span class="comment">#include&lt;set&gt;</span></span><br><span class="line"><span class="comment">#define maxn 100005 </span></span><br><span class="line">using namespace std;</span><br><span class="line">struct eage&#123;</span><br><span class="line">	int to,<span class="keyword">next</span>;</span><br><span class="line">&#125;e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line">int np=<span class="number">0</span>,first[maxn];</span><br><span class="line">void add(int u,int v)&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u]&#125;;</span><br><span class="line">	first[u]=np; </span><br><span class="line">&#125;</span><br><span class="line">int n,s,x,y,dep[maxn],fa[maxn][<span class="number">18</span>];</span><br><span class="line">int st[maxn],top=<span class="number">0</span>;</span><br><span class="line">bool ok=<span class="literal">false</span>;</span><br><span class="line">void dfs(int i,int f,int d)&#123;</span><br><span class="line">     dep[i]=d;fa[i][<span class="number">0</span>]=f;</span><br><span class="line">	 <span class="keyword">for</span>(int j=<span class="number">1</span>;j&lt;=<span class="number">17</span>;j++) fa[i][j]=fa[fa[i][j-<span class="number">1</span>]][j-<span class="number">1</span>];</span><br><span class="line">	 int chd=<span class="number">0</span>;</span><br><span class="line">	 <span class="keyword">for</span>(int p=first[i];p;p=e[p].<span class="keyword">next</span>)&#123;</span><br><span class="line">	 	int j=e[p].to;</span><br><span class="line">	 	<span class="keyword">if</span>(j==f) continue;</span><br><span class="line">	 	chd++;</span><br><span class="line">	 	dfs(j,i,d+<span class="number">1</span>);</span><br><span class="line">	 &#125;	</span><br><span class="line">	 <span class="keyword">if</span>(i==s&amp;&amp;chd==<span class="number">1</span>) ok=<span class="literal">true</span>;</span><br><span class="line">	 <span class="keyword">if</span>(chd==<span class="number">0</span>) st[++top]=i;</span><br><span class="line">&#125;</span><br><span class="line">/*int lca(int u,int v)&#123;</span><br><span class="line">	<span class="keyword">if</span>(dep[u]&lt;dep[v]) swap(u,v);</span><br><span class="line">	int x=dep[u]-dep[v];</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;=<span class="number">17</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;i)&amp;x) u=fa[u][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(u==v) <span class="keyword">return</span> u;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">17</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(fa[u][i]!=fa[v][i]) </span><br><span class="line">		u=fa[u][i],v=fa[v][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fa[u][<span class="number">0</span>];</span><br><span class="line">&#125;*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">bool color[maxn];</span></span><br><span class="line"><span class="regexp">int ans=0;</span></span><br><span class="line"><span class="regexp">void dfss(int i)&#123;</span></span><br><span class="line"><span class="regexp">	if(color[i])&#123;ans--;return;&#125;</span></span><br><span class="line"><span class="regexp">	color[i]=1;</span></span><br><span class="line"><span class="regexp">	for(int p=first[i];p;p=e[p].next)&#123;</span></span><br><span class="line"><span class="regexp">		int j=e[p].to;</span></span><br><span class="line"><span class="regexp">		if(j==fa[i][0])continue;</span></span><br><span class="line"><span class="regexp">		dfss(j);</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">void init()&#123;</span></span><br><span class="line"><span class="regexp">	scanf("%d%d",&amp;n,&amp;s);</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;n;i++)&#123;</span></span><br><span class="line"><span class="regexp">		scanf("%d%d",&amp;x,&amp;y);</span></span><br><span class="line"><span class="regexp">		add(x,y);add(y,x);</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	dfs(s,0,0);</span></span><br><span class="line"><span class="regexp">	if(ok==true) printf("1");</span></span><br><span class="line"><span class="regexp">	else&#123;</span></span><br><span class="line"><span class="regexp">	    for(int i=1;i&lt;=top;i++)&#123;</span></span><br><span class="line"><span class="regexp">	    	int x=dep[st[i]]-dep[s];</span></span><br><span class="line"><span class="regexp">	    	x=x/</span><span class="number">2</span>;</span><br><span class="line">	    	int u=st[i];</span><br><span class="line">	    	<span class="keyword">for</span>(int j=<span class="number">0</span>;j&lt;=<span class="number">17</span>;j++)&#123;</span><br><span class="line">	    		<span class="keyword">if</span>(x&amp;(<span class="number">1</span>&lt;&lt;j)) u=fa[u][j];</span><br><span class="line">			&#125;</span><br><span class="line">			ans++;</span><br><span class="line">			dfss(u);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(<span class="string">"%d"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;<span class="regexp">//</span>实际复杂度只要O(n) 因为触碰返回 </span><br><span class="line">	/<span class="regexp">/freopen("escaping.in","r",stdin);</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/freopen("escaping.out","w",stdout);</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;algorithm&gt;
+#include&lt;cmath&gt;
+#include&lt;cctype&gt;
+#include&lt;vector&gt;
+#include&lt;queue&gt;
+#include&lt;set&gt;
+#define maxn 100005 
+using namespace std;
+struct eage{
+    int to,next;
+}e[maxn&lt;&lt;1];
+int np=0,first[maxn];
+void add(int u,int v){
+    e[++np]=(eage){v,first[u]};
+    first[u]=np; 
+}
+int n,s,x,y,dep[maxn],fa[maxn][18];
+int st[maxn],top=0;
+bool ok=false;
+void dfs(int i,int f,int d){
+     dep[i]=d;fa[i][0]=f;
+     for(int j=1;j&lt;=17;j++) fa[i][j]=fa[fa[i][j-1]][j-1];
+     int chd=0;
+     for(int p=first[i];p;p=e[p].next){
+         int j=e[p].to;
+         if(j==f) continue;
+         chd++;
+         dfs(j,i,d+1);
+     }    
+     if(i==s&amp;&amp;chd==1) ok=true;
+     if(chd==0) st[++top]=i;
+}
+/*int lca(int u,int v){
+    if(dep[u]&lt;dep[v]) swap(u,v);
+    int x=dep[u]-dep[v];
+    for(int i=0;i&lt;=17;i++){
+        if((1&lt;&lt;i)&amp;x) u=fa[u][i];
+    }
+    if(u==v) return u;
+    for(int i=17;i&gt;=0;i--){
+        if(fa[u][i]!=fa[v][i]) 
+        u=fa[u][i],v=fa[v][i];
+    }
+    return fa[u][0];
+}*/
+bool color[maxn];
+int ans=0;
+void dfss(int i){
+    if(color[i]){ans--;return;}
+    color[i]=1;
+    for(int p=first[i];p;p=e[p].next){
+        int j=e[p].to;
+        if(j==fa[i][0])continue;
+        dfss(j);
+    }
+}
+void init(){
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;s);
+    for(int i=1;i&lt;n;i++){
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        add(x,y);add(y,x);
+    }
+    dfs(s,0,0);
+    if(ok==true) printf(&quot;1&quot;);
+    else{
+        for(int i=1;i&lt;=top;i++){
+            int x=dep[st[i]]-dep[s];
+            x=x/2;
+            int u=st[i];
+            for(int j=0;j&lt;=17;j++){
+                if(x&amp;(1&lt;&lt;j)) u=fa[u][j];
+            }
+            ans++;
+            dfss(u);
+        }
+        printf(&quot;%d&quot;,ans);
+    }
+}
+int main(){//实际复杂度只要O(n) 因为触碰返回 
+    //freopen(&quot;escaping.in&quot;,&quot;r&quot;,stdin);
+    //freopen(&quot;escaping.out&quot;,&quot;w&quot;,stdout);
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -944,12 +1019,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -961,13 +1034,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1031,21 +1101,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

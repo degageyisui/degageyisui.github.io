@@ -86,11 +86,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -451,15 +446,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -538,7 +524,82 @@
 <p>已知有一个球体，能在不碰到障碍点的前提下，从管道的最左端走到最右端。（即从管道内横坐标负无穷的地方走到横坐标正无穷的地方）。</p>
 <p>求这个球体的直径最大是多少。为了避免精度误差，请输出答案保留三位小数的结果。</p>
 <h3 id="两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"><a href="#两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小" class="headerlink" title="两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"></a>两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小</h3><p>下面上一下t2的代码：（没有用最小瓶颈树优化，逃）</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cctype&gt;</span></span><br><span class="line"><span class="comment">#include&lt;set&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line"><span class="comment">#include&lt;map&gt;</span></span><br><span class="line"><span class="comment">#include&lt;queue&gt;</span></span><br><span class="line"><span class="comment">#define maxn 505</span></span><br><span class="line">using namespace std;</span><br><span class="line">struct eage&#123;</span><br><span class="line">    int u,v;</span><br><span class="line">    double dist;</span><br><span class="line">&#125;e[maxn*maxn/<span class="number">2</span>+maxn*<span class="number">2</span>];</span><br><span class="line">bool cmp(eage a,eage b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a.dist&lt;b.dist;</span><br><span class="line">&#125;</span><br><span class="line">double dis(int x1,int y1,int x2,int y2)&#123;</span><br><span class="line">    <span class="keyword">return</span> sqrt(<span class="number">1.0</span>*(x1-x2)*(x1-x2)+<span class="number">1.0</span>*(y1-y2)*(y1-y2)); </span><br><span class="line">&#125;</span><br><span class="line">int fa[maxn];</span><br><span class="line">int find(int x)&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">    int root=find(fa[x]);</span><br><span class="line">    fa[x]=root;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line">void link(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">        fa[fx]=fy;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line">bool check(int x,int y)&#123;</span><br><span class="line">    int fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line">int l,n;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int x,y;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">    int pos=<span class="number">0</span>;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;l);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) fa[i]=i;<span class="regexp">//n</span>+<span class="number">1</span>是上，n+<span class="number">2</span>是下 </span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%d%d"</span>,&amp;nd[i].x,&amp;nd[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">1</span>,l-nd[i].y&#125;;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">2</span>,nd[i].y&#125;;</span><br><span class="line">    <span class="keyword">for</span>(int j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int cnt=<span class="number">0</span>;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+pos+<span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=pos;i++)&#123;</span><br><span class="line">        int u=e[i].u,v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(check(u,v)) continue;</span><br><span class="line">        link(u,v);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(find(n+<span class="number">1</span>)==find(n+<span class="number">2</span>))&#123;<span class="regexp">//</span>只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 </span><br><span class="line">            printf(<span class="string">"%.3f"</span>,e[i].dist);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-ruby">#include&lt;iostream&gt;
+#include&lt;cstdio&gt;
+#include&lt;cstring&gt;
+#include&lt;cmath&gt;
+#include&lt;cctype&gt;
+#include&lt;set&gt;
+#include&lt;algorithm&gt;
+#include&lt;map&gt;
+#include&lt;queue&gt;
+#define maxn 505
+using namespace std;
+struct eage{
+    int u,v;
+    double dist;
+}e[maxn*maxn/2+maxn*2];
+bool cmp(eage a,eage b){
+    return a.dist&lt;b.dist;
+}
+double dis(int x1,int y1,int x2,int y2){
+    return sqrt(1.0*(x1-x2)*(x1-x2)+1.0*(y1-y2)*(y1-y2)); 
+}
+int fa[maxn];
+int find(int x){
+    if(fa[x]==x) return x;
+    int root=find(fa[x]);
+    fa[x]=root;
+    return root;
+}
+void link(int x,int y){
+    int fx=find(x),fy=find(y);
+    if(fx!=fy){
+        fa[fx]=fy;
+    } 
+}
+bool check(int x,int y){
+    int fx=find(x),fy=find(y);
+    if(fx!=fy) return false;
+    return true;
+}
+int l,n;
+struct node{
+    int x,y;
+}nd[maxn];
+void init(){
+    int pos=0;
+    scanf(&quot;%d%d&quot;,&amp;n,&amp;l);
+    for(int i=1;i&lt;=n+2;i++) fa[i]=i;//n+1是上，n+2是下 
+    for(int i=1;i&lt;=n;i++){
+        scanf(&quot;%d%d&quot;,&amp;nd[i].x,&amp;nd[i].y);
+    }
+    for(int i=1;i&lt;=n;i++){
+        e[++pos]=(eage){i,n+1,l-nd[i].y};
+        e[++pos]=(eage){i,n+2,nd[i].y};
+    for(int j=i+1;j&lt;=n;j++){
+        e[++pos]=(eage){i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)};
+    }
+    }
+    int cnt=0;
+    sort(e+1,e+pos+1,cmp);
+    for(int i=1;i&lt;=pos;i++){
+        int u=e[i].u,v=e[i].v;
+        if(check(u,v)) continue;
+        link(u,v);
+        cnt++;
+        if(find(n+1)==find(n+2)){//只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 
+            printf(&quot;%.3f&quot;,e[i].dist);
+            break;
+        }
+    }
+}
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -962,12 +1023,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -979,13 +1038,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1029,21 +1085,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

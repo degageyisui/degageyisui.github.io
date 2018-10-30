@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -522,7 +508,104 @@
 <h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>4</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$1&lt;=n&lt;=2000,1&lt;=A_i&lt;=2000$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>探究问题本质，发现是删掉数后刚好(首次)是个非严格LIS，那么我们如果去掉刚好这个限制，总方案数就会是$\sum_{i=1}^{n} cnt_i \ast (n-i)!$，其中$cnt_i$为长度为i的LIS个数，那么显然这样是不行的，因为有很多不合法的计入了。<br>那么什么样的是不合法的呢，即已经是LIS之后还继续删除，这样的数即为$\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$，注意这里1的没有计入，因为1删完之后就没了a23333.<br>综上，$ans=\sum_{i=1}^{n} cnt_i \ast (n-i)!-\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$.<br>然后是对于$cnt_i$的计算，我们设dp(i,j)表示以i结尾长度为j的LIS个数，那么：<br>(tips:可以了解一下这个思路，以后统计找结尾和长度以便于统计，因为LIS结尾要求递增，可以dp)<br>$dp[i][j]+=dp[k][j-1] k在j前面且a[k]&lt;=a[j]$<br>由于范围限制，我们使用树状数组来维护将其优化到$n^2logn$，那么这里需要离散化来确定哪些比它小。(详见代码注释)</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 2005 </span></span><br><span class="line">using namespace std;</span><br><span class="line">typedef long long ll;</span><br><span class="line">const ll mod=<span class="number">1000000007</span>;</span><br><span class="line">int n,a[maxn],aa[maxn];</span><br><span class="line">ll dp[maxn][maxn];<span class="regexp">//</span>以i结尾,长度为j </span><br><span class="line">ll cnt[maxn];</span><br><span class="line">ll jc[maxn];</span><br><span class="line">ll c[maxn][maxn];<span class="regexp">//c</span>[i][j]：长度为i，在j前面(lowbit长度)的方案数 </span><br><span class="line">void ready()&#123;</span><br><span class="line">	jc[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=<span class="number">2000</span>;i++) jc[i]=jc[i-<span class="number">1</span>]*i%mod;</span><br><span class="line">&#125;</span><br><span class="line">void update(int w,int i,ll d)&#123;</span><br><span class="line">     <span class="keyword">while</span>(i&lt;=n)&#123;</span><br><span class="line">     	c[w][i]=(c[w][i]+d)%mod;</span><br><span class="line">     	i+=(i&amp;-i);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll sum(int w,int i)&#123;</span><br><span class="line">	ll res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		res=(res+c[w][i])%mod;</span><br><span class="line">		i-=(i&amp;-i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++) scanf(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	/*<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	   rear=<span class="number">0</span>;</span><br><span class="line">	   <span class="keyword">for</span>(int j=i;j&lt;=n;j++)&#123;</span><br><span class="line">	   	int t=upper_bound(q+<span class="number">1</span>,q+rear+<span class="number">1</span>,a[j])-q;</span><br><span class="line">	   	<span class="keyword">if</span>(t==rear+<span class="number">1</span>) q[++rear]=a[j];<span class="keyword">else</span>&#123;</span><br><span class="line">	   		<span class="keyword">if</span>(t==<span class="number">1</span>) continue;<span class="regexp">//</span>头不能更换 来保证独立性，以当前为开头 </span><br><span class="line">	   		q[t]=a[j];</span><br><span class="line">		&#125; </span><br><span class="line">		cnt[t]++;</span><br><span class="line">	   	<span class="keyword">for</span>(int k=t-<span class="number">1</span>;k&gt;=<span class="number">2</span>;k--) cnt[k]++; </span><br><span class="line">	   &#125;</span><br><span class="line">	&#125;*<span class="regexp">//</span><span class="regexp">/干！不行aaaaaaaaaaaa</span></span><br><span class="line"><span class="regexp">	memcpy(aa,a,sizeof(a));</span></span><br><span class="line"><span class="regexp">	sort(aa+1,aa+n+1);</span></span><br><span class="line"><span class="regexp">	int cntt=unique(aa+1,aa+n+1)-aa-1;</span></span><br><span class="line"><span class="regexp">	/</span>*<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="regexp">//</span>枚举开头 </span><br><span class="line">	    memset(c,<span class="number">0</span>,sizeof(c));</span><br><span class="line">		dp[i][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		int pos=lower_bound(aa+<span class="number">1</span>,aa+n+<span class="number">1</span>,a[i])-aa;</span><br><span class="line">		update(<span class="number">1</span>,pos,<span class="number">1</span>); </span><br><span class="line">		<span class="keyword">for</span>(int j=<span class="number">2</span>;j&lt;=n;j++)&#123;</span><br><span class="line">		ll calc=<span class="number">0</span>;	</span><br><span class="line">		<span class="keyword">for</span>(int k=i+<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">			pos=lower_bound(aa+<span class="number">1</span>,aa+n+<span class="number">1</span>,a[k])-aa;</span><br><span class="line">			int tt=sum(j-<span class="number">1</span>,pos-<span class="number">1</span>);</span><br><span class="line">			calc+=tt;</span><br><span class="line">			update(j,pos,tt);</span><br><span class="line">		&#125;</span><br><span class="line">		dp[i][j]=calc;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">        dp[i][1]=1; </span></span><br><span class="line"><span class="regexp">		for(int j=2;j&lt;=i;j++)&#123;</span></span><br><span class="line"><span class="regexp">		int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;</span></span><br><span class="line"><span class="regexp">		dp[i][j]=sum(j-1,pos);/</span><span class="regexp">/等于长度为j-1的 </span></span><br><span class="line"><span class="regexp">		&#125;</span></span><br><span class="line"><span class="regexp">        for(int k=1;k&lt;=i;k++)&#123;</span></span><br><span class="line"><span class="regexp">        int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;</span></span><br><span class="line"><span class="regexp">        update(k,pos,dp[i][k]);	</span></span><br><span class="line"><span class="regexp">		&#125;  </span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=n;i++)</span></span><br><span class="line"><span class="regexp">	for(int j=1;j&lt;=n;j++) cnt[j]=(cnt[j]+dp[i][j])%mod;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	ll all=0;</span></span><br><span class="line"><span class="regexp">	for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">		all=(all+cnt[i]*jc[n-i]%mod)%mod;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	ll del=0;</span></span><br><span class="line"><span class="regexp">	for(int i=2;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="regexp">		del=(del+cnt[i]*i%mod*jc[n-i]%mod)%mod;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	ll ans=(all-del+mod)%mod;</span></span><br><span class="line"><span class="regexp">	printf("%lld",ans);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">	ready();</span></span><br><span class="line"><span class="regexp">	init();</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 2005 
+using namespace std;
+typedef long long ll;
+const ll mod=1000000007;
+int n,a[maxn],aa[maxn];
+ll dp[maxn][maxn];//以i结尾,长度为j 
+ll cnt[maxn];
+ll jc[maxn];
+ll c[maxn][maxn];//c[i][j]：长度为i，在j前面(lowbit长度)的方案数 
+void ready(){
+    jc[0]=1;
+    for(ll i=1;i&lt;=2000;i++) jc[i]=jc[i-1]*i%mod;
+}
+void update(int w,int i,ll d){
+     while(i&lt;=n){
+         c[w][i]=(c[w][i]+d)%mod;
+         i+=(i&amp;-i);
+     }
+}
+ll sum(int w,int i){
+    ll res=0;
+    while(i&gt;0){
+        res=(res+c[w][i])%mod;
+        i-=(i&amp;-i);
+    }
+    return res;
+}
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
+
+    /*for(int i=1;i&lt;=n;i++){
+       rear=0;
+       for(int j=i;j&lt;=n;j++){
+           int t=upper_bound(q+1,q+rear+1,a[j])-q;
+           if(t==rear+1) q[++rear]=a[j];else{
+               if(t==1) continue;//头不能更换 来保证独立性，以当前为开头 
+               q[t]=a[j];
+        } 
+        cnt[t]++;
+           for(int k=t-1;k&gt;=2;k--) cnt[k]++; 
+       }
+    }*///干！不行aaaaaaaaaaaa
+    memcpy(aa,a,sizeof(a));
+    sort(aa+1,aa+n+1);
+    int cntt=unique(aa+1,aa+n+1)-aa-1;
+    /*for(int i=1;i&lt;=n;i++){//枚举开头 
+        memset(c,0,sizeof(c));
+        dp[i][1]=1;
+        int pos=lower_bound(aa+1,aa+n+1,a[i])-aa;
+        update(1,pos,1); 
+        for(int j=2;j&lt;=n;j++){
+        ll calc=0;    
+        for(int k=i+1;k&lt;=n;k++){
+            pos=lower_bound(aa+1,aa+n+1,a[k])-aa;
+            int tt=sum(j-1,pos-1);
+            calc+=tt;
+            update(j,pos,tt);
+        }
+        dp[i][j]=calc;    
+        }
+    }*/
+    for(int i=1;i&lt;=n;i++){
+        dp[i][1]=1; 
+        for(int j=2;j&lt;=i;j++){
+        int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;
+        dp[i][j]=sum(j-1,pos);//等于长度为j-1的 
+        }
+        for(int k=1;k&lt;=i;k++){
+        int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;
+        update(k,pos,dp[i][k]);    
+        }  
+    }
+
+
+    for(int i=1;i&lt;=n;i++)
+    for(int j=1;j&lt;=n;j++) cnt[j]=(cnt[j]+dp[i][j])%mod;
+
+    ll all=0;
+    for(int i=1;i&lt;=n;i++){
+        all=(all+cnt[i]*jc[n-i]%mod)%mod;
+    }
+    ll del=0;
+    for(int i=2;i&lt;=n;i++){
+        del=(del+cnt[i]*i%mod*jc[n-i]%mod)%mod;
+    }
+    ll ans=(all-del+mod)%mod;
+    printf(&quot;%lld&quot;,ans);
+}
+int main(){
+    ready();
+    init();
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -946,12 +1029,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -963,13 +1044,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1033,21 +1111,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>

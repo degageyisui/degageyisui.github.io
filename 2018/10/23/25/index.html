@@ -83,11 +83,6 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
 
     
 
@@ -442,15 +437,6 @@
 
     
         
-            <!-- Busuanzi Views -->
-            <a class="post_share-link" href="#">
-                <li class="mdl-menu__item">
-                    <span id="busuanzi_container_page_pv">
-                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
-                    </span>
-                </li>
-            </a>
-        
     
 
     <!-- Share Weibo -->
@@ -520,7 +506,64 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>emmmmmmmm这道题首先判无解情况，即B全为0而A不全为0。</p>
 <p>然后看到2000的数据，O(N)枚举一波最终的位置。然后对于每一个与$B_i$不等的$A_i$看它是往左移还是右移再移回，然后贪心取最大的，边移边翻转，最后ans=变化个数+移动个数+（最大左移+最大右移）$\times$2.注意小于等于移动个数且同向的就不必计入了…移动过程中就换了，详见代码注释。</p>
 <p>这样加上排序复杂度为$n^2logn$，完全能过2333</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line"><span class="comment">#define maxn 2005</span></span><br><span class="line">using namespace std;</span><br><span class="line">char s[maxn],ss[maxn];</span><br><span class="line">int n,lm[maxn],rm[maxn];</span><br><span class="line">struct node&#123;</span><br><span class="line">	int l,r;</span><br><span class="line">	friend bool operator&lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.l&lt;b.l;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;node&gt;q;</span><br><span class="line">void ready()&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		int now=i;</span><br><span class="line">		<span class="keyword">while</span>(ss[now]!=<span class="string">'1'</span>) rm[i]++,now=(now+<span class="number">1</span>)%n;</span><br><span class="line">		now=i;</span><br><span class="line">		<span class="keyword">while</span>(ss[now]!=<span class="string">'1'</span>) lm[i]++,now=(now-<span class="number">1</span>+n)%n;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void init()&#123;</span><br><span class="line">	scanf(<span class="string">"%s%s"</span>,s,ss);</span><br><span class="line">	n=strlen(s);                   </span><br><span class="line">	bool ok1=<span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++) <span class="keyword">if</span>(s[i]==<span class="string">'1'</span>)&#123;ok1=<span class="literal">true</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">	bool ok2=<span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++) <span class="keyword">if</span>(ss[i]==<span class="string">'1'</span>)&#123;ok2=<span class="literal">false</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">	<span class="keyword">if</span>(ok1&amp;&amp;ok2)&#123;printf(<span class="string">"-1"</span>);<span class="keyword">return</span>;&#125;</span><br><span class="line">	ready();</span><br><span class="line">	int cnt,maxx;int ans=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">for</span>(int move=-n+<span class="number">1</span>;move&lt;=n-<span class="number">1</span>;move++)&#123;<span class="regexp">//</span>左移n-<span class="number">1</span>次，右移n-<span class="number">1</span>次 </span><br><span class="line">        int maxx=abs(move);cnt=<span class="number">0</span>;<span class="regexp">//</span>统计要修改的步数</span><br><span class="line">        q.clear();</span><br><span class="line">		<span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(s[i]==ss[(i+move+n)%n]) continue;</span><br><span class="line">			cnt++;</span><br><span class="line">			<span class="keyword">if</span>(move&lt;=<span class="number">0</span>&amp;&amp;lm[i]&lt;=maxx) continue;</span><br><span class="line">			<span class="keyword">if</span>(move&gt;=<span class="number">0</span>&amp;&amp;rm[i]&lt;=maxx) continue;<span class="regexp">//</span>途中移动翻转</span><br><span class="line">			q.push_back((node)&#123;lm[i],rm[i]&#125;); </span><br><span class="line">		&#125;</span><br><span class="line">		sort(q.<span class="keyword">begin</span>(),q.<span class="keyword">end</span>());</span><br><span class="line">		int maxy=<span class="number">0</span>,minn=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">		<span class="keyword">for</span>(int i=q.size()-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">			minn=min(minn,q[i].l+maxy);</span><br><span class="line">			maxy=max(maxy,q[i].r);<span class="regexp">//</span>后一步更新，使覆盖完 </span><br><span class="line">		&#125;  		</span><br><span class="line">		minn=min(minn,maxy);<span class="regexp">//</span>还有最后一个没判到</span><br><span class="line">		ans=min(ans,minn*<span class="number">2</span>+cnt+maxx); <span class="regexp">//</span>来回走两遍aQAQ </span><br><span class="line">	&#125;</span><br><span class="line">	printf(<span class="string">"%d"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    init();  </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上代码：</p>
+<pre><code class="lang-ruby">#include&lt;bits/stdc++.h&gt;
+#define maxn 2005
+using namespace std;
+char s[maxn],ss[maxn];
+int n,lm[maxn],rm[maxn];
+struct node{
+    int l,r;
+    friend bool operator&lt;(node a,node b){
+        return a.l&lt;b.l;
+    }
+};
+vector&lt;node&gt;q;
+void ready(){
+    for(int i=0;i&lt;n;i++){
+        int now=i;
+        while(ss[now]!=&#39;1&#39;) rm[i]++,now=(now+1)%n;
+        now=i;
+        while(ss[now]!=&#39;1&#39;) lm[i]++,now=(now-1+n)%n;
+    }
+}
+void init(){
+    scanf(&quot;%s%s&quot;,s,ss);
+    n=strlen(s);                   
+    bool ok1=false;
+    for(int i=0;i&lt;n;i++) if(s[i]==&#39;1&#39;){ok1=true;break;}
+    bool ok2=true;
+    for(int i=0;i&lt;n;i++) if(ss[i]==&#39;1&#39;){ok2=false;break;}
+    if(ok1&amp;&amp;ok2){printf(&quot;-1&quot;);return;}
+    ready();
+    int cnt,maxx;int ans=0x3f3f3f3f;
+    for(int move=-n+1;move&lt;=n-1;move++){//左移n-1次，右移n-1次 
+        int maxx=abs(move);cnt=0;//统计要修改的步数
+        q.clear();
+        for(int i=0;i&lt;n;i++){
+            if(s[i]==ss[(i+move+n)%n]) continue;
+            cnt++;
+            if(move&lt;=0&amp;&amp;lm[i]&lt;=maxx) continue;
+            if(move&gt;=0&amp;&amp;rm[i]&lt;=maxx) continue;//途中移动翻转
+            q.push_back((node){lm[i],rm[i]}); 
+        }
+        sort(q.begin(),q.end());
+        int maxy=0,minn=0x3f3f3f3f;
+        for(int i=q.size()-1;i&gt;=0;i--){
+            minn=min(minn,q[i].l+maxy);
+            maxy=max(maxy,q[i].r);//后一步更新，使覆盖完 
+        }          
+        minn=min(minn,maxy);//还有最后一个没判到
+        ans=min(ans,minn*2+cnt+maxx); //来回走两遍aQAQ 
+    }
+    printf(&quot;%d&quot;,ans);
+}
+int main(){
+    init();  
+
+    return 0;
+}
+</code></pre>
 
         
     
@@ -944,12 +987,10 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
 
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?5+2z7ZZmFuZK5IcimlZbxw==", true)</script>
+    
 
 
 <!-- Window Load -->
@@ -961,13 +1002,10 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 
     
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
     
+        
+        
+        HanabiBrowser.start('pre code',true);
     
 </script>
 
@@ -1031,21 +1069,6 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-</body>
+        </body>
     
 </html>
