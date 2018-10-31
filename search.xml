@@ -19,8 +19,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>dp</tag>
+        <tag>贪心</tag>
         <tag>最长路</tag>
       </tags>
   </entry>
@@ -32,8 +32,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>LIS</tag>
+        <tag>dp</tag>
         <tag>离散化</tag>
         <tag>树状数组</tag>
       </tags>
@@ -143,8 +143,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>LIS</tag>
+        <tag>贪心</tag>
         <tag>二分查找</tag>
       </tags>
   </entry>
@@ -358,11 +358,11 @@
         <category>noip模拟赛</category>
       </categories>
       <tags>
+        <tag>数学</tag>
+        <tag>dp</tag>
         <tag>模拟</tag>
         <tag>贪心</tag>
         <tag>离线</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -469,8 +469,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>dp</tag>
+        <tag>贪心</tag>
         <tag>正睿</tag>
       </tags>
   </entry>
@@ -483,11 +483,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
