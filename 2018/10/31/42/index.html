@@ -45,7 +45,7 @@
     
     <title>
         
-            标签: 二分查找 | 
+            Poker | 
         
         祎隋
     </title>
@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog">
+    <meta name="keywords" content="c++,blog,概率期望,数学">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -212,7 +212,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="祎隋">
-    <meta name="msapplication-starturl" content="www.degage.xyz/tags/二分查找/">
+    <meta name="msapplication-starturl" content="www.degage.xyz/2018/10/31/42/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="祎隋">
@@ -227,13 +227,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="www.degage.xyz/tags/二分查找/">
+    <meta property="og:url" content="www.degage.xyz/2018/10/31/42/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: 二分查找 | 祎隋">
+    <meta property="og:title" content="Poker | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="这里是degage的代码仓库哦">
-    
+    <meta property="og:article:tag" content="概率期望"> <meta property="og:article:tag" content="数学"> 
 
+    
+        <meta property="article:published_time" content="Wed Oct 31 2018 19:29:24 GMT+0800">
+        <meta property="article:modified_time" content="Wed Oct 31 2018 19:43:40 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -241,13 +244,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="www.degage.xyz/tags/二分查找/index.html" />
+        <link rel="canonical" href="www.degage.xyz/2018/10/31/42/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "www.degage.xyz/2018/10/31/42/index.html",
+    "headline": "Poker",
+    "datePublished": "Wed Oct 31 2018 19:29:24 GMT+0800",
+    "dateModified": "Wed Oct 31 2018 19:43:40 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "degage",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "To meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "祎隋",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",概率期望,数学c++,blog",
+    "description": "这里是degage的代码仓库哦",
+}
+</script>
 
 
     
@@ -280,163 +313,294 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
     
-        
-            
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hint"><span class="post-toc-text">Hint</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
                 
-                    <!-- Paradox Thumbnail -->
-                    <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/10/14/kk/"><span>[Top]</span>祎隋</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            祎隋如你，春风十里不及你《祎隋》
-无需仰首，我已知晓
-那阳光濡缕，和风轻挠
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/10/14/kk/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="degage's avatar">
-            </div>
-            <div>
-                <strong>degage</strong>
-                <span>10月 14, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/杂诗/">杂诗</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-                
-                
-            
-        
-    
-
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/10/24/30/">序列</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/10/24/30/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="degage's avatar">
-            </div>
-            <div>
-                <strong>degage</strong>
-                <span>10月 24, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/正睿/">正睿</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Poker
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>degage</strong>
+        <span>10月 31, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB7UlEQVR42u3awW6EMAwEUP7/p9trpQo6k5RSksdppQ2Ex8GyYx8fS1wHBgYGBgYGBsa/YRzx9f2u0w2+/Js/rX4HDAyMzRg/hLaTNclrtex8DQYGxp6MswB3tiZBRkle+Q4YGBgYCSNJ6fIQjIGBgXEfo/03fwIGBgbGTAGZv1aeUD5Qi2NgYLyQkR/K3/f7T/sbGBgYr2LUIw6XYXQsmD4wM4KBgfEqxszx2fVd7XFb8hwMDIw9GfmrXIfg/K5bxsIwMDCWZlwfjc2Mt843AK4/DQYGxj6MtuwcSx8TZN34xMDA2IzRbpynku3KvL2KgYGxJ6NN2mYK1LE1GBgYGPMbtEf87dEeBgbGzowizMUJYl6sXgf3uhbHwMBYlDEzQjFT9LaHbhgYGHsyxgJlnt7lIbsO/RgYGJsxkkStHYnIg+nYUBoGBsaejJm2Yjvy9cuNAQwMjG0YM0dmOSwva+siFgMDY1FG3TgMEsTkiL9tatYzIxgYGAsxjvjKE8d24DX5HEVjAAMDY1FGG2TzjcdGYH+5FsfAwFiI0QbE/EjusVocAwMDYyJZbMP97QEXAwNjUcZMSzJff7oLBgbGloy2SZkXuvmRXFHuYmBgbMbIGwNjG4+F5hv7GxgYGK9ivPfCwMDAwMDAwHj0+gTiHQgUbQYDEQAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/数学/">数学</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/概率期望/">概率期望</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+    
+
+    <!-- Share Weibo -->
+    
+
+    <!-- Share Twitter -->
+    
+
+    <!-- Share Facebook -->
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=Poker&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/31/42/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一共有n张扑克牌，第i张扑克牌的编号为$a_i$，这里保证n为偶数。<br>先将n张牌随机的分成两堆大小为$\frac{n}{2}$的牌，一人拿一堆，随机为均匀随机。<br>将n张牌随机打乱，两人开始比大小，按顺序翻各自的牌，如果前者大于后者，那么前者得一分，否则后者得一分，问前者和后者得分的期望，输出答案乘上n!然后对1e9+7取模的值。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>1 2 3 2</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>20 28</p>
+<h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>$n&lt;=10^5$</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>其实是个假期望题。<br>发现总方案数是n!，所以实际上是找全排列并统计得分。然后发现是排列，所以每次可以固定两个不同的数，然后乘上(n-2)!</p>
+<p>上代码：</p>
+<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
+#define maxn 100005
+using namespace std;
+typedef long long ll;
+const ll mod=1e9+7;
+int n,a[maxn];
+ll jc;
+void init(){
+    scanf(&quot;%d&quot;,&amp;n);
+    jc=1ll;
+    for(int i=1;i&lt;=n;i++){
+    scanf(&quot;%d&quot;,&amp;a[i]);
+    if(i&lt;=n-2) jc=jc*(ll)i%mod;    
+    }
+    sort(a+1,a+n+1);
+    ll ans1=0;
+    ll cnt=0;
+    ll len=n/2; 
+    ll ans2=0;
+    for(int i=1;i&lt;=n;i++){
+        if(a[i]==a[i+1]){
+            cnt++;
+        }
+        else{
+            cnt++;
+            ans1=(ans1+cnt*jc%mod*(ll)(n-i)%mod)%mod;
+            ans2=(ans2+cnt*jc%mod*(ll)(n-i+cnt-1)%mod)%mod;
+            cnt=0;
+        }
+    }
+    ans1=ans1*len%mod;
+    ans2=ans2*len%mod;
+    printf(&quot;%lld &quot;,ans1);
+    printf(&quot;%lld&quot;,ans2);
+} 
+int main(){
+    init();
+
+    return 0;
+}
+</code></pre>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <div id="gitalk-container">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script type="text/javascript">
+var gitalk = new Gitalk({
+  clientID: '82581591fd38ba2b1427',   //自行修改
+  clientSecret: '1b3fbb1c94f1ac092eaf9915e00b7b93d0f378f2',  //自行修改
+  repo: 'blog-comments',  //自行修改
+  owner: 'degageyisui',  //自行修改
+  admin: ['degageyisui'],  //自行修改
+  id: location.pathname,
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-container{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/10/31/43/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/10/30/41/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -630,6 +794,14 @@ It will not impact the appearance and can give developers a lot of support :)
                     
 
                     
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
 
                     <!--Footer-->
 <footer class="mdl-mini-footer" id="bottom">
@@ -811,6 +983,26 @@ It will not impact the appearance and can give developers a lot of support :)
 </script>
 
 <!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="[object Object]?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
 
 
 <!-- Bing Background -->
