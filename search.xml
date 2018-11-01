@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[取数游戏]]></title>
+    <url>%2F2018%2F11%2F01%2F45%2F</url>
+    <content type="text"><![CDATA[Description有一个$N \ast M$的矩阵，你需要进行恰好K次操作，每次可以选择其中一行或者其中一列，将其中的元素全部累加到ans里去，然后把全中的这些数全部减去P，问ans最大是多少 Sample Input2 2 2 21 32 4 Sample Output11 Hint$N,M&lt;=1000,K&lt;=10^5,0&lt;=P&lt;=100,1&lt;A_{ij}&lt;1000$ Solution首先探究性质发现取行或取列只分别对列和行整体造成影响，贪心还是要取大的，所以只考虑对自身的影响。再发现取行或取列都是分别对以后的取列或取行造成-p的影响，所以先后是没有关系的。那么先预处理出去行k次和取列k次最大值，再O(n)枚举行列分别取多少，再减去$i \ast (k-i) \ast p$即可。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 100005 using namespace std; typedef long long ll; ll h[maxn],l[maxn],sh[maxn],sl[maxn]; int n,m,k,p,x; priority_queue&lt;ll&gt;q,qq; void init(){ scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;k,&amp;p); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=m;j++){ scanf(&quot;%d&quot;,&amp;x); h[i]+=x;l[j]+=x; } for(int i=1;i&lt;=n;i++) q.push(h[i]); for(int i=1;i&lt;=k;i++){ ll t=q.top();q.pop(); sh[i]=sh[i-1]+t;t-=m*p; q.push(t); } for(int i=1;i&lt;=m;i++) qq.push(l[i]); for(int i=1;i&lt;=k;i++){ ll t=qq.top();qq.pop(); sl[i]=sl[i-1]+t;t-=n*p; qq.push(t); } ll ans=-1000000000000; for(int i=0;i&lt;=k;i++){ ans=max(ans,sh[i]+sl[k-i]-1ll*i*(k-i)*p); } printf(&quot;%lld&quot;,ans); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>优先队列</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[字符串]]></title>
+    <url>%2F2018%2F11%2F01%2F44%2F</url>
+    <content type="text"><![CDATA[Description要求用m种字母构造一个长度为n的字符串，使得该字符串的所有长度为k的子串均为回文串，问方案数 Input三个整数$n,m,k(1≤n,m,k≤2000)$ Output输出满足条件的字符串数量，结果模$10^9+7$ Sample Input5 2 4 Sample Output2 Solution对于每个位置，考虑它在一个回文串中的位置，与它相应的与它用并查集相连(回文串必须一样)，最后剩下若干集合，有cnt个，那么答案即为$m^cnt$，当然也可以直接分k,n关系讨论 并查集代码： #include&lt;cstdio&gt; #include&lt;iostream&gt; #include&lt;cstring&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; #include&lt;vector&gt; #include&lt;queue&gt; #include&lt;map&gt; #include&lt;set&gt; #include&lt;ctime&gt; using namespace std; typedef long long ll; typedef pair&lt;int,int&gt;P; const int INF=0x3f3f3f3f,maxn=100001; #define mod 1000000007 int Pow(int a,int b) { int ans=1; while(b) { if(b&amp;1)ans=(ll)ans*a%mod; a=(ll)a*a%mod; b&gt;&gt;=1; } return ans; } int n,m,k,fa[maxn]; int find(int x) { if(fa[x]==x)return x; return fa[x]=find(fa[x]); } void unite(int x,int y) { x=find(x),y=find(y); if(x==y)return ; fa[x]=y; } int main() { int n,m,k; while(~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k)) { for(int i=1;i&lt;=n;i++)fa[i]=i; for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;k&amp;&amp;i+k-j&lt;=n;j+=2) unite(i,i+k-j); int ans=0; for(int i=1;i&lt;=n;i++) if(fa[i]==i)ans++; ans=Pow(m,ans); printf(&quot;%d\n&quot;,ans); } return 0; } nk关系代码： #include&lt;bits/stdc++.h&gt; #define maxn 2005 using namespace std; typedef long long ll; const ll mod=1e9+7; int n,m,k; ll qkpow(ll t,int pos){ ll ans=1,base=t; while(pos){ if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos=pos&gt;&gt;1; } return ans; } void init(){ scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k); if(k==1){ printf(&quot;%lld&quot;,qkpow(m,n)); } else if(k==n) printf(&quot;%lld&quot;,qkpow(m,(k+1)/2)); else if(k&amp;1) printf(&quot;%lld&quot;,m*m%mod); else if(k&gt;n) printf(&quot;%lld&quot;,qkpow(m,n)); else printf(&quot;%d&quot;,m); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Coin]]></title>
     <url>%2F2018%2F10%2F31%2F43%2F</url>
     <content type="text"><![CDATA[Description小M有个n行m列的棋盘，每个格子都包含了至多一枚硬币，硬币正面或者反面朝上。小M和小D轮流操作，小M先手。每个人可以选择棋盘中没在之前被选择过的一行或者一列，然后将所选的行或列上的硬币全部翻转，即正面变成反面，反面变成正面。当所有硬币都正面朝上或者所有的行列都被选择，游戏结束。最后一次操作的玩家将会获得1分。如果当前局面所有的硬币都正面朝上，小M和小D都将获得2分的额外收益。问两个人如果都按最优策略操作，即最大化自己的分数，那么小M最后的得分是多少。（T组数据，1≤T,n,m≤100）保证每列至少有一个硬币，每行至少有一个反面朝上的硬币。 Sample Input12 5exexexeoex Sample Output3 Solution首先如果能构成全向上的局面，那么两人肯定是要构成的。否则就按照n+m奇偶来决定最后谁走。我们假设向上为0，向下为1，那么对于每一个$a_{ij}$，要求满足$h_i xor l_j xor a_{ij}==0$，变化一下即为$h_i xor l_j==a_{i-j}$，所以我们设$a_{ij}$为边权，然后可以连边维护，用类似二分图染色的方法扫一遍以判断是否合法(本可以用并查集维护，但貌似方式不对，联系不紧密)那么我们现在就会有诸多联通块，对每个联通块是个独立游戏，我们开始讨论：如果是奇-奇那么先手在这一块必定赢，而偶偶先手必输但是没影响因为如果有奇奇的话，先手最后是多下一步的，这是第一部分。第二部分就是奇偶，如果只有奇数个奇偶，那么最终先手可以多选一个奇偶的奇而获胜，否则后手选到奇偶的偶获胜。注意细节实现就行了。 上代码： #include&lt;bits/stdc++.h&gt; using namespace std; #define maxn 105 struct eage{ int to,next,len; }e[maxn*maxn*2]; int np=0,first[maxn&lt;&lt;1]; void add(int u,int v,int len){ e[++np]=(eage){v,first[u],len}; first[u]=np; } int t,n,m; char op[maxn]; bool ok; int base; int cnt[3]; int color[maxn&lt;&lt;1]; void dfs(int i){ cnt[color[i]]++; for(int p=first[i];p;p=e[p].next){ int j=e[p].to,c=e[p].len; if(c==0){ if(color[j]){ if(color[j]!=color[i]) ok=false; continue; } else{ color[j]=color[i]; dfs(j); } } else{ if(color[j]){ if(color[i]==color[j]) ok=false; continue; } else{ color[j]=3-color[i]; dfs(j); } } } } void run(){ for(int i=1;i&lt;=n+m;i++){ if(!color[i]){ cnt[1]=cnt[2]=0; color[i]=1; ok=true; dfs(i); if(!ok) return; if(cnt[1]&amp;1&amp;&amp;cnt[2]&amp;1) base^=1; else if(!(cnt[1]&amp;1)&amp;&amp;!(cnt[2]&amp;1)) ; else base^=2; } } } void init(){ scanf(&quot;%d%d&quot;,&amp;n,&amp;m); memset(color,0,sizeof(color)); memset(first,0,sizeof(first)); np=0; ok=true; base=0; for(int i=1;i&lt;=n;i++){ scanf(&quot;%s&quot;,op+1); for(int j=1;j&lt;=m;j++){ if(op[j]==&#39;x&#39;){ add(i,j+n,1); add(j+n,i,1); } if(op[j]==&#39;o&#39;){ add(i,j+n,0); add(j+n,i,0); } } } run(); if(!ok){ int calc=n+m; if(calc&amp;1){ printf(&quot;1\n&quot;); } else{ printf(&quot;0\n&quot;); } } else{ if(base) printf(&quot;3\n&quot;); else printf(&quot;2\n&quot;); } } int main(){ scanf(&quot;%d&quot;,&amp;t); for(int i=1;i&lt;=t;i++) init(); return 0; }]]></content>
@@ -550,23 +574,23 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[links]]></title>
     <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[timeline]]></title>
     <url>%2Ftimeline%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
