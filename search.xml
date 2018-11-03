@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[树的距离]]></title>
+    <url>%2F2018%2F11%2F03%2F48%2F</url>
+    <content type="text"><![CDATA[Description开始有一个空的集合S，进行Q次操作： 1.插入一个数x（如果已存在就忽略）2.删除一个数x（如果不存在就忽略）3.询问点集中数与x的最短距离定义两个数a,b的距离为，每次将a乘一个质数或除以一个质数因子，使a变成b的最小步数。$（Q≤50000,x≤1000000，时限2秒）$ Solution对于两个数A,B: A=p_1^{a_1}+p_2^{a_2}+.....p_n^{a_n}B=p_1^{b_1}+p_2^{b_2}+.....p_n^{b_n}(如果某些$p_i$，相应的次数为0)那么A,B的距离即为 \sum_{i=1}^n abs(a_i-b_i)设gcd(A,B)为g，那么dis可以化为$num(\frac a{g})+num(\frac b{g})$，其中num(x)表示x包含的质数个数。然后我们发现枚举B的话复杂度无法承受，那么转过来枚举A的因数来作为GCD，然后统计相应步数即可。当然这里可以用set或map来维护以谁为gcd的最小B. 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 1000005 using namespace std; int prime[maxn&gt;&gt;1],top=0,s[maxn]; typedef long long ll; bool vis[maxn]; void ready(){ vis[0]=vis[1]=1; for(int i=2;i&lt;=maxn-5;i++){ if(!vis[i]) prime[++top]=i,s[i]=1; for(int j=1;j&lt;=top&amp;&amp;i*prime[j]&lt;=maxn-5;j++){ vis[prime[j]*i]=1;s[prime[j]*i]=s[i]+1; if(i%prime[j]==0) break; } } } int q,op,x; int c[maxn][20]; void init(){ scanf(&quot;%d&quot;,&amp;q); memset(vis,0,sizeof(vis)); for(int i=1;i&lt;=q;i++){ scanf(&quot;%d%d&quot;,&amp;op,&amp;x); if(op==1&amp;&amp;!vis[x]){ vis[x]=1; for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){ c[j][s[x]-s[j]]++; c[x/j][s[j]]++; } } if(op==2&amp;&amp;vis[x]){ vis[x]=0; for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){ c[j][s[x]-s[j]]--; c[x/j][s[j]]--; } } if(op==3){ int ans=1e9; for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){ for(int k=0;k&lt;20;k++) if(c[j][k]) ans=min(ans,k+s[x]-s[j]); for(int k=0;k&lt;20;k++) if(c[x/j][k]) ans=min(ans,k+s[j]); } if(ans==1e9) printf(&quot;-1\n&quot;); else printf(&quot;%d\n&quot;,ans); } } } int main(){ ready(); init(); return 0; } 滔滔的map代码： #include&lt;map&gt; #include&lt;cmath&gt; #include&lt;vector&gt; #include&lt;cstdio&gt; #include&lt;cstring&gt; #include&lt;iostream&gt; #include&lt;algorithm&gt; using namespace std; const int maxn=1000000+5,inf=0x3f3f3f3f; int n,f[maxn]; bool vis[maxn]; vector&lt;int&gt;primes; map&lt;int,int&gt;mp[maxn]; void init(){ for(int i=2;i&lt;=maxn-5;i++){ if(!f[i])f[i]=1,primes.push_back(i); for(int k=0;k&lt;primes.size()&amp;&amp;i*primes[k]&lt;=maxn-5;k++){ f[i*primes[k]]=f[i]+1; if(i%primes[k]==0)break; } } } void ins(int x){ if(vis[x])return;vis[x]=1; int sq=sqrt(x+0.5); for(int i=1;i&lt;=sq;i++){ if(x%i==0)mp[i][f[x]]++; if(x%i==0&amp;&amp;i*i!=x)mp[x/i][f[x]]++; } } void del(int x){ if(!vis[x])return;vis[x]=0; int sq=sqrt(x+0.5); for(int i=1;i&lt;=sq;i++){ if(x%i==0)if(--mp[i][f[x]]==0)mp[i].erase(f[x]); if(x%i==0&amp;&amp;i*i!=x)if(--mp[x/i][f[x]]==0)mp[x/i].erase(f[x]); } } int Find(int i){ if(!mp[i].size())return inf*2; return mp[i].begin()-&gt;first; } void solve(int x){ int sq=sqrt(x+0.5),ans=inf; for(int i=1;i&lt;=sq;i++){ if(x%i==0)ans=min(ans,f[x]+Find(i)-2*f[i]); if(x%i==0&amp;&amp;i*i!=x)ans=min(ans,f[x]+Find(x/i)-2*f[x/i]); } if(ans&gt;=inf)printf(&quot;-1\n&quot;); else printf(&quot;%d\n&quot;,ans); } int main(){ init(); scanf(&quot;%d&quot;,&amp;n); for(int i=1,op,x;i&lt;=n;i++){ scanf(&quot;%d%d&quot;,&amp;op,&amp;x); if(op==1)ins(x); if(op==2)del(x); if(op==3)solve(x); } return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>枚举</tag>
+        <tag>map</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小G的树]]></title>
+    <url>%2F2018%2F11%2F03%2F47%2F</url>
+    <content type="text"><![CDATA[Description给出n个点的树，每条边长会等概率是1或2，求树的直径的期望。（$n≤60$） Solution只要会树型dp求树的直径，然后枚举就可以$O(n^4)$过了 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 70 using namespace std; typedef long long ll; ll g[maxn&lt;&lt;1][maxn&lt;&lt;1],ff[maxn][maxn&lt;&lt;1][maxn&lt;&lt;1]; int n,x,y; struct eage{ int to,next; }e[maxn&lt;&lt;1]; int np=0,first[maxn]; void add(int u,int v){ e[++np]=(eage){v,first[u]}; first[u]=np; } int sz[maxn]; void dfs(int i,int f){ ff[i][0][0]=sz[i]=1; for(int p=first[i];p;p=e[p].next){ int j=e[p].to; if(j==f) continue; dfs(j,i); memset(g,0,sizeof(g)); for(int l1=0;l1&lt;=sz[i]*2;l1++) for(int z1=l1;z1&lt;=sz[i]*2;z1++)if(ff[i][l1][z1]) for(int l2=0;l2&lt;=sz[j]*2;l2++) for(int z2=l2;z2&lt;=sz[j]*2;z2++) if(ff[j][l2][z2]){ for(int len=1;len&lt;=2;len++){ int t=max(z1,z2); t=max(t,l1+l2+len); g[max(l1,l2+len)][t]+=ff[i][l1][z1]*ff[j][l2][z2];; } } sz[i]+=sz[j]; for(int l=0;l&lt;=sz[i]*2;l++) for(int z=l;z&lt;=sz[i]*2;z++) ff[i][l][z]=g[l][z]; } } void init(){ scanf(&quot;%d&quot;,&amp;n); for(int i=1;i&lt;n;i++){ scanf(&quot;%d%d&quot;,&amp;x,&amp;y);add(x,y);add(y,x); } dfs(1,0); double ans=0; for(int l=0;l&lt;=n*2;l++) for(int z=l;z&lt;=n*2;z++){ ans+=ff[1][l][z]*z; } printf(&quot;%lf&quot;,ans/(1ll&lt;&lt;(n-1))); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>概率期望</tag>
+        <tag>树型dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[郁闷的小G]]></title>
+    <url>%2F2018%2F11%2F03%2F46%2F</url>
+    <content type="text"><![CDATA[Description有5种类型的题E,EM,M,MH,H若干，其中E,EM可用来出第一题，EM,M,MH可用来出第二题，MH,H可用来出第三题，求最多可出多少场模拟赛。（设N为最大数，$1≤N≤10^18$） Solution我干考试时懵了直接上了个大模拟，结果用二分简单到爆炸！！！ 模拟： #include&lt;bits/stdc++.h&gt; using namespace std; typedef long long ll; ll e,em,m,mh,h,a,b,c,x=1,y=1; int main(){ scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;e,&amp;em,&amp;m,&amp;mh,&amp;h); a=e+em,b=m,c=mh+h; if(a&lt;=b) x=0; if(c&lt;=b) y=0; if(!x&amp;&amp;!y){ ll ans=min(a,min(b,c)); printf(&quot;%lld&quot;,ans); } else if(!x){ ll mid=(b+c)/2; if(mid-b&lt;=mh) y=mid-b; else y=mh; ll minn=y+b; ll ans=min(a,minn); printf(&quot;%lld&quot;,ans); } else if(!y){ ll mid=(a+b)/2; if(mid-b&lt;=em) x=mid-b; else x=em; ll minn=b+x; ll ans=min(minn,c); printf(&quot;%lld&quot;,ans); } else{ if(a&gt;c){ ll mv=a-c; if(mv&gt;em) mv=em; a=a-mv; if(b+mv&gt;=c){ printf(&quot;%lld&quot;,c); } else{ if(mv==em){ b+=mv; ll mid=(b+c)/2; if(mid-b&lt;=mh) y=mid-b; else y=mh; ll minn=y+b; printf(&quot;%lld&quot;,minn); } else{ b+=mv; em-=mv;//还剩的步数 ll mvv=min(em,mh); ll cnt=(c-b)/3; if(cnt&gt;mvv) cnt=mvv; ll minn=b+cnt*2; c=c-cnt,a=a-cnt;em-=mvv;mh-=mvv; if(minn&lt;c){ if(em){ ll mid=(minn+c)/2; if(mid-minn&lt;=em) y=mid-minn; else y=em; minn=minn+y; } if(mh){ ll mid=(minn+c)/2; if(mid-minn&lt;=mh) y=mid-minn; else y=mh; minn=minn+y; } } printf(&quot;%lld&quot;,minn); } } } else{ ll mv=c-a; if(mv&gt;mh) mv=mh; c=c-mv; if(b+mv&gt;=a){ printf(&quot;%lld&quot;,a); } else{ if(mv==mh){ b+=mv; ll mid=(a+b)/2; if(mid-b&lt;=em) x=mid-b; else x=em; ll minn=b+x; printf(&quot;%lld&quot;,minn); } else{ b+=mv; mh-=mv;//还剩的步数 ll mvv=min(em,mh); ll cnt=(c-b)/3; if(cnt&gt;mvv) cnt=mvv; ll minn=b+cnt*2; c=c-cnt,a=a-cnt;em-=mvv;mh-=mvv; if(minn&lt;c){ if(em){ ll mid=(minn+c)/2; if(mid-minn&lt;=em) y=mid-minn; else y=em; minn=minn+y; } if(mh){ ll mid=(minn+c)/2; if(mid-minn&lt;=mh) y=mid-minn; else y=mh; minn=minn+y; } } printf(&quot;%lld&quot;,minn); } } } } return 0; } 滔滔的二分： #include&lt;cstdio&gt; #include&lt;cstring&gt; #include&lt;iostream&gt; #include&lt;algorithm&gt; using namespace std; typedef long long LL; bool check(LL mid,LL A,LL B,LL C,LL A_B,LL B_C){ if(A&lt;mid){if(A+A_B&lt;mid)return false;A_B-=mid-A;}B+=A_B; if(B&lt;mid){if(B+B_C&lt;mid)return false;B_C-=mid-B;} C+=B_C;if(C&lt;mid)return false; return true; } int main(){ LL A,B,C,A_B,B_C; scanf(&quot;%lld%lld%lld%lld%lld&quot;,&amp;A,&amp;A_B,&amp;B,&amp;B_C,&amp;C); LL L=min({A,B,C}),R=max({A+A_B,B+A_B+B_C,B_C+C}),ans; while(L&lt;=R){ LL mid=(L+R)&gt;&gt;1; if(check(mid,A,B,C,A_B,B_C))ans=mid,L=mid+1; else R=mid-1; } printf(&quot;%lld&quot;,ans); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[取数游戏]]></title>
     <url>%2F2018%2F11%2F01%2F45%2F</url>
     <content type="text"><![CDATA[Description有一个$N \ast M$的矩阵，你需要进行恰好K次操作，每次可以选择其中一行或者其中一列，将其中的元素全部累加到ans里去，然后把全中的这些数全部减去P，问ans最大是多少 Sample Input2 2 2 21 32 4 Sample Output11 Hint$N,M&lt;=1000,K&lt;=10^5,0&lt;=P&lt;=100,1&lt;A_{ij}&lt;1000$ Solution首先探究性质发现取行或取列只分别对列和行整体造成影响，贪心还是要取大的，所以只考虑对自身的影响。再发现取行或取列都是分别对以后的取列或取行造成-p的影响，所以先后是没有关系的。那么先预处理出去行k次和取列k次最大值，再O(n)枚举行列分别取多少，再减去$i \ast (k-i) \ast p$即可。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 100005 using namespace std; typedef long long ll; ll h[maxn],l[maxn],sh[maxn],sl[maxn]; int n,m,k,p,x; priority_queue&lt;ll&gt;q,qq; void init(){ scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;k,&amp;p); for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;=m;j++){ scanf(&quot;%d&quot;,&amp;x); h[i]+=x;l[j]+=x; } for(int i=1;i&lt;=n;i++) q.push(h[i]); for(int i=1;i&lt;=k;i++){ ll t=q.top();q.pop(); sh[i]=sh[i-1]+t;t-=m*p; q.push(t); } for(int i=1;i&lt;=m;i++) qq.push(l[i]); for(int i=1;i&lt;=k;i++){ ll t=qq.top();qq.pop(); sl[i]=sl[i-1]+t;t-=n*p; qq.push(t); } ll ans=-1000000000000; for(int i=0;i&lt;=k;i++){ ans=max(ans,sh[i]+sl[k-i]-1ll*i*(k-i)*p); } printf(&quot;%lld&quot;,ans); } int main(){ init(); return 0; }]]></content>
@@ -15,7 +52,7 @@
   <entry>
     <title><![CDATA[字符串]]></title>
     <url>%2F2018%2F11%2F01%2F44%2F</url>
-    <content type="text"><![CDATA[Description要求用m种字母构造一个长度为n的字符串，使得该字符串的所有长度为k的子串均为回文串，问方案数 Input三个整数$n,m,k(1≤n,m,k≤2000)$ Output输出满足条件的字符串数量，结果模$10^9+7$ Sample Input5 2 4 Sample Output2 Solution对于每个位置，考虑它在一个回文串中的位置，与它相应的与它用并查集相连(回文串必须一样)，最后剩下若干集合，有cnt个，那么答案即为$m^cnt$，当然也可以直接分k,n关系讨论 并查集代码： #include&lt;cstdio&gt; #include&lt;iostream&gt; #include&lt;cstring&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; #include&lt;vector&gt; #include&lt;queue&gt; #include&lt;map&gt; #include&lt;set&gt; #include&lt;ctime&gt; using namespace std; typedef long long ll; typedef pair&lt;int,int&gt;P; const int INF=0x3f3f3f3f,maxn=100001; #define mod 1000000007 int Pow(int a,int b) { int ans=1; while(b) { if(b&amp;1)ans=(ll)ans*a%mod; a=(ll)a*a%mod; b&gt;&gt;=1; } return ans; } int n,m,k,fa[maxn]; int find(int x) { if(fa[x]==x)return x; return fa[x]=find(fa[x]); } void unite(int x,int y) { x=find(x),y=find(y); if(x==y)return ; fa[x]=y; } int main() { int n,m,k; while(~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k)) { for(int i=1;i&lt;=n;i++)fa[i]=i; for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;k&amp;&amp;i+k-j&lt;=n;j+=2) unite(i,i+k-j); int ans=0; for(int i=1;i&lt;=n;i++) if(fa[i]==i)ans++; ans=Pow(m,ans); printf(&quot;%d\n&quot;,ans); } return 0; } nk关系代码： #include&lt;bits/stdc++.h&gt; #define maxn 2005 using namespace std; typedef long long ll; const ll mod=1e9+7; int n,m,k; ll qkpow(ll t,int pos){ ll ans=1,base=t; while(pos){ if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos=pos&gt;&gt;1; } return ans; } void init(){ scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k); if(k==1){ printf(&quot;%lld&quot;,qkpow(m,n)); } else if(k==n) printf(&quot;%lld&quot;,qkpow(m,(k+1)/2)); else if(k&amp;1) printf(&quot;%lld&quot;,m*m%mod); else if(k&gt;n) printf(&quot;%lld&quot;,qkpow(m,n)); else printf(&quot;%d&quot;,m); } int main(){ init(); return 0; }]]></content>
+    <content type="text"><![CDATA[Description要求用m种字母构造一个长度为n的字符串，使得该字符串的所有长度为k的子串均为回文串，问方案数 Input三个整数$n,m,k(1≤n,m,k≤2000)$ Output输出满足条件的字符串数量，结果模$10^9+7$ Sample Input5 2 4 Sample Output2 Solution对于每个位置，考虑它在一个回文串中的位置，与它相应的与它用并查集相连(回文串必须一样)，最后剩下若干集合，有cnt个，那么答案即为$m^{cnt}$，当然也可以直接分k,n关系讨论 并查集代码： #include&lt;cstdio&gt; #include&lt;iostream&gt; #include&lt;cstring&gt; #include&lt;algorithm&gt; #include&lt;cmath&gt; #include&lt;vector&gt; #include&lt;queue&gt; #include&lt;map&gt; #include&lt;set&gt; #include&lt;ctime&gt; using namespace std; typedef long long ll; typedef pair&lt;int,int&gt;P; const int INF=0x3f3f3f3f,maxn=100001; #define mod 1000000007 int Pow(int a,int b) { int ans=1; while(b) { if(b&amp;1)ans=(ll)ans*a%mod; a=(ll)a*a%mod; b&gt;&gt;=1; } return ans; } int n,m,k,fa[maxn]; int find(int x) { if(fa[x]==x)return x; return fa[x]=find(fa[x]); } void unite(int x,int y) { x=find(x),y=find(y); if(x==y)return ; fa[x]=y; } int main() { int n,m,k; while(~scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k)) { for(int i=1;i&lt;=n;i++)fa[i]=i; for(int i=1;i&lt;=n;i++) for(int j=1;j&lt;k&amp;&amp;i+k-j&lt;=n;j+=2) unite(i,i+k-j); int ans=0; for(int i=1;i&lt;=n;i++) if(fa[i]==i)ans++; ans=Pow(m,ans); printf(&quot;%d\n&quot;,ans); } return 0; } nk关系代码： #include&lt;bits/stdc++.h&gt; #define maxn 2005 using namespace std; typedef long long ll; const ll mod=1e9+7; int n,m,k; ll qkpow(ll t,int pos){ ll ans=1,base=t; while(pos){ if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos=pos&gt;&gt;1; } return ans; } void init(){ scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k); if(k==1){ printf(&quot;%lld&quot;,qkpow(m,n)); } else if(k==n) printf(&quot;%lld&quot;,qkpow(m,(k+1)/2)); else if(k&amp;1) printf(&quot;%lld&quot;,m*m%mod); else if(k&gt;n) printf(&quot;%lld&quot;,qkpow(m,n)); else printf(&quot;%d&quot;,m); } int main(){ init(); return 0; }]]></content>
       <categories>
         <category>正睿</category>
       </categories>
@@ -341,8 +378,8 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>缩点</tag>
         <tag>拓扑</tag>
+        <tag>缩点</tag>
         <tag>差分约束系统</tag>
       </tags>
   </entry>
@@ -390,11 +427,11 @@
       </categories>
       <tags>
         <tag>dp</tag>
+        <tag>拓扑</tag>
         <tag>dijsktra</tag>
         <tag>spfa</tag>
         <tag>slf优化</tag>
         <tag>缩点</tag>
-        <tag>拓扑</tag>
         <tag>DAG图</tag>
         <tag>set</tag>
       </tags>
@@ -579,8 +616,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
@@ -589,8 +626,8 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
