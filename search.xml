@@ -140,10 +140,10 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>LIS</tag>
-        <tag>离散化</tag>
+        <tag>dp</tag>
         <tag>树状数组</tag>
+        <tag>离散化</tag>
       </tags>
   </entry>
   <entry>
@@ -400,9 +400,9 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>缩点</tag>
         <tag>拓扑</tag>
         <tag>差分约束系统</tag>
+        <tag>缩点</tag>
       </tags>
   </entry>
   <entry>
@@ -449,11 +449,11 @@
       </categories>
       <tags>
         <tag>dp</tag>
+        <tag>拓扑</tag>
+        <tag>缩点</tag>
         <tag>dijsktra</tag>
         <tag>spfa</tag>
         <tag>slf优化</tag>
-        <tag>缩点</tag>
-        <tag>拓扑</tag>
         <tag>DAG图</tag>
         <tag>set</tag>
       </tags>
@@ -468,9 +468,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
-        <tag>离线</tag>
         <tag>数学</tag>
         <tag>dp</tag>
+        <tag>离线</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -591,11 +591,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
