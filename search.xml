@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[physics]]></title>
+    <url>%2F2018%2F11%2F06%2F52%2F</url>
+    <content type="text"><![CDATA[Description一个n行m列的矩阵，每个为0或1，如果一个边长为K的正方形包含的所有数都为1，那么会形成一个强度为K的电场，有q次询问，每次询问会把1个1变做0，求每次询问的最大电场强度值。 Hint$n,m&lt;=2 \ast 10^3 ,1&lt;=q&lt;=10^4$ Sample Input5 5 5+-++++++++++++++++++++++-1 52 25 32 31 1 Sample Output43322 Solution首先会想到用单调栈$n^2$计算最大1正方形，然后发现每改一个只会影响一列的up数组，然后发现如果答案递减不好维护，那么正难则反，我们先将所有的改动加进来，然后倒序考虑所有操作。那么答案是会依次递增的，我们维护一个up和一个down数组来记录每个格子向上和向下最多多少格，对于每次询问，O(N)更新那一列的up和down，再O(n)单调队列扫一遍那一行，类似滑动窗口的来查询长度为k的序列的$min(up_i)和min(down_i)$，看它们加起来是否大于等于k，如果满足继续扩大k，否则标记答案。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 2005 #define maxq 10005 #define inf 0x3f3f3f3f using namespace std; struct node{ int x,y,ans; }nd[maxq]; int n,m,a[maxn][maxn],q,st[maxn],top=0,up[maxn][maxn],down[maxn][maxn]; char s[maxn]; int maxx=0; void calc(){ for(int j=1;j&lt;=m;j++) for(int i=1;i&lt;=n;i++) up[i][j]=(a[i][j]==0?0:up[i-1][j]+1); for(int j=1;j&lt;=m;j++) for(int i=n;i&gt;=1;i--) down[i][j]=(a[i][j]==0?0:down[i+1][j]+1); st[0]=0; for(int i=1;i&lt;=n;i++){ top=0; for(int j=1;j&lt;=m;j++){ while(top&amp;&amp;up[i][j]&lt;=up[i][st[top]]){//单调栈 maxx=max(maxx,min(up[i][st[top]],j-1-st[top-1])); top--; } st[++top]=j; } while(top){ maxx=max(maxx,min(up[i][st[top]],m-st[top-1])); top--; } } } void calcc(int j){ for(int i=1;i&lt;=n;i++) up[i][j]=(a[i][j]==0?0:up[i-1][j]+1); for(int i=n;i&gt;=1;i--) down[i][j]=(a[i][j]==0?0:down[i+1][j]+1); } int q1[maxn],q2[maxn],front1,front2,rear1,rear2; bool check(int i,int len){ if(len&gt;min(n,m)) return false; front1=front2=rear1=rear2=0; for(int j=1;j&lt;=m;j++){ while(front1&lt;rear1&amp;&amp;j-q1[front1]&gt;=len)front1++; while(front1&lt;rear1&amp;&amp;up[i][q1[rear1-1]]&gt;=up[i][j])rear1--; q1[rear1++]=j; while(front2&lt;rear2&amp;&amp;j-q2[front2]&gt;=len)front2++; while(front2&lt;rear2&amp;&amp;down[i][q2[rear2-1]]&gt;=down[i][j])rear2--; q2[rear2++]=j; if(j&gt;=len&amp;&amp;up[i][q1[front1]]+down[i][q2[front2]]-1&gt;=len)return true; } return false; } void init(){ scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;q); for(int i=1;i&lt;=n;i++){ scanf(&quot;%s&quot;,s+1); for(int j=1;j&lt;=m;j++) a[i][j]=(s[j]==&#39;+&#39;?1:0); } for(int i=1;i&lt;=q;i++){ scanf(&quot;%d%d&quot;,&amp;nd[i].x,&amp;nd[i].y);a[nd[i].x][nd[i].y]=0; } calc(); nd[q].ans=maxx; for(int i=q;i&gt;=2;i--){ a[nd[i].x][nd[i].y]=1; calcc(nd[i].y);//更新 nd[i-1].ans=nd[i].ans; while(check(nd[i].x,maxx+1)) maxx++,nd[i-1].ans=maxx;//只改动了这一行 } for(int i=1;i&lt;=q;i++) printf(&quot;%d\n&quot;,nd[i].ans); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>正难则反</tag>
+        <tag>单调队列</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Chinese]]></title>
+    <url>%2F2018%2F11%2F06%2F51%2F</url>
+    <content type="text"><![CDATA[Description一个n行m列的矩阵，每个格子可以填一个$1~k$的整数，矩阵中的一个格子为炼字当且仅当其值比其所在行和列的其它数都大，定义一个矩阵的精彩度为炼字的个数。设$f_i$为精彩度为i的方案数，显然:$\sum_{i=0}^{n \ast m} f_i=k^{n \ast m}$。现在你需要求出$\sum_{i=0}^{n \ast m} f_i \ast i mod (1e9+7)$ Hint$n,m&lt;=10^9,k&lt;=10^6$ Sample Input2 2 2 Sample Output8 Solution首先，对$\sum_{i=0}^{n \ast m} f_i \ast i$的理解为所有方案中炼字的个数和，那么考虑对每个格子单独计算贡献，如图：那么每个格子产生的贡献即为 \sum_{i=1}^{k} k^{(n-1) \ast (m-1)} \ast (i-1)^{n-1} \ast (i-1)^{m-1}因为相应性质，我们只要再乘上$n \ast m$即为最终答案。 上代码： #include&lt;bits/stdc++.h&gt; using namespace std; typedef long long ll; const ll mod=1e9+7; ll n,m,k; ll qkpow(ll t,ll pos){ ll ans=1,base=t; while(pos){ if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; } return ans; } void init(){ scanf(&quot;%lld%lld%lld&quot;,&amp;n,&amp;m,&amp;k); ll t1=qkpow(k,(n-1)*(m-1)); ll ans=0; for(int i=1;i&lt;k;i++) ans=(ans+qkpow(i,n-1)*qkpow(i,m-1)%mod*t1%mod)%mod; ans=ans*n%mod*m%mod; printf(&quot;%lld&quot;,ans); } int main(){ init(); return 0; }]]></content>
+      <categories>
+        <category>正睿</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Certificate]]></title>
     <url>%2F2018%2F11%2F05%2F50%2F</url>
     <content type="text"><![CDATA[Description已知有$N(N≤14)$个变量，变量取值0或1。已知$f(0,0,⋯,0)，⋯，f(1,1,⋯,1)$的函数值。对于每种输入$x=(x_0,x_1,⋯,x_n)$，求最少需要知道几个变量的值即可确定函数值。举个例子：假设有两个变量，函数$f(a,b)=a\&amp;b$，那么对于$f(x)=0$，我们只要知道其中一个变量为0即可确定函数值为0，否则我们需要知道两个变量是否都为1，才能确定函数值为1。 Solution可以先$2^N$枚举选出的t个关键问题，再$2^N$判断，复杂度为$4^N$，可以勉强卡过。 上代码： #include&lt;bits/stdc++.h&gt; #define maxn 16 using namespace std; int ans[1&lt;&lt;maxn],check[1&lt;&lt;maxn],n,a[1&lt;&lt;maxn]; char s[1&lt;&lt;maxn]; int calc(int x){ int cnt=0; while(x){ cnt++; x-=x&amp;(-x); } return cnt; } void init(){ scanf(&quot;%d&quot;,&amp;n); int all=1&lt;&lt;n; scanf(&quot;%s&quot;,s); memset(ans,0x3f,sizeof(ans)); for(int i=0;s[i];i++) a[i]=(s[i]==&#39;0&#39;?0:1); for(int i=0;i&lt;all;i++){ memset(check,-1,sizeof(check)); for(int j=0;j&lt;all;j++){ if(check[i&amp;j]==-1) check[i&amp;j]=a[j]; else if(check[i&amp;j]!=a[j]) check[i&amp;j]=2; } int len=calc(i); for(int j=0;j&lt;all;j++) if(check[i&amp;j]==a[j]) ans[j]=min(ans[j],len); } for(int i=0;i&lt;all;i++) printf(&quot;%d &quot;,ans[i]); } int main(){ init(); return 0; }]]></content>
@@ -140,10 +164,10 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>LIS</tag>
         <tag>dp</tag>
-        <tag>树状数组</tag>
+        <tag>LIS</tag>
         <tag>离散化</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -400,9 +424,9 @@
       </categories>
       <tags>
         <tag>dp</tag>
+        <tag>缩点</tag>
         <tag>拓扑</tag>
         <tag>差分约束系统</tag>
-        <tag>缩点</tag>
       </tags>
   </entry>
   <entry>
@@ -449,11 +473,11 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>拓扑</tag>
-        <tag>缩点</tag>
         <tag>dijsktra</tag>
         <tag>spfa</tag>
         <tag>slf优化</tag>
+        <tag>缩点</tag>
+        <tag>拓扑</tag>
         <tag>DAG图</tag>
         <tag>set</tag>
       </tags>
@@ -468,9 +492,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
+        <tag>离线</tag>
         <tag>数学</tag>
         <tag>dp</tag>
-        <tag>离线</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -591,11 +615,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -633,13 +657,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
+    <title><![CDATA[文章分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[文章分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
