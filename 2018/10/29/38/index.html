@@ -164,7 +164,7 @@
 
     <style>
       body{
-        background-image: url(https://s1.ax1x.com/2018/11/04/i5qyMq.jpg);
+        background-image: url(https://i.loli.net/2018/11/06/5be1a313410ed.jpg);
       }
     </style>
 
@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 29 2018 21:19:17 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 30 2018 19:53:41 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 00:35:27 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/10/29/38/index.html",
     "headline": "已经没有什么好害怕的了",
     "datePublished": "Mon Oct 29 2018 21:19:17 GMT+0800",
-    "dateModified": "Tue Oct 30 2018 19:53:41 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 00:35:27 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -484,7 +484,7 @@
     
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定一个长度为n只包含左括号和右括号的序列，现在小R想要知道经过每一个位置的合法子串有多少个（空串是一个合法的串，如果A和B都是合法的串，那么(A)和AB都是合法的串）。</p>
 <p>共T组数据，对于每组数据，输出一个整数表示答案，令$ans_i$为经过第i个位置的子串个数，那么你需要输出$\sum^{n}_{i=1}(i×ans_i mod 1e9+7)$。$（1≤T≤10,n≤10^6）$</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于每一个合法的串内部扩起来的，我们对它所涵盖的加1，那么会想到差分，如图:<br><img src="https://s1.ax1x.com/2018/10/29/i2dUXj.png" alt=""><br>即为差分的方式:在左端点加1，在右端点+1的地方减1.<br>首先是可以暴力维护的，但是肯定会超时，那么我使用递推来将其优化到O(n).</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先对于每一个合法的串内部扩起来的，我们对它所涵盖的加1，那么会想到差分，如图:<br><img src="https://i.loli.net/2018/11/06/5be1a22f6e282.png" alt=""><br>即为差分的方式:在左端点加1，在右端点+1的地方减1.<br>首先是可以暴力维护的，但是肯定会超时，那么我使用递推来将其优化到O(n).</p>
 <p>上代码：</p>
 <pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 1000005
