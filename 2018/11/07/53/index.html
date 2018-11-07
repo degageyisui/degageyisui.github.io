@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Wed Nov 07 2018 21:04:04 GMT+0800">
-        <meta property="article:modified_time" content="Wed Nov 07 2018 21:46:55 GMT+0800">
+        <meta property="article:modified_time" content="Wed Nov 07 2018 23:28:21 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2018/11/07/53/index.html",
     "headline": "购物",
     "datePublished": "Wed Nov 07 2018 21:04:04 GMT+0800",
-    "dateModified": "Wed Nov 07 2018 21:46:55 GMT+0800",
+    "dateModified": "Wed Nov 07 2018 23:28:21 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -486,7 +486,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$N&lt;=10^5,a_i&lt;=10^9$<br>时空限制：1s / 512MB</p>
 <h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3<br>1 2 3</p>
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>6</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我们将$a_i$从小到大排序，对于前i个，假设它们和为sum,那么k能去到的范围即为$[\frac{sum+1}{2},sum]$，那么对于\frac{sum-1}{2}开始是覆盖的不到，我们便会减去一些来使覆盖，所以肯定是逐渐拿小的来，到最后剩下$a_i$，那么设前i-1个的和为sum’，则$[sum’+1,\frac{a_i-1}{2}]$是覆盖不到，所以最终把这些空隙减掉即可。</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我们将$a_i$从小到大排序，对于前i个，假设它们和为sum,那么k能去到的范围即为$[\frac{sum+1}{2},sum]$，那么对于$\frac{sum-1}{2}$开始是覆盖的不到，我们便会减去一些来使覆盖，所以肯定是逐渐拿小的来，到最后剩下$a_i$，那么设前i-1个的和为sum’，则$[sum’+1,\frac{a_i-1}{2}]$是覆盖不到，所以最终把这些空隙减掉即可。</p>
 <p>上代码：</p>
 <pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
 #define maxn 100005
