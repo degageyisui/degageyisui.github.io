@@ -691,9 +691,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[about]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[这里是一位来自重庆一中的大龄蒟蒻选手，苟活ing，持续更新 qq: 1494476174 tele: 18883231287]]></content>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
+    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[文章分类]]></title>
@@ -703,11 +703,6 @@
   <entry>
     <title><![CDATA[gallery]]></title>
     <url>%2Fgallery%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
