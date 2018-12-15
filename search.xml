@@ -691,18 +691,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[gallery]]></title>
-    <url>%2Fgallery%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[文章分类]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[timeline]]></title>
-    <url>%2Ftimeline%2Findex.html</url>
+    <title><![CDATA[gallery]]></title>
+    <url>%2Fgallery%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
@@ -713,6 +708,11 @@
   <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[timeline]]></title>
+    <url>%2Ftimeline%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
