@@ -56,7 +56,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog,dp,LIS,离散化,树状数组">
+    <meta name="keywords" content="c++,blog,dp,LIS,树状数组,离散化">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -232,7 +232,7 @@
     <meta property="og:title" content="强军战歌 | 祎隋">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="这里是degage的代码仓库哦">
-    <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="LIS"> <meta property="og:article:tag" content="离散化"> <meta property="og:article:tag" content="树状数组"> 
+    <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="LIS"> <meta property="og:article:tag" content="树状数组"> <meta property="og:article:tag" content="离散化"> 
 
     
         <meta property="article:published_time" content="Tue Oct 30 2018 17:26:39 GMT+0800">
@@ -277,7 +277,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",dp,LIS,离散化,树状数组c++,blog",
+    "keywords": ",dp,LIS,树状数组,离散化c++,blog",
     "description": "这里是degage的代码仓库哦",
 }
 </script>
@@ -1112,6 +1112,21 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 
                 </main>
             </div>
-        </body>
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
     
 </html>
