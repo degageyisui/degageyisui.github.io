@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
-    <url>%2F2019%2F01%2F13%2Ftest%2F</url>
-    <content type="text"><![CDATA[This is a test.]]></content>
+    <title><![CDATA[马拉车算法]]></title>
+    <url>%2F2019%2F01%2F13%2F%E9%A9%AC%E6%8B%89%E8%BD%A6%2F</url>
+    <content type="text"><![CDATA[马拉车算法 int init(char *str) { int n=strlen(str); for(int i=1,j=0;i&lt;=2*n;j++,i+=2) { s[i]=&#39;#&#39;; s[i+1]=str[j]; } s[0]=&#39;$&#39;; s[2*n+1]=&#39;#&#39;; s[2*n+2]=&#39;@&#39;; s[2*n+3]=&#39;\n&#39;; return 2*n+1; } void manacher(int n) { int mx=0,p=0; for(int i=1;i&lt;=n;i++) { if(mx&gt;i)len[i]=min(mx-i,len[2*p-i]); else len[i]=1; while(s[i-len[i]]==s[i+len[i]])len[i]++; if(len[i]+i&gt;mx)mx=len[i]+i,p=i; } }]]></content>
+      <categories>
+        <category>省选</category>
+      </categories>
       <tags>
-        <tag>test</tag>
+        <tag>马拉车算法</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -22,7 +26,7 @@
   <entry>
     <title><![CDATA[祎隋]]></title>
     <url>%2F2019%2F01%2F02%2F57%2F</url>
-    <content type="text"><![CDATA[我愿…《祎隋》我愿意是歌声不成形体又发自于你轻托你的灵动美丽 我愿意是烟火转瞬即逝又引你一视映亮你的天真欣喜 我愿意是微风不被注意又轻拂着你飘扬你的醉人芳香 我愿意是皎月独凌寒处又照你一世平稳你的夜夜美梦 我愿意是时光静默流淌又伴你一生承载你的所有过往]]></content>
+    <content type="text"><![CDATA[我愿…《祎隋》 我愿意是歌声不成形体 又发自于你 轻托你的灵动美丽 我愿意是烟火转瞬即逝 又引你一视 映亮你的天真欣喜 我愿意是微风不被注意 又轻拂着你 飘扬你的醉人芳香 我愿意是皎月独凌寒处 又照你一世 平稳你的夜夜美梦 我愿意是时光静默流淌 又伴你一生 承载你的所有过往]]></content>
       <categories>
         <category>杂诗</category>
       </categories>
@@ -731,11 +735,6 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[timeline]]></title>
-    <url>%2Ftimeline%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[links]]></title>
     <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
@@ -743,6 +742,11 @@
   <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[timeline]]></title>
+    <url>%2Ftimeline%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
