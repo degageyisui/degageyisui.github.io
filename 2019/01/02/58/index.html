@@ -236,7 +236,7 @@
 
     
         <meta property="article:published_time" content="Wed Jan 02 2019 23:07:13 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jan 02 2019 23:17:17 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jan 13 2019 14:38:58 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -259,7 +259,7 @@
     "mainEntityOfPage": "www.degage.xyz/2019/01/02/58/index.html",
     "headline": "莫比乌斯反演未整理",
     "datePublished": "Wed Jan 02 2019 23:07:13 GMT+0800",
-    "dateModified": "Wed Jan 02 2019 23:17:17 GMT+0800",
+    "dateModified": "Sun Jan 13 2019 14:38:58 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "degage",
@@ -474,17 +474,18 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>$\sigma(p^k)=k+1$<br>$phi(p^k)=p^{k-1}\times(p-1)$</p>
-<p>$(phi*1)(p^k)=p^k$</p>
+<p>$(phi\star1)(p^k)=p^k$</p>
 <p>证明：</p>
 <p>$1(i)=1$</p>
-<p>$(phi<em>1)(n)=\sum_{i|n}(phi(i)\times 1)$<br>$(phi</em>1)(p^k)=(phi)(1)+(phi)(p^1)+….+(phi)(p^k)$<br>套公式$phi(p^k)=p^{k-1}\times(p-1)$<br>化为$(p-1)\times(p^0+p^1+…+p^{k-1})=p^k$</p>
-<p>由于$(phi<em>1)(p^k)$是积性函数，所以$phi</em>1=id$</p>
+<p>$(phi\star1)(n)=\sum_{i|n}(phi(i)\times 1)$<br>$(phi\star1)(p^k)=(phi)(1)+(phi)(p^1)+….+(phi)(p^k)$<br>套公式$phi(p^k)=p^{k-1}\times(p-1)$<br>化为$(p-1)\times(p^0+p^1+…+p^{k-1})=p^k$</p>
+<p>由于$(phi\star1)(p^k)$是积性函数，所以$phi\star1=id$</p>
 <p>莫比乌斯反演：</p>
-<p>定义<strong>1</strong>的逆是$\mu$（莫比乌斯函数）</p>
-<p>如果$g=f<em>1$，就有$f=f</em>1<em>\mu=g</em>\mu$</p>
+<p>定义<strong>1</strong>的逆是$\mu​$（莫比乌斯函数）</p>
+<p>如果$g=f\star1$，就有$f=f\ \star 1\ \star\mu=g\ \star\mu$</p>
 <p>所以$g(n)=\sum_{d|n}f(d)$则$f(n)=\sum_{d|n}g(d)\times\mu(n/d)$ （莫比乌斯反演定理）</p>
 <p>另一个方向：$g(n)=\sum_{n|d}f(d)$ 则$f(n)=\sum_{n|d}g(d)\times \mu(d/n)$  其中d的取值范围为f的定义域</p>
-<script type="math/tex; mode=display">\mu(n)=(-1)^{t} $$当$$n=p_1\times p_2\times ...\times p_t且p_i各不相同</script><script type="math/tex; mode=display">else  \mu(i)=0</script><p>结论： $phi=\mu*id$  </p>
+<script type="math/tex; mode=display">\mu(n)=(-1)^{t}</script><p>当 <script type="math/tex">n=p_1\times p_2\times ...\times p_t且p_i各不相同</script></p>
+<script type="math/tex; mode=display">else  \mu(i)=0</script><p>结论： $phi=\mu \star id$  </p>
 <p>莫比乌斯函数常用的两个性质：</p>
 <ul>
 <li>对于任意正整数$n$，$\sum_{d|n}\mu(d)=[n=1]$。（$[n=1]$表示只有当$n=1$成立时，返回值为1；否则，值为0；(这个就是用μ是容斥系数的性质可以证明)<strong>(PS:这一条性质是莫比乌斯反演中最常用的)</strong></li>
@@ -497,7 +498,7 @@
 <pre><code class="lang-c++">for(int l=1,r;l&lt;=n;l=r+1)
 {
     r=n/(n/l);
-    ans+=(r-l+1)*(n/l);
+    ans+=(r-l+1)\star(n/l);
 }
 </code></pre>
 <pre><code class="lang-c++">void get_mu(int n)
@@ -506,11 +507,11 @@
     for(int i=2;i&lt;=n;i++)
     {
         if(!vis[i]){prim[++cnt]=i;mu[i]=-1;}
-        for(int j=1;j&lt;=cnt&amp;&amp;prim[j]*i&lt;=n;j++)
+        for(int j=1;j&lt;=cnt&amp;&amp;prim[j]\stari&lt;=n;j++)
         {
-            vis[prim[j]*i]=1;
+            vis[prim[j]\stari]=1;
             if(i%prim[j]==0)break;
-            else mu[i*prim[j]]=-mu[i];
+            else mu[i\starprim[j]]=-mu[i];
         }
     }
  }
@@ -559,6 +560,14 @@ gitalk.render('gitalk-container')
             <!-- Post Prev & Next Nav -->
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
+    
+        <a href="/2019/01/13/test/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
     
 
     <!-- Section Spacer -->
@@ -658,7 +667,7 @@ gitalk.render('gitalk-container')
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">十二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">44</span></a>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">十二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">44</span></a>
             </ul>
         </li>
         
@@ -732,7 +741,7 @@ gitalk.render('gitalk-container')
         <li>
             <a href="/archives">
                 文章总数
-                <span class="sidebar-badge">58</span>
+                <span class="sidebar-badge">59</span>
             </a>
         </li>
         
