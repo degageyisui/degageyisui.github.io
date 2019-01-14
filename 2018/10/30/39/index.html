@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -364,7 +354,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/30/39/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 910(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 940(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
@@ -383,104 +373,7 @@
 <h1 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h1><p>4</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$1&lt;=n&lt;=2000,1&lt;=A_i&lt;=2000$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>探究问题本质，发现是删掉数后刚好(首次)是个非严格LIS，那么我们如果去掉刚好这个限制，总方案数就会是$\sum_{i=1}^{n} cnt_i \ast (n-i)!$，其中$cnt_i$为长度为i的LIS个数，那么显然这样是不行的，因为有很多不合法的计入了。<br>那么什么样的是不合法的呢，即已经是LIS之后还继续删除，这样的数即为$\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$，注意这里1的没有计入，因为1删完之后就没了a23333.<br>综上，$ans=\sum_{i=1}^{n} cnt_i \ast (n-i)!-\sum_{i=2}^{n} cnt_i \ast i \ast (n-i)!$.<br>然后是对于$cnt_i$的计算，我们设dp(i,j)表示以i结尾长度为j的LIS个数，那么：<br>(tips:可以了解一下这个思路，以后统计找结尾和长度以便于统计，因为LIS结尾要求递增，可以dp)<br>$dp[i][j]+=dp[k][j-1] k在j前面且a[k]&lt;=a[j]$<br>由于范围限制，我们使用树状数组来维护将其优化到$n^2logn$，那么这里需要离散化来确定哪些比它小。(详见代码注释)</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 2005 
-using namespace std;
-typedef long long ll;
-const ll mod=1000000007;
-int n,a[maxn],aa[maxn];
-ll dp[maxn][maxn];//以i结尾,长度为j 
-ll cnt[maxn];
-ll jc[maxn];
-ll c[maxn][maxn];//c[i][j]：长度为i，在j前面(lowbit长度)的方案数 
-void ready(){
-    jc[0]=1;
-    for(ll i=1;i&lt;=2000;i++) jc[i]=jc[i-1]*i%mod;
-}
-void update(int w,int i,ll d){
-     while(i&lt;=n){
-         c[w][i]=(c[w][i]+d)%mod;
-         i+=(i&amp;-i);
-     }
-}
-ll sum(int w,int i){
-    ll res=0;
-    while(i&gt;0){
-        res=(res+c[w][i])%mod;
-        i-=(i&amp;-i);
-    }
-    return res;
-}
-void init(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-
-    /*for(int i=1;i&lt;=n;i++){
-       rear=0;
-       for(int j=i;j&lt;=n;j++){
-           int t=upper_bound(q+1,q+rear+1,a[j])-q;
-           if(t==rear+1) q[++rear]=a[j];else{
-               if(t==1) continue;//头不能更换 来保证独立性，以当前为开头 
-               q[t]=a[j];
-        } 
-        cnt[t]++;
-           for(int k=t-1;k&gt;=2;k--) cnt[k]++; 
-       }
-    }*///干！不行aaaaaaaaaaaa
-    memcpy(aa,a,sizeof(a));
-    sort(aa+1,aa+n+1);
-    int cntt=unique(aa+1,aa+n+1)-aa-1;
-    /*for(int i=1;i&lt;=n;i++){//枚举开头 
-        memset(c,0,sizeof(c));
-        dp[i][1]=1;
-        int pos=lower_bound(aa+1,aa+n+1,a[i])-aa;
-        update(1,pos,1); 
-        for(int j=2;j&lt;=n;j++){
-        ll calc=0;    
-        for(int k=i+1;k&lt;=n;k++){
-            pos=lower_bound(aa+1,aa+n+1,a[k])-aa;
-            int tt=sum(j-1,pos-1);
-            calc+=tt;
-            update(j,pos,tt);
-        }
-        dp[i][j]=calc;    
-        }
-    }*/
-    for(int i=1;i&lt;=n;i++){
-        dp[i][1]=1; 
-        for(int j=2;j&lt;=i;j++){
-        int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;
-        dp[i][j]=sum(j-1,pos);//等于长度为j-1的 
-        }
-        for(int k=1;k&lt;=i;k++){
-        int pos=lower_bound(aa+1,aa+cntt+1,a[i])-aa;
-        update(k,pos,dp[i][k]);    
-        }  
-    }
-
-
-    for(int i=1;i&lt;=n;i++)
-    for(int j=1;j&lt;=n;j++) cnt[j]=(cnt[j]+dp[i][j])%mod;
-
-    ll all=0;
-    for(int i=1;i&lt;=n;i++){
-        all=(all+cnt[i]*jc[n-i]%mod)%mod;
-    }
-    ll del=0;
-    for(int i=2;i&lt;=n;i++){
-        del=(del+cnt[i]*i%mod*jc[n-i]%mod)%mod;
-    }
-    ll ans=(all-del+mod)%mod;
-    printf(&quot;%lld&quot;,ans);
-}
-int main(){
-    ready();
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 2005 </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1000000007</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[maxn],aa[maxn];</span><br><span class="line">ll dp[maxn][maxn];<span class="comment">//以i结尾,长度为j </span></span><br><span class="line">ll cnt[maxn];</span><br><span class="line">ll jc[maxn];</span><br><span class="line">ll c[maxn][maxn];<span class="comment">//c[i][j]：长度为i，在j前面(lowbit长度)的方案数 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ready</span><span class="params">()</span></span>&#123;</span><br><span class="line">	jc[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=<span class="number">2000</span>;i++) jc[i]=jc[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> w,<span class="keyword">int</span> i,ll d)</span></span>&#123;</span><br><span class="line">     <span class="keyword">while</span>(i&lt;=n)&#123;</span><br><span class="line">     	c[w][i]=(c[w][i]+d)%mod;</span><br><span class="line">     	i+=(i&amp;-i);</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">sum</span><span class="params">(<span class="keyword">int</span> w,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">	ll res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		res=(res+c[w][i])%mod;</span><br><span class="line">		i-=(i&amp;-i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="comment">	   rear=0;</span></span><br><span class="line"><span class="comment">	   for(int j=i;j&lt;=n;j++)&#123;</span></span><br><span class="line"><span class="comment">	   	int t=upper_bound(q+1,q+rear+1,a[j])-q;</span></span><br><span class="line"><span class="comment">	   	if(t==rear+1) q[++rear]=a[j];else&#123;</span></span><br><span class="line"><span class="comment">	   		if(t==1) continue;//头不能更换 来保证独立性，以当前为开头 </span></span><br><span class="line"><span class="comment">	   		q[t]=a[j];</span></span><br><span class="line"><span class="comment">		&#125; </span></span><br><span class="line"><span class="comment">		cnt[t]++;</span></span><br><span class="line"><span class="comment">	   	for(int k=t-1;k&gt;=2;k--) cnt[k]++; </span></span><br><span class="line"><span class="comment">	   &#125;</span></span><br><span class="line"><span class="comment">	&#125;*/</span><span class="comment">//干！不行aaaaaaaaaaaa</span></span><br><span class="line">	<span class="built_in">memcpy</span>(aa,a,<span class="keyword">sizeof</span>(a));</span><br><span class="line">	sort(aa+<span class="number">1</span>,aa+n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> cntt=unique(aa+<span class="number">1</span>,aa+n+<span class="number">1</span>)-aa<span class="number">-1</span>;</span><br><span class="line">	<span class="comment">/*for(int i=1;i&lt;=n;i++)&#123;//枚举开头 </span></span><br><span class="line"><span class="comment">	    memset(c,0,sizeof(c));</span></span><br><span class="line"><span class="comment">		dp[i][1]=1;</span></span><br><span class="line"><span class="comment">		int pos=lower_bound(aa+1,aa+n+1,a[i])-aa;</span></span><br><span class="line"><span class="comment">		update(1,pos,1); </span></span><br><span class="line"><span class="comment">		for(int j=2;j&lt;=n;j++)&#123;</span></span><br><span class="line"><span class="comment">		ll calc=0;	</span></span><br><span class="line"><span class="comment">		for(int k=i+1;k&lt;=n;k++)&#123;</span></span><br><span class="line"><span class="comment">			pos=lower_bound(aa+1,aa+n+1,a[k])-aa;</span></span><br><span class="line"><span class="comment">			int tt=sum(j-1,pos-1);</span></span><br><span class="line"><span class="comment">			calc+=tt;</span></span><br><span class="line"><span class="comment">			update(j,pos,tt);</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">		dp[i][j]=calc;	</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">	&#125;*/</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        dp[i][<span class="number">1</span>]=<span class="number">1</span>; </span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>;j&lt;=i;j++)&#123;</span><br><span class="line">		<span class="keyword">int</span> pos=lower_bound(aa+<span class="number">1</span>,aa+cntt+<span class="number">1</span>,a[i])-aa;</span><br><span class="line">		dp[i][j]=sum(j<span class="number">-1</span>,pos);<span class="comment">//等于长度为j-1的 </span></span><br><span class="line">		&#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=i;k++)&#123;</span><br><span class="line">        <span class="keyword">int</span> pos=lower_bound(aa+<span class="number">1</span>,aa+cntt+<span class="number">1</span>,a[i])-aa;</span><br><span class="line">        update(k,pos,dp[i][k]);	</span><br><span class="line">		&#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++) cnt[j]=(cnt[j]+dp[i][j])%mod;</span><br><span class="line">	</span><br><span class="line">	ll all=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		all=(all+cnt[i]*jc[n-i]%mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	ll del=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		del=(del+cnt[i]*i%mod*jc[n-i]%mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=(all-del+mod)%mod;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ready();</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

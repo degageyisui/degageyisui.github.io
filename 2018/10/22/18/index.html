@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -384,129 +374,7 @@
 <p>对于100%的数据，保证 N&lt;=100000</p>
 <p>对于所有的数据，保证 K&lt;=100000，1&lt;=X&lt;=5，1&lt;=A, B&lt;=N</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，这道题要看出是一个差分约束系统，而求至少便是求最小值，所以应转化为$d[j]&gt;=d[i]+Wij$，<del>这样跑最长路(只有用spfa)并且判0环就行了</del>，然而发现这样只会有60，<br>因为数据大和毒，导致判0环会炸。然后发现可以强联通分量缩点，那么每个分量的值肯定是一样的，如果边中有1就说明不符合。最后加一个超级起点，从它开始拓扑加dp就能过了。</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 150005
-using namespace std;
-int n,m,op,a,b;
-typedef long long ll;
-struct eage{
-    int to,next,len;
-}e[maxn&lt;&lt;1];
-int np=0,first[maxn];
-void add(int u,int v,int len){
-    e[++np]=(eage){v,first[u],len};
-    first[u]=np;
-}
-ll d[maxn];
-bool vis[maxn];
-int st[maxn],top=0,low[maxn],dfn[maxn],clock_=0,belong[maxn],cc=0;
-bool ok=false;
-int stt[maxn],topp=0;
-bool run(){
-    for(int i=1;i&lt;=topp;i++){
-        int t=stt[i];
-        for(int p=first[t];p;p=e[p].next){
-            int j=e[p].to,c=e[p].len;
-            if(belong[j]==belong[t]&amp;&amp;c==1) return true;
-        }
-    }
-    return false;
-}
-void dfs(int i){
-    vis[i]=1;
-    dfn[i]=low[i]=++clock_;
-    st[++top]=i;
-    for(int p=first[i];p;p=e[p].next){
-        int j=e[p].to;
-        if(vis[j]){
-            if(!belong[j]) low[i]=min(low[i],dfn[j]);
-            continue;
-        }
-        dfs(j);
-        low[i]=min(low[i],low[j]);
-    }
-    if(low[i]==dfn[i]){
-        cc++;topp=0;
-        while(1){
-            int t=st[top--];
-            belong[t]=cc;
-            stt[++topp]=t;
-            if(t==i) break;
-        } 
-        bool okk=run(); 
-        if(okk==true) ok=true;
-    }
-} 
-struct node{
-    int to;ll len;
-};
-vector&lt;node&gt;g[maxn];
-queue&lt;int&gt;q; 
-int rd[maxn];
-void work(){
-    for(int i=1;i&lt;=n+1;i++){
-        for(int p=first[i];p;p=e[p].next){
-            int j=e[p].to;ll c=e[p].len;
-            if(belong[j]!=belong[i]) g[belong[i]].push_back((node){belong[j],c}),rd[belong[j]]++;
-        }
-    }
-
-    d[belong[n+1]]=0;
-    q.push(belong[n+1]);
-    while(!q.empty()){
-        int i=q.front();q.pop();
-        for(int j=0;j&lt;g[i].size();j++){
-            node t=g[i][j];
-            int kk=t.to;ll c=t.len;
-            d[kk]=max(d[kk],d[i]+c);
-            rd[kk]--;
-            if(rd[kk]==0) q.push(kk);
-        }
-    }
-}
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    d[n+1]=0;
-    for(int i=1;i&lt;=m;i++){
-        scanf(&quot;%d%d%d&quot;,&amp;op,&amp;a,&amp;b);
-        if(op==1){
-            add(a,b,0);
-            add(b,a,0);
-        }
-        else if(op==2){
-            add(a,b,1);
-        }
-        else if(op==3){
-            add(b,a,0);
-        }
-        else if(op==4){
-            add(b,a,1);
-        }
-        else if(op==5){
-            add(a,b,0);
-        }
-    }    
-    for(int i=1;i&lt;=n;i++) add(n+1,i,1);
-    for(int i=1;i&lt;=n+1;i++){
-        if(!vis[i]) dfs(i);
-    }
-    if(ok) printf(&quot;-1&quot;);
-    else{
-        work();
-        ll ans=0;
-        for(int i=1;i&lt;=n+1;i++) ans+=d[belong[i]];
-        printf(&quot;%lld&quot;,ans);
-    }
-}
-int main(){
-    //freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);
-    //freopen(&quot;out.txt&quot;,&quot;w&quot;,stdout); 
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 150005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,op,a,b;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,len;</span><br><span class="line">&#125;e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>,first[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u],len&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line">ll d[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> st[maxn],top=<span class="number">0</span>,low[maxn],dfn[maxn],clock_=<span class="number">0</span>,belong[maxn],cc=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">bool</span> ok=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">int</span> stt[maxn],topp=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=topp;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> t=stt[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> p=first[t];p;p=e[p].next)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=e[p].to,c=e[p].len;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]==belong[t]&amp;&amp;c==<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">	vis[i]=<span class="number">1</span>;</span><br><span class="line">	dfn[i]=low[i]=++clock_;</span><br><span class="line">	st[++top]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> j=e[p].to;</span><br><span class="line">		<span class="keyword">if</span>(vis[j])&#123;</span><br><span class="line">			<span class="keyword">if</span>(!belong[j]) low[i]=min(low[i],dfn[j]);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(j);</span><br><span class="line">		low[i]=min(low[i],low[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(low[i]==dfn[i])&#123;</span><br><span class="line">		cc++;topp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> t=st[top--];</span><br><span class="line">			belong[t]=cc;</span><br><span class="line">			stt[++topp]=t;</span><br><span class="line">			<span class="keyword">if</span>(t==i) <span class="keyword">break</span>;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">bool</span> okk=run(); </span><br><span class="line">		<span class="keyword">if</span>(okk==<span class="literal">true</span>) ok=<span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to;ll len;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;node&gt;g[maxn];</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q; </span><br><span class="line"><span class="keyword">int</span> rd[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=e[p].to;ll c=e[p].len;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]!=belong[i]) g[belong[i]].push_back((node)&#123;belong[j],c&#125;),rd[belong[j]]++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	d[belong[n+<span class="number">1</span>]]=<span class="number">0</span>;</span><br><span class="line">	q.push(belong[n+<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		<span class="keyword">int</span> i=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;g[i].size();j++)&#123;</span><br><span class="line">			node t=g[i][j];</span><br><span class="line">		    <span class="keyword">int</span> kk=t.to;ll c=t.len;</span><br><span class="line">		    d[kk]=max(d[kk],d[i]+c);</span><br><span class="line">		    rd[kk]--;</span><br><span class="line">		    <span class="keyword">if</span>(rd[kk]==<span class="number">0</span>) q.push(kk);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    d[n+<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;op,&amp;a,&amp;b);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">1</span>)&#123;</span><br><span class="line">			add(a,b,<span class="number">0</span>);</span><br><span class="line">			add(b,a,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="number">2</span>)&#123;</span><br><span class="line">			add(a,b,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="number">3</span>)&#123;</span><br><span class="line">			add(b,a,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="number">4</span>)&#123;</span><br><span class="line">			add(b,a,<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(op==<span class="number">5</span>)&#123;</span><br><span class="line">			add(a,b,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) add(n+<span class="number">1</span>,i,<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) dfs(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ok) <span class="built_in">printf</span>(<span class="string">"-1"</span>);</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		work();</span><br><span class="line">		ll ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++) ans+=d[belong[i]];</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//freopen("in.txt","r",stdin);</span></span><br><span class="line">	<span class="comment">//freopen("out.txt","w",stdout); </span></span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

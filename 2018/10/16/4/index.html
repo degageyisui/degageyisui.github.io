@@ -119,16 +119,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -362,10 +352,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/4/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 736(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 786(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
 	
 
       </div>
@@ -373,108 +363,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h1 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h1><p>emmmmmmmm，这道题题意读错了a，有点难受…很考细节的一道题，同时告诉我们细节题要对拍。<br>首先我们要维护的是最大的剩余空间，但实质上是最大的最近距离，比如区间所剩为5和4，实际上它们的最近距离都为2。在设定友好函数时要注意。<br><a id="more"></a><br>在处理好一般操作之后是特判，主要就是对于两端的处理，因为它们是独立成段的(图中红色部分)，所以只要红色长度大于最近距离即更优。<br><del><font color="green">垃圾贴图库炸了，已换图床不会再出现此种情况</font></del><br>最后要注意标号尽可能小的细节。</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 200005
-using namespace std;
-struct node{
-    int l,r;
-    friend bool operator &lt;(node a,node b){
-    if((a.r-a.l)/2!=(b.r-b.l)/2)return (a.r-a.l)/2&gt;(b.r-b.l)/2;
-  //排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 
-    else return a.l&lt;b.l;
-    }
-};
-set&lt;node&gt;s;
-set&lt;node&gt;::iterator it;
-int n,m,x,y;
-map&lt;int,int&gt;mp;
-int pre[maxn],next[maxn],st[maxn],rk[maxn];
-int np=0; 
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    s.insert((node){0,n+1});
-    pre[0]=0;next[0]=n+1;pre[n+1]=0;next[n+1]=n+1;
-    for(int i=1;i&lt;=m;i++){
-        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
-        /*if(x==1){
-            if(t.l==0&amp;&amp;t.r==n+1){
-                st[np]=1;
-                rk[1]=np;
-                next[0]=1;
-                next[1]=n+1;
-                pre[n+1]=1;
-                s.erase((node){0,n+1});
-                s.insert((node){0,1});s.insert((node){1,n+1});
-                printf(&quot;1\n&quot;);continue;
-            }    
-            if(t.l==1&amp;&amp;t.r==n+1){
-                st[np]=n;
-                rk[n]=np;
-                pre[n]=1;
-                next[n]=n+1;
-                pre[n+1]=n;
-                next[0]=1;
-                s.erase((node){1,n+1});
-                s.insert((node){1,n});s.insert((node){n,n+1});
-                printf(&quot;%d\n&quot;,n);continue;
-            }*/
-            if(x==1){
-            mp[y]=++np;
-            it=s.begin();
-            node t=*it;
-            int len=(t.r-t.l)/2;
-            bool ok1=false,ok2=false;
-            int len1=0,len2=0;
-            if(!rk[1]) len1=next[0]-1;if(!rk[n]) len2=n-pre[n+1];
-            if(len2&gt;len1) ok2=true;else ok1=true;//标号 
-            if(!rk[1]&amp;&amp;ok1){//要考虑两端点的问题
-                if(next[0]-1&gt;=len){//标号优先 
-                    st[np]=1;
-                    rk[1]=np;
-                    next[1]=next[0];pre[next[0]]=1;next[0]=1;
-                    s.erase((node){0,next[1]});
-                    s.insert((node){0,1});
-                    s.insert((node){1,next[1]});
-                    printf(&quot;1\n&quot;);continue;
-                } 
-            }
-            if(!rk[n]&amp;&amp;ok2){
-                if(n-pre[n+1]&gt;len){
-                    st[np]=n;
-                    rk[n]=np;
-                    pre[n]=pre[n+1];next[pre[n+1]]=n;pre[n+1]=n;
-                    s.erase((node){pre[n],n+1});
-                    s.insert((node){n,n+1});
-                    s.insert((node){pre[n],n});
-                    printf(&quot;%d\n&quot;,n);continue;
-                } 
-            }
-        int position=t.l+len;rk[position]=np;st[np]=position;
-    pre[position]=t.l;next[position]=t.r;pre[t.r]=position;
-      next[t.l]=position;    
-        printf(&quot;%d\n&quot;,position);    
-        s.erase((node){pre[position],next[position]}); 
-        s.insert((node){pre[position],position});
-    s.insert((node){position,next[position]});
-        }
-        else{
-        int t=st[mp[y]];
-        s.erase((node){pre[t],t});
-        s.erase((node){t,next[t]});
-        s.insert((node){pre[t],next[t]});
-        rk[t]=0;
-        next[pre[t]]=next[t];
-        pre[next[t]]=pre[t];
-        pre[t]=next[t]=0;
-        }
-    }
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 200005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(node a,node b)&#123;</span><br><span class="line">	<span class="keyword">if</span>((a.r-a.l)/<span class="number">2</span>!=(b.r-b.l)/<span class="number">2</span>)<span class="keyword">return</span> (a.r-a.l)/<span class="number">2</span>&gt;(b.r-b.l)/<span class="number">2</span>;</span><br><span class="line">  <span class="comment">//排得是这个最近距离aQAQ 并且不能将2免去，因为奇偶 </span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> a.l&lt;b.l;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">set</span>&lt;node&gt;s;</span><br><span class="line"><span class="built_in">set</span>&lt;node&gt;::iterator it;</span><br><span class="line"><span class="keyword">int</span> n,m,x,y;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;mp;</span><br><span class="line"><span class="keyword">int</span> pre[maxn],next[maxn],st[maxn],rk[maxn];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	s.insert((node)&#123;<span class="number">0</span>,n+<span class="number">1</span>&#125;);</span><br><span class="line">	pre[<span class="number">0</span>]=<span class="number">0</span>;next[<span class="number">0</span>]=n+<span class="number">1</span>;pre[n+<span class="number">1</span>]=<span class="number">0</span>;next[n+<span class="number">1</span>]=n+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		<span class="comment">/*if(x==1)&#123;</span></span><br><span class="line"><span class="comment">			if(t.l==0&amp;&amp;t.r==n+1)&#123;</span></span><br><span class="line"><span class="comment">				st[np]=1;</span></span><br><span class="line"><span class="comment">				rk[1]=np;</span></span><br><span class="line"><span class="comment">				next[0]=1;</span></span><br><span class="line"><span class="comment">				next[1]=n+1;</span></span><br><span class="line"><span class="comment">				pre[n+1]=1;</span></span><br><span class="line"><span class="comment">				s.erase((node)&#123;0,n+1&#125;);</span></span><br><span class="line"><span class="comment">				s.insert((node)&#123;0,1&#125;);s.insert((node)&#123;1,n+1&#125;);</span></span><br><span class="line"><span class="comment">				printf("1\n");continue;</span></span><br><span class="line"><span class="comment">			&#125;	</span></span><br><span class="line"><span class="comment">			if(t.l==1&amp;&amp;t.r==n+1)&#123;</span></span><br><span class="line"><span class="comment">				st[np]=n;</span></span><br><span class="line"><span class="comment">				rk[n]=np;</span></span><br><span class="line"><span class="comment">				pre[n]=1;</span></span><br><span class="line"><span class="comment">				next[n]=n+1;</span></span><br><span class="line"><span class="comment">				pre[n+1]=n;</span></span><br><span class="line"><span class="comment">				next[0]=1;</span></span><br><span class="line"><span class="comment">				s.erase((node)&#123;1,n+1&#125;);</span></span><br><span class="line"><span class="comment">				s.insert((node)&#123;1,n&#125;);s.insert((node)&#123;n,n+1&#125;);</span></span><br><span class="line"><span class="comment">				printf("%d\n",n);continue;</span></span><br><span class="line"><span class="comment">			&#125;*/</span></span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">1</span>)&#123;</span><br><span class="line">			mp[y]=++np;</span><br><span class="line">			it=s.begin();</span><br><span class="line">			node t=*it;</span><br><span class="line">			<span class="keyword">int</span> len=(t.r-t.l)/<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">bool</span> ok1=<span class="literal">false</span>,ok2=<span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">int</span> len1=<span class="number">0</span>,len2=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(!rk[<span class="number">1</span>]) len1=next[<span class="number">0</span>]<span class="number">-1</span>;<span class="keyword">if</span>(!rk[n]) len2=n-pre[n+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span>(len2&gt;len1) ok2=<span class="literal">true</span>;<span class="keyword">else</span> ok1=<span class="literal">true</span>;<span class="comment">//标号 </span></span><br><span class="line">			<span class="keyword">if</span>(!rk[<span class="number">1</span>]&amp;&amp;ok1)&#123;<span class="comment">//要考虑两端点的问题</span></span><br><span class="line">				<span class="keyword">if</span>(next[<span class="number">0</span>]<span class="number">-1</span>&gt;=len)&#123;<span class="comment">//标号优先 </span></span><br><span class="line">					st[np]=<span class="number">1</span>;</span><br><span class="line">				    rk[<span class="number">1</span>]=np;</span><br><span class="line">				    next[<span class="number">1</span>]=next[<span class="number">0</span>];pre[next[<span class="number">0</span>]]=<span class="number">1</span>;next[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">				    s.erase((node)&#123;<span class="number">0</span>,next[<span class="number">1</span>]&#125;);</span><br><span class="line">				    s.insert((node)&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;<span class="number">1</span>,next[<span class="number">1</span>]&#125;);</span><br><span class="line">				    <span class="built_in">printf</span>(<span class="string">"1\n"</span>);<span class="keyword">continue</span>;</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(!rk[n]&amp;&amp;ok2)&#123;</span><br><span class="line">				<span class="keyword">if</span>(n-pre[n+<span class="number">1</span>]&gt;len)&#123;</span><br><span class="line">					st[np]=n;</span><br><span class="line">				    rk[n]=np;</span><br><span class="line">				    pre[n]=pre[n+<span class="number">1</span>];next[pre[n+<span class="number">1</span>]]=n;pre[n+<span class="number">1</span>]=n;</span><br><span class="line">				    s.erase((node)&#123;pre[n],n+<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;n,n+<span class="number">1</span>&#125;);</span><br><span class="line">				    s.insert((node)&#123;pre[n],n&#125;);</span><br><span class="line">				    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,n);<span class="keyword">continue</span>;</span><br><span class="line">				&#125; </span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">int</span> position=t.l+len;rk[position]=np;st[np]=position;</span><br><span class="line">    pre[position]=t.l;next[position]=t.r;pre[t.r]=position;</span><br><span class="line">	  next[t.l]=position;	</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,position);	</span><br><span class="line">		s.erase((node)&#123;pre[position],next[position]&#125;); </span><br><span class="line">		s.insert((node)&#123;pre[position],position&#125;);</span><br><span class="line">    s.insert((node)&#123;position,next[position]&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> t=st[mp[y]];</span><br><span class="line">		s.erase((node)&#123;pre[t],t&#125;);</span><br><span class="line">		s.erase((node)&#123;t,next[t]&#125;);</span><br><span class="line">		s.insert((node)&#123;pre[t],next[t]&#125;);</span><br><span class="line">		rk[t]=<span class="number">0</span>;</span><br><span class="line">		next[pre[t]]=next[t];</span><br><span class="line">		pre[next[t]]=pre[t];</span><br><span class="line">		pre[t]=next[t]=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

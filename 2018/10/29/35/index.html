@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -387,133 +377,10 @@
 <p>时空限制：1s/512MB</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先给出两个降幂公式:<br>欧拉降幂公式：$a^{x}mod p = a^{x \mod \phi_{p}+\phi_{p} }mod p (x ≥ \phi_{p})$。其中$\phi_{p}$为欧拉函数，其意义是小于等于p且与p互质的数的个数。请注意该公式的成立条件：x≥$\phi_{p}$。</p>
 <p>当p是质数时，该公式可简化为费马小定理：$a^x \mod p = a^{x \mod (p−1) }mod p$。此公式对任意的x均成立，不需要满足x≥p−1。</p>
-<p>首先我们发现p是在5000以内的，那么跑一遍欧拉函数即可。然后分别动用两个公式可以将幂降到很小，然后用快速幂只需几十次就可以计算出。这里给出快速幂非递归写法.</p>
-<pre><code class="lang-ruby">ll qkpow(ll k,int pos){
-  ll ans=1,base=k;
-  while(pos){
-    if(pos&amp;1)ans=ans*base%mod;
-    base=base*base%mod;
-    pos=pos&gt;&gt;1;
-  }
-  return ans;
-}
-</code></pre>
+<p>首先我们发现p是在5000以内的，那么跑一遍欧拉函数即可。然后分别动用两个公式可以将幂降到很小，然后用快速幂只需几十次就可以计算出。这里给出快速幂非递归写法.<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">ll qkpow(ll k,int pos)&#123;</span><br><span class="line">  ll ans=<span class="number">1</span>,base=k;</span><br><span class="line">  <span class="keyword">while</span>(pos)&#123;</span><br><span class="line">    <span class="keyword">if</span>(pos&amp;<span class="number">1</span>)ans=ans*base%mod;</span><br><span class="line">    base=base*base%mod;</span><br><span class="line">    pos=pos<span class="meta">&gt;&gt;</span><span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>发现$b_i$很大，肯定就tm想到循环节，事实上只要m1和m2再次出现就会循环，而由于p&lt;=5000，所以最多有$5000^2$种，所以可以很短时间求出，再一次输出即可，注意细节实现，比如前面的一些q可能还没开始循环，要单独输出比如4 3 7 4 3，对于1的询问就不能再mod。</p>
 <p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;cmath&gt;
-#include&lt;algorithm&gt;
-#include&lt;vector&gt; 
-#include&lt;cctype&gt;
-#include&lt;queue&gt;
-#include&lt;set&gt;
-#include&lt;map&gt;
-using namespace std;
-typedef long long ll;
-int phi[5005];
-bool isp[5005];
-void ready(int n){
-   memset(isp,1,sizeof(isp)); 
-   for(int i=1;i&lt;=n;i++) phi[i]=i; 
-   isp[0]=isp[1]=0 ;
-   for(int i=2;i&lt;=n;i++)if(isp[i]){
-   phi[i]=phi[i]/i*(i-1); 
-   for(int k=2;k*i&lt;=n;k++)
-   {
-   isp[i*k]=0;
-   phi[i*k]=phi[i*k]/i*(i-1); 
-   }
-   }
-}
-ll a,mod,m1,m2,alpha,beita;
-int k;ll q[1005];
-struct node{
-    int x,y;
-    friend bool operator&lt;(node a,node b){
-        if(a.x!=b.x) return a.x&lt;b.x;
-        else return a.y&lt;b.y;
-    }
-};
-ll qkpow(ll t,int pos){
-    if(pos==0) return 1;
-    if(pos==1) return t;
-    ll tt=qkpow(t,pos/2);
-    if(pos&amp;1) return tt*tt%mod*t%mod;
-    else return tt*tt%mod;
-}
-int zq,qd;
-ll t1,t2;
-map&lt;node,int&gt;mp;
-map&lt;int,ll&gt;mpv;
-void solve1(){//费马小定理 
-    m1=m1%(mod-1);m2=m2%(mod-1);
-    alpha=alpha%(mod-1);beita=beita%(mod-1); 
-    t1=qkpow(a,m1);t2=qkpow(a,m2);mpv[1]=t1;
-    int pos=3;int ans;
-    while(1){
-       node t=(node){m1,m2};
-       if(!mp.count(t)) mp[t]=pos-1,mpv[pos-1]=qkpow(a,m2);
-       else{
-           zq=pos-1-mp[t],qd=mp[t]-1;//哥哥a,眼睛好点吧 
-           break;
-       }
-       ans=(m1*alpha+m2*beita)%(mod-1);
-       m1=m2;m2=ans;
-       pos++;
-    }
-}
-int px;
-int calc(ll x){
-    if(x&gt;=px) return x%px+px;
-    return x; 
-}
-void solve2(){//欧拉函数 
-    px=phi[mod];
-    m1=calc(m1),m2=calc(m2);
-    alpha=calc(alpha);beita=calc(beita);
-    t1=qkpow(a,m1);mpv[1]=t1;
-    int pos=3;int ans;
-    while(1){
-       node t=(node){m1,m2};
-       if(!mp.count(t)) mp[t]=pos-1,mpv[pos-1]=qkpow(a,m2);
-       else{
-           zq=pos-1-mp[t],qd=mp[t]-1;//哥哥a,眼睛好点吧 
-           break;
-       }
-       ans=calc(m1*alpha+m2*beita);
-       m1=m2;m2=ans;
-       //printf(&quot;%d %d %lld\n&quot;,m1,m2,qkpow(a,m2));
-       pos++;
-    }
-}
-void init(){
-    scanf(&quot;%lld%lld%lld%lld%lld%lld&quot;,&amp;a,&amp;m1,&amp;m2,&amp;alpha,&amp;beita,&amp;mod);
-    scanf(&quot;%d&quot;,&amp;k);
-    for(int i=1;i&lt;=k;i++) scanf(&quot;%lld&quot;,&amp;q[i]);
-    if(isp[mod]) solve1();
-    else solve2();
-    for(int i=1;i&lt;=k;i++){
-      if(q[i]&gt;=qd){
-      int kk=(q[i]-qd+1)%zq;
-      if(kk==0) kk=zq;
-      kk=qd+kk-1;
-      printf(&quot;%lld\n&quot;,mpv[kk]);    
-      }
-      else printf(&quot;%lld\n&quot;,mpv[q[i]]);
-    }
-}
-int main(){
-    //freopen(&quot;squirrel.in&quot;,&quot;r&quot;,stdin);
-    //freopen(&quot;squirrel.out&quot;,&quot;w&quot;,stdout);
-    ready(5000);
-    init();
-
-    return 0;
-}
-</code></pre>
-
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> phi[<span class="number">5005</span>];</span><br><span class="line"><span class="keyword">bool</span> isp[<span class="number">5005</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ready</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">   <span class="built_in">memset</span>(isp,<span class="number">1</span>,<span class="keyword">sizeof</span>(isp)); </span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) phi[i]=i; </span><br><span class="line">   isp[<span class="number">0</span>]=isp[<span class="number">1</span>]=<span class="number">0</span> ;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)<span class="keyword">if</span>(isp[i])&#123;</span><br><span class="line">   phi[i]=phi[i]/i*(i<span class="number">-1</span>); </span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">2</span>;k*i&lt;=n;k++)</span><br><span class="line">   &#123;</span><br><span class="line">   isp[i*k]=<span class="number">0</span>;</span><br><span class="line">   phi[i*k]=phi[i*k]/i*(i<span class="number">-1</span>); </span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">ll a,mod,m1,m2,alpha,beita;</span><br><span class="line"><span class="keyword">int</span> k;ll q[<span class="number">1005</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a.x!=b.x) <span class="keyword">return</span> a.x&lt;b.x;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> a.y&lt;b.y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">ll <span class="title">qkpow</span><span class="params">(ll t,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(pos==<span class="number">1</span>) <span class="keyword">return</span> t;</span><br><span class="line">	ll tt=qkpow(t,pos/<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">if</span>(pos&amp;<span class="number">1</span>) <span class="keyword">return</span> tt*tt%mod*t%mod;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> tt*tt%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> zq,qd;</span><br><span class="line">ll t1,t2;</span><br><span class="line"><span class="built_in">map</span>&lt;node,<span class="keyword">int</span>&gt;mp;</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,ll&gt;mpv;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span>&#123;<span class="comment">//费马小定理 </span></span><br><span class="line">	m1=m1%(mod<span class="number">-1</span>);m2=m2%(mod<span class="number">-1</span>);</span><br><span class="line">	alpha=alpha%(mod<span class="number">-1</span>);beita=beita%(mod<span class="number">-1</span>); </span><br><span class="line">	t1=qkpow(a,m1);t2=qkpow(a,m2);mpv[<span class="number">1</span>]=t1;</span><br><span class="line">	<span class="keyword">int</span> pos=<span class="number">3</span>;<span class="keyword">int</span> ans;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	   node t=(node)&#123;m1,m2&#125;;</span><br><span class="line">	   <span class="keyword">if</span>(!mp.count(t)) mp[t]=pos<span class="number">-1</span>,mpv[pos<span class="number">-1</span>]=qkpow(a,m2);</span><br><span class="line">	   <span class="keyword">else</span>&#123;</span><br><span class="line">	   	zq=pos<span class="number">-1</span>-mp[t],qd=mp[t]<span class="number">-1</span>;<span class="comment">//哥哥a,眼睛好点吧 </span></span><br><span class="line">	   	<span class="keyword">break</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	   ans=(m1*alpha+m2*beita)%(mod<span class="number">-1</span>);</span><br><span class="line">	   m1=m2;m2=ans;</span><br><span class="line">	   pos++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> px;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&gt;=px) <span class="keyword">return</span> x%px+px;</span><br><span class="line">	<span class="keyword">return</span> x; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span>&#123;<span class="comment">//欧拉函数 </span></span><br><span class="line">    px=phi[mod];</span><br><span class="line">	m1=calc(m1),m2=calc(m2);</span><br><span class="line">	alpha=calc(alpha);beita=calc(beita);</span><br><span class="line">	t1=qkpow(a,m1);mpv[<span class="number">1</span>]=t1;</span><br><span class="line">	<span class="keyword">int</span> pos=<span class="number">3</span>;<span class="keyword">int</span> ans;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	   node t=(node)&#123;m1,m2&#125;;</span><br><span class="line">	   <span class="keyword">if</span>(!mp.count(t)) mp[t]=pos<span class="number">-1</span>,mpv[pos<span class="number">-1</span>]=qkpow(a,m2);</span><br><span class="line">	   <span class="keyword">else</span>&#123;</span><br><span class="line">	   	zq=pos<span class="number">-1</span>-mp[t],qd=mp[t]<span class="number">-1</span>;<span class="comment">//哥哥a,眼睛好点吧 </span></span><br><span class="line">	   	<span class="keyword">break</span>;</span><br><span class="line">	   &#125;</span><br><span class="line">	   ans=calc(m1*alpha+m2*beita);</span><br><span class="line">	   m1=m2;m2=ans;</span><br><span class="line">	   <span class="comment">//printf("%d %d %lld\n",m1,m2,qkpow(a,m2));</span></span><br><span class="line">	   pos++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld%lld%lld%lld"</span>,&amp;a,&amp;m1,&amp;m2,&amp;alpha,&amp;beita,&amp;mod);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;q[i]);</span><br><span class="line">	<span class="keyword">if</span>(isp[mod]) solve1();</span><br><span class="line">	<span class="keyword">else</span> solve2();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">	  <span class="keyword">if</span>(q[i]&gt;=qd)&#123;</span><br><span class="line">	  <span class="keyword">int</span> kk=(q[i]-qd+<span class="number">1</span>)%zq;</span><br><span class="line">	  <span class="keyword">if</span>(kk==<span class="number">0</span>) kk=zq;</span><br><span class="line">	  kk=qd+kk<span class="number">-1</span>;</span><br><span class="line">	  <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,mpv[kk]);	</span><br><span class="line">	  &#125;</span><br><span class="line">	  <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,mpv[q[i]]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//freopen("squirrel.in","r",stdin);</span></span><br><span class="line">	<span class="comment">//freopen("squirrel.out","w",stdout);</span></span><br><span class="line">	ready(<span class="number">5000</span>);</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">

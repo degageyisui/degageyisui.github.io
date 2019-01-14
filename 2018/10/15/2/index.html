@@ -119,16 +119,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -362,10 +352,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/15/2/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 833(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 862(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
 	
 
       </div>
@@ -388,82 +378,7 @@
 <p>已知有一个球体，能在不碰到障碍点的前提下，从管道的最左端走到最右端。（即从管道内横坐标负无穷的地方走到横坐标正无穷的地方）。</p>
 <p>求这个球体的直径最大是多少。为了避免精度误差，请输出答案保留三位小数的结果。</p>
 <h3 id="两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"><a href="#两题有异曲同工之妙a…（-滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小" class="headerlink" title="两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小"></a>两题有异曲同工之妙a…（/滑稽，思路差不多…）都可以用最小瓶颈树实现复杂度最小</h3><p>下面上一下t2的代码：（没有用最小瓶颈树优化，逃）</p>
-<pre><code class="lang-c++">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;cmath&gt;
-#include&lt;cctype&gt;
-#include&lt;set&gt;
-#include&lt;algorithm&gt;
-#include&lt;map&gt;
-#include&lt;queue&gt;
-#define maxn 505
-using namespace std;
-struct eage{
-    int u,v;
-    double dist;
-}e[maxn*maxn/2+maxn*2];
-bool cmp(eage a,eage b){
-    return a.dist&lt;b.dist;
-}
-double dis(int x1,int y1,int x2,int y2){
-    return sqrt(1.0*(x1-x2)*(x1-x2)+1.0*(y1-y2)*(y1-y2)); 
-}
-int fa[maxn];
-int find(int x){
-    if(fa[x]==x) return x;
-    int root=find(fa[x]);
-    fa[x]=root;
-    return root;
-}
-void link(int x,int y){
-    int fx=find(x),fy=find(y);
-    if(fx!=fy){
-        fa[fx]=fy;
-    } 
-}
-bool check(int x,int y){
-    int fx=find(x),fy=find(y);
-    if(fx!=fy) return false;
-    return true;
-}
-int l,n;
-struct node{
-    int x,y;
-}nd[maxn];
-void init(){
-    int pos=0;
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;l);
-    for(int i=1;i&lt;=n+2;i++) fa[i]=i;//n+1是上，n+2是下 
-    for(int i=1;i&lt;=n;i++){
-        scanf(&quot;%d%d&quot;,&amp;nd[i].x,&amp;nd[i].y);
-    }
-    for(int i=1;i&lt;=n;i++){
-        e[++pos]=(eage){i,n+1,l-nd[i].y};
-        e[++pos]=(eage){i,n+2,nd[i].y};
-    for(int j=i+1;j&lt;=n;j++){
-        e[++pos]=(eage){i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)};
-    }
-    }
-    int cnt=0;
-    sort(e+1,e+pos+1,cmp);
-    for(int i=1;i&lt;=pos;i++){
-        int u=e[i].u,v=e[i].v;
-        if(check(u,v)) continue;
-        link(u,v);
-        cnt++;
-        if(find(n+1)==find(n+2)){//只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 
-            printf(&quot;%.3f&quot;,e[i].dist);
-            break;
-        }
-    }
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 505</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u,v;</span><br><span class="line">    <span class="keyword">double</span> dist;</span><br><span class="line">&#125;e[maxn*maxn/<span class="number">2</span>+maxn*<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(eage a,eage b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.dist&lt;b.dist;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(<span class="number">1.0</span>*(x1-x2)*(x1-x2)+<span class="number">1.0</span>*(y1-y2)*(y1-y2)); </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> fa[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">int</span> root=find(fa[x]);</span><br><span class="line">    fa[x]=root;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">        fa[fx]=fy;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">    <span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> l,n;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">&#125;nd[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;l);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) fa[i]=i;<span class="comment">//n+1是上，n+2是下 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;nd[i].x,&amp;nd[i].y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">1</span>,l-nd[i].y&#125;;</span><br><span class="line">        e[++pos]=(eage)&#123;i,n+<span class="number">2</span>,nd[i].y&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">        e[++pos]=(eage)&#123;i,j,dis(nd[i].x,nd[i].y,nd[j].x,nd[j].y)&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    sort(e+<span class="number">1</span>,e+pos+<span class="number">1</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=pos;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u=e[i].u,v=e[i].v;</span><br><span class="line">        <span class="keyword">if</span>(check(u,v)) <span class="keyword">continue</span>;</span><br><span class="line">        link(u,v);</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="keyword">if</span>(find(n+<span class="number">1</span>)==find(n+<span class="number">2</span>))&#123;<span class="comment">//只要上底和下底连接了就行 这样才能保证极大值可以通过，如果后面更大，那这里是过不了的 </span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%.3f"</span>,e[i].dist);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

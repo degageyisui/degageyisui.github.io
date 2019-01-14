@@ -119,16 +119,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -362,7 +352,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/20/17/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 562(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 577(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -379,65 +369,7 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>2</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>对于 30%的数据， n&lt;=10<br>对于 100%的数据， n&lt;=100000</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>发现一个点最多连向另外一个点，可以想一下发现是环加内向树。<br>那么对于入度为0的点便只能加入B集合，那么a[x]定可以为A集合，所以拓扑排序，将遇到的<br>为标记的或x和a[x]都为B的，将a[x]加入A。<br>最后剩下环，将环上的B集合的标记清空(这样可以更大)，然后以环上的A集合点向没有标记的点<br>蔓延赋值，最后就能得到最佳情况。</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 100005
-using namespace std;
-int n,x,rd[maxn],a[maxn];
-queue&lt;int&gt;q;
-int color[maxn];
-bool vis[maxn];
-int calc;
-void init(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++){
-    scanf(&quot;%d&quot;,&amp;x);
-    a[i]=x;
-    rd[x]++;
-    } 
-    for(int i=1;i&lt;=n;i++) if(rd[i]==0) q.push(i),color[i]=1;
-    int ans=0;
-    while(!q.empty()){
-        int i=q.front();q.pop();
-        if(!color[a[i]]){
-            color[a[i]]=3-color[i];
-            if(color[a[i]]==2) ans++;
-        }
-        else if(color[i]==1&amp;&amp;color[a[i]]==1) color[a[i]]=2,ans++;
-        rd[a[i]]--;
-        if(rd[a[i]]==0) q.push(a[i]);
-    }
-    for(int i=1;i&lt;=n;i++) if(rd[i]&amp;&amp;color[i]==1) color[i]=0;//将1清完，从2开始会更多 
-    for(int i=1;i&lt;=n;i++){
-        if(rd[i]&amp;&amp;color[i]){
-            int x=i;
-            while(!color[a[x]]){
-                color[a[x]]=3-color[x];
-                if(color[a[x]]==2) ans++;
-                x=a[x];
-            }
-        }
-    } 
-    /*for(int i=1;i&lt;=n;i++){
-       if(!color[i]){
-           color[i]=1;
-           int x=i;
-           while(!color[a[x]]){
-           color[a[x]]=3-color[x];
-           if(color[a[x]]==2) ans++;
-           x=a[x];
-        }
-       }    
-    }*/
-
-    printf(&quot;%d&quot;,ans);
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,x,rd[maxn],a[maxn];</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line"><span class="keyword">int</span> color[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> calc;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">	a[i]=x;</span><br><span class="line">	rd[x]++;</span><br><span class="line">	&#125; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(rd[i]==<span class="number">0</span>) q.push(i),color[i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">    	<span class="keyword">int</span> i=q.front();q.pop();</span><br><span class="line">    	<span class="keyword">if</span>(!color[a[i]])&#123;</span><br><span class="line">    		color[a[i]]=<span class="number">3</span>-color[i];</span><br><span class="line">    		<span class="keyword">if</span>(color[a[i]]==<span class="number">2</span>) ans++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(color[i]==<span class="number">1</span>&amp;&amp;color[a[i]]==<span class="number">1</span>) color[a[i]]=<span class="number">2</span>,ans++;</span><br><span class="line">		rd[a[i]]--;</span><br><span class="line">		<span class="keyword">if</span>(rd[a[i]]==<span class="number">0</span>) q.push(a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(rd[i]&amp;&amp;color[i]==<span class="number">1</span>) color[i]=<span class="number">0</span>;<span class="comment">//将1清完，从2开始会更多 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(rd[i]&amp;&amp;color[i])&#123;</span><br><span class="line">			<span class="keyword">int</span> x=i;</span><br><span class="line">			<span class="keyword">while</span>(!color[a[x]])&#123;</span><br><span class="line">				color[a[x]]=<span class="number">3</span>-color[x];</span><br><span class="line">				<span class="keyword">if</span>(color[a[x]]==<span class="number">2</span>) ans++;</span><br><span class="line">				x=a[x];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="comment">/*for(int i=1;i&lt;=n;i++)&#123;</span></span><br><span class="line"><span class="comment">	   if(!color[i])&#123;</span></span><br><span class="line"><span class="comment">	   	color[i]=1;</span></span><br><span class="line"><span class="comment">	   	int x=i;</span></span><br><span class="line"><span class="comment">	   	while(!color[a[x]])&#123;</span></span><br><span class="line"><span class="comment">		   color[a[x]]=3-color[x];</span></span><br><span class="line"><span class="comment">		   if(color[a[x]]==2) ans++;</span></span><br><span class="line"><span class="comment">		   x=a[x];</span></span><br><span class="line"><span class="comment">		&#125;</span></span><br><span class="line"><span class="comment">	   &#125;	</span></span><br><span class="line"><span class="comment">	&#125;*/</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

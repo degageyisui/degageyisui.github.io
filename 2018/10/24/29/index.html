@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -364,7 +354,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/24/29/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 549(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 546(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -380,49 +370,7 @@
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$n&lt;=10^6,m&lt;=10^4$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，我们要探究性质，了解到每一堆先选后选无关系，因为总会按最优策略一样分解产生相同贡献。然后我们设f(x)表示x这堆对先手造成多走的贡献，那么A肯定想要最大化f(i)，而B则想要最小化f(i)，而恰好这里的每个拥有的数都是唯一的，所以很好处理<del>(抽空了解一下博弈论的SG函数和超现实数，如果这里数会重貌似就要超现实数？？？)</del>.这里的f(i)是拥有可加性的，分解嘛。<br>对于每个A拥有的f(i):<br>$f_i=max(f_i,f_j+f_{i-j}+1)$<br>对于每个B拥有的f(i):<br>$f_i=min(f_i,f_j+f_{i-j}-1)$</p>
 <p>这样对于每一个$p_i$我们将贡献加起来如果最终&lt;=0就B赢，否则A赢，A先走嘛</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 1000005
-#define maxm 10005
-using namespace std;
-int n,m,tota,totb,a[maxm],b[maxm],p[maxn];
-int visa[maxm],f[maxm];
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    scanf(&quot;%d&quot;,&amp;tota);
-    for(int i=1;i&lt;=tota;i++){
-        scanf(&quot;%d&quot;,&amp;a[i]);
-        visa[a[i]]=1;
-    }
-    scanf(&quot;%d&quot;,&amp;totb);
-    for(int i=1;i&lt;=totb;i++){
-        scanf(&quot;%d&quot;,&amp;b[i]);
-        visa[b[i]]=-1;
-    }
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;p[i]);
-
-    for(int i=2;i&lt;=m;i++){
-        if(!visa[i]) continue;
-        for(int j=1;j&lt;i;j++){
-            if(visa[i]==1) f[i]=max(f[i],f[i-j]+f[j]+1);
-            else f[i]=min(f[i],f[i-j]+f[j]-1);
-        }
-    }
-
-    int ans=0;
-    for(int i=1;i&lt;=n;i++){
-        if(p[i]&gt;m) continue;
-        ans+=f[p[i]];
-    }
-    if(ans&lt;=0) printf(&quot;Orange&quot;);
-    else printf(&quot;Pomegranate&quot;);
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1000005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxm 10005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,tota,totb,a[maxm],b[maxm],p[maxn];</span><br><span class="line"><span class="keyword">int</span> visa[maxm],f[maxm];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tota);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tota;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		visa[a[i]]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;totb);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=totb;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]);</span><br><span class="line">		visa[b[i]]=<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;p[i]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=m;i++)&#123;</span><br><span class="line">	    <span class="keyword">if</span>(!visa[i]) <span class="keyword">continue</span>;</span><br><span class="line">	    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;i;j++)&#123;</span><br><span class="line">	    	<span class="keyword">if</span>(visa[i]==<span class="number">1</span>) f[i]=max(f[i],f[i-j]+f[j]+<span class="number">1</span>);</span><br><span class="line">	    	<span class="keyword">else</span> f[i]=min(f[i],f[i-j]+f[j]<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(p[i]&gt;m) <span class="keyword">continue</span>;</span><br><span class="line">		ans+=f[p[i]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans&lt;=<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"Orange"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"Pomegranate"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

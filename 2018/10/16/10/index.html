@@ -119,16 +119,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -362,7 +352,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/10/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 456(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 459(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -381,62 +371,7 @@
 <p>2.将随便一个标记点与所以非标记点连边；</p>
 <p>3.再随便一个非标记点与未加入图中的点连边来保证图的联通；</p>
 <p>4.最后随便加未加的边使边数凑够m即可；</p>
-<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 310
-using namespace std;
-int n,m,k,x,num;
-bool vis[maxn],iss[maxn][maxn],viss[maxn];
-void init(){
-    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;k);
-    for(int i=1;i&lt;=n;i++) iss[i][i]=1;
-    for(int i=1;i&lt;=k;i++) scanf(&quot;%d&quot;,&amp;x),vis[x]=1;
-    num=n-k;
-    int maxx=(n-1)*(n-2)/2+num;
-    if(m&gt;maxx||k==n){
-        printf(&quot;-1&quot;);return;
-    } 
-    int t,tt=1;int calc=0;
-    while(!vis[tt]) tt++; 
-    viss[tt]=1;
-    for(int i=1;i&lt;=n;i++){
-        if(!vis[i]){
-            t=i;
-            viss[t]=1;
-            printf(&quot;%d %d\n&quot;,t,tt);
-            iss[t][tt]=iss[tt][t]=1;
-            calc++; 
-        }
-    }
-
-    //保证联通 
-    for(int i=1;i&lt;=n;i++){
-        if(viss[i]) continue;
-        printf(&quot;%d %d\n&quot;,i,t); 
-        iss[i][t]=iss[t][i]=1;
-        calc++;
-        if(calc==m) break;
-    }
-
-
-    for(int i=1;i&lt;=n;i++){
-        if(calc==m) break;
-        if(i==tt) continue;
-        for(int j=1;j&lt;=n;j++){
-            if(j==tt) continue;
-            if(iss[i][j]) continue;
-            printf(&quot;%d %d\n&quot;,i,j);
-            calc++;
-            iss[i][j]=iss[j][i]=1;
-            if(calc==m) break;
-        }
-    }
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<h1 id="The-Code"><a href="#The-Code" class="headerlink" title="The Code"></a>The Code</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 310</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,k,x,num;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn],iss[maxn][maxn],viss[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) iss[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x),vis[x]=<span class="number">1</span>;</span><br><span class="line">    num=n-k;</span><br><span class="line">    <span class="keyword">int</span> maxx=(n<span class="number">-1</span>)*(n<span class="number">-2</span>)/<span class="number">2</span>+num;</span><br><span class="line">    <span class="keyword">if</span>(m&gt;maxx||k==n)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"-1"</span>);<span class="keyword">return</span>;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">int</span> t,tt=<span class="number">1</span>;<span class="keyword">int</span> calc=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(!vis[tt]) tt++; </span><br><span class="line">    viss[tt]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">            t=i;</span><br><span class="line">            viss[t]=<span class="number">1</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,t,tt);</span><br><span class="line">            iss[t][tt]=iss[tt][t]=<span class="number">1</span>;</span><br><span class="line">            calc++; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//保证联通 </span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(viss[i]) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,i,t); </span><br><span class="line">        iss[i][t]=iss[t][i]=<span class="number">1</span>;</span><br><span class="line">        calc++;</span><br><span class="line">        <span class="keyword">if</span>(calc==m) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(calc==m) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(i==tt) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(j==tt) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(iss[i][j]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,i,j);</span><br><span class="line">            calc++;</span><br><span class="line">            iss[i][j]=iss[j][i]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(calc==m) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

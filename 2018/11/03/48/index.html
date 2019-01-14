@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -364,10 +354,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/03/48/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 883(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 914(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
 	
 
       </div>
@@ -379,126 +369,8 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>对于两个数A,B:</p>
 <script type="math/tex; mode=display">A=p_1^{a_1}+p_2^{a_2}+.....p_n^{a_n}</script><script type="math/tex; mode=display">B=p_1^{b_1}+p_2^{b_2}+.....p_n^{b_n}</script><p>(如果某些$p_i$，相应的次数为0)<br>那么A,B的距离即为</p>
 <script type="math/tex; mode=display">\sum_{i=1}^n abs(a_i-b_i)</script><p>设gcd(A,B)为g，那么dis可以化为$num(\frac a{g})+num(\frac b{g})$，其中num(x)表示x包含的质数个数。<br>然后我们发现枚举B的话复杂度无法承受，那么转过来枚举A的因数来作为GCD，然后统计相应步数即可。当然这里可以用set或map来维护以谁为gcd的最小B.</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 1000005
-using namespace std;
-int prime[maxn&gt;&gt;1],top=0,s[maxn];
-typedef long long ll;
-bool vis[maxn];
-void ready(){
-    vis[0]=vis[1]=1;
-    for(int i=2;i&lt;=maxn-5;i++){
-        if(!vis[i]) prime[++top]=i,s[i]=1;
-        for(int j=1;j&lt;=top&amp;&amp;i*prime[j]&lt;=maxn-5;j++){
-            vis[prime[j]*i]=1;s[prime[j]*i]=s[i]+1;
-            if(i%prime[j]==0) break; 
-        }
-    }
-}
-int q,op,x;
-int c[maxn][20];
-void init(){
-    scanf(&quot;%d&quot;,&amp;q);
-    memset(vis,0,sizeof(vis));
-    for(int i=1;i&lt;=q;i++){
-        scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
-        if(op==1&amp;&amp;!vis[x]){
-            vis[x]=1;
-            for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){ 
-                c[j][s[x]-s[j]]++;
-                c[x/j][s[j]]++;
-            }
-        }
-        if(op==2&amp;&amp;vis[x]){
-            vis[x]=0;
-            for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){
-                c[j][s[x]-s[j]]--;
-                c[x/j][s[j]]--;
-            }
-        } 
-        if(op==3){
-            int ans=1e9;
-            for(int j=1;1ll*j*j&lt;=x;j++) if(x%j==0){
-                for(int k=0;k&lt;20;k++) if(c[j][k]) ans=min(ans,k+s[x]-s[j]);
-                for(int k=0;k&lt;20;k++) if(c[x/j][k]) ans=min(ans,k+s[j]);
-            }
-            if(ans==1e9) printf(&quot;-1\n&quot;);
-            else printf(&quot;%d\n&quot;,ans);
-        }
-    }
-}
-int main(){
-    ready();
-    init();
-
-    return 0;
-}
-</code></pre>
-<p>滔滔的map代码：</p>
-<pre><code class="lang-ruby">#include&lt;map&gt;
-#include&lt;cmath&gt;
-#include&lt;vector&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;iostream&gt;
-#include&lt;algorithm&gt;
-using namespace std;
-const int maxn=1000000+5,inf=0x3f3f3f3f;
-int n,f[maxn];
-bool vis[maxn];
-vector&lt;int&gt;primes;
-map&lt;int,int&gt;mp[maxn];
-void init(){
-    for(int i=2;i&lt;=maxn-5;i++){
-        if(!f[i])f[i]=1,primes.push_back(i);
-        for(int k=0;k&lt;primes.size()&amp;&amp;i*primes[k]&lt;=maxn-5;k++){
-            f[i*primes[k]]=f[i]+1;
-            if(i%primes[k]==0)break;
-        }
-    }
-}
-void ins(int x){
-    if(vis[x])return;vis[x]=1;
-    int sq=sqrt(x+0.5);
-    for(int i=1;i&lt;=sq;i++){
-        if(x%i==0)mp[i][f[x]]++;
-        if(x%i==0&amp;&amp;i*i!=x)mp[x/i][f[x]]++;
-    }
-}
-void del(int x){
-    if(!vis[x])return;vis[x]=0;
-    int sq=sqrt(x+0.5);
-    for(int i=1;i&lt;=sq;i++){
-        if(x%i==0)if(--mp[i][f[x]]==0)mp[i].erase(f[x]);
-        if(x%i==0&amp;&amp;i*i!=x)if(--mp[x/i][f[x]]==0)mp[x/i].erase(f[x]);
-    }
-}
-int Find(int i){
-    if(!mp[i].size())return inf*2;
-    return mp[i].begin()-&gt;first;
-}
-void solve(int x){
-    int sq=sqrt(x+0.5),ans=inf;
-    for(int i=1;i&lt;=sq;i++){
-        if(x%i==0)ans=min(ans,f[x]+Find(i)-2*f[i]);
-        if(x%i==0&amp;&amp;i*i!=x)ans=min(ans,f[x]+Find(x/i)-2*f[x/i]);
-    }
-    if(ans&gt;=inf)printf(&quot;-1\n&quot;);
-    else printf(&quot;%d\n&quot;,ans);
-}
-int main(){
-    init();
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1,op,x;i&lt;=n;i++){
-        scanf(&quot;%d%d&quot;,&amp;op,&amp;x);
-        if(op==1)ins(x);
-        if(op==2)del(x);
-        if(op==3)solve(x);
-    }
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1000005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> prime[maxn&gt;&gt;<span class="number">1</span>],top=<span class="number">0</span>,s[maxn];</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ready</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">0</span>]=vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=maxn<span class="number">-5</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) prime[++top]=i,s[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=top&amp;&amp;i*prime[j]&lt;=maxn<span class="number">-5</span>;j++)&#123;</span><br><span class="line">			vis[prime[j]*i]=<span class="number">1</span>;s[prime[j]*i]=s[i]+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> q,op,x;</span><br><span class="line"><span class="keyword">int</span> c[maxn][<span class="number">20</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q);</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;op,&amp;x);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">1</span>&amp;&amp;!vis[x])&#123;</span><br><span class="line">			vis[x]=<span class="number">1</span>;</span><br><span class="line">		    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;<span class="number">1l</span>l*j*j&lt;=x;j++) <span class="keyword">if</span>(x%j==<span class="number">0</span>)&#123; </span><br><span class="line">		    	c[j][s[x]-s[j]]++;</span><br><span class="line">		    	c[x/j][s[j]]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">2</span>&amp;&amp;vis[x])&#123;</span><br><span class="line">			vis[x]=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;<span class="number">1l</span>l*j*j&lt;=x;j++) <span class="keyword">if</span>(x%j==<span class="number">0</span>)&#123;</span><br><span class="line">				c[j][s[x]-s[j]]--;</span><br><span class="line">				c[x/j][s[j]]--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">3</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> ans=<span class="number">1e9</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;<span class="number">1l</span>l*j*j&lt;=x;j++) <span class="keyword">if</span>(x%j==<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">20</span>;k++) <span class="keyword">if</span>(c[j][k]) ans=min(ans,k+s[x]-s[j]);</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">20</span>;k++) <span class="keyword">if</span>(c[x/j][k]) ans=min(ans,k+s[j]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(ans==<span class="number">1e9</span>) <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ready();</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>滔滔的map代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;map&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cmath&gt;</span></span><br><span class="line"><span class="comment">#include&lt;vector&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstdio&gt;</span></span><br><span class="line"><span class="comment">#include&lt;cstring&gt;</span></span><br><span class="line"><span class="comment">#include&lt;iostream&gt;</span></span><br><span class="line"><span class="comment">#include&lt;algorithm&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn=<span class="number">1000000</span>+<span class="number">5</span>,inf=<span class="number">0x3f3f3f3f</span>;</span><br><span class="line">int n,f[maxn];</span><br><span class="line">bool vis[maxn];</span><br><span class="line">vector&lt;int&gt;primes;</span><br><span class="line">map&lt;int,int&gt;mp[maxn];</span><br><span class="line">void init()&#123;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=maxn-<span class="number">5</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!f[i])f[i]=<span class="number">1</span>,primes.push_back(i);</span><br><span class="line">		<span class="keyword">for</span>(int k=<span class="number">0</span>;k&lt;primes.size()&amp;&amp;i*primes[k]&lt;=maxn-<span class="number">5</span>;k++)&#123;</span><br><span class="line">			f[i*primes[k]]=f[i]+<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%primes[k]==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void ins(int x)&#123;</span><br><span class="line">	<span class="keyword">if</span>(vis[x])<span class="keyword">return</span>;vis[x]=<span class="number">1</span>;</span><br><span class="line">	int sq=sqrt(x+<span class="number">0</span>.<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=sq;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)mp[i][f[x]]++;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>&amp;&amp;i*i!=x)mp[x/i][f[x]]++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">void del(int x)&#123;</span><br><span class="line">	<span class="keyword">if</span>(!vis[x])<span class="keyword">return</span>;vis[x]=<span class="number">0</span>;</span><br><span class="line">	int sq=sqrt(x+<span class="number">0</span>.<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=sq;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)<span class="keyword">if</span>(--mp[i][f[x]]==<span class="number">0</span>)mp[i].erase(f[x]);</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>&amp;&amp;i*i!=x)<span class="keyword">if</span>(--mp[x/i][f[x]]==<span class="number">0</span>)mp[x/i].erase(f[x]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int Find(int i)&#123;</span><br><span class="line">	<span class="keyword">if</span>(!mp[i].size())<span class="keyword">return</span> inf*<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> mp[i].<span class="keyword">begin</span>()-&gt;first;</span><br><span class="line">&#125;</span><br><span class="line">void solve(int x)&#123;</span><br><span class="line">	int sq=sqrt(x+<span class="number">0</span>.<span class="number">5</span>),ans=inf;</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=sq;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>)ans=min(ans,f[x]+Find(i)-<span class="number">2</span>*f[i]);</span><br><span class="line">		<span class="keyword">if</span>(x%i==<span class="number">0</span>&amp;&amp;i*i!=x)ans=min(ans,f[x]+Find(x/i)-<span class="number">2</span>*f[x/i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans&gt;=inf)printf(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span> printf(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	init();</span><br><span class="line">	scanf(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(int i=<span class="number">1</span>,op,x;i&lt;=n;i++)&#123;</span><br><span class="line">		scanf(<span class="string">"%d%d"</span>,&amp;op,&amp;x);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">1</span>)ins(x);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">2</span>)del(x);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">3</span>)solve(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

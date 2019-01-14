@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -364,7 +354,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/01/45/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 420(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 425(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -379,45 +369,7 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>11</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$N,M&lt;=1000,K&lt;=10^5,0&lt;=P&lt;=100,1&lt;A_{ij}&lt;1000$</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先探究性质发现取行或取列只分别对列和行整体造成影响，贪心还是要取大的，所以只考虑对自身的影响。再发现取行或取列都是分别对以后的取列或取行造成-p的影响，所以先后是没有关系的。<br>那么先预处理出去行k次和取列k次最大值，再O(n)枚举行列分别取多少，再减去$i \ast (k-i) \ast p$即可。</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 100005
-using namespace std;
-typedef long long ll;
-ll h[maxn],l[maxn],sh[maxn],sl[maxn];
-int n,m,k,p,x;
-priority_queue&lt;ll&gt;q,qq;
-void init(){
-    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;k,&amp;p);
-    for(int i=1;i&lt;=n;i++)
-    for(int j=1;j&lt;=m;j++){
-        scanf(&quot;%d&quot;,&amp;x);
-        h[i]+=x;l[j]+=x;
-    }
-    for(int i=1;i&lt;=n;i++) q.push(h[i]);
-    for(int i=1;i&lt;=k;i++){
-        ll t=q.top();q.pop();
-        sh[i]=sh[i-1]+t;t-=m*p;
-        q.push(t);
-    }
-    for(int i=1;i&lt;=m;i++) qq.push(l[i]);
-    for(int i=1;i&lt;=k;i++){
-        ll t=qq.top();qq.pop();
-        sl[i]=sl[i-1]+t;t-=n*p;
-        qq.push(t); 
-    }
-    ll ans=-1000000000000;
-    for(int i=0;i&lt;=k;i++){
-          ans=max(ans,sh[i]+sl[k-i]-1ll*i*(k-i)*p);
-    }
-    printf(&quot;%lld&quot;,ans);
-} 
-int main(){
-    init();
-
-    return 0; 
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll h[maxn],l[maxn],sh[maxn],sl[maxn];</span><br><span class="line"><span class="keyword">int</span> n,m,k,p,x;</span><br><span class="line">priority_queue&lt;ll&gt;q,qq;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;m,&amp;k,&amp;p);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">    	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x);</span><br><span class="line">    	h[i]+=x;l[j]+=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) q.push(h[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		ll t=q.top();q.pop();</span><br><span class="line">		sh[i]=sh[i<span class="number">-1</span>]+t;t-=m*p;</span><br><span class="line">		q.push(t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) qq.push(l[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		ll t=qq.top();qq.pop();</span><br><span class="line">		sl[i]=sl[i<span class="number">-1</span>]+t;t-=n*p;</span><br><span class="line">		qq.push(t); </span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">-1000000000000</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		  ans=max(ans,sh[i]+sl[k-i]<span class="number">-1l</span>l*i*(k-i)*p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

@@ -18,18 +18,18 @@
   
   
   <title>马拉车算法 | 祎隋</title>
-  <meta name="description" content="马拉车算法 int init(char *str) {     int n=strlen(str);     for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)     {         s[i]=&amp;#39;#&amp;#39;;         s[i+1]=str[j];     }     s[0]=&amp;#39;$&amp;#39;;     s[2*n+1]=&amp;#39;#&amp;#39;;">
+  <meta name="description" content="马拉车算法 int init(char *str)&amp;#123;    int n=strlen(str);    for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)    &amp;#123;        s[i]=&apos;#&apos;;        s[i+1]=str[j];    &amp;#125;    s[0]=&apos;$&apos;;    s[2*n+1]=&apos;#&apos;;    s[2*n+2]=&apos;@&apos;;">
 <meta name="keywords" content="马拉车算法,字符串">
 <meta property="og:type" content="article">
 <meta property="og:title" content="马拉车算法">
 <meta property="og:url" content="www.degage.xyz/2019/01/13/马拉车/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="马拉车算法 int init(char *str) {     int n=strlen(str);     for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)     {         s[i]=&amp;#39;#&amp;#39;;         s[i+1]=str[j];     }     s[0]=&amp;#39;$&amp;#39;;     s[2*n+1]=&amp;#39;#&amp;#39;;">
+<meta property="og:description" content="马拉车算法 int init(char *str)&amp;#123;    int n=strlen(str);    for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)    &amp;#123;        s[i]=&apos;#&apos;;        s[i+1]=str[j];    &amp;#125;    s[0]=&apos;$&apos;;    s[2*n+1]=&apos;#&apos;;    s[2*n+2]=&apos;@&apos;;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-01-13T07:51:07.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="马拉车算法">
-<meta name="twitter:description" content="马拉车算法 int init(char *str) {     int n=strlen(str);     for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)     {         s[i]=&amp;#39;#&amp;#39;;         s[i+1]=str[j];     }     s[0]=&amp;#39;$&amp;#39;;     s[2*n+1]=&amp;#39;#&amp;#39;;">
+<meta name="twitter:description" content="马拉车算法 int init(char *str)&amp;#123;    int n=strlen(str);    for(int i=1,j=0;i&amp;lt;=2*n;j++,i+=2)    &amp;#123;        s[i]=&apos;#&apos;;        s[i+1]=str[j];    &amp;#125;    s[0]=&apos;$&apos;;    s[2*n+1]=&apos;#&apos;;    s[2*n+2]=&apos;@&apos;;">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2019/01/13/马拉车/index.html">
   
@@ -117,16 +117,6 @@
             <i class="icon icon-archives-fill"></i>
             
             <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
           </a>
         </li>
         
@@ -364,7 +354,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/13/马拉车/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 119(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 117(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -375,32 +365,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <p>马拉车算法</p>
-<pre><code class="lang-c++">int init(char *str)
-{
-    int n=strlen(str);
-    for(int i=1,j=0;i&lt;=2*n;j++,i+=2)
-    {
-        s[i]=&#39;#&#39;;
-        s[i+1]=str[j];
-    }
-    s[0]=&#39;$&#39;;
-    s[2*n+1]=&#39;#&#39;;
-    s[2*n+2]=&#39;@&#39;;
-    s[2*n+3]=&#39;\n&#39;;
-    return 2*n+1;
-}
-void manacher(int n)
-{
-    int mx=0,p=0;
-    for(int i=1;i&lt;=n;i++)
-    {
-        if(mx&gt;i)len[i]=min(mx-i,len[2*p-i]);
-        else len[i]=1;
-        while(s[i-len[i]]==s[i+len[i]])len[i]++;
-        if(len[i]+i&gt;mx)mx=len[i]+i,p=i;
-    }
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=<span class="number">2</span>*n;j++,i+=<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i]=<span class="string">'#'</span>;</span><br><span class="line">        s[i+<span class="number">1</span>]=str[j];</span><br><span class="line">    &#125;</span><br><span class="line">    s[<span class="number">0</span>]=<span class="string">'$'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">1</span>]=<span class="string">'#'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">2</span>]=<span class="string">'@'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">3</span>]=<span class="string">'\n'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*n+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">manacher</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mx=<span class="number">0</span>,p=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(mx&gt;i)len[i]=min(mx-i,len[<span class="number">2</span>*p-i]);</span><br><span class="line">        <span class="keyword">else</span> len[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[i-len[i]]==s[i+len[i]])len[i]++;</span><br><span class="line">        <span class="keyword">if</span>(len[i]+i&gt;mx)mx=len[i]+i,p=i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

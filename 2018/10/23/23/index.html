@@ -123,16 +123,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -366,7 +356,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/23/23/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 726(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 747(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
@@ -385,69 +375,7 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先会发现每条边边权为$p_imodp_j (p_i&gt;p_j)$，因为小数模大数为小数，大数模小数小于小数。然后先将点排序离散化去重（相同点权两点之间距离为0），然后从小到大对于每个$p_i$，我们设其值为x，那么会从x-2x,2x-3x……选出一个点连边作为最优值（见图，解释在下）：<br><img src="https://i.loli.net/2018/11/06/5be1a230892d8.png" alt=""><br>对于每一段，我们肯定首选第一个大于它的是最小的，如图中x-2x的$p_j$，然后对于$p_k$，我们选择不连边而让$p_j$去连更优，如图中绿色段为$p_j$连$p_k$代价，而蓝色段为x连$p_k$代价，可见前者更优，然后我们一共会连$\sum\lfloor\frac{mx}{p_i}\rfloor$条边，将它放大为调和级数求和$plogp$，所以用kruskal可以$plog^2p$求出….</p>
 <p>然后对于连边直接先预处理每个区间第一个选的，然后O（n）搞好.</p>
 <p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-#define maxn 100005
-#define maxm 10000005
-typedef long long ll;
-int n,a[maxn],nxtt[maxm],pos[maxm],fa[maxn];
-int find(int x){
-    if(fa[x]==x) return x;
-    int root=find(fa[x]);
-    fa[x]=root;
-    return root;
-}
-bool check(int x,int y){
-    int fx=find(x),fy=find(y);
-    if(fx!=fy) return false;
-    return true;
-}
-void link(int x,int y){
-    int fx=find(x),fy=find(y);
-    if(fx!=fy){
-        fa[fx]=fy;
-    }
-}
-struct eage{
-    int u,v,len;
-    friend bool operator&lt;(eage a,eage b){
-        return a.len&lt;b.len;
-    }
-}e[maxm*4];
-int np=0;
-void init(){
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d&quot;,&amp;a[i]);
-    for(int i=1;i&lt;=n;i++) fa[i]=i; 
-    sort(a+1,a+n+1);
-    int cnt=unique(a+1,a+n+1)-a-1;
-    for(int i=1;i&lt;=cnt;i++) nxtt[a[i]]=a[i],pos[a[i]]=i;
-    for(int i=maxm-2;i&gt;=1;i--) if(!nxtt[i]) nxtt[i]=nxtt[i+1],pos[i]=pos[i+1];
-    for(int i=1;i&lt;cnt;i++){
-        e[++np]=(eage){i,i+1,a[i+1]%a[i]};//过掉x 
-        for(int j=2*a[i];j&lt;maxm;j+=a[i]){//从2x开始找 
-            if(!nxtt[j]) break;//后面没有了 
-            if(nxtt[j]&gt;=j+a[i]) continue;
-            e[++np]=(eage){i,pos[nxtt[j]],nxtt[j]%a[i]};
-        }
-    }
-    sort(e+1,e+np+1);
-    int calc=0;ll ans=0;
-    for(int i=1;i&lt;=np;i++){
-        int u=e[i].u,v=e[i].v;ll c=e[i].len;
-        if(check(u,v)) continue;
-        link(u,v);
-        calc++;
-        ans+=c;
-        if(calc==cnt-1){printf(&quot;%lld&quot;,ans);return;}
-    } 
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxm 10000005</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> n,a[maxn],nxtt[maxm],pos[maxm],fa[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(fa[x]==x) <span class="keyword">return</span> x;</span><br><span class="line">	<span class="keyword">int</span> root=find(fa[x]);</span><br><span class="line">	fa[x]=root;</span><br><span class="line">	<span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx!=fy) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> fx=find(x),fy=find(y);</span><br><span class="line">	<span class="keyword">if</span>(fx!=fy)&#123;</span><br><span class="line">		fa[fx]=fy;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> u,v,len;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(eage a,eage b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.len&lt;b.len;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;e[maxm*<span class="number">4</span>];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) fa[i]=i; </span><br><span class="line">	sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=unique(a+<span class="number">1</span>,a+n+<span class="number">1</span>)-a<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) nxtt[a[i]]=a[i],pos[a[i]]=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=maxm<span class="number">-2</span>;i&gt;=<span class="number">1</span>;i--) <span class="keyword">if</span>(!nxtt[i]) nxtt[i]=nxtt[i+<span class="number">1</span>],pos[i]=pos[i+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;cnt;i++)&#123;</span><br><span class="line">		e[++np]=(eage)&#123;i,i+<span class="number">1</span>,a[i+<span class="number">1</span>]%a[i]&#125;;<span class="comment">//过掉x </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*a[i];j&lt;maxm;j+=a[i])&#123;<span class="comment">//从2x开始找 </span></span><br><span class="line">			<span class="keyword">if</span>(!nxtt[j]) <span class="keyword">break</span>;<span class="comment">//后面没有了 </span></span><br><span class="line">			<span class="keyword">if</span>(nxtt[j]&gt;=j+a[i]) <span class="keyword">continue</span>;</span><br><span class="line">			e[++np]=(eage)&#123;i,pos[nxtt[j]],nxtt[j]%a[i]&#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(e+<span class="number">1</span>,e+np+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> calc=<span class="number">0</span>;ll ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=np;i++)&#123;</span><br><span class="line">	    <span class="keyword">int</span> u=e[i].u,v=e[i].v;ll c=e[i].len;</span><br><span class="line">		<span class="keyword">if</span>(check(u,v)) <span class="keyword">continue</span>;</span><br><span class="line">		link(u,v);</span><br><span class="line">		calc++;</span><br><span class="line">		ans+=c;</span><br><span class="line">		<span class="keyword">if</span>(calc==cnt<span class="number">-1</span>)&#123;<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);<span class="keyword">return</span>;&#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

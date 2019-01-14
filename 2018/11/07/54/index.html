@@ -123,16 +123,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -366,10 +356,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/07/54/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 837(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 844(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
 	
 
       </div>
@@ -382,57 +372,7 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>42<br>1<br>0</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先M=0可以看出是个卡特兰数。<br>然后我们知道先序遍历，根据其特性来枚举出合法的中序遍历，每次找到一个根，枚举它左边有多少个，右边有多少个，然后判断是否合法，合法的话方案数乘起来累加。<br>见图：<br><img src="https://i.loli.net/2018/11/07/5be3017335edf.png" alt=""><br>首先枚举后有三个大小关系：根的中序遍历大于任意左子树的，任意右子树的大于根的，任意右子树的大于左子树的。<br>然后发现check是$n^2$的，而dp又是$n^3$的，这样就$n^5$了，<font color="red">这里有个很nice的思路</font>，用二维前缀和优化，如果要求i的中序遍历小于j的，那么$a[i][j]=1$，然后sum求一波二维前缀和，对于$sum[i][j]$其含义便是1-i中小于1-j中的个数和，那么我们询问$[l1,r1]小于[l2,r2]$就为$sum[r1,r2]-sum[l1-1,r2]-sum[r1,l2-1]+sum[l1-1,l2-1]$然后就优化成$O(1)$的check了，整体复杂度就被优化至了$O(n^3)$，真的TQL%%%</p>
 <p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 405
-using namespace std;
-typedef long long ll;
-const ll mod=1e9+7;
-int a[maxn][maxn],n,t,m,x,y,sum[maxn][maxn];
-ll dp[maxn][maxn];
-int calc(int l1,int r1,int l2,int r2){//如果返回值说l1~r1有小于l2~r2的 
-    return sum[r1][r2]-sum[l1-1][r2]-sum[r1][l2-1]+sum[l1-1][l2-1];
-}
-bool check(int now,int l1,int r1,int l2,int r2){
-    if(calc(l2,r2,l1,r1))return false;
-    if(calc(now,now,l1,r1))return false;
-    if(calc(l2,r2,now,now))return false;
-    return true;
-}
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    memset(a,0,sizeof(a));
-    memset(sum,0,sizeof(sum));
-    memset(dp,0,sizeof(dp));
-    for(int i=1;i&lt;=m;i++){
-        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
-        a[x][y]=1;
-    } 
-    for(int i=1;i&lt;=n;i++)
-    for(int j=1;j&lt;=n;j++){
-        sum[i][j]=sum[i-1][j]+sum[i][j-1]-sum[i-1][j-1]+a[i][j];
-    }
-    for(int i=1;i&lt;=n;i++) dp[i][i]=1;
-    for(int len=1;len&lt;=n;len++)
-    for(int i=1;i&lt;=n;i++){
-        int j=i+len;
-        if(j&gt;n) break;
-        //其实这余下三坨是可以归在一起算的 
-        if(!calc(i,i,i+1,j))dp[i][j]=(dp[i][j]+dp[i+1][j])%mod;//如果没有限制 
-        if(!calc(i+1,j,i,i))dp[i][j]=(dp[i][j]+dp[i+1][j])%mod;
-        for(int k=i+1;k&lt;j;k++){
-            if(check(i,i+1,k,k+1,j)) dp[i][j]=(dp[i][j]+dp[i+1][k]*dp[k+1][j])%mod;
-        } 
-    }     
-    printf(&quot;%lld\n&quot;,dp[1][n]);
-} 
-int main(){
-    scanf(&quot;%d&quot;,&amp;t);
-    for(int i=1;i&lt;=t;i++)
-    init();    
-
-    return 0;
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 405</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn][maxn],n,t,m,x,y,sum[maxn][maxn];</span><br><span class="line">ll dp[maxn][maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l1,<span class="keyword">int</span> r1,<span class="keyword">int</span> l2,<span class="keyword">int</span> r2)</span></span>&#123;<span class="comment">//如果返回值说l1~r1有小于l2~r2的 </span></span><br><span class="line">    <span class="keyword">return</span> sum[r1][r2]-sum[l1<span class="number">-1</span>][r2]-sum[r1][l2<span class="number">-1</span>]+sum[l1<span class="number">-1</span>][l2<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> l1,<span class="keyword">int</span> r1,<span class="keyword">int</span> l2,<span class="keyword">int</span> r2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(calc(l2,r2,l1,r1))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(calc(now,now,l1,r1))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(calc(l2,r2,now,now))<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(a));</span><br><span class="line">    <span class="built_in">memset</span>(sum,<span class="number">0</span>,<span class="keyword">sizeof</span>(sum));</span><br><span class="line">    <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);</span><br><span class="line">		a[x][y]=<span class="number">1</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">		sum[i][j]=sum[i<span class="number">-1</span>][j]+sum[i][j<span class="number">-1</span>]-sum[i<span class="number">-1</span>][j<span class="number">-1</span>]+a[i][j];</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dp[i][i]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">1</span>;len&lt;=n;len++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> j=i+len;</span><br><span class="line">		<span class="keyword">if</span>(j&gt;n) <span class="keyword">break</span>;</span><br><span class="line">		<span class="comment">//其实这余下三坨是可以归在一起算的 </span></span><br><span class="line">		<span class="keyword">if</span>(!calc(i,i,i+<span class="number">1</span>,j))dp[i][j]=(dp[i][j]+dp[i+<span class="number">1</span>][j])%mod;<span class="comment">//如果没有限制 </span></span><br><span class="line">        <span class="keyword">if</span>(!calc(i+<span class="number">1</span>,j,i,i))dp[i][j]=(dp[i][j]+dp[i+<span class="number">1</span>][j])%mod;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;j;k++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(check(i,i+<span class="number">1</span>,k,k+<span class="number">1</span>,j)) dp[i][j]=(dp[i][j]+dp[i+<span class="number">1</span>][k]*dp[k+<span class="number">1</span>][j])%mod;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;	 </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,dp[<span class="number">1</span>][n]);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	init();	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

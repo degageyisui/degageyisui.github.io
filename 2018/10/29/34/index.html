@@ -121,16 +121,6 @@
         </li>
         
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories">
-            
-            <i class="icon icon-folder"></i>
-            
-            <span class="menu-title">分类</span>
-          </a>
-        </li>
-        
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags">
             
@@ -388,78 +378,7 @@
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先会注意到这题的数据范围，前50%用撞鸭dp就可以过但要注意群体异或避免逐个修改。(考试时真的傻了)即$(1&lt;&lt;sz_i)&lt;&lt;j$这样可以刚好异或一段。</p>
 <p>其次观察到k最大只有10，那么撞鸭上限是20，随后又会想到这里每覆盖一段实际上是加1，而又要mod2，发现是个01差分。那我们先将其中要开的开关在段中绘好，那么最终就是要将其变为全0.将其转化为差分数组，最多就会有20个1，每赋一段l,r，会在l处+1,r+1处+1，相当于将l处的1转化到r+1,若r+1也为1就消为了0，实际上我们将所有1匹配即可。然后可以bfs记录一遍dist{i,j}，只需要O(n)跑。最后用一个撞鸭dp来记录所有点全部匹配的最小步数即可。</p>
 <p>注意这里裸的dp是$总状态数\ast(2\ast k)^2$，所以我们先固定一个新增加的元素，然后枚举与它匹配的元素来达到最小，从而变成了$总状态数\ast2\ast k$.</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxk 10005
-#define maxs 10005
-#define maxn 10005
-using namespace std;
-int n,k,s,x[maxk],sz[maxs];
-int a[maxn];
-int e[35][35];
-int dist[maxn];
-bool vis[maxn];
-int pos[maxn],np=0;
-void bfs(int s){
-    queue&lt;int&gt;q;
-    memset(dist,0x3f,sizeof(dist));
-    memset(vis,0,sizeof(vis));
-    q.push(s);
-    dist[s]=0;vis[s]=1;
-    while(!q.empty()){
-        int t=q.front();q.pop();
-        for(int i=1;i&lt;=s;i++){
-            int tt=t+sz[i];
-            if(tt&lt;=n+1&amp;&amp;!vis[tt]){
-                dist[tt]=dist[t]+1;
-                vis[tt]=1;
-                q.push(tt);
-            }
-        }
-        for(int i=1;i&lt;=s;i++){
-            int tt=t-sz[i];
-            if(tt&gt;=1&amp;&amp;!vis[tt]){
-                vis[tt]=1;
-                dist[tt]=dist[t]+1;
-                q.push(tt);
-            }
-        }
-    }
-    for(int i=1;i&lt;=n+1;i++){
-        if(!a[i]) continue;
-        e[pos[s]][pos[i]]=dist[i];
-    }
-}
-int dp[1&lt;&lt;22];
-void init(){
-    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;k,&amp;s);
-    for(int i=1;i&lt;=k;i++) scanf(&quot;%d&quot;,&amp;x[i]),a[x[i]]=1;
-    for(int i=1;i&lt;=s;i++) scanf(&quot;%d&quot;,&amp;sz[i]);
-    sort(sz+1,sz+s+1);s=unique(sz+1,sz+s+1)-sz-1;
-    for(int i=n+1;i&gt;=1;i--) a[i]^=a[i-1];//不会影响前面 
-    for(int i=1;i&lt;=n+1;i++) if(a[i]) pos[i]=++np;
-    for(int i=1;i&lt;=n+1;i++) if(a[i]) bfs(i);
-    memset(dp,0x3f,sizeof(dp));
-    dp[0]=0;
-    int all=(1&lt;&lt;np)-1;
-    for(int i=0;i&lt;=all;i++){
-    int pre=-1;
-    for(int j=1;j&lt;=np;j++){
-        if(!(i&amp;(1&lt;&lt;(j-1))))continue;
-        if(pre==-1) pre=j;
-        else dp[i]=min(dp[i],dp[i-(1&lt;&lt;(j-1))-(1&lt;&lt;(pre-1))]+e[j][pre]);
-    }    
-    }
-
-    if(dp[all]==0x3f3f3f3f) printf(&quot;-1&quot;);
-    else printf(&quot;%d&quot;,dp[all]);
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxk 10005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxs 10005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 10005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,k,s,x[maxk],sz[maxs];</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="keyword">int</span> e[<span class="number">35</span>][<span class="number">35</span>];</span><br><span class="line"><span class="keyword">int</span> dist[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> pos[maxn],np=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;q;</span><br><span class="line">	<span class="built_in">memset</span>(dist,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dist));</span><br><span class="line">	<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">	q.push(s);</span><br><span class="line">	dist[s]=<span class="number">0</span>;vis[s]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		<span class="keyword">int</span> t=q.front();q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> tt=t+sz[i];</span><br><span class="line">			<span class="keyword">if</span>(tt&lt;=n+<span class="number">1</span>&amp;&amp;!vis[tt])&#123;</span><br><span class="line">				dist[tt]=dist[t]+<span class="number">1</span>;</span><br><span class="line">				vis[tt]=<span class="number">1</span>;</span><br><span class="line">				q.push(tt);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++)&#123;</span><br><span class="line">			<span class="keyword">int</span> tt=t-sz[i];</span><br><span class="line">			<span class="keyword">if</span>(tt&gt;=<span class="number">1</span>&amp;&amp;!vis[tt])&#123;</span><br><span class="line">				vis[tt]=<span class="number">1</span>;</span><br><span class="line">				dist[tt]=dist[t]+<span class="number">1</span>;</span><br><span class="line">				q.push(tt);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!a[i]) <span class="keyword">continue</span>;</span><br><span class="line">		e[pos[s]][pos[i]]=dist[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">1</span>&lt;&lt;<span class="number">22</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;k,&amp;s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x[i]),a[x[i]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=s;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;sz[i]);</span><br><span class="line">	sort(sz+<span class="number">1</span>,sz+s+<span class="number">1</span>);s=unique(sz+<span class="number">1</span>,sz+s+<span class="number">1</span>)-sz<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n+<span class="number">1</span>;i&gt;=<span class="number">1</span>;i--) a[i]^=a[i<span class="number">-1</span>];<span class="comment">//不会影响前面 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++) <span class="keyword">if</span>(a[i]) pos[i]=++np;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n+<span class="number">1</span>;i++) <span class="keyword">if</span>(a[i]) bfs(i);</span><br><span class="line">	<span class="built_in">memset</span>(dp,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> all=(<span class="number">1</span>&lt;&lt;np)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=all;i++)&#123;</span><br><span class="line">	<span class="keyword">int</span> pre=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=np;j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!(i&amp;(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))))<span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">if</span>(pre==<span class="number">-1</span>) pre=j;</span><br><span class="line">		<span class="keyword">else</span> dp[i]=min(dp[i],dp[i-(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))-(<span class="number">1</span>&lt;&lt;(pre<span class="number">-1</span>))]+e[j][pre]);</span><br><span class="line">	&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(dp[all]==<span class="number">0x3f3f3f3f</span>) <span class="built_in">printf</span>(<span class="string">"-1"</span>);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d"</span>,dp[all]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
