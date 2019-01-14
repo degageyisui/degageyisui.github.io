@@ -41,6 +41,8 @@
   
   
   
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
   
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
   
@@ -167,7 +169,7 @@
     <div class="widget-body">
         <div id="board">
             <div class="content">
-                <p>祎隋如你，春风十里不及你</p>
+                <p>《祎隋》</br>我愿意是歌声不成形体</br>又发自于你</br>轻托你的灵动美丽</br></br>我愿意是烟火转瞬即逝</br>又引你一视</br>映亮你的天真欣喜</br></br>我愿意是微风不被注意</br>又轻拂着你</br>飘扬你的醉人芳香</br></br>我愿意是皎月独凌寒处</br>又照你一世</br>平稳你的夜夜美梦</br></br>我愿意是时光静默流淌 </br>又伴你一生</br>承载你的所有过往</br></p>
             </div>
         </div>
     </div>
@@ -217,9 +219,19 @@
   <div class="widget">
     <h3 class="widget-title">最新文章</h3>
     <div class="widget-body">
-      <ul class="recent-post-list list-unstyled no-thumbnail">
+      <ul class="recent-post-list list-unstyled ">
         
           <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/13/马拉车/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
             
             <div class="item-inner">
               <p class="item-category">
@@ -236,6 +248,16 @@
           
           <li>
             
+            <div class="item-thumb">
+              <a href="/2019/01/02/58/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
             <div class="item-inner">
               <p class="item-category">
                 <a class="category-link" href="/categories/省选/">省选</a>
@@ -250,6 +272,16 @@
           </li>
           
           <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/02/57/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
             
             <div class="item-inner">
               <p class="item-category">
@@ -266,6 +298,16 @@
           
           <li>
             
+            <div class="item-thumb">
+              <a href="/2018/12/16/56/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
             <div class="item-inner">
               <p class="item-category">
                 <a class="category-link" href="/categories/省选/">省选</a>
@@ -280,6 +322,16 @@
           </li>
           
           <li>
+            
+            <div class="item-thumb">
+              <a href="/2018/11/08/55/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
             
             <div class="item-inner">
               <p class="item-category">
@@ -373,15 +425,15 @@
           
           <li><a href="/tags/离散化/">离散化</a></li>
           
+          <li><a href="/tags/树状数组/">树状数组</a></li>
+          
+          <li><a href="/tags/二进制/">二进制</a></li>
+          
           <li><a href="/tags/最小生成树/">最小生成树</a></li>
           
           <li><a href="/tags/调和级数/">调和级数</a></li>
           
           <li><a href="/tags/并查集/">并查集</a></li>
-          
-          <li><a href="/tags/树状数组/">树状数组</a></li>
-          
-          <li><a href="/tags/二进制/">二进制</a></li>
           
           <li><a href="/tags/枚举/">枚举</a></li>
           
@@ -391,9 +443,9 @@
           
           <li><a href="/tags/扩展欧几里得/">扩展欧几里得</a></li>
           
-          <li><a href="/tags/dfs/">dfs</a></li>
-          
           <li><a href="/tags/博弈论/">博弈论</a></li>
+          
+          <li><a href="/tags/dfs/">dfs</a></li>
           
           <li><a href="/tags/正睿/">正睿</a></li>
           
@@ -411,9 +463,9 @@
           
           <li><a href="/tags/map/">map</a></li>
           
-          <li><a href="/tags/二元组/">二元组</a></li>
-          
           <li><a href="/tags/剪枝/">剪枝</a></li>
+          
+          <li><a href="/tags/二元组/">二元组</a></li>
           
           <li><a href="/tags/栈/">栈</a></li>
           
@@ -421,9 +473,9 @@
           
           <li><a href="/tags/二分图/">二分图</a></li>
           
-          <li><a href="/tags/优先队列/">优先队列</a></li>
-          
           <li><a href="/tags/二分/">二分</a></li>
+          
+          <li><a href="/tags/优先队列/">优先队列</a></li>
           
           <li><a href="/tags/树型dp/">树型dp</a></li>
           
@@ -559,6 +611,35 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
 
 
 
