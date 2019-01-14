@@ -18,18 +18,18 @@
   
   
   <title>CF350E Wrong Floyd | 祎隋</title>
-  <meta name="description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2; Solution我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更">
+  <meta name="description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2;">
 <meta name="keywords" content="模拟,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF350E Wrong Floyd">
 <meta property="og:url" content="www.degage.xyz/2018/10/16/10/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2; Solution我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更">
+<meta property="og:description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T11:47:57.173Z">
+<meta property="og:updated_time" content="2019-01-14T15:14:09.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF350E Wrong Floyd">
-<meta name="twitter:description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2; Solution我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更">
+<meta name="twitter:description" content="Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。 Hint3&amp;lt;=n&amp;lt;=300 , 2&amp;lt;=k&amp;lt;=n2&amp;lt;=k&amp;lt;=n , n-1&amp;lt;=m&amp;lt;=n*(n-1)/2;">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2018/10/16/10/index.html">
   
@@ -416,6 +416,7 @@
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>3&lt;=n&lt;=300 , 2&lt;=k&lt;=n2&lt;=k&lt;=n , n-1&lt;=m&lt;=n*(n-1)/2;</p>
+<a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更新它到其他点的距离）</p>
 <p>具体一下几个细节：</p>
 <p>1.判k==n或m&gt;最多可以构出的边maxm；</p>

@@ -371,6 +371,11 @@
 
   </div>
   
+  <div class="article-entry text-muted" itemprop="description">
+    <p>马拉车算法</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">char</span> *str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=<span class="number">2</span>*n;j++,i+=<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        s[i]=<span class="string">'#'</span>;</span><br><span class="line">        s[i+<span class="number">1</span>]=str[j];</span><br><span class="line">    &#125;</span><br><span class="line">    s[<span class="number">0</span>]=<span class="string">'$'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">1</span>]=<span class="string">'#'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">2</span>]=<span class="string">'@'</span>;</span><br><span class="line">    s[<span class="number">2</span>*n+<span class="number">3</span>]=<span class="string">'\n'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*n+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </div>
+  
   <p class="article-meta">
     <span class="article-date">
     <i class="icon icon-calendar-check"></i>
@@ -416,8 +421,7 @@
   </div>
   
   <div class="article-entry text-muted" itemprop="description">
-    <p>$\sigma(p^k)=k+1$<br>$phi(p^k)=p^{k-1}\times(p-1)​$</p>
-<p>$(phi\star1)(p^k)=p^k$</p>
+    <p>$\sigma(p^k)=k+1$<br>$phi(p^k)=p^{k-1}\times(p-1)$<br>$(phi\star1)(p^k)=p^k$<br></p>
   </div>
   
   <p class="article-meta">
@@ -508,6 +512,10 @@
 
   </div>
   
+  <div class="article-entry text-muted" itemprop="description">
+    <p>首先主要是关于退流的理解，仔细理解这张图：</p>
+  </div>
+  
   <p class="article-meta">
     <span class="article-date">
     <i class="icon icon-calendar-check"></i>
@@ -550,6 +558,12 @@
     </h1>
   
 
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>你有 n 个物品，第 i 个物品的重量是$w_i$。</p>
+<p>你需要把这些物品划分成若干组，满足每一组的重量和都是质数。</p>
+<p>两个方案是不同的当且仅当存在两个物品 i 和 j，在第一个方案里他们处在同一组，第二个方案里他们不处在同一组。（对998244353取模）</p>
   </div>
   
   <p class="article-meta">
@@ -619,10 +633,10 @@
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/07/54/#comments" class="article-comment-link">评论</a></span>
     
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 844(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 127(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
   </p>
@@ -638,6 +652,10 @@
     </h1>
   
 
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>visit_world 有一个商店，商店里卖 个商品，第 i 个的价格为$a_i$<br>我们称一个正整数 K 是美妙的，当且仅当我们可以在商店里选购若干个商品，使得价格之和落在区间$ [K, 2K]$ 中。<br>问：有多少个美妙的数。</p>
   </div>
   
   <p class="article-meta">
@@ -684,6 +702,10 @@
 
   </div>
   
+  <div class="article-entry text-muted" itemprop="description">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一个n行m列的矩阵，每个为0或1，如果一个边长为K的正方形包含的所有数都为1，那么会形成一个强度为K的电场，有q次询问，每次询问会把1个1变做0，求每次询问的最大电场强度值。</p>
+  </div>
+  
   <p class="article-meta">
     <span class="article-date">
     <i class="icon icon-calendar-check"></i>
@@ -728,6 +750,10 @@
 
   </div>
   
+  <div class="article-entry text-muted" itemprop="description">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一个n行m列的矩阵，每个格子可以填一个$1~k$的整数，矩阵中的一个格子为炼字当且仅当其值比其所在行和列的其它数都大，定义一个矩阵的精彩度为炼字的个数。设$f_i$为精彩度为i的方案数，显然:$\sum_{i=0}^{n \ast m} f_i=k^{n \ast m}$。现在你需要求出$\sum_{i=0}^{n \ast m} f_i \ast i mod (1e9+7)</p>
+  </div>
+  
   <p class="article-meta">
     <span class="article-date">
     <i class="icon icon-calendar-check"></i>
@@ -770,6 +796,10 @@
     </h1>
   
 
+  </div>
+  
+  <div class="article-entry text-muted" itemprop="description">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>已知有$N(N≤14)$个变量，变量取值0或1。<br>已知$f(0,0,⋯,0)，⋯，f(1,1,⋯,1)$的函数值。<br>对于每种输入$x=(x_0,x_1,⋯,x_n)$，求最少需要知道几个变量的值即可确定函数值。<br>举个例子：假设有两个变量，函数$f(a,b)=a\&amp;b$，那么对于$f(x)=0$，我们只要知道其中一个变量为0即可确定函数值为0，否则我们需要知道两个变量是否都为1，才能确定函数值为1。</p>
   </div>
   
   <p class="article-meta">

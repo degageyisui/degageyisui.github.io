@@ -18,18 +18,18 @@
   
   
   <title>密码锁 | 祎隋</title>
-  <meta name="description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。 你的任">
+  <meta name="description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。">
 <meta name="keywords" content="dp,差分,bfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码锁">
 <meta property="og:url" content="www.degage.xyz/2018/10/29/34/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。 你的任">
+<meta property="og:description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T11:53:02.127Z">
+<meta property="og:updated_time" content="2019-01-14T15:15:46.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="密码锁">
-<meta name="twitter:description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。 你的任">
+<meta name="twitter:description" content="Description小M有一把密码锁，由NN个开关组成。 一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2018/10/29/34/index.html">
   
@@ -417,7 +417,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>小M有一把密码锁，由NN个开关组成。</p>
-<p>一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。</p>
+<p>一开始的时候，所有开关都是关上的。当且仅当其中指定的K个开关：$x_1,x_2,x_3,…,x_k$为开，其他开关为关时，密码锁才会打开。 你可以进行SS种的操作，每种操作有一个参数$size_i$，表示假如你选择了第i种的操作的话，你可以任意选择连续的$size_i$个开关，把它们全部取反（原来是开的变为关，原来是关的变为开）。<a id="more"></a></p>
 <p>你的任务很简单，帮助小M计算最少需要多少步才能打开密码锁，或者如果无解的话，请输出−1。</p>
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>输入的第一行有三个正整数N,K,S，他们的意义如题目所述。 第二行有K个正整数，表示开关$x_1,x_2,x_3,…,x_k$必须为开，保证$x_i$两两不同。 第三行有S个正整数，其中第ii个表示$size_i$，可能有重复的$size_i$可能有重复。</p>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>输出文件仅一行一个整数，表示答案。</p>

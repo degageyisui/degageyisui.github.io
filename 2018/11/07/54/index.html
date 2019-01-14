@@ -18,19 +18,19 @@
   
   
   <title>计数 | 祎隋</title>
-  <meta name="description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}&amp;lt;A_{v_i}$，也即中序遍历">
+  <meta name="description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}">
 <meta name="keywords" content="dp,二维前缀和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计数">
 <meta property="og:url" content="www.degage.xyz/2018/11/07/54/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}&amp;lt;A_{v_i}$，也即中序遍历">
+<meta property="og:description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2018/11/07/5be3017335edf.png">
-<meta property="og:updated_time" content="2018-11-07T15:29:13.839Z">
+<meta property="og:updated_time" content="2019-01-14T15:16:47.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计数">
-<meta name="twitter:description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}&amp;lt;A_{v_i}$，也即中序遍历">
+<meta name="twitter:description" content="Description既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}">
 <meta name="twitter:image" content="https://i.loli.net/2018/11/07/5be3017335edf.png">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2018/11/07/54/index.html">
@@ -408,17 +408,17 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/11/07/54/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 844(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 127(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！<br>考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.<br>我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.<br>现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}&lt;A_{v_i}$，也即中序遍历中$u_i$在$v_i$之前出现.<br>你需要计算有多少种不同的带标号二叉树满足上述全部限制条件，答案对$1e9+7$取模.</p>
+        <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>既然是萌萌哒 visit_world 的比赛，那必然会有一道计数题啦！<br>考虑一个N个节点的二叉树，它的节点被标上了$1-N$的编号. 并且，编号为i的节点在二叉树的前序遍历中恰好是第i个出现.<br>我们定义$A_i$表示编号为i的点在二叉树的中序遍历中出现的位置.<br>现在，给出m个限制条件，第i个限制条件给出了$u_i,v_i$,表示$A_{u_i}<a_{v_i}$，也即中序遍历中$u_i$在$v_i$之前出现. 你需要计算有多少种不同的带标号二叉树满足上述全部限制条件，答案对$1e9+7$取模.<!--more--=""></a_{v_i}$，也即中序遍历中$u_i$在$v_i$之前出现.></p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>$T&lt;=5,N&lt;=400,M&lt;=10^3$</p>
 <h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3 5<br>0<br>3 2<br>1 2<br>2 3<br>3 3<br>1 2<br>2 3<br>3 1</p>
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>42<br>1<br>0</p>

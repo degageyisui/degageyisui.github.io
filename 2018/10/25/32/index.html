@@ -18,18 +18,18 @@
   
   
   <title>红绿灯 | 祎隋</title>
-  <meta name="description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。 小R根据这些资料，很快便规划出了最短路径，然而很快，小R便发现他忽略一个至">
+  <meta name="description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。">
 <meta name="keywords" content="dijsktra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="红绿灯">
 <meta property="og:url" content="www.degage.xyz/2018/10/25/32/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。 小R根据这些资料，很快便规划出了最短路径，然而很快，小R便发现他忽略一个至">
+<meta property="og:description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T11:52:44.456Z">
+<meta property="og:updated_time" content="2019-01-14T15:15:40.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="红绿灯">
-<meta name="twitter:description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。 小R根据这些资料，很快便规划出了最短路径，然而很快，小R便发现他忽略一个至">
+<meta name="twitter:description" content="Description小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。 现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2018/10/25/32/index.html">
   
@@ -417,7 +417,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>小R最近感觉很不开心，所以他打算去炸了一所和他距离906.5公里的高中。</p>
-<p>现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。</p>
+<p>现在小R打算出发前往他的目的地，和他的方案有关的交通网可以抽象为一张nn个点mm条无向边的无向图，小R要从1号点到达nn号点。现在经过事先的资料收集，小R已经拿到了这张无向图：第ii条边连接着uiui和vivi，长度为didi。<a id="more"></a></p>
 <p>小R根据这些资料，很快便规划出了最短路径，然而很快，小R便发现他忽略一个至关重要的东西：红绿灯。</p>
 <p>为了简化为题，我们假定每一条边上都有一个红绿灯，每一个红绿灯都可以用ki,li,riki,li,ri来定义，即只有在时刻数模kiki的值在区间[li,ri][li,ri]的时刻，小R才能在这条边上移动（每一时刻小R能前进1单位长度）。</p>
 <p>举个例子，现在有一条长度为7的边，小R到达它其中一个端点的时刻是3，k=3,l=1,r=2k=3,l=1,r=2，小R想要通过这条边。首先他等到了时刻4，然后再这条边上前进了2单位长度，然后他又必须停下1单位时间，然后再前进两个单位…最终小R到达另一个端点的时刻为14。</p>

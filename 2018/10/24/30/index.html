@@ -18,18 +18,18 @@
   
   
   <title>序列 | 祎隋</title>
-  <meta name="description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1&amp;lt;t_2&amp;lt;⋯&amp;lt;t_k$，且$a_{t1}&amp;lt;a_{t2}&amp;lt;⋯&amp;lt;a_{tk}">
+  <meta name="description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1">
 <meta name="keywords" content="贪心,LIS,二分查找">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列">
 <meta property="og:url" content="www.degage.xyz/2018/10/24/30/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1&amp;lt;t_2&amp;lt;⋯&amp;lt;t_k$，且$a_{t1}&amp;lt;a_{t2}&amp;lt;⋯&amp;lt;a_{tk}">
+<meta property="og:description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T11:52:34.749Z">
+<meta property="og:updated_time" content="2019-01-14T15:15:33.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列">
-<meta name="twitter:description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1&amp;lt;t_2&amp;lt;⋯&amp;lt;t_k$，且$a_{t1}&amp;lt;a_{t2}&amp;lt;⋯&amp;lt;a_{tk}">
+<meta name="twitter:description" content="Description你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。 你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1">
   <!-- Canonical links -->
   <link rel="canonical" href="www.degage.xyz/2018/10/24/30/index.html">
   
@@ -406,10 +406,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/24/30/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 553(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 87(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
       </div>
@@ -417,7 +417,7 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>你有一个长度为nn的序列$a_1,a_2,…,a_n$，你可以选择一段区间(l,r) (1≤l≤r≤n)，并且把$a_l,a_l+1,…,a_r$这些数字加上一个相同的数字d(−x≤d≤x)。</p>
-<p>你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1&lt;t_2&lt;⋯&lt;t_k$，且$a_{t1}&lt;a_{t2}&lt;⋯&lt;a_{tk}$。</p>
+<p>你想让加完之后的数字的最长上升子序列尽量长。也就是说找到最大的k满足$t_1<t_2<⋯<t_k$，且$a_{t1}<a_{t2}<⋯<a_{tk}$。<a id="more"></t_2<⋯<t_k$，且$a_{t1}<a_{t2}<⋯<a_{tk}$。<a></p>
 <h1 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h1><p>第一行两个整数n,x，接下来一行n个正整数$a_1,a_2,…,a_n$。</p>
 <p>注意：你可以把数字改成负数。</p>
 <h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><p>输出一个整数，表示答案，即最长的LIS长度。</p>
