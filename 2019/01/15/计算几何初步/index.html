@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/01/15/5c3d307ad09be.png">
 <meta property="og:image" content="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D47/sign=f817c2ad06e9390152028c3979ec2ec3/dcc451da81cb39db32331ddbd7160924aa18304f.jpg">
-<meta property="og:updated_time" content="2019-01-15T12:58:06.169Z">
+<meta property="og:updated_time" content="2019-01-16T03:44:02.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算几何初步">
 <meta name="twitter:description" content="123456struct point&amp;#123;  double x,double y;  bool operator&amp;lt;(const point &amp;amp;a,const point &amp;amp;b)&amp;#123;    return a.x&amp;lt;b.x||a.x==b.x&amp;amp;&amp;amp;a.y&amp;lt;b.y;  &amp;#125;&amp;#125;">
@@ -409,7 +409,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/01/15/计算几何初步/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 572(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 544(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -434,7 +434,7 @@
 <p>（忘了按保存键就先咕咕咕了2333</p>
 <p>C 语言里 double atan2(double y,double x) 返回的是原点至点(x,y)的方位角，即与 x 轴的夹角。</p>
 <p>取值范围为 <img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D47/sign=f817c2ad06e9390152028c3979ec2ec3/dcc451da81cb39db32331ddbd7160924aa18304f.jpg" alt="img"> ；</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//得到两直线相交的交点</span></span><br><span class="line"><span class="function">point <span class="title">getpoint</span><span class="params">(line a,line b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a1=a.s.y-a.e.y,b1=a.e.x-a.s.x,c1=a.s*a.e;</span><br><span class="line">	<span class="keyword">double</span> a2=b.s.y-b.e.y,b2=b.e.x-b.s.x,c2=b.s*b.e;</span><br><span class="line">	<span class="keyword">return</span> point((b1*c2-c1*b2)/(a1*b2-b1*a2),(a2*c1-a1*c2)/(a1*b2-b1*a2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//得到两直线相交的交点</span></span><br><span class="line"><span class="function">point <span class="title">getpoint</span><span class="params">(line a,line b)</span></span>&#123;</span><br><span class="line">	 point aa=a.e-a.s,bb=b.e-b.s,cc=b.s-a.s;</span><br><span class="line">   <span class="keyword">double</span> t=(bb^cc)/(aa^bb);</span><br><span class="line">   <span class="keyword">return</span> (point)&#123;a.s+aa*t&#125;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
