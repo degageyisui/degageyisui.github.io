@@ -400,7 +400,7 @@
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/30/39/#comments" class="article-comment-link">评论</a></span>
     
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 940(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 941(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
@@ -449,7 +449,7 @@
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/29/38/#comments" class="article-comment-link">评论</a></span>
     
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 467(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 468(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
@@ -471,7 +471,7 @@
   </div>
   
   <div class="article-entry text-muted" itemprop="description">
-    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>这是小R写的线段树的一段建树代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buildtree</span><span class="params">(<span class="keyword">int</span> k1,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">  buildtree(k1*<span class="number">2</span>,l,mid);buildtree(k1*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>这是小R写的线段树的一段建树代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">buildtree</span><span class="params">(<span class="keyword">int</span> k1,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l==r)<span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">  buildtree(k1*<span class="number">2</span>,l,mid);buildtree(k1*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>只要调用buildtree(1,0,n)就可以得到一颗线段树了。显然，一颗线段树一共有O(n)个节点，因为每一个节点都代表了一个不同的区间，所以线段树上一共出现了O(n)个不同的区间。</p>
   </div>
   
@@ -498,7 +498,7 @@
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/29/37/#comments" class="article-comment-link">评论</a></span>
     
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 583(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 584(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
