@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.degage.xyz/"/>
-  <updated>2019-01-17T02:46:46.738Z</updated>
+  <updated>2019-01-17T03:34:25.259Z</updated>
   <id>www.degage.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生成函数预备</title>
+    <link href="www.degage.xyz/2019/01/17/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E9%A2%84%E5%A4%87/"/>
+    <id>www.degage.xyz/2019/01/17/生成函数预备/</id>
+    <published>2019-01-17T03:33:02.000Z</published>
+    <updated>2019-01-17T03:34:25.259Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="真的就是一些杂七杂八有用没用的东西…"><a href="#真的就是一些杂七杂八有用没用的东西…" class="headerlink" title="真的就是一些杂七杂八有用没用的东西…."></a>真的就是一些杂七杂八有用没用的东西….</h2><p>生成函数:</p><p>斐波那契数列：s(n)=f(n+2)-1</p><p>设一个数列$a_0,a_1,a_2….a_n…$</p><p>则其生成函数$g(x)=\sum_{i=0}^{\infty} a_i\times x^i$</p><p>卡特兰数前7项：1, 1, 2, 5, 14, 42, 132</p><p>$C_{n+1}=C_1C_n+C_2C_{n-1}+……+C_nC_1$</p><p>通项公式$h(n)=C(2n,n)-C(2n,n-1)$</p><p>递推公式$h(n)=h(n-1)<em>(4</em>n-2)/(n+1)$</p><p>多项式的逆：</p><p>$B=2B’-AB’^2 （mod x^n)$ 最高次数n项</p><p>$A\times B \equiv 1(mod x^n)$，如遇到mod n+1项则再添一项</p><p>$A \times B’ \equiv 1(mod x^{\lfloor n/2 \rfloor})​$</p><p>$A(1)^{-1}=a[0]^{p-2}$ </p><p>卷积的定义</p><p>$(f\ast g)(n)=\int_{-\infty}^{\infty} f(i)g(n-i)di$ 连续定义</p><p>$(f\ast g)(n)=\sum_{-\infty}^{\infty} f(i)g(n-i)$离散定义</p><p>连续卷积的例子：做馒头</p><p>楼下早点铺子生意太好了，供不应求，就买了一台机器，不断的生产馒头。<br>假设馒头的生产速度是 f(t) ，那么一天后生产出来的馒头总量为： $\int_0^{24} f(t)dt$<br>馒头生产出来之后，就会慢慢腐败，假设腐败函数为 g(t) ，比如，10个馒头，24小时会腐败：$10 \ast g(t)$<br>想想就知道，第一个小时生产出来的馒头，一天后会经历24小时的腐败，第二个小时生产出来的馒头，一天后会经历23小时的腐败。<br>如此，我们可以知道，一天后，馒头总共腐败了： $\int_0^{24} f(t)g(24-t) dt$</p><p>两个多项式相乘，卷积f(i)对应其次数为i的系数(比如分治fft利用了这个思想)</p><p>多项式开根：<a href="https://www.cnblogs.com/yoyoball/p/8724115.html" target="_blank" rel="noopener">较优博文推导</a></p><p>tips:大抵推导思路就是先指数除2的同余多项式，然后通过平方相乘等来使指数恢复，从而可以用倍增将复杂度降到一半.</p><script type="math/tex; mode=display">(\frac{G^2(x)+A(x)}{2G(x)})^2\equiv A(x)(mod\ x^{2n})</script><script type="math/tex; mode=display">B(x)=(\frac{G^2(x)+A(x)}{2G(x)})^2(mod x^{2n})</script><p>泰勒公式：</p><p>定义：泰勒公式是将一个在$x=x0$处具有n阶导数的函数f(x)利用关于$(x-x0)$的n次多项式来逼近函数的方法。</p><p><img src="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D561/sign=143f6442fadeb48fff69a1d8c11e3aef/a686c9177f3e670920f8bbdc32c79f3df8dc551d.jpg" alt=""></p><p>等号后的多项式称为函数f(x)在x0处的泰勒展开式，剩余的Rn(x)是泰勒公式的余项，是$(x-x0)^n$的高阶无穷小。</p><p>还可以看作<img src="https://img-blog.csdn.net/20180602214026172" alt=""></p><p>常见泰勒展开：(一般取$x_0=0$得到)<br><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D240/sign=af5105143cfae6cd08b4ac653fb30f9e/4bed2e738bd4b31cbf7b70988ed6277f9e2ff84a.jpg" alt="">取$x_0=0$<br><img src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D216/sign=010037de72899e517c8e3d1574a6d990/f9198618367adab47e17ff6082d4b31c8601e4ca.jpg" alt=""> 取$x_0 = 0$<br><img src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D235/sign=aa5a1804763e6709ba0042fc0ec69fb8/7a899e510fb30f244f7b0820c195d143ad4b032b.jpg" alt=""><br><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D217/sign=6137b9730533874498c5287d660fd937/b3b7d0a20cf431ad5cfca41a4236acaf2edd98e3.jpg" alt=""><br><img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D208/sign=f90c39d7be4543a9f11bfdcc26178a7b/03087bf40ad162d9b8c6853f18dfa9ec8a13cded.jpg" alt=""><br><img src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D403/sign=40cad0fa3001213fcb334fdc67e636f8/9358d109b3de9c821c821dac6581800a19d8432a.jpg" alt=""></p><p>多项式除法：</p><p>$A^R(x) = x^n A(\frac{1}{x})$</p><p>反转系数（随便举个栗子就行</p><p>$\begin{eqnarray<em>} x^n A(\frac{1}{x}) &amp;=&amp; x^{n - m}D(\frac{1}{x}) x^mB(\frac{1}{x}) + x^{n - m + 1}x^{m - 1}R(\frac{1}{x}) \\ A^R(x) &amp;=&amp; D^R(x)B^R(x) + x^{n - m + 1}R^R(x) \end{eqnarray</em>}$</p><p>因为$R^R(x)$的次数大于等于n-m+1，所以$mod x^{n-m+1}$可以全部消去(次数大于它的相当于乘了个倍数)</p><p>$A^R(x) = D^R(x)B^R(x) \pmod {x^{n - m + 1}}$</p><p>多项式取模：</p><p>$A(x)\equiv R(x)\pmod{B(x)}$</p><p>就是多项式除法搞余数</p><p>牛顿迭代法：</p><p>求函数f(x)的零点</p><p>方法：选一个$x_0$将f(x)泰勒展开，选取泰勒前几项来寻找$f(x)=0$的根.</p><p>通常只保留线性部分。</p><p>$f(x)=f(x_0)+f’(x_0)(x-x0)=0$</p><p>得到：$x=x0-\frac{f(x_0)}{f’(x_0)}$</p><p>多带几个$x_0$得到近似解</p><p>多项式牛顿迭代法：</p><p>问题：<strong>求函数g(f(x))的零点多项式f(x)</strong><br>解释：g(f(x))是一个关于多项式f(x)的函数，其中f(x)是变量。<br>即求一个多项式f(x)使得</p><script type="math/tex; mode=display">g(f(x))\equiv0\pmod{x^n}</script><p>e.g.</p><script type="math/tex; mode=display">g(f(x))=lnf(x)-A(x)</script><p>这个函数的零点为eA(x)eA(x)</p><script type="math/tex; mode=display">g(f(x))=f(x)-A^k(x)</script><p>这个函数的零点即Ak(x)</p><p>多项式牛顿迭代法用来解关于多项式方程</p><p><a href="https://blog.csdn.net/semiwaker/article/details/73251486" target="_blank" rel="noopener">留坑链接</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;真的就是一些杂七杂八有用没用的东西…&quot;&gt;&lt;a href=&quot;#真的就是一些杂七杂八有用没用的东西…&quot; class=&quot;headerlink&quot; title=&quot;真的就是一些杂七杂八有用没用的东西….&quot;&gt;&lt;/a&gt;真的就是一些杂七杂八有用没用的东西….&lt;/h2&gt;&lt;p&gt;生成函数
+      
+    
+    </summary>
+    
+      <category term="省选" scheme="www.degage.xyz/categories/%E7%9C%81%E9%80%89/"/>
+    
+    
+      <category term="数学" scheme="www.degage.xyz/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>多项式板子</title>
@@ -525,33 +550,6 @@
       <category term="博弈论" scheme="www.degage.xyz/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
       <category term="二分图" scheme="www.degage.xyz/tags/%E4%BA%8C%E5%88%86%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Poker</title>
-    <link href="www.degage.xyz/2018/10/31/42/"/>
-    <id>www.degage.xyz/2018/10/31/42/</id>
-    <published>2018-10-31T11:29:24.000Z</published>
-    <updated>2019-01-16T13:28:03.190Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一共有n张扑克牌，第i张扑克牌的编号为$a_i$，这里保证n为偶数。<br>先将n张牌随机的分成两堆大小为$\frac{n}{2}$的牌，一人拿一堆，随机为均匀随机。<br>将n张牌随机打乱，两人开始比大小，按顺序翻各自的牌，如果前者大于后者，那么前者得一分，否则后者得一分，问前者和后者得分的期望，输出答案乘上n!然后对1e9+7取模的值。</p><h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>1 2 3 2</p><h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>20 28</p><h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>$n&lt;=10^5$</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>其实是个假期望题。<br>发现总方案数是n!，所以实际上是找全排列并统计得分。然后发现是排列，所以每次可以固定两个不同的数，然后乘上(n-2)!</p><p>上代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[maxn];</span><br><span class="line">ll jc;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">jc=<span class="number">1l</span>l;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line"><span class="keyword">if</span>(i&lt;=n<span class="number">-2</span>) jc=jc*(ll)i%mod;</span><br><span class="line">&#125;</span><br><span class="line">sort(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">ll ans1=<span class="number">0</span>;</span><br><span class="line">ll cnt=<span class="number">0</span>;</span><br><span class="line">ll len=n/<span class="number">2</span>; </span><br><span class="line">ll ans2=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line"><span class="keyword">if</span>(a[i]==a[i+<span class="number">1</span>])&#123;</span><br><span class="line">cnt++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">cnt++;</span><br><span class="line">ans1=(ans1+cnt*jc%mod*(ll)(n-i)%mod)%mod;</span><br><span class="line">ans2=(ans2+cnt*jc%mod*(ll)(n-i+cnt<span class="number">-1</span>)%mod)%mod;</span><br><span class="line">cnt=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">ans1=ans1*len%mod;</span><br><span class="line">ans2=ans2*len%mod;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld "</span>,ans1);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans2);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;一共有n张扑克牌，第i张扑克牌的编号为$a_i$，这里保证n为偶数。
-      
-    
-    </summary>
-    
-      <category term="正睿" scheme="www.degage.xyz/categories/%E6%AD%A3%E7%9D%BF/"/>
-    
-    
-      <category term="概率期望" scheme="www.degage.xyz/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
-    
-      <category term="数学" scheme="www.degage.xyz/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
