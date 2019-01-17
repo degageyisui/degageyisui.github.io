@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[多项式板子]]></title>
     <url>%2F2019%2F01%2F16%2F%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%9D%BF%E5%AD%90%2F</url>
-    <content type="text"><![CDATA[fft板子：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556const double pi=acos(-1.0);struct cp&#123; double x,y;//x实部y虚部 cp operator+(const cp &amp;a)&#123; return (cp)&#123;x+a.x,y+a.y&#125;; &#125; cp operator-(const cp &amp;a)&#123; return (cp)&#123;x-a.x,y-a.y&#125;; &#125; cp operator*(const cp &amp;a)&#123; return (cp)&#123;x*a.x-y*a.y,x*a.y+y*a.x&#125;; &#125;&#125;;cp x1[maxn&lt;&lt;3],x2[maxn&lt;&lt;3];//内存经常有不够的情况void change(cp y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k; k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125; &#125;void fft(cp y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; cp base=(cp)&#123;cos(2*pi/h),sin(2*pi*on/h)&#125;; for(int j=0;j&lt;len;j+=h)&#123; cp w=(cp)&#123;1,0&#125;; for(int k=j;k&lt;j+h/2;k++)&#123; cp t1=y[k]; cp t2=w*y[k+h/2]; y[k]=t1+t2; y[k+h/2]=t1-t2; w=w*base; &#125; &#125; &#125; if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i].x/=len; &#125;&#125;void init()&#123; int len=1; while(len&lt;len1*2||len&lt;len2*2) len&lt;&lt;=1; for(int i=0;i&lt;len1;i++) x1[i]=(cp)&#123;a[i],0&#125;; for(int i=len1;i&lt;len;i++) x1[i]=(cp)&#123;0,0&#125;; for(int i=0;i&lt;len2;i++) x2[i]=(cp)&#123;b[i],0&#125;; for(int i=len2;i&lt;len;i++) x2[i]=(cp)&#123;0,0&#125;; fft(x1,len,1); fft(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x1[i]*x2[i]; fft(x1,len,-1);&#125; ntt板子:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354typedef long long ll;ll x1[maxn&lt;&lt;3],x2[maxn&lt;&lt;3];ll qkpow(ll t,int pos)&#123; ll ans=1,base=t; while(pos)&#123; if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; &#125; return ans;&#125;void change(ll y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k; k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125;&#125;void ntt(ll y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; ll base=qkpow(3,(mod-1)/h);//改动1 if(on==-1) base=qkpow(base,mod-2);//改动2 for(int j=0;j&lt;len;j+=h)&#123; ll w=1; for(int k=j;k&lt;j+h/2;k++)&#123; ll t1=y[k]; ll t2=w*y[k+h/2]%mod; y[k]=(t1+t2)%mod; y[k+h/2]=(t1-t2+mod)%mod; w=w*base%mod; &#125; &#125; &#125; ll inv=qkpow(len,mod-2); if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i]=y[i]*inv%mod; //改动3 &#125;&#125;void init()&#123; int len=1; while(len&lt;len1*2||len&lt;len2*2) len&lt;&lt;=1; for(int i=0;i&lt;len1;i++) x1[i]=a[i]; for(int i=len1;i&lt;len;i++) x1[i]=0; for(int i=0;i&lt;len2;i++) x2[i]=b[i]; for(int i=len2;i&lt;len;i++) x2[i]=0; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x1[i]*x2[i]; ntt(x1,len,-1); &#125; 多项式求逆： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;bits/stdc++.h&gt;#define maxlen 100005#define maxn maxlen&lt;&lt;3 using namespace std;typedef long long ll;const ll mod=998244353;ll a[maxn],b[2][maxn],x1[maxn],x2[maxn];int n;ll qkpow(ll t,int pos)&#123; ll ans=1,base=t; while(pos)&#123; if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; &#125; return ans;&#125; void change(ll y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k;k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125;&#125;void ntt(ll y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; ll base=qkpow(3,(mod-1)/h);//改动1 if(on==-1) base=qkpow(base,mod-2);//改动2 for(int j=0;j&lt;len;j+=h)&#123; ll w=1; for(int k=j;k&lt;j+h/2;k++)&#123; ll t1=y[k]; ll t2=w*y[k+h/2]%mod; y[k]=(t1+t2)%mod; y[k+h/2]=(t1-t2+mod)%mod; w=w*base%mod; &#125; &#125; &#125; ll inv=qkpow(len,mod-2); if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i]=y[i]*inv%mod; //改动3 &#125;&#125;void mul(ll a[],ll b[],int len)&#123; memset(x1,0,sizeof(x1)); memset(x2,0,sizeof(x2)); for(int i=0;i&lt;len/2;i++)&#123; x1[i]=a[i];x2[i]=b[i]; &#125; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x2[i]*x1[i]%mod; ntt(x1,len,-1); for(int i=0;i&lt;len;i++) a[i]=x1[i];&#125;void init()&#123; scanf("%d",&amp;n); for(int i=0;i&lt;n;i++) scanf("%lld",&amp;a[i]); int cur=0; b[cur][0]=qkpow(a[0],mod-2); int bas=1,len=2; while(bas&lt;=(n&lt;&lt;1))&#123; cur^=1; memset(b[cur],0,sizeof(b[cur])); for(int i=0;i&lt;bas;i++) b[cur][i]=(b[cur][i]+b[cur^1][i]*2ll)%mod; mul(b[cur^1],b[cur^1],len); mul(b[cur^1],a,len); for(int i=0;i&lt;bas;i++) b[cur][i]=(b[cur][i]-b[cur^1][i]+mod)%mod; bas&lt;&lt;=1;len&lt;&lt;=1; &#125; for(int i=0;i&lt;n;i++) printf("%lld ",b[cur][i]);&#125;int main()&#123; init(); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[fft板子：1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556const double pi=acos(-1.0);struct cp&#123; double x,y;//x实部y虚部 cp operator+(const cp &amp;a)&#123; return (cp)&#123;x+a.x,y+a.y&#125;; &#125; cp operator-(const cp &amp;a)&#123; return (cp)&#123;x-a.x,y-a.y&#125;; &#125; cp operator*(const cp &amp;a)&#123; return (cp)&#123;x*a.x-y*a.y,x*a.y+y*a.x&#125;; &#125;&#125;;cp x1[maxn*3],x2[maxn*3];//内存经常有不够的情况void change(cp y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k; k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125; &#125;void fft(cp y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; cp base=(cp)&#123;cos(2*pi/h),sin(2*pi*on/h)&#125;; for(int j=0;j&lt;len;j+=h)&#123; cp w=(cp)&#123;1,0&#125;; for(int k=j;k&lt;j+h/2;k++)&#123; cp t1=y[k]; cp t2=w*y[k+h/2]; y[k]=t1+t2; y[k+h/2]=t1-t2; w=w*base; &#125; &#125; &#125; if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i].x/=len; &#125;&#125;void init()&#123; int len=1; while(len&lt;len1*2||len&lt;len2*2) len&lt;&lt;=1; for(int i=0;i&lt;len1;i++) x1[i]=(cp)&#123;a[i],0&#125;; for(int i=len1;i&lt;len;i++) x1[i]=(cp)&#123;0,0&#125;; for(int i=0;i&lt;len2;i++) x2[i]=(cp)&#123;b[i],0&#125;; for(int i=len2;i&lt;len;i++) x2[i]=(cp)&#123;0,0&#125;; fft(x1,len,1); fft(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x1[i]*x2[i]; fft(x1,len,-1);&#125; ntt板子:123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354typedef long long ll;ll x1[maxn*3],x2[maxn*3];ll qkpow(ll t,int pos)&#123; ll ans=1,base=t; while(pos)&#123; if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; &#125; return ans;&#125;void change(ll y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k; k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125;&#125;void ntt(ll y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; ll base=qkpow(3,(mod-1)/h);//改动1 if(on==-1) base=qkpow(base,mod-2);//改动2 for(int j=0;j&lt;len;j+=h)&#123; ll w=1; for(int k=j;k&lt;j+h/2;k++)&#123; ll t1=y[k]; ll t2=w*y[k+h/2]%mod; y[k]=(t1+t2)%mod; y[k+h/2]=(t1-t2+mod)%mod; w=w*base%mod; &#125; &#125; &#125; ll inv=qkpow(len,mod-2); if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i]=y[i]*inv%mod; //改动3 &#125;&#125;void init()&#123; int len=1; while(len&lt;len1*2||len&lt;len2*2) len&lt;&lt;=1; for(int i=0;i&lt;len1;i++) x1[i]=a[i]; for(int i=len1;i&lt;len;i++) x1[i]=0; for(int i=0;i&lt;len2;i++) x2[i]=b[i]; for(int i=len2;i&lt;len;i++) x2[i]=0; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x1[i]*x2[i]; ntt(x1,len,-1); &#125; 多项式求逆： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;bits/stdc++.h&gt;#define maxlen 100005#define maxn maxlen*3 using namespace std;typedef long long ll;const ll mod=998244353;ll a[maxn],b[2][maxn],x1[maxn],x2[maxn];int n;ll qkpow(ll t,int pos)&#123; ll ans=1,base=t; while(pos)&#123; if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; &#125; return ans;&#125; void change(ll y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k;k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125;&#125;void ntt(ll y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; ll base=qkpow(3,(mod-1)/h);//改动1 if(on==-1) base=qkpow(base,mod-2);//改动2 for(int j=0;j&lt;len;j+=h)&#123; ll w=1; for(int k=j;k&lt;j+h/2;k++)&#123; ll t1=y[k]; ll t2=w*y[k+h/2]%mod; y[k]=(t1+t2)%mod; y[k+h/2]=(t1-t2+mod)%mod; w=w*base%mod; &#125; &#125; &#125; ll inv=qkpow(len,mod-2); if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i]=y[i]*inv%mod; //改动3 &#125;&#125;void mul(ll a[],ll b[],int len)&#123; memset(x1,0,sizeof(x1)); memset(x2,0,sizeof(x2)); for(int i=0;i&lt;len/2;i++)&#123; x1[i]=a[i];x2[i]=b[i]; &#125; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x2[i]*x1[i]%mod; ntt(x1,len,-1); for(int i=0;i&lt;len;i++) a[i]=x1[i];&#125;void init()&#123; scanf("%d",&amp;n); for(int i=0;i&lt;n;i++) scanf("%lld",&amp;a[i]); int cur=0; b[cur][0]=qkpow(a[0],mod-2); int bas=1,len=2; while(bas&lt;=(n&lt;&lt;1))&#123; cur^=1; memset(b[cur],0,sizeof(b[cur])); for(int i=0;i&lt;bas;i++) b[cur][i]=(b[cur][i]+b[cur^1][i]*2ll)%mod; mul(b[cur^1],b[cur^1],len); mul(b[cur^1],a,len); for(int i=0;i&lt;bas;i++) b[cur][i]=(b[cur][i]-b[cur^1][i]+mod)%mod; bas&lt;&lt;=1;len&lt;&lt;=1; &#125; for(int i=0;i&lt;n;i++) printf("%lld ",b[cur][i]);&#125;int main()&#123; init(); return 0;&#125; 多项式除法： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104#include&lt;bits/stdc++.h&gt;#define maxlen 100005#define maxn maxlen*3using namespace std;typedef long long ll;const ll mod=998244353;int n,m;ll f[maxn],g[maxn],d[maxn],r[maxn],gr[maxn],fr[maxn],t[2][maxn],x1[maxn],x2[maxn];ll qkpow(ll t,int pos)&#123; ll ans=1,base=t; while(pos)&#123; if(pos&amp;1) ans=ans*base%mod; base=base*base%mod; pos&gt;&gt;=1; &#125; return ans;&#125; void change(ll y[],int len)&#123; for(int i=1,j=len/2;i&lt;len-1;i++)&#123; if(i&lt;j) swap(y[i],y[j]); int k=len&gt;&gt;1; while(j&gt;=k)&#123; j-=k;k&gt;&gt;=1; &#125; if(j&lt;k) j+=k; &#125;&#125;void ntt(ll y[],int len,int on)&#123; change(y,len); for(int h=2;h&lt;=len;h&lt;&lt;=1)&#123; ll base=qkpow(3,(mod-1)/h);//改动1 if(on==-1) base=qkpow(base,mod-2);//改动2 for(int j=0;j&lt;len;j+=h)&#123; ll w=1; for(int k=j;k&lt;j+h/2;k++)&#123; ll t1=y[k]; ll t2=w*y[k+h/2]%mod; y[k]=(t1+t2)%mod; y[k+h/2]=(t1-t2+mod)%mod; w=w*base%mod; &#125; &#125; &#125; ll inv=qkpow(len,mod-2); if(on==-1)&#123; for(int i=0;i&lt;len;i++) y[i]=y[i]*inv%mod; //改动3 &#125;&#125;void mul(ll a[],ll b[],int len)&#123; memset(x1,0,sizeof(x1)); memset(x2,0,sizeof(x2)); for(int i=0;i&lt;len/2;i++)&#123; x1[i]=a[i];x2[i]=b[i]; &#125; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x2[i]*x1[i]%mod; ntt(x1,len,-1); for(int i=0;i&lt;len;i++) a[i]=x1[i];&#125;void mull(ll a[],ll b[],int len1)&#123; int len=1; while(len&lt;len1*2) len&lt;&lt;=1; memset(x1,0,sizeof(x1)); memset(x2,0,sizeof(x2)); for(int i=0;i&lt;len1;i++) x1[i]=a[i]; for(int i=0;i&lt;len1;i++) x2[i]=b[i]; ntt(x1,len,1);ntt(x2,len,1); for(int i=0;i&lt;len;i++) x1[i]=x2[i]*x1[i]%mod; ntt(x1,len,-1); for(int i=0;i&lt;len;i++) a[i]=x1[i];&#125;int cur;void inv(ll a[],int tot)&#123; cur=0; t[cur][0]=qkpow(a[0],mod-2); int bas=1,len=2; while(bas&lt;=(tot&lt;&lt;1))&#123; cur^=1; memset(t[cur],0,sizeof(t[cur])); for(int i=0;i&lt;bas;i++) t[cur][i]=(t[cur][i]+t[cur^1][i]*2ll)%mod; mul(t[cur^1],t[cur^1],len); mul(t[cur^1],a,len); for(int i=0;i&lt;bas;i++) t[cur][i]=(t[cur][i]-t[cur^1][i]+mod)%mod; bas&lt;&lt;=1;len&lt;&lt;=1; &#125;&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;m); for(int i=0;i&lt;=n;i++) scanf("%lld",&amp;f[i]),fr[n-i]=f[i]; for(int i=0;i&lt;=m;i++) scanf("%lld",&amp;g[i]),gr[m-i]=g[i]; inv(gr,n-m+1);//t[cur]现在为gr的逆元 mull(fr,t[cur],n+1);//fr变为dr for(int i=0;i&lt;=n-m;i++) d[i]=fr[n-m-i]; for(int i=0;i&lt;=n-m;i++) printf("%lld ",d[i]); printf("\n"); mull(d,g,n+1); for(int i=0;i&lt;=n;i++) r[i]=(f[i]-d[i]+mod)%mod; for(int i=0;i&lt;=m-1;i++) printf("%lld ",r[i]); &#125;int main()&#123; init(); return 0;&#125;]]></content>
       <categories>
         <category>省选</category>
       </categories>
@@ -231,8 +231,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>概率期望</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
   <entry>
@@ -667,8 +667,8 @@
         <category>CF</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>概率期望</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -717,9 +717,9 @@
         <category>正睿</category>
       </categories>
       <tags>
+        <tag>概率期望</tag>
         <tag>数学</tag>
         <tag>dp</tag>
-        <tag>概率期望</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
@@ -760,11 +760,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[gallery]]></title>
-    <url>%2Fgallery%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[文章分类]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
@@ -775,13 +770,18 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[gallery]]></title>
+    <url>%2Fgallery%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[timeline]]></title>
     <url>%2Ftimeline%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
