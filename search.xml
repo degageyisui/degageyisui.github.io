@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[lct模板]]></title>
+    <url>%2F2019%2F01%2F19%2Flct%2F</url>
+    <content type="text"><![CDATA[lct模板：（一旦访问就要pushdown!!! （在一个点为该splay根节点时，不能对它父亲操作（否则造成巨大错误，性质2，认父不认子 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990#include&lt;bits/stdc++.h&gt;#define maxn 300005using namespace std;int n,m,op;int val[maxn],sum[maxn],fa[maxn],ch[maxn][2];int st[maxn];bool rev[maxn];bool check(int x)&#123;return ch[fa[x]][1]==x;&#125;void link(int x,int y,bool kind)&#123; fa[x]=y;ch[y][kind]=x;&#125;bool nroot(int x)&#123;//not root 连父轻边 return ch[fa[x]][0]==x||ch[fa[x]][1]==x;&#125;void upload(int x)&#123; sum[x]=sum[ch[x][0]]^sum[ch[x][1]]^val[x];&#125;void download(int x)&#123; if(!rev[x]) return; swap(ch[x][0],ch[x][1]); rev[ch[x][0]]^=1;rev[ch[x][1]]^=1; rev[x]=0;&#125;void rotate(int x)&#123; int y=fa[x],z=fa[y]; int kind=check(x); int k=ch[x][!kind]; link(k,y,kind); if(nroot(y)) link(x,z,check(y));fa[x]=z; link(y,x,!kind); upload(y);upload(x);&#125;void splay(int x)&#123;//一旦访问就要pushdown!!! int y=x,top=0; st[++top]=y; while(nroot(y)) st[++top]=fa[y],y=fa[y]; while(top) download(st[top--]); while(nroot(x))&#123; y=fa[x]; if(nroot(y)) check(x)^check(y)?rotate(x):rotate(y); rotate(x); &#125; upload(x);&#125;void access(int x)&#123; for(int y=0;x;y=x,x=fa[x])//一直打通到根 splay(x),ch[x][1]=y,upload(x); &#125;void makeroot(int x)&#123; access(x);splay(x); rev[x]^=1;download(x);&#125;int findroot(int x)&#123; access(x);splay(x); while(ch[x][0]) download(x),x=ch[x][0]; splay(x); return x;&#125;void split(int x,int y)&#123; makeroot(x); access(y); splay(y);&#125;void link(int x,int y)&#123; makeroot(x); if(findroot(y)==x) return;//是否在同一splay上,findroot找深度最小点（根 fa[x]=y;&#125;void cut(int x,int y)&#123; makeroot(x); if(findroot(y)==x&amp;&amp;fa[y]==x&amp;&amp;!ch[y][0])//findroot(y)如果找到了x，则将x提到了最高处(splay(x)) fa[y]=ch[x][1]=0,upload(x);//想象图，y左边如果有任何，则y和x深度相差不为1，则无边 &#125;int x,y;void init()&#123; scanf("%d%d",&amp;n,&amp;m); for(int i=1;i&lt;=n;i++) scanf("%d",&amp;val[i]); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d%d",&amp;op,&amp;x,&amp;y); if(op==0) split(x,y),printf("%d\n",sum[y]); if(op==1) link(x,y); if(op==2) cut(x,y); if(op==3) splay(x),val[x]=y; &#125;&#125;int main()&#123; init(); return 0;&#125; 以及最后的cut操作，想象图，利用深度严格递增的性质来解题]]></content>
+      <categories>
+        <category>省选</category>
+      </categories>
+      <tags>
+        <tag>lct</tag>
+        <tag>动态树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[平衡树板子]]></title>
     <url>%2F2019%2F01%2F18%2F%E6%9D%83%E5%80%BC%E5%B9%B3%E8%A1%A1%E6%A0%91%2F</url>
     <content type="text"><![CDATA[qwq蒟蒻太蒻了a发现自己splay都不会敲了 权值平衡树：（按照权值的大小来维护，左边小右边大123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110#include&lt;bits/stdc++.h&gt;#define maxn 100005int val[maxn],cnt[maxn],ch[maxn][2],fa[maxn],sz[maxn],rt=0,np=0;bool check(int x)&#123;return x==ch[fa[x]][1];&#125;void link(int x,int y,bool kind)&#123; fa[x]=y;ch[y][kind]=x;&#125;void upload(int x)&#123; sz[x]=sz[ch[x][0]]+sz[ch[x][1]]+cnt[x]; &#125;void rotate(int x)&#123; int y=fa[x],z=fa[y]; bool kind=check(x); int k=ch[x][!kind]; link(k,y,kind); link(x,z,check(y));//原来y在z哪边 在y连x之前，否则就变了 link(y,x,!kind); upload(y);upload(x); &#125;void splay(int x,int goal)&#123;//代入的为编号,val[x]才为它实际值 while(fa[x]!=goal)&#123; int y=fa[x],z=fa[y]; if(z!=goal) (check(x)^check(y))?rotate(x):rotate(y);//z等于goal旋一次就欧克了 rotate(x); &#125; if(fa[x]==0) rt=x; &#125;void find(int x)&#123; int now=rt; while(ch[now][x&gt;val[now]]&amp;&amp;val[now]!=x) now=ch[now][x&gt;val[now]];//如果没有这个数就停顿 splay(now,0);&#125; void insert(int x)&#123;//插入权值 int f=0,now=rt; while(now&amp;&amp;val[now]!=x) f=now,now=ch[now][x&gt;val[now]]; if(now) cnt[now]++; else&#123; now=++np; val[now]=x; if(f) ch[f][x&gt;val[f]]=now; fa[now]=f; cnt[now]=1; &#125; splay(now,0);&#125;int prnx(int x,bool f)&#123;//x为值，返回的为编号 find(x); int now=rt; if(val[now]&lt;x&amp;&amp;!f||val[now]&gt;x&amp;&amp;f) return now; now=ch[now][f]; while(ch[now][!f]) now=ch[now][!f]; return now;&#125;void del(int x)&#123; int pre=prnx(x,0),last=prnx(x,1); splay(pre,0);splay(last,pre); int delt=ch[last][0]; if(cnt[delt]&gt;1) &#123;cnt[delt]--,splay(delt,0);&#125; else&#123;ch[last][0]=0;splay(last,0);&#125;&#125;int kth(int now,int k)&#123;//查询当前子树的第k的编号 if(sz[now]&lt;k) return 0;//不存在的 while(1)&#123; if(k&gt;sz[ch[now][0]]+cnt[now]) k-=cnt[now]+sz[ch[now][0]],now=ch[now][1]; else&#123; if(sz[ch[now][0]]&gt;=k) now=ch[now][0]; else&#123; splay(now,0);return now; &#125; &#125; &#125; &#125;int kth(int x)&#123;//查询值为x的排名第几 find(x); return sz[ch[rt][0]]+1;&#125;int n,opt,x;void init()&#123; insert(INT_MIN); insert(INT_MAX); scanf("%d",&amp;n); for(int i=1;i&lt;=n;i++)&#123; scanf("%d%d",&amp;opt,&amp;x); if(opt==1)&#123; insert(x); &#125; if(opt==2)&#123; del(x); &#125; if(opt==3)&#123; printf("%d\n",kth(x)-1); &#125; if(opt==4)&#123; printf("%d\n",val[kth(rt,x+1)]); &#125; if(opt==5)&#123; printf("%d\n",val[prnx(x,0)]); &#125; if(opt==6)&#123; printf("%d\n",val[prnx(x,1)]); &#125; &#125;&#125;int main()&#123; init(); return 0;&#125; 文艺平衡树：（按照中序遍历来维护，中序遍历不会变，如果插入是按照编号顺序的，那么可以理解为左边编号小，右边编号大 所以如果你在一个文艺平衡树中写find同时又要维护它的性质，那么就可以加一个rank函数来返回值在其中的编号，来维持中序遍历 code: 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889#include&lt;bits/stdc++.h&gt;#define maxn 100005using namespace std;int n,m,l,r;int val[maxn],cnt[maxn],sz[maxn],ch[maxn][2],fa[maxn],rt=0,np=0;bool check(int x)&#123;return x==ch[fa[x]][1];&#125;bool rev[maxn];void link(int x,int y,bool kind)&#123; fa[x]=y;ch[y][kind]=x;&#125;void download(int x)&#123; if(!rev[x]) return; swap(ch[x][0],ch[x][1]); rev[ch[x][0]]^=1;rev[ch[x][1]]^=1; rev[x]=0;&#125;void upload(int x)&#123; sz[x]=sz[ch[x][0]]+sz[ch[x][1]]+1;&#125;void rotate(int x)&#123; int y=fa[x],z=fa[y]; bool kind=check(x); int k=ch[x][!kind]; link(k,y,kind); link(x,z,check(y)); link(y,x,!kind); upload(y);upload(x); &#125;void splay(int x,int goal)&#123; while(fa[x]!=goal)&#123; int y=fa[x],z=fa[y]; if(z!=goal) (check(x)^check(y))?rotate(x):rotate(y); rotate(x); &#125; if(fa[x]==0) rt=x;&#125;void find(int x)&#123; int now=rt; while(ch[now][x&gt;val[now]]&amp;&amp;val[now]!=x) now=ch[now][x&gt;val[now]]; splay(now,0);&#125;void insert(int x)&#123; int now=rt,f=0; while(now) f=now,now=ch[now][1]; now=++np; link(now,f,1);cnt[now]=1;val[now]=x; splay(now,0);&#125;int prnx(int x,bool f)&#123; find(x); int now=rt; if(val[now]&lt;x&amp;&amp;!f||val[now]&gt;x&amp;&amp;f) return now; now=ch[now][f]; while(ch[now][!f]) now=ch[now][!f]; return now;&#125;int kth(int now,int k)&#123; download(now); if(k&lt;=sz[ch[now][0]]) return kth(ch[now][0],k); if(k&gt;sz[ch[now][0]]+1) return kth(ch[now][1],k-sz[ch[now][0]]-1); splay(now,0); return now;&#125;void rvs(int l,int r)&#123; int x=kth(rt,l); int y=kth(rt,r+2); splay(x,0);splay(y,x); rev[ch[y][0]]^=1;&#125;void out(int now)&#123; download(now); if(ch[now][0]) out(ch[now][0]); if(now!=1&amp;&amp;now!=n+2) printf("%d ",val[now]); if(ch[now][1]) out(ch[now][1]);&#125;void init()&#123; scanf("%d%d",&amp;n,&amp;m); for(int i=0;i&lt;=n+1;i++) insert(i); for(int i=1;i&lt;=m;i++)&#123; scanf("%d%d",&amp;l,&amp;r); rvs(l,r); &#125; out(rt);&#125;int main()&#123; init(); return 0;&#125;]]></content>
@@ -560,9 +572,9 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>差分约束系统</tag>
-        <tag>拓扑</tag>
         <tag>缩点</tag>
+        <tag>拓扑</tag>
+        <tag>差分约束系统</tag>
       </tags>
   </entry>
   <entry>
@@ -609,11 +621,11 @@
       </categories>
       <tags>
         <tag>dp</tag>
-        <tag>拓扑</tag>
-        <tag>缩点</tag>
         <tag>dijsktra</tag>
         <tag>spfa</tag>
         <tag>slf优化</tag>
+        <tag>缩点</tag>
+        <tag>拓扑</tag>
         <tag>DAG图</tag>
         <tag>set</tag>
       </tags>
@@ -803,13 +815,13 @@
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
