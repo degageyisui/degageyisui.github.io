@@ -1,492 +1,419 @@
 <!DOCTYPE html>
-<html style="display: none;" lang="zh">
-    <head>
-    <meta charset="utf-8">
-    <!--
-        © Material Theme
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.5.2 -->
-    <script>
-        window.materialVersion = "1.5.2"
-        // Delete localstorage with these tags
-        window.oldVersion = [
-            'codestartv1',
-            '1.3.4',
-            '1.4.0',
-            '1.4.0b1',
-            '1.5.0'
-        ]
-    </script>
-
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
-
-
-
-    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info"/>
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!-- Title -->
-    
-    <title>
-        
-            noip模拟赛2 | 
-        
-        祎隋
-    </title>
-
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
-    <link rel="icon" href="/img/favicon.png">
-
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="description" itemprop="description" content="这里是degage的代码仓库哦">
-    <meta name="keywords" content="c++,blog,dp,dijsktra,spfa,slf优化,缩点,拓扑,DAG图,set">
-    <meta name="theme-color" content="#0097A7">
-
-    <!-- Disable Fucking Bloody Baidu Tranformation -->
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
-
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
-
-    <!-- Import CSS -->
-    
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?uVzgA6RLrOm13Ukw8Qgy+A==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-
-        
-            
-                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-            
-        
-
-    
-
-    
-
-    <!-- Config CSS -->
-
-<!-- Other Styles -->
-<style>
-  body, html {
-    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    overflow-x: hidden !important;
-  }
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
   
-  code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  }
-
-  a {
-    color: #00838F;
-  }
-
-  .mdl-card__media,
-  #search-label,
-  #search-form-label:after,
-  #scheme-Paradox .hot_tags-count,
-  #scheme-Paradox .sidebar_archives-count,
-  #scheme-Paradox .sidebar-colored .sidebar-header,
-  #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
-  }
-
-  /* Sidebar User Drop Down Menu Text Color */
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
-  }
-
-  #post_entry-right-info,
-  .sidebar-colored .sidebar-nav li:hover > a,
-  .sidebar-colored .sidebar-nav li:hover > a i,
-  .sidebar-colored .sidebar-nav li > a:hover,
-  .sidebar-colored .sidebar-nav li > a:hover i,
-  .sidebar-colored .sidebar-nav li > a:focus i,
-  .sidebar-colored .sidebar-nav > .open > a,
-  .sidebar-colored .sidebar-nav > .open > a:hover,
-  .sidebar-colored .sidebar-nav > .open > a:focus,
-  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
-  }
-
-  .toTop {
-    background: #757575 !important;
-  }
-
-  .material-layout .material-post>.material-nav,
-  .material-layout .material-index>.material-nav,
-  .material-nav a {
-    color: #757575;
-  }
-
-  #scheme-Paradox .MD-burger-layer {
-    background-color: #757575;
-  }
-
-  #scheme-Paradox #post-toc-trigger-btn {
-    color: #757575;
-  }
-
-  .post-toc a:hover {
-    color: #00838F;
-    text-decoration: underline;
-  }
-
-</style>
-
-
-<!-- Theme Background Related-->
-
-    <style>
-      body{
-        background-image: url(https://i.loli.net/2019/01/19/5c41fdc694840.png);
-      }
-    </style>
-
-
-
-
-<!-- Fade Effect -->
-
-    <style>
-      .fade {
-        transition: all 800ms linear;
-        -webkit-transform: translate3d(0,0,0);
-        -moz-transform: translate3d(0,0,0);
-        -ms-transform: translate3d(0,0,0);
-        -o-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-        opacity: 1;
-      }
-
-      .fade.out{
-        opacity: 0;
-      }
-    </style>
-
-
-<!-- Import Font -->
-<!-- Import Roboto -->
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
-
-<!-- Import Material Icons -->
-
-
-    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-
-
-
-
-    <!-- Import jQuery -->
-    
-        <script>lsloader.load("jq_js","/js/jquery.min.js?ezyEvm8ST5CGfpA+kFFi1g==", true)</script>
-    
-
-    <!-- WebAPP Icons -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="祎隋">
-    <meta name="msapplication-starturl" content="www.degage.xyz/2018/10/18/13/">
-    <meta name="msapplication-navbutton-color" content="#0097A7">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="祎隋">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/img/favicon.png">
-
-    <!-- Site Verification -->
-    
-    
-
-    <!-- RSS -->
-    
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="www.degage.xyz/2018/10/18/13/">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="noip模拟赛2 | 祎隋">
-    <meta property="og:image" content="/img/favicon.png">
-    <meta property="og:description" content="这里是degage的代码仓库哦">
-    <meta property="og:article:tag" content="dp"> <meta property="og:article:tag" content="dijsktra"> <meta property="og:article:tag" content="spfa"> <meta property="og:article:tag" content="slf优化"> <meta property="og:article:tag" content="缩点"> <meta property="og:article:tag" content="拓扑"> <meta property="og:article:tag" content="DAG图"> <meta property="og:article:tag" content="set"> 
-
-    
-        <meta property="article:published_time" content="Thu Oct 18 2018 19:35:45 GMT+0800">
-        <meta property="article:modified_time" content="Wed Jan 16 2019 21:25:42 GMT+0800">
-    
-
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="www.degage.xyz/2018/10/18/13/index.html" />
-    
-
-    <!-- Structured-data for SEO -->
-    
-        
-
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": "www.degage.xyz/2018/10/18/13/index.html",
-    "headline": "noip模拟赛2",
-    "datePublished": "Thu Oct 18 2018 19:35:45 GMT+0800",
-    "dateModified": "Wed Jan 16 2019 21:25:42 GMT+0800",
-    "author": {
-        "@type": "Person",
-        "name": "degage",
-        "image": {
-            "@type": "ImageObject",
-            "url": "/img/avatar.png"
-        },
-        "description": "To Meet You."
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "祎隋",
-        "logo": {
-            "@type":"ImageObject",
-            "url": "/img/favicon.png"
-        }
-    },
-    "keywords": ",dp,dijsktra,spfa,slf优化,缩点,拓扑,DAG图,setc++,blog",
-    "description": "这里是degage的代码仓库哦",
-}
-</script>
-
-
-    
-
-    <!-- Analytics -->
-    
-    
-    
-
-    <!-- Custom Head -->
-    
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>noip模拟赛2 | 祎隋</title>
+  <meta name="description" content="T1Description小 H 最近迷上了名为“石头，剪刀，布”的游戏。游戏规则很简单：比赛双方同时数到三，然后同时出一个手势，代表“石头”、“剪刀”或“布”。“石头”胜“剪刀”，“剪刀”胜“布”，“布”胜“石头”。举个例子， 小 H 出“石头”， 对方出“布”，则对方胜利。当然，也可以“平局”（如果双方手势相同的话）。小 H 对阵小 B。 小 H 作为一个匹托专家，能够预测小 B 未来 N 回">
+<meta name="keywords" content="dp,拓扑,缩点,dijsktra,spfa,slf优化,DAG图,set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="noip模拟赛2">
+<meta property="og:url" content="www.degage.xyz/2018/10/18/13/index.html">
+<meta property="og:site_name" content="祎隋">
+<meta property="og:description" content="T1Description小 H 最近迷上了名为“石头，剪刀，布”的游戏。游戏规则很简单：比赛双方同时数到三，然后同时出一个手势，代表“石头”、“剪刀”或“布”。“石头”胜“剪刀”，“剪刀”胜“布”，“布”胜“石头”。举个例子， 小 H 出“石头”， 对方出“布”，则对方胜利。当然，也可以“平局”（如果双方手势相同的话）。小 H 对阵小 B。 小 H 作为一个匹托专家，能够预测小 B 未来 N 回">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-16T13:25:42.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="noip模拟赛2">
+<meta name="twitter:description" content="T1Description小 H 最近迷上了名为“石头，剪刀，布”的游戏。游戏规则很简单：比赛双方同时数到三，然后同时出一个手势，代表“石头”、“剪刀”或“布”。“石头”胜“剪刀”，“剪刀”胜“布”，“布”胜“石头”。举个例子， 小 H 出“石头”， 对方出“布”，则对方胜利。当然，也可以“平局”（如果双方手势相同的话）。小 H 对阵小 B。 小 H 作为一个匹托专家，能够预测小 B 未来 N 回">
+  <!-- Canonical links -->
+  <link rel="canonical" href="www.degage.xyz/2018/10/18/13/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
 </head>
 
 
-    
-        <body id="scheme-Paradox" class="lazy">
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
+<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/degageyisui" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">祎隋</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">OIER</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
 
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
-
-                    <!-- Top Anchor -->
-                    <div id="top"></div>
-
-                    
-                        <!-- Hamburger Button -->
-                        <button class="MD-burger-icon sidebar-toggle">
-                            <span class="MD-burger-layer"></span>
-                        </button>
-                    
-
-                    <!-- Post TOC -->
-
-    
-    <!-- Back Button -->
-    <!--
-    <div class="material-back" id="backhome-div" tabindex="0">
-        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-           href="#" onclick="window.history.back();return false;"
-           target="_self"
-           role="button"
-           data-upgraded=",MaterialButton,MaterialRipple">
-            <i class="material-icons" role="presentation">arrow_back</i>
-            <span class="mdl-button__ripple-container">
-                <span class="mdl-ripple"></span>
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
             </span>
-        </a>
-    </div>
-    -->
-
-
-    <!-- Left aligned menu below button -->
-    
-    
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#T1"><span class="post-toc-text">T1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Description"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Input"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Output"><span class="post-toc-text">Output</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sample-Input"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sample-Output"><span class="post-toc-text">Sample Output</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hint"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Solution"><span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#T2"><span class="post-toc-text">T2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Description-1"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Input-1"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Output-1"><span class="post-toc-text">Output</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sample-Input-1"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sample-Output-1"><span class="post-toc-text">Sample Output</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hint-1"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Solution-1"><span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#T3"><span class="post-toc-text">T3</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Description-2"><span class="post-toc-text">Description</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Input-2"><span class="post-toc-text">Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Output-2"><span class="post-toc-text">Output</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Input-2"><span class="post-toc-text">Sample Input</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sample-Output-2"><span class="post-toc-text">Sample Output</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hint-2"><span class="post-toc-text">Hint</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Solution-2"><span class="post-toc-text">Solution</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tips"><span class="post-toc-text">tips</span></a></li></ol></li></ol></li></ol>
-    </ul>
-    
-
-
-
-
-<!-- Layouts -->
-
-    <!-- Post Module -->
-    <div class="material-post_container">
-
-        <div class="material-post mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-
-                <!-- Post Header(Thumbnail & Title) -->
-                
-    <!-- Paradox Post Header -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-            <script type="text/ls-javascript" id="post-thumbnail-script">
-    var randomNum = Math.floor(Math.random() * 19 + 1);
-
-    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-</script>
-
-        
-    
-            <p class="article-headline-p">
-                noip模拟赛2
-            </p>
         </div>
-
-
-
-
-
-                
-                    <!-- Paradox Post Info -->
-                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-
-    <!-- Author Avatar -->
-    <div id="author-avatar">
-        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
-    <!-- Author Name & Date -->
-    <div>
-        <strong>degage</strong>
-        <span>10月 18, 2018</span>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
     </div>
-
-    <div class="section-spacer"></div>
-
-    <!-- Favorite -->
-    <!--
-        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
-            <i class="material-icons" role="presentation">favorite</i>
-            <span class="visuallyhidden">favorites</span>
-        </button>
-    -->
-
-    <!-- Qrcode -->
-    
-        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">devices other</i>
-    <span class="visuallyhidden">devices other</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
-    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
-    
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAAB30lEQVR42u3aS27DMAwFwNz/0u0BAjiPpFLX0mgVBIGj8YLg7/WzxXlhYGBgYGBgYPwbxis+77+//ub6+ZM7YGBgnMn4ENriS1ef07sDBgbGyYzrIBs9+vKb64BbvQMGBgZGkur1kr8k+GJgYGAsCHaLDgYGBsY3itg8XCav4LZaHAMD44GMSXBc9fmG+QYGBsZDGOUVh6BllhS3+TjhKzsjGBgYj2JUW2lJWtlb1yiPEzAwMI5h5EXjHDZv3mFgYGD0Ro+9ZlmSbjYzXAwMjE0ZkwutSh+TNBEDAwOjnJzF7OvnVAEYGBinMfKV07wlly+zjn6DgYFxGKNaxFbHk0nATf4RAwPjTEavBZYPAPJLV0tZDAyM0xi9NdZmQz9owP1Ruw0DA+NRjDwI5pfotecKbAwMjGMYSRjtLVska6nV4QEGBsaZjLxwnQwmq8nlggVWDAyM7RjVdLA3EqgWzBgYGBi90wus1ZHDsvkGBgbGFozeSGBVWpkUxoV2GwYGxtaMPMiO1iPionc0GMDAwNiaMS9NV5WyySvGwMDAqI4wq0tjC14NBgYGRnEx4kNwLL6giI2BgXEkYz4MmK9f5DwMDIzTGPPBQF7KzkMtBgbGaYznHgwMDAwMDAyMW88vLRLFOvlcLLUAAAAASUVORK5CYII=">
-    
-</ul>
-
-    
-
-    <!-- Tags (bookmark) -->
-    
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/DAG图/">DAG图</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/dijsktra/">dijsktra</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/dp/">dp</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/set/">set</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/slf优化/">slf优化</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/spfa/">spfa</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/拓扑/">拓扑</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/缩点/">缩点</a>
-    </ul>
-    
-
-    <!-- Share -->
-    
-        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-    <i class="material-icons" role="presentation">share</i>
-    <span class="visuallyhidden">share</span>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
-    
-
-    
-        
-    
-
-    <!-- Share Weibo -->
-    
-
-    <!-- Share Twitter -->
-    
-
-    <!-- Share Facebook -->
-    
-
-    <!-- Share Google+ -->
-    
-
-    <!-- Share LinkedIn -->
-    
-
-    <!-- Share QQ -->
-    
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=祎隋&title=noip模拟赛2&summary=这里是degage的代码仓库哦&pics=www.degage.xyz/img/favicon.png&url=www.degage.xyz/2018/10/18/13/index.html" target="_blank">
-            <li class="mdl-menu__item">
-                分享到 QQ
-            </li>
-        </a>
-    
-
-    <!-- Share Telegram -->
-    
-</ul>
-
-    
+  </div>
 </div>
 
-                
 
-                <!-- Post Content -->
-                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
     
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>《祎隋》</br>我愿意是歌声不成形体</br>又发自于你</br>轻托你的灵动美丽</br></br>我愿意是烟火转瞬即逝</br>又引你一视</br>映亮你的天真欣喜</br></br>我愿意是微风不被注意</br>又轻拂着你</br>飘扬你的醉人芳香</br></br>我愿意是皎月独凌寒处</br>又照你一世</br>平稳你的夜夜美梦</br></br>我愿意是时光静默流淌 </br>又伴你一生</br>承载你的所有过往</br></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CF/">CF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Noi-ac/">Noi.ac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/noip模拟赛/">noip模拟赛</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂诗/">杂诗</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正睿/">正睿</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/省选/">省选</a><span class="category-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAG图/">DAG图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hall定理/">Hall定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST表/">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dijsktra/">dijsktra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fft/">fft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntt/">ntt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slf优化/">slf优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spfa/">spfa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二元组/">二元组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图/">二分图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维前缀和/">二维前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维树状数组/">二维树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优先队列/">优先队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/倍增/">倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剪枝/">剪枝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调栈/">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调队列/">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多项式/">多项式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分约束系统/">差分约束系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并查集/">并查集</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扩展欧几里得/">扩展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑/">拓扑</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最长路/">最长路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂诗/">杂诗</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树上倍增/">树上倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树型dp/">树型dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/欧拉函数/">欧拉函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正睿/">正睿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正难则反/">正难则反</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线/">离线</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结论/">结论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩点/">缩点</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队/">莫队</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/裴蜀定理/">裴蜀定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调和级数/">调和级数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费马小定理/">费马小定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/隐式图/">隐式图</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/预处理/">预处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/马拉车算法/">马拉车算法</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/DAG图/" style="font-size: 13px;">DAG图</a> <a href="/tags/Hall定理/" style="font-size: 13px;">Hall定理</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/LIS/" style="font-size: 13.33px;">LIS</a> <a href="/tags/ST表/" style="font-size: 13px;">ST表</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/dfs/" style="font-size: 13.33px;">dfs</a> <a href="/tags/dijsktra/" style="font-size: 13.17px;">dijsktra</a> <a href="/tags/dp/" style="font-size: 14px;">dp</a> <a href="/tags/fft/" style="font-size: 13px;">fft</a> <a href="/tags/map/" style="font-size: 13.17px;">map</a> <a href="/tags/ntt/" style="font-size: 13px;">ntt</a> <a href="/tags/set/" style="font-size: 13.5px;">set</a> <a href="/tags/slf优化/" style="font-size: 13px;">slf优化</a> <a href="/tags/spfa/" style="font-size: 13px;">spfa</a> <a href="/tags/二元组/" style="font-size: 13px;">二元组</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/二分图/" style="font-size: 13px;">二分图</a> <a href="/tags/二分查找/" style="font-size: 13px;">二分查找</a> <a href="/tags/二分答案/" style="font-size: 13px;">二分答案</a> <a href="/tags/二维前缀和/" style="font-size: 13px;">二维前缀和</a> <a href="/tags/二维树状数组/" style="font-size: 13px;">二维树状数组</a> <a href="/tags/二进制/" style="font-size: 13.17px;">二进制</a> <a href="/tags/优先队列/" style="font-size: 13px;">优先队列</a> <a href="/tags/倍增/" style="font-size: 13px;">倍增</a> <a href="/tags/前缀和优化/" style="font-size: 13px;">前缀和优化</a> <a href="/tags/剪枝/" style="font-size: 13px;">剪枝</a> <a href="/tags/单调栈/" style="font-size: 13px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 13px;">单调队列</a> <a href="/tags/博弈论/" style="font-size: 13.33px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 13px;">后缀数组</a> <a href="/tags/多项式/" style="font-size: 13px;">多项式</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分/" style="font-size: 13.17px;">差分</a> <a href="/tags/差分约束系统/" style="font-size: 13px;">差分约束系统</a> <a href="/tags/平衡树/" style="font-size: 13.17px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 13.17px;">并查集</a> <a href="/tags/扩展欧几里得/" style="font-size: 13px;">扩展欧几里得</a> <a href="/tags/拓扑/" style="font-size: 13.33px;">拓扑</a> <a href="/tags/数学/" style="font-size: 14px;">数学</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 13px;">最小瓶颈生成树</a> <a href="/tags/最小生成树/" style="font-size: 13px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/最长路/" style="font-size: 13px;">最长路</a> <a href="/tags/杂诗/" style="font-size: 13.83px;">杂诗</a> <a href="/tags/枚举/" style="font-size: 13.5px;">枚举</a> <a href="/tags/栈/" style="font-size: 13px;">栈</a> <a href="/tags/树上倍增/" style="font-size: 13px;">树上倍增</a> <a href="/tags/树型dp/" style="font-size: 13px;">树型dp</a> <a href="/tags/树状数组/" style="font-size: 13.17px;">树状数组</a> <a href="/tags/概率期望/" style="font-size: 13.67px;">概率期望</a> <a href="/tags/模拟/" style="font-size: 13.83px;">模拟</a> <a href="/tags/欧拉函数/" style="font-size: 13px;">欧拉函数</a> <a href="/tags/正睿/" style="font-size: 13px;">正睿</a> <a href="/tags/正难则反/" style="font-size: 13.17px;">正难则反</a> <a href="/tags/离散化/" style="font-size: 13.33px;">离散化</a> <a href="/tags/离线/" style="font-size: 13px;">离线</a> <a href="/tags/线段树/" style="font-size: 13px;">线段树</a> <a href="/tags/结论/" style="font-size: 13px;">结论</a> <a href="/tags/缩点/" style="font-size: 13.17px;">缩点</a> <a href="/tags/网络流/" style="font-size: 13px;">网络流</a> <a href="/tags/莫队/" style="font-size: 13px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 13px;">裴蜀定理</a> <a href="/tags/计算几何/" style="font-size: 13.17px;">计算几何</a> <a href="/tags/调和级数/" style="font-size: 13px;">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a> <a href="/tags/费马小定理/" style="font-size: 13px;">费马小定理</a> <a href="/tags/逆元/" style="font-size: 13px;">逆元</a> <a href="/tags/隐式图/" style="font-size: 13.17px;">隐式图</a> <a href="/tags/预处理/" style="font-size: 13px;">预处理</a> <a href="/tags/马拉车算法/" style="font-size: 13px;">马拉车算法</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">44</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/18/权值平衡树/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/省选/">省选</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/01/18/权值平衡树/" class="title">平衡树板子</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-01-18T01:46:45.000Z" itemprop="datePublished">2019-01-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/18/后缀数组性质及模板/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/省选/">省选</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/01/18/后缀数组性质及模板/" class="title">后缀数组性质及模板</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-01-18T00:11:48.000Z" itemprop="datePublished">2019-01-18</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/17/生成函数预备/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/省选/">省选</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/01/17/生成函数预备/" class="title">生成函数预备</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-01-17T03:33:02.000Z" itemprop="datePublished">2019-01-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/16/多项式板子/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/省选/">省选</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/01/16/多项式板子/" class="title">多项式板子</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-01-16T15:02:54.000Z" itemprop="datePublished">2019-01-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/01/16/d1t1/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/省选/">省选</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/01/16/d1t1/" class="title">终</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-01-16T14:18:14.000Z" itemprop="datePublished">2019-01-16</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-13" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      noip模拟赛2
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/10/18/13/" class="article-date">
+	  <time datetime="2018-10-18T11:35:45.000Z" itemprop="datePublished">2018-10-18</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/DAG图/">DAG图</a>, <a class="article-tag-link" href="/tags/dijsktra/">dijsktra</a>, <a class="article-tag-link" href="/tags/dp/">dp</a>, <a class="article-tag-link" href="/tags/set/">set</a>, <a class="article-tag-link" href="/tags/slf优化/">slf优化</a>, <a class="article-tag-link" href="/tags/spfa/">spfa</a>, <a class="article-tag-link" href="/tags/拓扑/">拓扑</a>, <a class="article-tag-link" href="/tags/缩点/">缩点</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/18/13/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
         <h1 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>小 H 最近迷上了名为“石头，剪刀，布”的游戏。<br>游戏规则很简单：比赛双方同时数到三，然后同时出一个手势，代表“石<br>头”、“剪刀”或“布”。“石头”胜“剪刀”，“剪刀”胜“布”，“布”胜“石<br>头”。举个例子， 小 H 出“石头”， 对方出“布”，则对方胜利。当然，也可<br>以“平局”（如果双方手势相同的话）。<br>小 H 对阵小 B。 小 H 作为一个匹托专家，能够预测小 B 未来 N 回合的手<br>势。 但作为具有数学头脑的人， 他又是比较懒的，以至于他只愿意变换固<br>定次数的手势来完成游戏。例如， 他只想变 1 次，则他可能出“石头”几<br>次，剩下的都出“布”；或者其他。<br>现在小 H 与小 B 准备进行 N 回合的比赛，且已经测出小 B 未来 N 回合<br>的手势，小 H 只愿意改变 K 次手势（最开始手势任意）。请你帮小 H 求出他<br>最多能赢多少场</p>
 <h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 game.in。<br>输入的第一行两个空格隔开的数字 N 和 K，分别表示比赛的回合数和<br>小 H 变换手势的次数。 接下来的 N 行，每行一个字母，表示小 B 的手势： ’H’<br>表示石头、 ’S’表示剪刀、 ’P’表示布</p>
 <h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出文件名为 game.out。<br>输出一行一个整数， 小 H 最多能赢的场数</p>
@@ -494,50 +421,7 @@
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>4</p>
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤20<br>对于 100%的数据： N≤100 000， K≤20</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>一道水水的dp啊qwq，刷表和i-1到i转移都可以。注意细节…O($n \ast k$)实现就欧克。</p>
-<pre><code class="lang-c++">#include&lt;iostream&gt;
-#include&lt;cstdio&gt;
-#include&lt;cstring&gt;
-#include&lt;cctype&gt;
-#include&lt;cmath&gt;
-#include&lt;algorithm&gt;
-#include&lt;queue&gt;
-#include&lt;map&gt;
-#include&lt;set&gt;
-#include&lt;vector&gt;
-using namespace std;
-#define maxn 100005
-int n,k,a[maxn],dp[maxn][22][3];//0:石头,1：剪刀,2:布 
-char s[2];
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;k);
-    for(int i=1;i&lt;=n;i++){scanf(&quot;%s&quot;,s);if(s[0]==&#39;H&#39;)a[i]=0;if(s[0]==&#39;S&#39;) a[i]=1;if(s[0]==&#39;P&#39;) a[i]=2;};
-    //dp[0][0][0]=dp[0][0][1]=dp[0][0][2]=0;
-    for(int i=1;i&lt;=n;i++)
-    for(int j=0;j&lt;=min(i,k);j++)
-    for(int kk=0;kk&lt;=2;kk++){//枚举上一个的手势 
-        int f=0;
-        if(a[i]==2&amp;&amp;kk==1) f=1; 
-        if(a[i]==1&amp;&amp;kk==0) f=1;
-        if(a[i]==0&amp;&amp;kk==2) f=1;
-        dp[i][j][kk]=max(dp[i][j][kk],dp[i-1][j][kk]+f);//不换
-        int tt=(a[i]-1+3)%3;
-        if(j&gt;=1){
-            if(tt==kk) continue;//不换..对身体好 
-            dp[i][j][tt]=max(dp[i][j][tt],dp[i-1][j-1][kk]+1); 
-        }
-    }
-    int maxx=0;
-    for(int i=0;i&lt;=2;i++) maxx=max(maxx,dp[n][k][i]);
-    printf(&quot;%d&quot;,maxx);
-} 
-int main(){
-    //freopen(&quot;game.in&quot;,&quot;r&quot;,stdin);
-    //freopen(&quot;game.out&quot;,&quot;w&quot;,stdout);
-    init();
-
-    return 0;
-}
-</code></pre>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="keyword">int</span> n,k,a[maxn],dp[maxn][<span class="number">22</span>][<span class="number">3</span>];<span class="comment">//0:石头,1：剪刀,2:布 </span></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'H'</span>)a[i]=<span class="number">0</span>;<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'S'</span>) a[i]=<span class="number">1</span>;<span class="keyword">if</span>(s[<span class="number">0</span>]==<span class="string">'P'</span>) a[i]=<span class="number">2</span>;&#125;;</span><br><span class="line">	<span class="comment">//dp[0][0][0]=dp[0][0][1]=dp[0][0][2]=0;</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=min(i,k);j++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> kk=<span class="number">0</span>;kk&lt;=<span class="number">2</span>;kk++)&#123;<span class="comment">//枚举上一个的手势 </span></span><br><span class="line">		<span class="keyword">int</span> f=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(a[i]==<span class="number">2</span>&amp;&amp;kk==<span class="number">1</span>) f=<span class="number">1</span>; </span><br><span class="line">		<span class="keyword">if</span>(a[i]==<span class="number">1</span>&amp;&amp;kk==<span class="number">0</span>) f=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(a[i]==<span class="number">0</span>&amp;&amp;kk==<span class="number">2</span>) f=<span class="number">1</span>;</span><br><span class="line">		dp[i][j][kk]=max(dp[i][j][kk],dp[i<span class="number">-1</span>][j][kk]+f);<span class="comment">//不换</span></span><br><span class="line">		<span class="keyword">int</span> tt=(a[i]<span class="number">-1</span>+<span class="number">3</span>)%<span class="number">3</span>;</span><br><span class="line">		<span class="keyword">if</span>(j&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(tt==kk) <span class="keyword">continue</span>;<span class="comment">//不换..对身体好 </span></span><br><span class="line">			dp[i][j][tt]=max(dp[i][j][tt],dp[i<span class="number">-1</span>][j<span class="number">-1</span>][kk]+<span class="number">1</span>); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> maxx=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">2</span>;i++) maxx=max(maxx,dp[n][k][i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>,maxx);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen("game.in","r",stdin);</span></span><br><span class="line">	<span class="comment">//freopen("game.out","w",stdout);</span></span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h1><h2 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h2><p>为补贴家用，小 M 终于谋得一份兼职——牛奶销售员。<br>小 M 打算把牛奶销售到 N 个城市，这 N 个城市编号为 1..N。这些城市<br>之间有 R 条高速公路和 P 条泥泞小道连接。每条高速路或泥泞小道连接 N<br>个城市中的 A 和 B， 需要的花费为 C，对于高速路的花费 C， 一定是大于等<br>于 0 的；然而对于泥泞小道，由于边远城市的人民感谢送奶工的辛劳，会<br>额外付更多的奶钱， 所以有些小道的花费可能为负数（表示有收益）。高速<br>公路是双向的，可以从 A 走到 B，也可以从 B 走到 A；然后泥泞小道则不是<br>双向的，只能从 A 走到 B。事实上， 由于泥泞道路经过的都是蛮荒之地，所<br>以政府为了社会和谐，出台了一些政策保证： 如果一条泥泞小道可以从 A<br>到 B，那么保证不可能通过高速路或泥泞小道从 B 再回到 A。<br>小 M 的销售中心在城市 S，现在他想知道，把牛奶从 S 送到每个城市的<br>最小花费的，或者根本就不能送到。</p>
 <h2 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 sales.in。<br>输入的第 1 行包含四个空格隔开的整数: N, R, P 和 S，他们的意义如题<br>目描述。 第 2 到 R+1 行每行含三个空格隔开的整数： A, B 和 C，表示一条高<br>速公路双向连接城市 A 和 B，需要的花费为 C。 第 R+2 到 R+P+1 行每行包含<br>三个空格隔开的整数： A, B 和 C，表示一条泥泞小道可以从城市 A 到 B，需<br>要的花费为 C。</p>
 <h2 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h2><p>输出文件名为 sales.out。<br>输出有 N 行，每行一个整数，第 i 行表示从 S 到达城市 i 的最小花费，<br>如果不存在输出”NO PATH”。</p>
@@ -545,137 +429,7 @@ int main(){
 <h3 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>NO PATH<br>NO PATH<br>5<br>0<br>-95<br>-100</p>
 <h2 id="Hint-1"><a href="#Hint-1" class="headerlink" title="Hint"></a>Hint</h2><p>对于 30%的数据： N≤10 000<br>对于 100%的数据： 1≤N≤25,000 , 1≤P,R≤50,000<br>高速公路的 C： 0≤C≤10,000<br>泥泞小道的 C： -10,000≤C≤10,000</p>
 <h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>这道题真的傻缺了啊qwq，别人想的是有负权边不能跑dij，我tm想的是没有负环直接跑dij，感觉复杂度差不多就直接交上去了哇qwq。实际上你的复杂度超乎你想象。<br><strong>开始正经：</strong><br>这道题有两种解法：<br>1.spfa+slf优化，好像勉强过得到？直接用双端队列deque维护一下。slf优化还是能加就加吧，毕竟挺简单的。不过关于spfa，<font color="red"><del>它已经死了.</del></font>所以稳妥一点还是用dij吧，对身体好a.<br>2.dij+缩点+拓扑：woc这个思路真的很nice啊，首先发现可以缩点连成一个DAG图，然后对于每个联通块单独跑dij，这样算下来总复杂度也就nlogn左右（事实证明真的跑得飞快！法1时间几乎是它的十倍）.然后就是注意细节的实现，也为这种<strong>混合图</strong>提供了一种思路。当把所有的入边处理完之后用vector记录入点，就可以队首存入多个起点，一次dij跑完，复杂度被大大减少.（可以回顾noip2017逛公园）.</p>
-<p>上代码：</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 25005
-#define maxm 150005
-using namespace std;
-struct eage{
-    int to,next,len;
-}e[maxm];
-int np=0,first[maxn];
-void add(int u,int v,int len){
-    e[++np]=(eage){v,first[u],len};
-    first[u]=np;
-}
-int n,r,p,s,x,y,z,dfn[maxn],low[maxn],belong[maxn],cc=0,clock_=0;
-int st[maxn],top=0,rd[maxn];
-bool vis[maxn];
-vector&lt;int&gt;g[maxn];
-struct noded{
-    int from,to,len;
-};
-vector&lt;noded&gt;b[maxn];
-void dfs(int i,int f){
-    vis[i]=1;
-    st[++top]=i;
-    low[i]=dfn[i]=++clock_;
-    for(int p=first[i];p;p=e[p].next){
-        int j=e[p].to;
-        if(vis[j]){
-            if(!belong[j]) low[i]=min(low[i],dfn[j]);
-            continue;
-        }
-        dfs(j,i);
-        low[i]=min(low[i],low[j]);
-    }
-    if(low[i]==dfn[i]){
-        cc++;
-        while(1){
-            int t=st[top--];
-            belong[t]=cc;
-            if(t==i) break;
-        } 
-    }
-}
-int dist[maxn];
-bool viss[maxn];
-struct node{
-    int v,id;
-    friend bool operator &lt;(node a,node b){
-        return a.v&gt;b.v;
-    }
-};
-void dij(int s){
-    priority_queue&lt;node&gt;q;
-    for(int i=0;i&lt;g[s].size();i++){
-        int t=g[s][i];
-        q.push((node){dist[t],t});
-    }
-    while(!q.empty()){
-        node t=q.top();q.pop();
-        int i=t.id;
-        if(viss[i]) continue;
-        viss[i]=1;
-        for(int p=first[i];p;p=e[p].next){
-            int j=e[p].to,c=e[p].len;
-            if(belong[j]!=belong[i]) continue;
-            if(dist[j]&gt;dist[i]+c){
-                dist[j]=dist[i]+c;
-                q.push((node){dist[j],j});
-            }
-        }
-    }    
-} 
-queue&lt;int&gt;qq;
-void work(){
-    memset(viss,0,sizeof(viss));
-    for(int i=1;i&lt;=n;i++) dist[i]=1000000007;
-    g[belong[s]].push_back(s);
-    dist[s]=0;
-    qq.push(belong[s]);
-    while(!qq.empty()){
-       int i=qq.front();qq.pop();
-       dij(i);
-       for(int j=0;j&lt;b[i].size();j++){
-           noded tt=b[i][j];
-           int t1=tt.from,t2=tt.to,c=tt.len;
-           dist[t2]=min(dist[t2],dist[t1]+c);
-           g[belong[t2]].push_back(t2);
-           rd[belong[t2]]--;
-           if(rd[belong[t2]]==0) qq.push(belong[t2]);
-       }
-    } 
-    for(int i=1;i&lt;=n;i++){
-        if(dist[i]==1000000007) printf(&quot;NO PATH\n&quot;);
-        else printf(&quot;%d\n&quot;,dist[i]);
-    }
-} 
-void run(){
-    for(int i=1;i&lt;=n;i++){
-        if(!vis[i]) continue;
-        for(int p=first[i];p;p=e[p].next){
-            int j=e[p].to;
-            if(belong[j]!=belong[i]){
-                //g[belong[i]].push_back(belong[j]);
-                b[belong[i]].push_back((noded){i,j,e[p].len});
-                rd[belong[j]]++;
-            }
-        }
-    }
-
-    work();
-}
-void init(){
-    scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;r,&amp;p,&amp;s);
-    for(int i=1;i&lt;=r;i++){
-        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
-        add(x,y,z);
-        add(y,x,z);
-    }
-    for(int i=1;i&lt;=p;i++){
-        scanf(&quot;%d%d%d&quot;,&amp;x,&amp;y,&amp;z);
-        add(x,y,z);
-    }
-    dfs(s,0);
-    run();
-}
-int main(){
-    init();
-
-    return 0;
-}
-</code></pre>
+<p>上代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 25005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxm 150005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next,len;</span><br><span class="line">&#125;e[maxm];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>,first[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u],len&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,r,p,s,x,y,z,dfn[maxn],low[maxn],belong[maxn],cc=<span class="number">0</span>,clock_=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> st[maxn],top=<span class="number">0</span>,rd[maxn];</span><br><span class="line"><span class="keyword">bool</span> vis[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;g[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">noded</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> from,to,len;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;noded&gt;b[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">	vis[i]=<span class="number">1</span>;</span><br><span class="line">	st[++top]=i;</span><br><span class="line">	low[i]=dfn[i]=++clock_;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> j=e[p].to;</span><br><span class="line">		<span class="keyword">if</span>(vis[j])&#123;</span><br><span class="line">			<span class="keyword">if</span>(!belong[j]) low[i]=min(low[i],dfn[j]);</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		dfs(j,i);</span><br><span class="line">		low[i]=min(low[i],low[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(low[i]==dfn[i])&#123;</span><br><span class="line">	    cc++;</span><br><span class="line">	    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">	    	<span class="keyword">int</span> t=st[top--];</span><br><span class="line">	    	belong[t]=cc;</span><br><span class="line">	    	<span class="keyword">if</span>(t==i) <span class="keyword">break</span>;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dist[maxn];</span><br><span class="line"><span class="keyword">bool</span> viss[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> v,id;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.v&gt;b.v;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dij</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    priority_queue&lt;node&gt;q;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;g[s].size();i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> t=g[s][i];</span><br><span class="line">		q.push((node)&#123;dist[t],t&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		node t=q.top();q.pop();</span><br><span class="line">		<span class="keyword">int</span> i=t.id;</span><br><span class="line">		<span class="keyword">if</span>(viss[i]) <span class="keyword">continue</span>;</span><br><span class="line">		viss[i]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=e[p].to,c=e[p].len;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]!=belong[i]) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(dist[j]&gt;dist[i]+c)&#123;</span><br><span class="line">				dist[j]=dist[i]+c;</span><br><span class="line">				q.push((node)&#123;dist[j],j&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt;qq;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(viss,<span class="number">0</span>,<span class="keyword">sizeof</span>(viss));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dist[i]=<span class="number">1000000007</span>;</span><br><span class="line">	g[belong[s]].push_back(s);</span><br><span class="line">	dist[s]=<span class="number">0</span>;</span><br><span class="line">	qq.push(belong[s]);</span><br><span class="line">	<span class="keyword">while</span>(!qq.empty())&#123;</span><br><span class="line">	   <span class="keyword">int</span> i=qq.front();qq.pop();</span><br><span class="line">	   dij(i);</span><br><span class="line">	   <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;b[i].size();j++)&#123;</span><br><span class="line">	   	noded tt=b[i][j];</span><br><span class="line">	   	<span class="keyword">int</span> t1=tt.from,t2=tt.to,c=tt.len;</span><br><span class="line">	   	dist[t2]=min(dist[t2],dist[t1]+c);</span><br><span class="line">	   	g[belong[t2]].push_back(t2);</span><br><span class="line">	   	rd[belong[t2]]--;</span><br><span class="line">	   	<span class="keyword">if</span>(rd[belong[t2]]==<span class="number">0</span>) qq.push(belong[t2]);</span><br><span class="line">	   &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">    	<span class="keyword">if</span>(dist[i]==<span class="number">1000000007</span>) <span class="built_in">printf</span>(<span class="string">"NO PATH\n"</span>);</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dist[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">			<span class="keyword">int</span> j=e[p].to;</span><br><span class="line">			<span class="keyword">if</span>(belong[j]!=belong[i])&#123;</span><br><span class="line">				<span class="comment">//g[belong[i]].push_back(belong[j]);</span></span><br><span class="line">				b[belong[i]].push_back((noded)&#123;i,j,e[p].len&#125;);</span><br><span class="line">				rd[belong[j]]++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	work();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;n,&amp;r,&amp;p,&amp;s);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=r;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		add(x,y,z);</span><br><span class="line">		add(y,x,z);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x,&amp;y,&amp;z);</span><br><span class="line">		add(x,y,z);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(s,<span class="number">0</span>);</span><br><span class="line">	run();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h1><h2 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h2><p>小 Y 同学手上有两类线段，分别为 A 线段和 B 线段。<br>A 线段的有n种，第i种有$s_i$条，其左端点和右端点为$a_i$和$b_i$，他们都是109<br>范围内的正整数，且一定有$a_i$ ≤ $b_i$。 B 线段的有m种，第i种有$k_i$条，其左端<br>点和右端点为$l_i$和$r_i$，他们也是109范围内的正整数，且一定有$l_i$ ≤$r_i$。 小 Y<br>还规定，如果一条 A 线段($a_i$, $b_i$)能匹配一条 B 线段($l_i$, $r_i$)，当且仅当$l_i$ ≤ $a_i$≤<br>$b_i$ ≤ $r_i$。<br>现在小 Y 需要你判断能否为所有的 A 线段都指定一条与之匹配的 B 线段。<br>注意，无论是 A 线段还是 B 线段，每条都只能匹配一次，且仅能匹配一次。</p>
 <h2 id="Input-2"><a href="#Input-2" class="headerlink" title="Input"></a>Input</h2><p>输入文件名为 machine.in<br>输入的第 1 行是一个整数T，表示数据组数。每组数据的第 1 行有两个<br>整数n, m，分别表 A 类线段和 B 类线段的种类数。接下来n行，每行 3 个整<br>数ai、 bi、 si，描述一种 A 类线段。接下来 m 行，每行三个整数li、 ri、 ki，<br>描述一种 B 类线段。</p>
 <h2 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h2><p>输入文件名为 machine.out<br>仅输出共T行，每行一个字符串，若可以实现则输出 Yes，否则输出<br>No。</p>
@@ -684,566 +438,206 @@ int main(){
 <h2 id="Hint-2"><a href="#Hint-2" class="headerlink" title="Hint"></a>Hint</h2><p>对于所有数据保证有：<br>1 ≤ $s_i$, $k_i$ ≤ 109，<br>1 ≤ t≤ 50，<br>1 ≤ n, m ≤ 50000。<br>一个测试点中，所有n的和不超过 4000000，所有m的和也不超过 4000000。</p>
 <h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><p>还是一道套路题a，用set维护直接nlognA了啊（没办法蒟蒻太蒻了）。稍微注意线段维护的细节，按照左端点排序，相同排右端点。然后用两个指针维护，对于每个i，将l小于等于它的加入到multiset里面（以右端点为关键字）然后每次lower_bound找一下就欧克了啊qwq.<br>(勉哥说对于每个被删掉的指针要查询它的下一个必须要预先处理好)</p>
 <h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>线段类的有很多问题可以总结a….上一次居然被那个线段贪心给卡了qwq(处理不重叠的最多线段)就是右端点排个序，左端点大的就可以加进去，贪贪贪</p>
-<pre><code class="lang-c++">#include&lt;bits/stdc++.h&gt;
-#define maxn 50005
-using namespace std;
-struct node{
-    int l,r,w;
-    friend bool operator &lt;(node a,node b){
-        if(a.l!=b.l)return a.l&lt;b.l;
-        else return a.r&lt;b.r;    
-    }
-}nda[maxn],ndb[maxn];
-struct noded{
-    int r,w;
-    friend bool operator &lt;(noded a,noded b){
-        return a.r&lt;b.r;
-    }
-};
-multiset&lt;noded&gt;s;
-multiset&lt;noded&gt;::iterator it,itt;
-int t,n,m;
-void init(){
-    scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-    for(int i=1;i&lt;=n;i++) scanf(&quot;%d%d%d&quot;,&amp;nda[i].l,&amp;nda[i].r,&amp;nda[i].w);
-    for(int i=1;i&lt;=m;i++) scanf(&quot;%d%d%d&quot;,&amp;ndb[i].l,&amp;ndb[i].r,&amp;ndb[i].w);
-    sort(nda+1,nda+n+1);
-    sort(ndb+1,ndb+m+1);
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 50005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r,w;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(node a,node b)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a.l!=b.l)<span class="keyword">return</span> a.l&lt;b.l;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> a.r&lt;b.r;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;nda[maxn],ndb[maxn];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">noded</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> r,w;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(noded a,noded b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.r&lt;b.r;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">multiset</span>&lt;noded&gt;s;</span><br><span class="line"><span class="built_in">multiset</span>&lt;noded&gt;::iterator it,itt;</span><br><span class="line"><span class="keyword">int</span> t,n,m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;nda[i].l,&amp;nda[i].r,&amp;nda[i].w);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;ndb[i].l,&amp;ndb[i].r,&amp;ndb[i].w);</span><br><span class="line">	sort(nda+<span class="number">1</span>,nda+n+<span class="number">1</span>);</span><br><span class="line">	sort(ndb+<span class="number">1</span>,ndb+m+<span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	s.clear();</span><br><span class="line">	<span class="keyword">int</span> j=<span class="number">1</span>;<span class="comment">//b的序号 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;<span class="comment">//a的序号 </span></span><br><span class="line">		<span class="keyword">while</span>(j&lt;=m&amp;&amp;ndb[j].l&lt;=nda[i].l) s.insert((noded)&#123;ndb[j].r,ndb[j].w&#125;),j++; </span><br><span class="line">		noded tt=(noded)&#123;nda[i].r,<span class="number">0</span>&#125;;</span><br><span class="line">	    it=s.lower_bound(tt);</span><br><span class="line">		<span class="keyword">if</span>(it==s.end()) &#123;<span class="built_in">printf</span>(<span class="string">"No\n"</span>);<span class="keyword">return</span>;&#125; </span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		noded t=*it; s.erase(it);</span><br><span class="line">		<span class="keyword">if</span>(t.w&gt;=nda[i].w)&#123;t.w-=nda[i].w,nda[i].w=<span class="number">0</span>,s.insert((noded)&#123;t.r,t.w&#125;);<span class="keyword">break</span>;&#125;</span><br><span class="line">		<span class="keyword">else</span> nda[i].w-=t.w;</span><br><span class="line">		it=s.lower_bound(tt);</span><br><span class="line">		<span class="keyword">if</span>(it==s.end())  &#123;<span class="built_in">printf</span>(<span class="string">"No\n"</span>);<span class="keyword">return</span>;&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Yes\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;t);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=t;i++)</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    s.clear();
-    int j=1;//b的序号 
-    for(int i=1;i&lt;=n;i++){//a的序号 
-        while(j&lt;=m&amp;&amp;ndb[j].l&lt;=nda[i].l) s.insert((noded){ndb[j].r,ndb[j].w}),j++; 
-        noded tt=(noded){nda[i].r,0};
-        it=s.lower_bound(tt);
-        if(it==s.end()) {printf(&quot;No\n&quot;);return;} 
-        while(1){
-        noded t=*it; s.erase(it);
-        if(t.w&gt;=nda[i].w){t.w-=nda[i].w,nda[i].w=0,s.insert((noded){t.r,t.w});break;}
-        else nda[i].w-=t.w;
-        it=s.lower_bound(tt);
-        if(it==s.end())  {printf(&quot;No\n&quot;);return;} 
-        }
-    }
-    printf(&quot;Yes\n&quot;);
-}
-int main(){
-    scanf(&quot;%d&quot;,&amp;t);
-    for(int i=1;i&lt;=t;i++)
-    init();
-
-    return 0;
-}
-</code></pre>
-
-        
-    
-
-    
-</div>
-
-
-                
-
-                <!-- Post Comments -->
-                
-                    
-    <div id="gitalk-container">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-
-<script type="text/javascript">
-var gitalk = new Gitalk({
-  clientID: '82581591fd38ba2b1427',   //自行修改
-  clientSecret: '1b3fbb1c94f1ac092eaf9915e00b7b93d0f378f2',  //自行修改
-  repo: 'blog-comments',  //自行修改
-  owner: 'degageyisui',  //自行修改
-  admin: ['degageyisui'],  //自行修改
-  id: location.pathname,
-  distractionFreeMode: true
-})
-
-gitalk.render('gitalk-container')
-</script>
-</div>
-<style>
-    #gitalk-container{
-        background-color: #eee;
-        padding: 2pc;
-    }
-</style>
-
-                
-            </div>
-
-            <!-- Post Prev & Next Nav -->
-            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-    <!-- Prev Nav -->
-    
-        <a href="/2018/10/20/15/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
-
-    <!-- Section Spacer -->
-    <div class="section-spacer"></div>
-
-    <!-- Next Nav -->
-    
-        <a href="/2018/10/17/12/" id="post_nav-older" class="next-content">
-            旧篇
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_forward</i>
-            </button>
-        </a>
-    
-</nav>
-
-        </div>
+      
     </div>
-
-
-
-                    
-                        <!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay"></div>
-
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
-    <div id="sidebar-main">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
-
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-        <i class="material-icons">clear_all</i>
-        <span class="mdl-button__ripple-container">
-            <span class="mdl-ripple">
-            </span>
-        </span>
-    </button>
-
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/avatar.png" alt="degage's avatar">
-    </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        1494476174@qq.com
-        <b class="caret"></b>
-    </a>
-</div>
-
-
-        <!-- Sidebar Navigation  -->
-        <ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
-            
-                <li>
-                    <a href="1494476174@qq.com" target="_blank" title="Email Me">
-                        
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        
-                        Email Me
-                    </a>
-                </li>
-            
-        </ul>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="www.degage.xyz/2018/10/18/13/" title="noip模拟赛2" target="_blank" rel="external">www.degage.xyz/2018/10/18/13/</a>
     </li>
-
-    <!-- Homepage -->
     
-        <li id="sidebar-first-li">
-            <a href="/">
-                
-                    <i class="material-icons sidebar-material-icons">home</i>
-                
-                主页
-            </a>
-        </li>
-        
-    
-
-    <!-- Archives  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">inbox</i>
-                
-                    归档
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-            <li>
-                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/12/">十二月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">44</span></a>
-            </ul>
-        </li>
-        
-    
-
-    <!-- Categories  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
-                
-                分类
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                <a class="sidebar_archives-link" href="/categories/CF/">CF<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Noi-ac/">Noi.ac<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/noip模拟赛/">noip模拟赛<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/杂诗/">杂诗<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/正睿/">正睿<span class="sidebar_archives-count">38</span></a></li><li><a class="sidebar_archives-link" href="/categories/省选/">省选<span class="sidebar_archives-count">9</span></a>
-            </ul>
-        </li>
-        
-    
-
-    <!-- Pages  -->
-    
-        <li>
-            <a href="/tags" title="标签云">
-                
-                    <i class="material-icons sidebar-material-icons">cloud_circle</i>
-                
-                标签云
-            </a>
-        </li>
-        
-            <li class="divider"></li>
-        
-    
-        <li>
-            <a href="/timeline" title="Timeline">
-                
-                    <i class="material-icons sidebar-material-icons">send</i>
-                
-                Timeline
-            </a>
-        </li>
-        
-    
-        <li>
-            <a href="/links" title="友情链接">
-                
-                    <i class="material-icons sidebar-material-icons">favorite</i>
-                
-                友情链接
-            </a>
-        </li>
-        
-    
-        <li>
-            <a href="/gallery" title="图库">
-                
-                    <i class="material-icons sidebar-material-icons">insert_photo</i>
-                
-                图库
-            </a>
-        </li>
-        
-    
-
-    <!-- Article Number  -->
-    
-        <li>
-            <a href="/archives">
-                文章总数
-                <span class="sidebar-badge">65</span>
-            </a>
-        </li>
-        
-    
-</ul>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
 
-        <!-- Sidebar Footer -->
-        <!--
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/degageyisui" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/degageyisui" target="_blank"><span class="text-dark">祎隋</span><small class="ml-1x">OIER</small></a></h3>
+        <div>弱省的一只蒟蒻qwq</div>
+      </div>
+    </figure>
+  </div>
+</div>
 
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
-
-<!-- Sidebar Divider -->
-
-
-<!-- Theme Material -->
-
-
-<!-- Help & Support -->
-<!--
-
--->
-
-<!-- Feedback -->
-<!--
-
--->
-
-<!-- About Theme -->
-<!--
-
--->
 
     </div>
-
-    <!-- Sidebar Image -->
+  </article>
+  
     
+  <section id="comments">
+  	
+           
+    
+  </section>
 
-</aside>
 
-                    
-
-                    
-                        <!-- Footer Top Button -->
-                        <div id="back-to-top" class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
+  
 </div>
 
-                    
-
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
     
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-        <a href="https://twitter.com/twitter" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
-                <span class="visuallyhidden">Twitter</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Facebook -->
-    
-        <a href="https://www.facebook.com/facebook" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
-                <span class="visuallyhidden">Facebook</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Google + -->
-    
-        <a href="https://www.google.com/" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
-                <span class="visuallyhidden">Google Plus</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Weibo -->
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="degageyisui.github.io" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Zhihu -->
-    
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
+    <li class="prev">
+      <a href="/2018/10/20/15/" title="祎隋"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
     
     
-    <!-- V2EX -->
+    <li class="next">
+      <a href="/2018/10/17/12/" title="noip模拟赛1"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
-</div>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
 
 
-        <!--Copyright-->
-        <div id="copyright">
-            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>祎隋
-            
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2019 degage
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
         </div>
-
-        <!-- Paradox Footer Right Section -->
-
-        <!--
-        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-        It will not impact the appearance and can give developers a lot of support :)
-
-        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-        它不会影响美观并可以给开发者很大的支持。 :)
-        -->
-
-        <div class="mdl-mini-footer--right-section">
-            <div>
-                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
-            </div>
-        </div>
-    
+    </div>
 </footer>
-
-
-                    <!-- Import JS File -->
-
-    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?wgjW/HuQG9JDgvPDPoRAng==", true)</script>
-
-
-
-    <script>lsloader.load("js_js","/js/js.min.js?LT4t6iE6m8TO1BLGGiNJqA==", true)</script>
-
-
-
-    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
-
-
-<script type="text/ls-javascript" id="NProgress-script">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '#29d'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#29d',
-        'border-left-color': '#29d'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
-</script>
-
-
-
-
-
-
-
-    <!-- Busuanzi -->
-    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-
-
-
-
-
-
-<!-- UC Browser Compatible -->
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script>
-	var agent = navigator.userAgent.toLowerCase();
-	if(agent.indexOf('ucbrowser')>0) {
-		document.write('<link rel="stylesheet" href="/css/uc.css">');
-	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-	}
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 </script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
 
-<!-- Import prettify js  -->
-
-    
-        
-            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
-        
-    
-
-
-
-<!-- Window Load -->
-<!-- add class for prettify -->
-<script type="text/ls-javascript" id="window-load">
-    $(window).on('load', function() {
-        // Post_Toc parent position fixed
-        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
-    });
-
-    
-        
-            $(function() {
-                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
-                prettyPrint();
-                })
-        
-    
-    
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
-
-<!-- MathJax Load-->
-
-
-<!-- Bing Background -->
-
-
-<script type="text/ls-javascript" id="lazy-load">
-    // Offer LazyLoad
-    queue.offer(function(){
-        $('.lazy').lazyload({
-            effect : 'show'
-        });
-    });
-
-    // Start Queue
-    $(document).ready(function(){
-        setInterval(function(){
-            queue.execNext();
-        },200);
-    });
-</script>
-
-<!-- Custom Footer -->
+<script src="/js/insight.js"></script>
 
 
 
-<script>
-    (function(){
-        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
 
-        for (var i = 0; i < scriptList.length; ++i) {
-            var item = scriptList[i];
-            lsloader.runInlineScript(item.id,item.id);
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '82581591fd38ba2b1427',
+    clientSecret: '1b3fbb1c94f1ac092eaf9915e00b7b93d0f378f2',
+    repo: 'blog-comments',
+    owner: 'degageyisui',
+    admin: ['degageyisui'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
         }
-    })()
-console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
-</script>
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
 
-                </main>
-            </div>
-        <script type="text/x-mathjax-config">
+
+
+
+
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
             inlineMath: [ ["$","$"], ["\\(","\\)"] ],
@@ -1259,5 +653,4 @@ console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viose
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
-    
 </html>
