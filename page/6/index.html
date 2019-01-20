@@ -1,919 +1,1035 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
-  
-  
   <title>祎隋</title>
-  <meta name="description" content="这里是degage的代码仓库哦">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="c++" />
+  
+  
+  
+  
+  <meta name="description" content="祎隋如你，春风十里不及你">
 <meta name="keywords" content="blog,c++">
 <meta property="og:type" content="website">
 <meta property="og:title" content="祎隋">
 <meta property="og:url" content="www.degage.xyz/page/6/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="这里是degage的代码仓库哦">
+<meta property="og:description" content="祎隋如你，春风十里不及你">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="祎隋">
-<meta name="twitter:description" content="这里是degage的代码仓库哦">
-  <!-- Canonical links -->
-  <link rel="canonical" href="www.degage.xyz/page/6/index.html">
+<meta name="twitter:description" content="祎隋如你，春风十里不及你">
   
     <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
   
+
   
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
+
+  <link rel="icon" href="/css/images/logo.png">
+  <link rel="apple-touch-icon" href="/css/images/logo.png">
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
   <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/home.css" >
+  
+
+  
+
+  
+
   
   
   
-    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
-  
-  
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
-  
+
 </head>
 
 
-<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/degageyisui" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">祎隋</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">OIER</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
-    </form>
-    <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
+  <body>
 
 
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav menu-highlight">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-      </ul>
-      
+  
+    <header id="header">
+
+	<!-- 背景图模式 -->
 	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
 
-    </nav>
+    
+      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
+
+      <!-- Support rolling -->  
+        
+        <section class="awSlider">
+          <div class="carousel slide carousel-fade " data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+               
+                  
+                    <div class="item active">
+                  
+                    <img id="carousel-img0" src="/css/images/home-bg.jpg">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img0 = new Image();
+                      var imageTag0 = document.getElementById("carousel-img0");
+                      img0.src = imageTag0.src;
+                      img0.onload=function(){
+                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag0.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag0.style.height = document.body.clientHeight + "px";
+                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img1" src="/css/images/sample.jpg">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img1 = new Image();
+                      var imageTag1 = document.getElementById("carousel-img1");
+                      img1.src = imageTag1.src;
+                      img1.onload=function(){
+                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag1.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag1.style.height = document.body.clientHeight + "px";
+                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img2" src="https://source.unsplash.com/collection/954550/1920x1080">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img2 = new Image();
+                      var imageTag2 = document.getElementById("carousel-img2");
+                      img2.src = imageTag2.src;
+                      img2.onload=function(){
+                        if (img2.width / img2.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag2.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag2.style.height = document.body.clientHeight + "px";
+                          imageTag2.style.marginLeft = -(document.body.clientHeight * img2.width / img2.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Geri</span>
+            </a>
+            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">İleri</span>
+            </a>
+          </div>
+        </section>
+        <script>
+          $('section.awSlider .carousel').carousel({
+              pause: '',
+              interval: 5000
+          });
+          var startImage = $('section.awSlider .item.active > img').attr('src');
+          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
+              var bscn = $(this).find('.item.active > img').attr('src');
+              $('section.awSlider > img').attr('src', bscn);
+          });
+        </script>
+      
+
+    
+ 
+
+
+    <canvas width="100%" height="100%"></canvas>
+    <script>
+      var c = document.getElementsByTagName('canvas')[0],
+          x = c.getContext('2d'),
+          w = window.innerWidth,
+          h = window.innerHeight,
+          pr = window.devicePixelRatio || 1,
+          f = 90,
+          q,
+          m = Math,
+          r = 0,
+          u = m.PI*2,
+          v = m.cos,
+          z = m.random
+      c.width = w*pr
+      c.height = h*pr
+      x.scale(pr, pr)
+      x.globalAlpha = 0.6
+
+      <!-- 折线Polyline背景 -->
+      
+    </script>
+    
+
+    
+      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
+    
+
+        
+          <div class="homelogoback"  style="border: 1px solid #404040;" >
+            <h1><a href="#content" id="logo">祎隋</a></h1>
+            <h3>祎隋如你，春风十里不及你</h3>
+            <h5>degage</h5>
+            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
+          </div>
+        
+    
+    </div>
   </div>
+
+  <!-- 自适应主页背景大图 -->
+  
+
+ <!-- home_logo_image居中 -->
+ 
+    <script>
+        var homelogodiv = document.getElementById("homelogo");
+        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
+          homelogodiv.style.width = document.body.clientWidth + "px";
+          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
+        } else {
+          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
+          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
+        }
+    </script>
+  
+
+  <div class="intro-navigate">
+      <p class="navigater-list">
+        
+          <a id="beautifont" class="main-nav-link" href="/">首页</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
+        
+          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
+        
+      </p>
+  </div>
+
 </header>
-
   
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>《祎隋》</br>我愿意是歌声不成形体</br>又发自于你</br>轻托你的灵动美丽</br></br>我愿意是烟火转瞬即逝</br>又引你一视</br>映亮你的天真欣喜</br></br>我愿意是微风不被注意</br>又轻拂着你</br>飘扬你的醉人芳香</br></br>我愿意是皎月独凌寒处</br>又照你一世</br>平稳你的夜夜美梦</br></br>我愿意是时光静默流淌 </br>又伴你一生</br>承载你的所有过往</br></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
+  <div id="container">
+    <div id="wrap">
       
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CF/">CF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Noi-ac/">Noi.ac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/noip模拟赛/">noip模拟赛</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂诗/">杂诗</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正睿/">正睿</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/省选/">省选</a><span class="category-list-count">10</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAG图/">DAG图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hall定理/">Hall定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST表/">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dijsktra/">dijsktra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fft/">fft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lct/">lct</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntt/">ntt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slf优化/">slf优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spfa/">spfa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二元组/">二元组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图/">二分图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维前缀和/">二维前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维树状数组/">二维树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优先队列/">优先队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/倍增/">倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剪枝/">剪枝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态树/">动态树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调栈/">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调队列/">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多项式/">多项式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分约束系统/">差分约束系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并查集/">并查集</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扩展欧几里得/">扩展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑/">拓扑</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最长路/">最长路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂诗/">杂诗</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树上倍增/">树上倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树型dp/">树型dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/欧拉函数/">欧拉函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正睿/">正睿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正难则反/">正难则反</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线/">离线</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结论/">结论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩点/">缩点</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队/">莫队</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/裴蜀定理/">裴蜀定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调和级数/">调和级数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费马小定理/">费马小定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/隐式图/">隐式图</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/预处理/">预处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/马拉车算法/">马拉车算法</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/DAG图/" style="font-size: 13px;">DAG图</a> <a href="/tags/Hall定理/" style="font-size: 13px;">Hall定理</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/LIS/" style="font-size: 13.33px;">LIS</a> <a href="/tags/ST表/" style="font-size: 13px;">ST表</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/dfs/" style="font-size: 13.33px;">dfs</a> <a href="/tags/dijsktra/" style="font-size: 13.17px;">dijsktra</a> <a href="/tags/dp/" style="font-size: 14px;">dp</a> <a href="/tags/fft/" style="font-size: 13px;">fft</a> <a href="/tags/lct/" style="font-size: 13px;">lct</a> <a href="/tags/map/" style="font-size: 13.17px;">map</a> <a href="/tags/ntt/" style="font-size: 13px;">ntt</a> <a href="/tags/set/" style="font-size: 13.5px;">set</a> <a href="/tags/slf优化/" style="font-size: 13px;">slf优化</a> <a href="/tags/spfa/" style="font-size: 13px;">spfa</a> <a href="/tags/二元组/" style="font-size: 13px;">二元组</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/二分图/" style="font-size: 13px;">二分图</a> <a href="/tags/二分查找/" style="font-size: 13px;">二分查找</a> <a href="/tags/二分答案/" style="font-size: 13px;">二分答案</a> <a href="/tags/二维前缀和/" style="font-size: 13px;">二维前缀和</a> <a href="/tags/二维树状数组/" style="font-size: 13px;">二维树状数组</a> <a href="/tags/二进制/" style="font-size: 13.17px;">二进制</a> <a href="/tags/优先队列/" style="font-size: 13px;">优先队列</a> <a href="/tags/倍增/" style="font-size: 13px;">倍增</a> <a href="/tags/前缀和优化/" style="font-size: 13px;">前缀和优化</a> <a href="/tags/剪枝/" style="font-size: 13px;">剪枝</a> <a href="/tags/动态树/" style="font-size: 13px;">动态树</a> <a href="/tags/单调栈/" style="font-size: 13px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 13px;">单调队列</a> <a href="/tags/博弈论/" style="font-size: 13.33px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 13px;">后缀数组</a> <a href="/tags/多项式/" style="font-size: 13px;">多项式</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分/" style="font-size: 13.17px;">差分</a> <a href="/tags/差分约束系统/" style="font-size: 13px;">差分约束系统</a> <a href="/tags/平衡树/" style="font-size: 13.17px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 13.17px;">并查集</a> <a href="/tags/扩展欧几里得/" style="font-size: 13px;">扩展欧几里得</a> <a href="/tags/拓扑/" style="font-size: 13.33px;">拓扑</a> <a href="/tags/数学/" style="font-size: 14px;">数学</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 13px;">最小瓶颈生成树</a> <a href="/tags/最小生成树/" style="font-size: 13px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/最长路/" style="font-size: 13px;">最长路</a> <a href="/tags/杂诗/" style="font-size: 13.83px;">杂诗</a> <a href="/tags/枚举/" style="font-size: 13.5px;">枚举</a> <a href="/tags/栈/" style="font-size: 13px;">栈</a> <a href="/tags/树上倍增/" style="font-size: 13px;">树上倍增</a> <a href="/tags/树型dp/" style="font-size: 13px;">树型dp</a> <a href="/tags/树状数组/" style="font-size: 13.17px;">树状数组</a> <a href="/tags/概率期望/" style="font-size: 13.67px;">概率期望</a> <a href="/tags/模拟/" style="font-size: 13.83px;">模拟</a> <a href="/tags/欧拉函数/" style="font-size: 13px;">欧拉函数</a> <a href="/tags/正睿/" style="font-size: 13px;">正睿</a> <a href="/tags/正难则反/" style="font-size: 13.17px;">正难则反</a> <a href="/tags/离散化/" style="font-size: 13.33px;">离散化</a> <a href="/tags/离线/" style="font-size: 13px;">离线</a> <a href="/tags/线段树/" style="font-size: 13px;">线段树</a> <a href="/tags/结论/" style="font-size: 13px;">结论</a> <a href="/tags/缩点/" style="font-size: 13.17px;">缩点</a> <a href="/tags/网络流/" style="font-size: 13px;">网络流</a> <a href="/tags/莫队/" style="font-size: 13px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 13px;">裴蜀定理</a> <a href="/tags/计算几何/" style="font-size: 13.17px;">计算几何</a> <a href="/tags/调和级数/" style="font-size: 13px;">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a> <a href="/tags/费马小定理/" style="font-size: 13px;">费马小定理</a> <a href="/tags/逆元/" style="font-size: 13px;">逆元</a> <a href="/tags/隐式图/" style="font-size: 13.17px;">隐式图</a> <a href="/tags/预处理/" style="font-size: 13px;">预处理</a> <a href="/tags/马拉车算法/" style="font-size: 13px;">马拉车算法</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">44</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled ">
+            
+      <div id="content" class="outer">
         
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/19/lct/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/19/lct/" class="title">lct模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-19T02:06:55.000Z" itemprop="datePublished">2019-01-19</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/权值平衡树/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/权值平衡树/" class="title">平衡树板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T01:46:45.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/后缀数组性质及模板/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/后缀数组性质及模板/" class="title">后缀数组性质及模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T00:11:48.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/17/生成函数预备/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/17/生成函数预备/" class="title">生成函数预备</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-17T03:33:02.000Z" itemprop="datePublished">2019-01-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/16/多项式板子/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/16/多项式板子/" class="title">多项式板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-16T15:02:54.000Z" itemprop="datePublished">2019-01-16</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
+          <section id="main" style="float:none;">
   
-
+    <article id="post-15"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
-  </div>
-</aside>
-
-  
-  <main class="main" role="main">
-  
-  <div class="content article-list">
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/20/15/">祎隋</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/20/15/" class="article-date">
+	  <time datetime="2018-10-20T06:46:55.000Z" itemprop="datePublished">2018-10-20</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          生活，靠容忍和退让支撑着前行
+
+《祎隋》
+年幼时
+你含糊地
+把热情挥洒
+年老时
+你明白地
+将运命呈出
+
+
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/20/15/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/20/15/" class="article-date">
-	  <time datetime="2018-10-20T06:46:55.000Z" itemprop="datePublished">10月 20</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/杂诗/">杂诗</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/20/15/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 39(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-13"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/18/13/">noip模拟赛2</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/18/13/" class="article-date">
+	  <time datetime="2018-10-18T11:35:45.000Z" itemprop="datePublished">2018-10-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          T1Description小 H 最近迷上了名为“石头，剪刀，布”的游戏。游戏规则很简单：比赛双方同时数到三，然后同时出一个手势，代表“石头”、“剪刀”或“布”。“石头”胜“剪刀”，“剪刀”胜“布”，“布”胜“石头”。举个例子， 小 H 出“石头”， 对方出“布”，则对方胜利。当然，也可以“平局”（如果双方手势相同的话）。小 H 对阵小 B。 小 H 作为一个匹托专家，能够预测小 B 未来 N 回合的手势。 但作为具有数学头脑的人， 他又是比较懒的，以至于他只愿意变换固定次数的手势来完成游...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/18/13/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/18/13/" class="article-date">
-	  <time datetime="2018-10-18T11:35:45.000Z" itemprop="datePublished">10月 18</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/DAG图/">DAG图</a>, <a class="article-tag-link" href="/tags/dijsktra/">dijsktra</a>, <a class="article-tag-link" href="/tags/dp/">dp</a>, <a class="article-tag-link" href="/tags/set/">set</a>, <a class="article-tag-link" href="/tags/slf优化/">slf优化</a>, <a class="article-tag-link" href="/tags/spfa/">spfa</a>, <a class="article-tag-link" href="/tags/拓扑/">拓扑</a>, <a class="article-tag-link" href="/tags/缩点/">缩点</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/18/13/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.1k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-12"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/17/12/">noip模拟赛1</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/17/12/" class="article-date">
+	  <time datetime="2018-10-17T11:10:23.000Z" itemprop="datePublished">2018-10-17</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          T1Description每天中午，美丽的重庆一中都会上演一场华丽的千人大竞走。大量人流短时间涌进第二食堂， 食堂班长小 H 表示不淡定了，他必须合理安排饭堂饭菜的价格，来让同学们有愉快的心情就餐。已知第一饭堂饭菜的价格是有 N 位数字的整数，如果一个价格有不小于K（1≤K≤N） 个数位完全相同，那么这个价格就被认为是漂亮的，否则这个价格被认为是不漂亮的。 小 H 想改变其中一个饭菜价格，改变价格中的一位数字需要花费一些钱， 钱数等于改前和改后的数字之差的绝对值。小 H 希望你能把这个价格...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/17/12/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/17/12/" class="article-date">
-	  <time datetime="2018-10-17T11:10:23.000Z" itemprop="datePublished">10月 17</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/dp/">dp</a>, <a class="article-tag-link" href="/tags/数学/">数学</a>, <a class="article-tag-link" href="/tags/模拟/">模拟</a>, <a class="article-tag-link" href="/tags/正难则反/">正难则反</a>, <a class="article-tag-link" href="/tags/离线/">离线</a>, <a class="article-tag-link" href="/tags/贪心/">贪心</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/17/12/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.6k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-w" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="w-11"  class="article article-type-w" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/11/">祎隋</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/11/" class="article-date">
+	  <time datetime="2018-10-16T15:20:45.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          童话，被同化前做过的梦《祎隋》
+我们因多少人孤单
+又有多少人为我们不安
+等待是漫长的表演
+相安是莫大的荒诞
+为搏那一瞬笑颜 熹光几点
+我们敢于冒险 心怀本愿
+却屡次三番 无法实现
+使得停滞不前 初心淡暗
+何时起相顾无言 仿佛就从昨天
+再忆那春风不及的笑脸 已是许久以前
+颔首 低眉 轻笑 每个瞬间
+浅唱 微吟 翩舞 总拨心弦
+可我没有华丽诗篇 没有道貌伟岸
+只有痴心一片 闲心几点
+忽而悄然自言 你可曾是我心中的四月天？
+回神漠然 青春已半
+不如数月以前 我们未曾相见
+窗沿 雨 雷电 深夜未眠...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/11/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/11/" class="article-date">
-	  <time datetime="2018-10-16T15:20:45.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/杂诗/">杂诗</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/11/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 225(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-10"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/10/">CF350E Wrong Floyd</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/10/" class="article-date">
+	  <time datetime="2018-10-16T15:13:17.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/CF/">CF</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Description给定n个点,m条边以及k个标记点，要求进行Floyd时只以标记的点为中间点进行松弛操作（每条边边权为1）要求你造出m条边的数据来hack掉这种程序。
+Hint3&lt;=n&lt;=300 , 2&lt;=k&lt;=n2&lt;=k&lt;=n , n-1&lt;=m&lt;=n*(n-1)/2;
+Solution我们只需要任意一点只和非标记点连边就可以了（这样就无法正确更新它到其他点的距离）
+具体一下几个细节：
+1.判k==n或m&gt;最多可以构出的边maxm；...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/10/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/10/" class="article-date">
-	  <time datetime="2018-10-16T15:13:17.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/CF/">CF</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/模拟/">模拟</a>, <a class="article-tag-link" href="/tags/贪心/">贪心</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/10/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 459(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-9"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/9/">32.Sort</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/9/" class="article-date">
+	  <time datetime="2018-10-16T15:13:07.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/Noi-ac/">Noi.ac</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Description众所周知，排序方法有许多种。例如：简单易懂的冒泡排序，平均复杂度较优的快速排序，以及不基于比较的基数排序等等。
+现在，小 DD 得到了一个自然数序列 {a1,a2,⋯,an}{a1,a2,⋯,an}。他想要对其按照从小到大的顺序进行排序（即使得每个元素均严格不大于他的后继元素）。但由于基于比较的排序算法复杂度下界已经被证明为 Θ(nlog2n)Θ(nlog2⁡n)，所以小 DD 决定尝试一种全新的排序算法：翻转排序。
+在翻转排序中，小 DD 在每次操作中，可以选择一个...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/9/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/9/" class="article-date">
-	  <time datetime="2018-10-16T15:13:07.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Noi-ac/">Noi.ac</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/模拟/">模拟</a>, <a class="article-tag-link" href="/tags/离散化/">离散化</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/9/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-8"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/8/">数对子</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/8/" class="article-date">
+	  <time datetime="2018-10-16T14:38:36.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/正睿/">正睿</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Description我们定义一个数对 (x,y) 是好的，当且仅当 x≤y，且 x xor y的二进制表示下有奇数个 1
+现在给定 nn 个区间 [li,ri]，你需要对于每个 i∈[1,n]，输出有几对好的数 (x,y)满足 x 和 y 都在 [l1,r1]∪[l2,r2]…∪[li,ri]，即两个数都在前 i 个区间的并里
+Input第一行一个正整数 n
+接下来 n 行每行两个整数 [li,ri]，表示第 i个区间，保证 li≤ri
+Ouput输出 n 行，第 i行一个整数表示有几对...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/8/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/8/" class="article-date">
-	  <time datetime="2018-10-16T14:38:36.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/正睿/">正睿</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/二进制/">二进制</a>, <a class="article-tag-link" href="/tags/线段树/">线段树</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/8/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-7"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/7/">祎隋</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/7/" class="article-date">
+	  <time datetime="2018-10-16T14:35:18.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          愿你像个孩子，愿你心生双翼
+
+《祎隋》
+青涩
+带着年少初识的忐忑
+我们相遇了
+传奇
+三年来我们所追寻的词字
+一段故事 从这里轻启
+回忆
+忘不却从前往事
+追不上白驹过隙
+再聚
+仿佛多年往复 传奇已铸
+但我们的故事未完待续
+我们的航船才起征途
+愿
+愿相框里的我们永远闪闪发光
+愿你仍是原般模样 
+
+
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/7/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/7/" class="article-date">
-	  <time datetime="2018-10-16T14:35:18.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/杂诗/">杂诗</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/杂诗/">杂诗</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/7/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 121(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-6"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/6/">CF351B Jeff and Furik</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/6/" class="article-date">
+	  <time datetime="2018-10-16T14:21:54.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/CF/">CF</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Description给一个1~n的排列p[i]，Jeff先手可以交换任意两个相邻元素，而Furik会有0.5的几率把任意满足p[i] &lt; p[i+1]的p[i]和p[i+1]交换，有0.5的几率把任意满足p[i] &gt; p[i+1]的p[i]和p[i+1]交换，问将整个序列变成升序所需的最小期望步数 
+Input第一行一整数n表示序列长度，之后一个1~n的排列p[i] (1&lt;=n&lt;=3000) 
+Output输出把整个序列变成升序所需的最小期望步数 
+Sample ...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/6/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/6/" class="article-date">
-	  <time datetime="2018-10-16T14:21:54.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/CF/">CF</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/dp/">dp</a>, <a class="article-tag-link" href="/tags/概率期望/">概率期望</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/6/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 439(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
-	
-
-  </p>
 </article>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+<!-- Table of Contents -->
+
+
   
-    <h1 itemprop="name">
+    <article id="post-5"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
       <a class="article-title" href="/2018/10/16/5/">卡常数</a>
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/16/5/" class="article-date">
+	  <time datetime="2018-10-16T12:34:00.000Z" itemprop="datePublished">2018-10-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/正睿/">正睿</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Decription（在十进制下）定义 mn(i) 表示把 i 的各位数字从小到大排序得到的数，mx(i) 表示从大到小得到的数。这里的数是允许有前导零的，比如mn(10000)=00001=1 ， mx(132)=321 等。定义 f(i)=mx(i)−mn(i) 。当然，这里 mx(i) 的定义是要在某个整数 k 位十进制数下的。
+卡常数指印度数学家Kaprekar发现的常数 6174 。他发现，任取一个各位数字不全相同的四位数 x，不断地使 x=f(x) ，最终总能得到 6174 。...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/16/5/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
   </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2018/10/16/5/" class="article-date">
-	  <time datetime="2018-10-16T12:34:00.000Z" itemprop="datePublished">10月 16</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/正睿/">正睿</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/倍增/">倍增</a>, <a class="article-tag-link" href="/tags/预处理/">预处理</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/16/5/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 865(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
-	
-
-  </p>
 </article>
 
-    
-  </div>
+<!-- Table of Contents -->
+
 
   
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <div class="pager pull-left">
-            
-            <a class="extend prev" rel="prev" href="/page/5/"><i class="icon icon-angle-left"></i> 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">下一页 <i class="icon icon-angle-right"></i></a>
-            
-        </div>
-        <div class="total-article bar-right">Page 6 of 7</div>
-        </div>
-    </nav>
-    
- 
-</main>
 
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
 
-    <div class="copyright">
-    	
-        &copy; 2019 degage
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+  </nav>
+
+</section>
         
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
+      </div>
+      
+        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 祎隋 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+
+<!-- min height -->
+
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-<script src="/js/plugin.min.js"></script>
-<script src="/js/application.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
+    
 
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
 
-
-
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
-  <script>
-  //利用 FancyBox 实现点击图片放大
-  $(document).ready(function() {
-    $('article img').not('[hidden]').not('.panel-body img').each(function() {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('src');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
-      }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-    });
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
-  </script>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+  <script src="/js/home.js"></script>
 
 
 
 
 
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            祎隋
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 degage All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

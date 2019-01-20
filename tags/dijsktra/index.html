@@ -1,617 +1,132 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
+  <title>tag: dijsktra | 祎隋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="c++" />
   
   
-  <title>标签: dijsktra | 祎隋</title>
-  <meta name="description" content="这里是degage的代码仓库哦">
+  
+  
+  <meta name="description" content="祎隋如你，春风十里不及你">
 <meta name="keywords" content="blog,c++">
 <meta property="og:type" content="website">
 <meta property="og:title" content="祎隋">
 <meta property="og:url" content="www.degage.xyz/tags/dijsktra/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="这里是degage的代码仓库哦">
+<meta property="og:description" content="祎隋如你，春风十里不及你">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="祎隋">
-<meta name="twitter:description" content="这里是degage的代码仓库哦">
-  <!-- Canonical links -->
-  <link rel="canonical" href="www.degage.xyz/tags/dijsktra/index.html">
+<meta name="twitter:description" content="祎隋如你，春风十里不及你">
   
     <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
   
+
   
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
+
+  <link rel="icon" href="/css/images/logo.png">
+  <link rel="apple-touch-icon" href="/css/images/logo.png">
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
   <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
+  
+    <link rel="stylesheet" href="/css/archive.css" >
   
   
   
-    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
-  
-  
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
-  
+
 </head>
 
 
-<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/degageyisui" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">祎隋</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">OIER</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
+  <body>
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                 >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/logo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav menu-highlight">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>《祎隋》</br>我愿意是歌声不成形体</br>又发自于你</br>轻托你的灵动美丽</br></br>我愿意是烟火转瞬即逝</br>又引你一视</br>映亮你的天真欣喜</br></br>我愿意是微风不被注意</br>又轻拂着你</br>飘扬你的醉人芳香</br></br>我愿意是皎月独凌寒处</br>又照你一世</br>平稳你的夜夜美梦</br></br>我愿意是时光静默流淌 </br>又伴你一生</br>承载你的所有过往</br></p>
-            </div>
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
     </div>
 </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CF/">CF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Noi-ac/">Noi.ac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/noip模拟赛/">noip模拟赛</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂诗/">杂诗</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正睿/">正睿</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/省选/">省选</a><span class="category-list-count">10</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAG图/">DAG图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hall定理/">Hall定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST表/">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dijsktra/">dijsktra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fft/">fft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lct/">lct</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntt/">ntt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slf优化/">slf优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spfa/">spfa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二元组/">二元组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图/">二分图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维前缀和/">二维前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维树状数组/">二维树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优先队列/">优先队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/倍增/">倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剪枝/">剪枝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态树/">动态树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调栈/">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调队列/">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多项式/">多项式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分约束系统/">差分约束系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并查集/">并查集</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扩展欧几里得/">扩展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑/">拓扑</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最长路/">最长路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂诗/">杂诗</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树上倍增/">树上倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树型dp/">树型dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/欧拉函数/">欧拉函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正睿/">正睿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正难则反/">正难则反</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线/">离线</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结论/">结论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩点/">缩点</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队/">莫队</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/裴蜀定理/">裴蜀定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调和级数/">调和级数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费马小定理/">费马小定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/隐式图/">隐式图</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/预处理/">预处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/马拉车算法/">马拉车算法</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/DAG图/" style="font-size: 13px;">DAG图</a> <a href="/tags/Hall定理/" style="font-size: 13px;">Hall定理</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/LIS/" style="font-size: 13.33px;">LIS</a> <a href="/tags/ST表/" style="font-size: 13px;">ST表</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/dfs/" style="font-size: 13.33px;">dfs</a> <a href="/tags/dijsktra/" style="font-size: 13.17px;">dijsktra</a> <a href="/tags/dp/" style="font-size: 14px;">dp</a> <a href="/tags/fft/" style="font-size: 13px;">fft</a> <a href="/tags/lct/" style="font-size: 13px;">lct</a> <a href="/tags/map/" style="font-size: 13.17px;">map</a> <a href="/tags/ntt/" style="font-size: 13px;">ntt</a> <a href="/tags/set/" style="font-size: 13.5px;">set</a> <a href="/tags/slf优化/" style="font-size: 13px;">slf优化</a> <a href="/tags/spfa/" style="font-size: 13px;">spfa</a> <a href="/tags/二元组/" style="font-size: 13px;">二元组</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/二分图/" style="font-size: 13px;">二分图</a> <a href="/tags/二分查找/" style="font-size: 13px;">二分查找</a> <a href="/tags/二分答案/" style="font-size: 13px;">二分答案</a> <a href="/tags/二维前缀和/" style="font-size: 13px;">二维前缀和</a> <a href="/tags/二维树状数组/" style="font-size: 13px;">二维树状数组</a> <a href="/tags/二进制/" style="font-size: 13.17px;">二进制</a> <a href="/tags/优先队列/" style="font-size: 13px;">优先队列</a> <a href="/tags/倍增/" style="font-size: 13px;">倍增</a> <a href="/tags/前缀和优化/" style="font-size: 13px;">前缀和优化</a> <a href="/tags/剪枝/" style="font-size: 13px;">剪枝</a> <a href="/tags/动态树/" style="font-size: 13px;">动态树</a> <a href="/tags/单调栈/" style="font-size: 13px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 13px;">单调队列</a> <a href="/tags/博弈论/" style="font-size: 13.33px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 13px;">后缀数组</a> <a href="/tags/多项式/" style="font-size: 13px;">多项式</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分/" style="font-size: 13.17px;">差分</a> <a href="/tags/差分约束系统/" style="font-size: 13px;">差分约束系统</a> <a href="/tags/平衡树/" style="font-size: 13.17px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 13.17px;">并查集</a> <a href="/tags/扩展欧几里得/" style="font-size: 13px;">扩展欧几里得</a> <a href="/tags/拓扑/" style="font-size: 13.33px;">拓扑</a> <a href="/tags/数学/" style="font-size: 14px;">数学</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 13px;">最小瓶颈生成树</a> <a href="/tags/最小生成树/" style="font-size: 13px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/最长路/" style="font-size: 13px;">最长路</a> <a href="/tags/杂诗/" style="font-size: 13.83px;">杂诗</a> <a href="/tags/枚举/" style="font-size: 13.5px;">枚举</a> <a href="/tags/栈/" style="font-size: 13px;">栈</a> <a href="/tags/树上倍增/" style="font-size: 13px;">树上倍增</a> <a href="/tags/树型dp/" style="font-size: 13px;">树型dp</a> <a href="/tags/树状数组/" style="font-size: 13.17px;">树状数组</a> <a href="/tags/概率期望/" style="font-size: 13.67px;">概率期望</a> <a href="/tags/模拟/" style="font-size: 13.83px;">模拟</a> <a href="/tags/欧拉函数/" style="font-size: 13px;">欧拉函数</a> <a href="/tags/正睿/" style="font-size: 13px;">正睿</a> <a href="/tags/正难则反/" style="font-size: 13.17px;">正难则反</a> <a href="/tags/离散化/" style="font-size: 13.33px;">离散化</a> <a href="/tags/离线/" style="font-size: 13px;">离线</a> <a href="/tags/线段树/" style="font-size: 13px;">线段树</a> <a href="/tags/结论/" style="font-size: 13px;">结论</a> <a href="/tags/缩点/" style="font-size: 13.17px;">缩点</a> <a href="/tags/网络流/" style="font-size: 13px;">网络流</a> <a href="/tags/莫队/" style="font-size: 13px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 13px;">裴蜀定理</a> <a href="/tags/计算几何/" style="font-size: 13.17px;">计算几何</a> <a href="/tags/调和级数/" style="font-size: 13px;">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a> <a href="/tags/费马小定理/" style="font-size: 13px;">费马小定理</a> <a href="/tags/逆元/" style="font-size: 13px;">逆元</a> <a href="/tags/隐式图/" style="font-size: 13.17px;">隐式图</a> <a href="/tags/预处理/" style="font-size: 13px;">预处理</a> <a href="/tags/马拉车算法/" style="font-size: 13px;">马拉车算法</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">44</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled ">
-        
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/19/lct/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/19/lct/" class="title">lct模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-19T02:06:55.000Z" itemprop="datePublished">2019-01-19</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/权值平衡树/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/权值平衡树/" class="title">平衡树板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T01:46:45.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/后缀数组性质及模板/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/后缀数组性质及模板/" class="title">后缀数组性质及模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T00:11:48.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/17/生成函数预备/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/17/生成函数预备/" class="title">生成函数预备</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-17T03:33:02.000Z" itemprop="datePublished">2019-01-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/16/多项式板子/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/16/多项式板子/" class="title">多项式板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-16T15:02:54.000Z" itemprop="datePublished">2019-01-16</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  <main class="main" role="main">
-  <article class="content article article-tags post-type-list" itemscope="">
-    <header class="article-header">
-      <h1 itemprop="name" class="hidden-xs">标签: dijsktra</h1>
-      <p class="text-muted hidden-xs">共 2 篇文章</p>
-      <nav role="navigation" id="nav-main" class="okayNav">
-        <ul>
-          <li><a href="/tags">All</a></li>
-          
-          <li><a href="/tags/概率期望/">概率期望</a></li>
-          
-          <li><a href="/tags/前缀和优化/">前缀和优化</a></li>
-          
-          <li><a href="/tags/模拟/">模拟</a></li>
-          
-          <li><a href="/tags/贪心/">贪心</a></li>
-          
-          <li><a href="/tags/杂诗/">杂诗</a></li>
-          
-          <li><a href="/tags/离线/">离线</a></li>
-          
-          <li><a href="/tags/数学/">数学</a></li>
-          
-          <li><a href="/tags/dp/">dp</a></li>
-          
-          <li><a href="/tags/正难则反/">正难则反</a></li>
-          
-          <li><a href="/tags/dijsktra/">dijsktra</a></li>
-          
-          <li><a href="/tags/spfa/">spfa</a></li>
-          
-          <li><a href="/tags/slf优化/">slf优化</a></li>
-          
-          <li><a href="/tags/缩点/">缩点</a></li>
-          
-          <li><a href="/tags/拓扑/">拓扑</a></li>
-          
-          <li><a href="/tags/DAG图/">DAG图</a></li>
-          
-          <li><a href="/tags/set/">set</a></li>
-          
-          <li><a href="/tags/LIS/">LIS</a></li>
-          
-          <li><a href="/tags/ST表/">ST表</a></li>
-          
-          <li><a href="/tags/二分答案/">二分答案</a></li>
-          
-          <li><a href="/tags/最短路/">最短路</a></li>
-          
-          <li><a href="/tags/隐式图/">隐式图</a></li>
-          
-          <li><a href="/tags/差分约束系统/">差分约束系统</a></li>
-          
-          <li><a href="/tags/平衡树/">平衡树</a></li>
-          
-          <li><a href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a></li>
-          
-          <li><a href="/tags/裴蜀定理/">裴蜀定理</a></li>
-          
-          <li><a href="/tags/结论/">结论</a></li>
-          
-          <li><a href="/tags/二维树状数组/">二维树状数组</a></li>
-          
-          <li><a href="/tags/莫队/">莫队</a></li>
-          
-          <li><a href="/tags/离散化/">离散化</a></li>
-          
-          <li><a href="/tags/最小生成树/">最小生成树</a></li>
-          
-          <li><a href="/tags/调和级数/">调和级数</a></li>
-          
-          <li><a href="/tags/并查集/">并查集</a></li>
-          
-          <li><a href="/tags/Hall定理/">Hall定理</a></li>
-          
-          <li><a href="/tags/树状数组/">树状数组</a></li>
-          
-          <li><a href="/tags/二进制/">二进制</a></li>
-          
-          <li><a href="/tags/枚举/">枚举</a></li>
-          
-          <li><a href="/tags/LCA/">LCA</a></li>
-          
-          <li><a href="/tags/逆元/">逆元</a></li>
-          
-          <li><a href="/tags/扩展欧几里得/">扩展欧几里得</a></li>
-          
-          <li><a href="/tags/dfs/">dfs</a></li>
-          
-          <li><a href="/tags/博弈论/">博弈论</a></li>
-          
-          <li><a href="/tags/正睿/">正睿</a></li>
-          
-          <li><a href="/tags/二分查找/">二分查找</a></li>
-          
-          <li><a href="/tags/树上倍增/">树上倍增</a></li>
-          
-          <li><a href="/tags/差分/">差分</a></li>
-          
-          <li><a href="/tags/bfs/">bfs</a></li>
-          
-          <li><a href="/tags/欧拉函数/">欧拉函数</a></li>
-          
-          <li><a href="/tags/费马小定理/">费马小定理</a></li>
-          
-          <li><a href="/tags/map/">map</a></li>
-          
-          <li><a href="/tags/二元组/">二元组</a></li>
-          
-          <li><a href="/tags/剪枝/">剪枝</a></li>
-          
-          <li><a href="/tags/栈/">栈</a></li>
-          
-          <li><a href="/tags/最长路/">最长路</a></li>
-          
-          <li><a href="/tags/二分图/">二分图</a></li>
-          
-          <li><a href="/tags/优先队列/">优先队列</a></li>
-          
-          <li><a href="/tags/二分/">二分</a></li>
-          
-          <li><a href="/tags/树型dp/">树型dp</a></li>
-          
-          <li><a href="/tags/倍增/">倍增</a></li>
-          
-          <li><a href="/tags/预处理/">预处理</a></li>
-          
-          <li><a href="/tags/单调队列/">单调队列</a></li>
-          
-          <li><a href="/tags/单调栈/">单调栈</a></li>
-          
-          <li><a href="/tags/二维前缀和/">二维前缀和</a></li>
-          
-          <li><a href="/tags/网络流/">网络流</a></li>
-          
-          <li><a href="/tags/线段树/">线段树</a></li>
-          
-          <li><a href="/tags/计算几何/">计算几何</a></li>
-          
-          <li><a href="/tags/lct/">lct</a></li>
-          
-          <li><a href="/tags/动态树/">动态树</a></li>
-          
-          <li><a href="/tags/后缀数组/">后缀数组</a></li>
-          
-          <li><a href="/tags/多项式/">多项式</a></li>
-          
-          <li><a href="/tags/ntt/">ntt</a></li>
-          
-          <li><a href="/tags/fft/">fft</a></li>
-          
-          <li><a href="/tags/马拉车算法/">马拉车算法</a></li>
-          
-          <li><a href="/tags/字符串/">字符串</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-    <!-- /header -->
-    <div class="article-body">
-      <div class="row">
-        
-<div class="col-md-6">
-    
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2018-10-25T07:37:01.000Z" itemprop="datePublished">2018-10-25</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2018/10/25/32/">红绿灯</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/dijsktra/" class="label label-default mb">dijsktra</a>
-     
-     
-   </div>
-   
-</article>
-
-
-</div>
-
-<div class="col-md-6">
-    
-<article class="panel panel-default hover-shadow hover-grow" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="panel-body">
-     <div class="article-meta">
-       <time datetime="2018-10-18T11:35:45.000Z" itemprop="datePublished">2018-10-18</time>
-     </div>
-     <h3 class="article-title" itemprop="name">
-       <a class="article-link" href="/2018/10/18/13/">noip模拟赛2</a>
-     </h3>
-   </div>
-   
-   <div class="panel-footer">
-     
-      <a href="/tags/dp/" class="label label-default mb">dp</a>
-     
-      <a href="/tags/dijsktra/" class="label label-default mb">dijsktra</a>
-     
-      <a href="/tags/spfa/" class="label label-default mb">spfa</a>
-     
-     
-      <span class="label label-default mb">···</span>
-     
-   </div>
-   
-</article>
-
-
-</div>
-
-      </div>
-    </div>
-  </article>
-   
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    <div class="copyright">
-    	
-        &copy; 2019 degage
-        
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
-</footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
-</script>
-<script src="/js/plugin.min.js"></script>
-<script src="/js/application.js"></script>
-
-    <script>
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
@@ -619,7 +134,7 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
             PAGES: '页面',
             CATEGORIES: '分类',
             TAGS: '标签',
-            UNTITLED: '(未命名)',
+            UNTITLED: '(无标题)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -629,45 +144,258 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 </script>
 <script src="/js/insight.js"></script>
 
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
 
 
 
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;">
+  
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2018" class="archive-year">2018</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+	<a href="/2018/10/25/32/" class="archive-article-date">
+	  <time datetime="2018-10-25T07:37:01.000Z" itemprop="datePublished">2018-10-25</time>
+	</a>
+
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2018/10/25/32/">红绿灯</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+	<a href="/2018/10/18/13/" class="archive-article-date">
+	  <time datetime="2018-10-18T11:35:45.000Z" itemprop="datePublished">2018-10-18</time>
+	</a>
+
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2018/10/18/13/">noip模拟赛2</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
 
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
 
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
-  <script>
-  //利用 FancyBox 实现点击图片放大
-  $(document).ready(function() {
-    $('article img').not('[hidden]').not('.panel-body img').each(function() {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('src');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
-      }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-    });
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 祎隋 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
   });
-  </script>
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
 
 
 
 
 
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            祎隋
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 degage All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {

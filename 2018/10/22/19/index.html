@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang=zh>
+<html>
 <head>
   <meta charset="utf-8">
   
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="Cache-Control" content="no-transform" />
-  <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="format-detection" content="telephone=no,email=no,adress=no">
-  <!-- Color theme for statusbar -->
-  <meta name="theme-color" content="#000000" />
-  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
-  <meta http-equiv="window-target" content="_top" />
+  <title>zjoi2006 书架 | 祎隋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="c++" />
   
   
-  <title>ZJOI2006 书架 | 祎隋</title>
+  
+  
   <meta name="description" content="Description小T有一个很大的书柜。这个书柜的构造有些独特，即书柜里的书是从上至下堆放成一列。她用1到n的正整数给每本书都编了号。 小T在看书的时候，每次取出一本书，看完后放回书柜然后再拿下一本。由于这些书太有吸引力了，所以她看完后常常会忘记原来是放在书柜的什么位置。不过小T的记忆力是非常好的，所以每次放书的时候至少能够将那本书放在拿出来时的位置附近，比如说她拿的时候这本书上面有X本书，那">
 <meta name="keywords" content="平衡树">
 <meta property="og:type" content="article">
@@ -30,389 +23,175 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZJOI2006 书架">
 <meta name="twitter:description" content="Description小T有一个很大的书柜。这个书柜的构造有些独特，即书柜里的书是从上至下堆放成一列。她用1到n的正整数给每本书都编了号。 小T在看书的时候，每次取出一本书，看完后放回书柜然后再拿下一本。由于这些书太有吸引力了，所以她看完后常常会忘记原来是放在书柜的什么位置。不过小T的记忆力是非常好的，所以每次放书的时候至少能够将那本书放在拿出来时的位置附近，比如说她拿的时候这本书上面有X本书，那">
-  <!-- Canonical links -->
-  <link rel="canonical" href="www.degage.xyz/2018/10/22/19/index.html">
   
     <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
   
+
   
-    <link rel="icon" href="/favicon.png" type="image/x-icon">
+
+  <link rel="icon" href="/css/images/logo.png">
+  <link rel="apple-touch-icon" href="/css/images/logo.png">
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
   <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
+  
+
   
   
   
-    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
-  
-  
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
-  
+
 </head>
 
 
-<body class="main-center theme-blue" itemscope itemtype="http://schema.org/WebPage">
-  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-  <div class="slimContent">
-    <div class="navbar-header">
-      
-      
-      <div class="profile-block text-center">
-        <a id="avatar" href="https://github.com/degageyisui" target="_blank">
-          <img class="img-circle img-rotate" src="/images/avatar.png" width="200" height="200">
-        </a>
-        <h2 id="name" class="hidden-xs hidden-sm">祎隋</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">OIER</h3>
-        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Chongqing, China</small>
-      </div>
-      
-      <div class="search" id="search-form-wrap">
 
-    <form class="search-form sidebar-form">
-        <div class="input-group">
-            <input type="text" class="search-form-input form-control" placeholder="搜索" />
-            <span class="input-group-btn">
-                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
-            </span>
-        </div>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/logo.png">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
-  <div class="ins-search-mask"></div>
-  <div class="ins-search-container">
-    <div class="ins-input-wrapper">
-      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
-      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="ins-section-wrapper">
-      <div class="ins-section-container"></div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
-      <ul class="nav navbar-nav main-nav menu-highlight">
-        
-        
-        <li class="menu-item menu-item-home">
-          <a href="/.">
-            
-            <i class="icon icon-home-fill"></i>
-            
-            <span class="menu-title">首页</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives">
-            
-            <i class="icon icon-archives-fill"></i>
-            
-            <span class="menu-title">归档</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags">
-            
-            <i class="icon icon-tags"></i>
-            
-            <span class="menu-title">标签</span>
-          </a>
-        </li>
-        
-        
-        <li class="menu-item menu-item-links">
-          <a href="/links">
-            
-            <i class="icon icon-friendship"></i>
-            
-            <span class="menu-title">友链</span>
-          </a>
-        </li>
-        
-      </ul>
-      
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    </nav>
-  </div>
-</header>
-
-  
-    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
-  <div class="slimContent">
-    
-      <div class="widget">
-    <h3 class="widget-title">公告</h3>
-    <div class="widget-body">
-        <div id="board">
-            <div class="content">
-                <p>《祎隋》</br>我愿意是歌声不成形体</br>又发自于你</br>轻托你的灵动美丽</br></br>我愿意是烟火转瞬即逝</br>又引你一视</br>映亮你的天真欣喜</br></br>我愿意是微风不被注意</br>又轻拂着你</br>飘扬你的醉人芳香</br></br>我愿意是皎月独凌寒处</br>又照你一世</br>平稳你的夜夜美梦</br></br>我愿意是时光静默流淌 </br>又伴你一生</br>承载你的所有过往</br></p>
-            </div>
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
         </div>
     </div>
 </div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
 
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CF/">CF</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Noi-ac/">Noi.ac</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/noip模拟赛/">noip模拟赛</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂诗/">杂诗</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/正睿/">正睿</a><span class="category-list-count">38</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/省选/">省选</a><span class="category-list-count">10</span></li></ul>
+</div></li>
+            </div>
+          </div>
+                
+      </div>
     </div>
-  </div>
+
+</header>
 
 
-    
+
       
-  <div class="widget">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget-body">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAG图/">DAG图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hall定理/">Hall定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/">LCA</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LIS/">LIS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ST表/">ST表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dijsktra/">dijsktra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fft/">fft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lct/">lct</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntt/">ntt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/set/">set</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/slf优化/">slf优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spfa/">spfa</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二元组/">二元组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分/">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分图/">二分图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分查找/">二分查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二分答案/">二分答案</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维前缀和/">二维前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二维树状数组/">二维树状数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优先队列/">优先队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/倍增/">倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前缀和优化/">前缀和优化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/剪枝/">剪枝</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态树/">动态树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调栈/">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单调队列/">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博弈论/">博弈论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后缀数组/">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多项式/">多项式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/字符串/">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分/">差分</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/差分约束系统/">差分约束系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平衡树/">平衡树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/并查集/">并查集</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扩展欧几里得/">扩展欧几里得</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓扑/">拓扑</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数学/">数学</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小瓶颈生成树/">最小瓶颈生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最短路/">最短路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最长路/">最长路</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂诗/">杂诗</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/枚举/">枚举</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/栈/">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树上倍增/">树上倍增</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树型dp/">树型dp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树状数组/">树状数组</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/概率期望/">概率期望</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟/">模拟</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/欧拉函数/">欧拉函数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正睿/">正睿</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正难则反/">正难则反</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离散化/">离散化</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/离线/">离线</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线段树/">线段树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/结论/">结论</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/缩点/">缩点</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络流/">网络流</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莫队/">莫队</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/裴蜀定理/">裴蜀定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算几何/">计算几何</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调和级数/">调和级数</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贪心/">贪心</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/费马小定理/">费马小定理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/逆元/">逆元</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/隐式图/">隐式图</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/预处理/">预处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/马拉车算法/">马拉车算法</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget-body tagcloud">
-      <a href="/tags/DAG图/" style="font-size: 13px;">DAG图</a> <a href="/tags/Hall定理/" style="font-size: 13px;">Hall定理</a> <a href="/tags/LCA/" style="font-size: 13px;">LCA</a> <a href="/tags/LIS/" style="font-size: 13.33px;">LIS</a> <a href="/tags/ST表/" style="font-size: 13px;">ST表</a> <a href="/tags/bfs/" style="font-size: 13px;">bfs</a> <a href="/tags/dfs/" style="font-size: 13.33px;">dfs</a> <a href="/tags/dijsktra/" style="font-size: 13.17px;">dijsktra</a> <a href="/tags/dp/" style="font-size: 14px;">dp</a> <a href="/tags/fft/" style="font-size: 13px;">fft</a> <a href="/tags/lct/" style="font-size: 13px;">lct</a> <a href="/tags/map/" style="font-size: 13.17px;">map</a> <a href="/tags/ntt/" style="font-size: 13px;">ntt</a> <a href="/tags/set/" style="font-size: 13.5px;">set</a> <a href="/tags/slf优化/" style="font-size: 13px;">slf优化</a> <a href="/tags/spfa/" style="font-size: 13px;">spfa</a> <a href="/tags/二元组/" style="font-size: 13px;">二元组</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/二分图/" style="font-size: 13px;">二分图</a> <a href="/tags/二分查找/" style="font-size: 13px;">二分查找</a> <a href="/tags/二分答案/" style="font-size: 13px;">二分答案</a> <a href="/tags/二维前缀和/" style="font-size: 13px;">二维前缀和</a> <a href="/tags/二维树状数组/" style="font-size: 13px;">二维树状数组</a> <a href="/tags/二进制/" style="font-size: 13.17px;">二进制</a> <a href="/tags/优先队列/" style="font-size: 13px;">优先队列</a> <a href="/tags/倍增/" style="font-size: 13px;">倍增</a> <a href="/tags/前缀和优化/" style="font-size: 13px;">前缀和优化</a> <a href="/tags/剪枝/" style="font-size: 13px;">剪枝</a> <a href="/tags/动态树/" style="font-size: 13px;">动态树</a> <a href="/tags/单调栈/" style="font-size: 13px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 13px;">单调队列</a> <a href="/tags/博弈论/" style="font-size: 13.33px;">博弈论</a> <a href="/tags/后缀数组/" style="font-size: 13px;">后缀数组</a> <a href="/tags/多项式/" style="font-size: 13px;">多项式</a> <a href="/tags/字符串/" style="font-size: 13px;">字符串</a> <a href="/tags/差分/" style="font-size: 13.17px;">差分</a> <a href="/tags/差分约束系统/" style="font-size: 13px;">差分约束系统</a> <a href="/tags/平衡树/" style="font-size: 13.17px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 13.17px;">并查集</a> <a href="/tags/扩展欧几里得/" style="font-size: 13px;">扩展欧几里得</a> <a href="/tags/拓扑/" style="font-size: 13.33px;">拓扑</a> <a href="/tags/数学/" style="font-size: 14px;">数学</a> <a href="/tags/最小瓶颈生成树/" style="font-size: 13px;">最小瓶颈生成树</a> <a href="/tags/最小生成树/" style="font-size: 13px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/最长路/" style="font-size: 13px;">最长路</a> <a href="/tags/杂诗/" style="font-size: 13.83px;">杂诗</a> <a href="/tags/枚举/" style="font-size: 13.5px;">枚举</a> <a href="/tags/栈/" style="font-size: 13px;">栈</a> <a href="/tags/树上倍增/" style="font-size: 13px;">树上倍增</a> <a href="/tags/树型dp/" style="font-size: 13px;">树型dp</a> <a href="/tags/树状数组/" style="font-size: 13.17px;">树状数组</a> <a href="/tags/概率期望/" style="font-size: 13.67px;">概率期望</a> <a href="/tags/模拟/" style="font-size: 13.83px;">模拟</a> <a href="/tags/欧拉函数/" style="font-size: 13px;">欧拉函数</a> <a href="/tags/正睿/" style="font-size: 13px;">正睿</a> <a href="/tags/正难则反/" style="font-size: 13.17px;">正难则反</a> <a href="/tags/离散化/" style="font-size: 13.33px;">离散化</a> <a href="/tags/离线/" style="font-size: 13px;">离线</a> <a href="/tags/线段树/" style="font-size: 13px;">线段树</a> <a href="/tags/结论/" style="font-size: 13px;">结论</a> <a href="/tags/缩点/" style="font-size: 13.17px;">缩点</a> <a href="/tags/网络流/" style="font-size: 13px;">网络流</a> <a href="/tags/莫队/" style="font-size: 13px;">莫队</a> <a href="/tags/裴蜀定理/" style="font-size: 13px;">裴蜀定理</a> <a href="/tags/计算几何/" style="font-size: 13.17px;">计算几何</a> <a href="/tags/调和级数/" style="font-size: 13px;">调和级数</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a> <a href="/tags/费马小定理/" style="font-size: 13px;">费马小定理</a> <a href="/tags/逆元/" style="font-size: 13px;">逆元</a> <a href="/tags/隐式图/" style="font-size: 13.17px;">隐式图</a> <a href="/tags/预处理/" style="font-size: 13px;">预处理</a> <a href="/tags/马拉车算法/" style="font-size: 13px;">马拉车算法</a>
-    </div>
-  </div>
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">44</span></li></ul>
-    </div>
-  </div>
-
-
-    
-      
-  <div class="widget">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget-body">
-      <ul class="recent-post-list list-unstyled ">
+            
+      <div id="content" class="outer">
         
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/19/lct/" class="thumb">
+          <section id="main" style="float:none;"><article id="post-19" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/19/lct/" class="title">lct模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-19T02:06:55.000Z" itemprop="datePublished">2019-01-19</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/权值平衡树/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/权值平衡树/" class="title">平衡树板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T01:46:45.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/18/后缀数组性质及模板/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/18/后缀数组性质及模板/" class="title">后缀数组性质及模板</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-18T00:11:48.000Z" itemprop="datePublished">2019-01-18</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/17/生成函数预备/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/17/生成函数预备/" class="title">生成函数预备</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-17T03:33:02.000Z" itemprop="datePublished">2019-01-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
-              <a href="/2019/01/16/多项式板子/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/省选/">省选</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/01/16/多项式板子/" class="title">多项式板子</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-01-16T15:02:54.000Z" itemprop="datePublished">2019-01-16</time>
-              </p>
-            </div>
-          </li>
-          
-      </ul>
-    </div>
-  </div>
-  
-
-    
-  </div>
-</aside>
-
-  
-  
-<main class="main" role="main">
-  <div class="content">
-  <article id="post-19" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-    
-    <div class="article-header">
-      
+      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       ZJOI2006 书架
     </h1>
   
 
+      </header>
+    
+    <div class="article-meta">
       
-      <div class="article-meta">
-        <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
 	<a href="/2018/10/22/19/" class="article-date">
 	  <time datetime="2018-10-22T03:23:17.000Z" itemprop="datePublished">2018-10-22</time>
 	</a>
-</span>
-        
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
+
+      
     <a class="article-category-link" href="/categories/noip模拟赛/">noip模拟赛</a>
-  </span>
 
-        
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/平衡树/">平衡树</a>
-  </span>
-
-
-        
-	<span class="article-read hidden-xs">
-	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
-	    <span id="busuanzi_container_page_pv">
-			<span id="busuanzi_value_page_pv">0</span>
-		</span>
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
 	</span>
+	</a>
 
+      
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/10/22/19/#comments" class="article-comment-link">评论</a></span>
-        
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
-	
-
-      </div>
     </div>
-    <div class="article-entry marked-body" itemprop="articleBody">
+    <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>小T有一个很大的书柜。这个书柜的构造有些独特，即书柜里的书是从上至下堆放成一列。她用1到n的正整数给每本书都编了号。</p>
 <p>小T在看书的时候，每次取出一本书，看完后放回书柜然后再拿下一本。由于这些书太有吸引力了，所以她看完后常常会忘记原来是放在书柜的什么位置。不过小T的记忆力是非常好的，所以每次放书的时候至少能够将那本书放在拿出来时的位置附近，比如说她拿的时候这本书上面有X本书，那么放回去时这本书上面就只可能有X-1、X或X+1本书。</p>
@@ -428,207 +207,281 @@
 <h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>10 10<br>1 3 2 7 5 8 10 4 9 6<br>Query 3<br>Top 5<br>Ask 6<br>Bottom 3<br>Ask 3<br>Top 6<br>Insert 4 -1<br>Query 5<br>Query 2<br>Ask 2</p>
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>2<br>9<br>9<br>7<br>5<br>3</p>
 <h1 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h1><p>100%的数据，n,m &lt;= 80000</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>一道裸的线段平衡树题a…..<br>先上一波权值平衡树的板子（实际操作中可以按情况修改）<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1000000+5 </span></span><br><span class="line"><span class="keyword">int</span> fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn],cnt[maxn],val[maxn];</span><br><span class="line"><span class="keyword">int</span> rt=<span class="number">0</span>,np=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">bool</span> kind)</span></span>&#123;</span><br><span class="line">	fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upload</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+cnt[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> y=fa[x],z=fa[y];</span><br><span class="line">	<span class="keyword">bool</span> kind=check(x);</span><br><span class="line">	<span class="keyword">int</span> k=ch[x][!kind];</span><br><span class="line">	link(k,y,kind);</span><br><span class="line">	link(x,z,check(y));</span><br><span class="line">	link(y,x,!kind);</span><br><span class="line">	upload(y);upload(x); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> goal)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">    	<span class="keyword">int</span> y=fa[x],z=fa[y];</span><br><span class="line">    	<span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x):rotate(y);</span><br><span class="line">    	rotate(x);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt;</span><br><span class="line">	<span class="keyword">while</span>(ch[now][x&gt;val[now]]&amp;&amp;val[now]!=x)</span><br><span class="line">	  now=ch[now][x&gt;val[now]];</span><br><span class="line">	splay(now,<span class="number">0</span>);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt,f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(now&amp;&amp;val[now]!=x) f=now,now=ch[now][x&gt;val[now]];</span><br><span class="line">	<span class="keyword">if</span>(now) cnt[now]++;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		now=++np;</span><br><span class="line">		val[now]=x;</span><br><span class="line">		<span class="keyword">if</span>(f) ch[f][x&gt;val[f]]=now;</span><br><span class="line">		fa[now]=f;</span><br><span class="line">		cnt[now]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prnx</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">bool</span> f)</span></span>&#123;</span><br><span class="line">	find(x);</span><br><span class="line">	<span class="keyword">int</span> now=rt;</span><br><span class="line">	<span class="keyword">if</span>(val[now]&gt;x&amp;&amp;f||val[now]&lt;x&amp;&amp;!f) <span class="keyword">return</span> now;</span><br><span class="line">	now=ch[now][f];</span><br><span class="line">	<span class="keyword">while</span>(ch[now][!f]) now=ch[now][!f];</span><br><span class="line">	<span class="keyword">return</span> now; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> pre=prnx(x,<span class="number">0</span>),last=prnx(x,<span class="number">1</span>);</span><br><span class="line">	splay(pre,<span class="number">0</span>);splay(last,pre);</span><br><span class="line">	<span class="keyword">int</span> delt=ch[last][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(cnt[delt])&#123;cnt[delt]--;splay(delt,<span class="number">0</span>);&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		ch[last][<span class="number">0</span>]=<span class="number">0</span>;splay(last,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">	<span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+cnt[now]&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-cnt[now]);</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> val[now];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x&lt;val[now]) now=ch[now][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ans+=ch[now][<span class="number">0</span>]?sz[ch[now][<span class="number">0</span>]]:<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(val[now]==x)&#123;splay(now,<span class="number">0</span>);<span class="keyword">return</span> ans+<span class="number">1</span>;&#125;</span><br><span class="line">			ans+=cnt[now];</span><br><span class="line">			now=ch[now][<span class="number">1</span>]; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	insert(INT_MIN);</span><br><span class="line">	insert(INT_MAX);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) insert(i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) kth(rt,i); </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>一道裸的线段平衡树题a…..<br>先上一波权值平衡树的板子（实际操作中可以按情况修改）<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 1000000+5 </span></span><br><span class="line"><span class="keyword">int</span> fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn],cnt[maxn],val[maxn];</span><br><span class="line"><span class="keyword">int</span> rt=<span class="number">0</span>,np=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">bool</span> kind)</span></span>&#123;</span><br><span class="line">	fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upload</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+cnt[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> y=fa[x],z=fa[y];</span><br><span class="line">	<span class="keyword">bool</span> kind=check(x);</span><br><span class="line">	<span class="keyword">int</span> k=ch[x][!kind];</span><br><span class="line">	link(k,y,kind);</span><br><span class="line">	link(x,z,check(y));</span><br><span class="line">	link(y,x,!kind);</span><br><span class="line">	upload(y);upload(x); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> goal)</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">    	<span class="keyword">int</span> y=fa[x],z=fa[y];</span><br><span class="line">    	<span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x):rotate(y);</span><br><span class="line">    	rotate(x);</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt;</span><br><span class="line">	<span class="keyword">while</span>(ch[now][x&gt;val[now]]&amp;&amp;val[now]!=x)</span><br><span class="line">	  now=ch[now][x&gt;val[now]];</span><br><span class="line">	splay(now,<span class="number">0</span>);  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt,f=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(now&amp;&amp;val[now]!=x) f=now,now=ch[now][x&gt;val[now]];</span><br><span class="line">	<span class="keyword">if</span>(now) cnt[now]++;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		now=++np;</span><br><span class="line">		val[now]=x;</span><br><span class="line">		<span class="keyword">if</span>(f) ch[f][x&gt;val[f]]=now;</span><br><span class="line">		fa[now]=f;</span><br><span class="line">		cnt[now]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prnx</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">bool</span> f)</span></span>&#123;</span><br><span class="line">	find(x);</span><br><span class="line">	<span class="keyword">int</span> now=rt;</span><br><span class="line">	<span class="keyword">if</span>(val[now]&gt;x&amp;&amp;f||val[now]&lt;x&amp;&amp;!f) <span class="keyword">return</span> now;</span><br><span class="line">	now=ch[now][f];</span><br><span class="line">	<span class="keyword">while</span>(ch[now][!f]) now=ch[now][!f];</span><br><span class="line">	<span class="keyword">return</span> now; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> pre=prnx(x,<span class="number">0</span>),last=prnx(x,<span class="number">1</span>);</span><br><span class="line">	splay(pre,<span class="number">0</span>);splay(last,pre);</span><br><span class="line">	<span class="keyword">int</span> delt=ch[last][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span>(cnt[delt])&#123;cnt[delt]--;splay(delt,<span class="number">0</span>);&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		ch[last][<span class="number">0</span>]=<span class="number">0</span>;splay(last,<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> now,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">	<span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+cnt[now]&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-cnt[now]);</span><br><span class="line">	splay(now,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> val[now];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kth</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now=rt,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x&lt;val[now]) now=ch[now][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			ans+=ch[now][<span class="number">0</span>]?sz[ch[now][<span class="number">0</span>]]:<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(val[now]==x)&#123;splay(now,<span class="number">0</span>);<span class="keyword">return</span> ans+<span class="number">1</span>;&#125;</span><br><span class="line">			ans+=cnt[now];</span><br><span class="line">			now=ch[now][<span class="number">1</span>]; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	insert(INT_MIN);</span><br><span class="line">	insert(INT_MAX);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) insert(i);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">50000</span>;i++) kth(rt,i); </span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这道题是线段平衡树，对于每个操作画下图，想一下就欧克了，没什么好说的…..</p>
-<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 80005</span></span><br><span class="line">int n,m,np=<span class="number">0</span>,rt=<span class="number">0</span>;</span><br><span class="line">int fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn];</span><br><span class="line">int val[maxn],rk[maxn];</span><br><span class="line">bool check(int x)&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line">void link(int x,int y,bool kind)&#123;</span><br><span class="line">    fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line">void upload(int x)&#123;</span><br><span class="line">    sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">void rotate(int x)&#123;</span><br><span class="line">    int y=fa[x];</span><br><span class="line">    int z=fa[y];</span><br><span class="line">    bool kind=check(x);</span><br><span class="line">    int k=ch[x][!kind];</span><br><span class="line">    link(k,y,kind);</span><br><span class="line">    link(x,z,check(y));</span><br><span class="line">    link(y,x,!kind);</span><br><span class="line">    upload(y);upload(x);	</span><br><span class="line">&#125;</span><br><span class="line">void splay(int x,int goal)&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">        int y=fa[x],z=fa[y];</span><br><span class="line">        <span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x)<span class="symbol">:rotate</span>(y);</span><br><span class="line">        rotate(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line">void insert(int x)&#123;</span><br><span class="line">    int now=rt,f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(now) f=now,now=ch[now][<span class="number">1</span>];</span><br><span class="line">    now=++np;</span><br><span class="line">    link(now,f,<span class="number">1</span>);</span><br><span class="line">    splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int nxt(int x,bool f)&#123;<span class="regexp">//</span>前提要将x旋转到根 </span><br><span class="line">    x=ch[x][f];</span><br><span class="line">    <span class="keyword">while</span>(ch[x][!f]) x=ch[x][!f];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line">void del(int x)&#123;</span><br><span class="line">    splay(x,<span class="number">0</span>);</span><br><span class="line">    int pre=nxt(x,<span class="number">0</span>),nxtt=nxt(x,<span class="number">1</span>);</span><br><span class="line">    splay(pre,<span class="number">0</span>);splay(nxtt,pre);</span><br><span class="line">    ch[nxtt][<span class="number">0</span>]=<span class="number">0</span>;splay(nxtt,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int kth(int now,int k)&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">    <span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+<span class="number">1</span>&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> now;</span><br><span class="line">&#125; </span><br><span class="line">int s,k;</span><br><span class="line">char op[<span class="number">10</span>];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=n+<span class="number">1</span>;i++) scanf(<span class="string">"%d"</span>,&amp;val[i]),rk[val[i]]=i;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) insert(i);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%s"</span>,op);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'T'</span>)&#123;</span><br><span class="line">            scanf(<span class="string">"%d"</span>,&amp;s);</span><br><span class="line">            int t=rk[s];</span><br><span class="line">            del(t);</span><br><span class="line">            /*splay(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">            int nxtt=nxt(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(nxtt,<span class="number">0</span>);splay(<span class="number">1</span>,nxtt);</span><br><span class="line">            link(t,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(1,0);</span></span><br><span class="line"><span class="regexp">            int nxtt=nxt(1,1);</span></span><br><span class="line"><span class="regexp">            splay(nxtt,1);</span></span><br><span class="line"><span class="regexp">            link(t,nxtt,0);</span></span><br><span class="line"><span class="regexp">            splay(t,0); </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='B')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            del(t);</span></span><br><span class="line"><span class="regexp">            /</span>*splay(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            int pre=nxt(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(pre,<span class="number">0</span>);splay(n+<span class="number">2</span>,pre);</span><br><span class="line">            link(t,n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(n+2,0);</span></span><br><span class="line"><span class="regexp">            int pre=nxt(n+2,0);</span></span><br><span class="line"><span class="regexp">            splay(pre,n+2);</span></span><br><span class="line"><span class="regexp">            link(t,pre,1);</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='I')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d%d",&amp;s,&amp;k);</span></span><br><span class="line"><span class="regexp">            if(k==0) continue;</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            if(k==1)&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,1);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">            else&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,0);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='A')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",sz[ch[t][0]]-1);/</span><span class="regexp">/减去最开始加入的1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='Q')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",val[kth(rt,s+1)]);/</span><span class="regexp">/减去1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上代码：<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment">#include&lt;bits/stdc++.h&gt;</span></span><br><span class="line">using namespace std;</span><br><span class="line"><span class="comment">#define maxn 80005</span></span><br><span class="line">int n,m,np=<span class="number">0</span>,rt=<span class="number">0</span>;</span><br><span class="line">int fa[maxn],ch[maxn][<span class="number">2</span>],sz[maxn];</span><br><span class="line">int val[maxn],rk[maxn];</span><br><span class="line">bool check(int x)&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line">void link(int x,int y,bool kind)&#123;</span><br><span class="line">    fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line">void upload(int x)&#123;</span><br><span class="line">    sz[x]=sz[ch[x][<span class="number">0</span>]]+sz[ch[x][<span class="number">1</span>]]+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">void rotate(int x)&#123;</span><br><span class="line">    int y=fa[x];</span><br><span class="line">    int z=fa[y];</span><br><span class="line">    bool kind=check(x);</span><br><span class="line">    int k=ch[x][!kind];</span><br><span class="line">    link(k,y,kind);</span><br><span class="line">    link(x,z,check(y));</span><br><span class="line">    link(y,x,!kind);</span><br><span class="line">    upload(y);upload(x);	</span><br><span class="line">&#125;</span><br><span class="line">void splay(int x,int goal)&#123;</span><br><span class="line">    <span class="keyword">while</span>(fa[x]!=goal)&#123;</span><br><span class="line">        int y=fa[x],z=fa[y];</span><br><span class="line">        <span class="keyword">if</span>(z!=goal) (check(x)^check(y))?rotate(x)<span class="symbol">:rotate</span>(y);</span><br><span class="line">        rotate(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(fa[x]==<span class="number">0</span>) rt=x;</span><br><span class="line">&#125;</span><br><span class="line">void insert(int x)&#123;</span><br><span class="line">    int now=rt,f=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(now) f=now,now=ch[now][<span class="number">1</span>];</span><br><span class="line">    now=++np;</span><br><span class="line">    link(now,f,<span class="number">1</span>);</span><br><span class="line">    splay(now,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int nxt(int x,bool f)&#123;<span class="regexp">//</span>前提要将x旋转到根 </span><br><span class="line">    x=ch[x][f];</span><br><span class="line">    <span class="keyword">while</span>(ch[x][!f]) x=ch[x][!f];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line">void del(int x)&#123;</span><br><span class="line">    splay(x,<span class="number">0</span>);</span><br><span class="line">    int pre=nxt(x,<span class="number">0</span>),nxtt=nxt(x,<span class="number">1</span>);</span><br><span class="line">    splay(pre,<span class="number">0</span>);splay(nxtt,pre);</span><br><span class="line">    ch[nxtt][<span class="number">0</span>]=<span class="number">0</span>;splay(nxtt,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line">int kth(int now,int k)&#123;</span><br><span class="line">    <span class="keyword">if</span>(k&lt;=sz[ch[now][<span class="number">0</span>]]) <span class="keyword">return</span> kth(ch[now][<span class="number">0</span>],k);</span><br><span class="line">    <span class="keyword">if</span>(sz[ch[now][<span class="number">0</span>]]+<span class="number">1</span>&lt;k) <span class="keyword">return</span> kth(ch[now][<span class="number">1</span>],k-sz[ch[now][<span class="number">0</span>]]-<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> now;</span><br><span class="line">&#125; </span><br><span class="line">int s,k;</span><br><span class="line">char op[<span class="number">10</span>];</span><br><span class="line">void init()&#123;</span><br><span class="line">    scanf(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">2</span>;i&lt;=n+<span class="number">1</span>;i++) scanf(<span class="string">"%d"</span>,&amp;val[i]),rk[val[i]]=i;</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=n+<span class="number">2</span>;i++) insert(i);</span><br><span class="line">    <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        scanf(<span class="string">"%s"</span>,op);</span><br><span class="line">        <span class="keyword">if</span>(op[<span class="number">0</span>]==<span class="string">'T'</span>)&#123;</span><br><span class="line">            scanf(<span class="string">"%d"</span>,&amp;s);</span><br><span class="line">            int t=rk[s];</span><br><span class="line">            del(t);</span><br><span class="line">            /*splay(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">            int nxtt=nxt(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(nxtt,<span class="number">0</span>);splay(<span class="number">1</span>,nxtt);</span><br><span class="line">            link(t,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(1,0);</span></span><br><span class="line"><span class="regexp">            int nxtt=nxt(1,1);</span></span><br><span class="line"><span class="regexp">            splay(nxtt,1);</span></span><br><span class="line"><span class="regexp">            link(t,nxtt,0);</span></span><br><span class="line"><span class="regexp">            splay(t,0); </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='B')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            del(t);</span></span><br><span class="line"><span class="regexp">            /</span>*splay(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            int pre=nxt(n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(pre,<span class="number">0</span>);splay(n+<span class="number">2</span>,pre);</span><br><span class="line">            link(t,n+<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">            splay(t,<span class="number">0</span>);*<span class="regexp">/</span></span><br><span class="line"><span class="regexp">            splay(n+2,0);</span></span><br><span class="line"><span class="regexp">            int pre=nxt(n+2,0);</span></span><br><span class="line"><span class="regexp">            splay(pre,n+2);</span></span><br><span class="line"><span class="regexp">            link(t,pre,1);</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='I')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d%d",&amp;s,&amp;k);</span></span><br><span class="line"><span class="regexp">            if(k==0) continue;</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            if(k==1)&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,1);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">            else&#123;</span></span><br><span class="line"><span class="regexp">                int nxtt=nxt(t,0);</span></span><br><span class="line"><span class="regexp">                swap(rk[val[t]],rk[val[nxtt]]);</span></span><br><span class="line"><span class="regexp">                swap(val[t],val[nxtt]);</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='A')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            int t=rk[s];</span></span><br><span class="line"><span class="regexp">            splay(t,0);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",sz[ch[t][0]]-1);/</span><span class="regexp">/减去最开始加入的1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">        else if(op[0]=='Q')&#123;</span></span><br><span class="line"><span class="regexp">            scanf("%d",&amp;s);</span></span><br><span class="line"><span class="regexp">            printf("%d\n",val[kth(rt,s+1)]);/</span><span class="regexp">/减去1 </span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">int main()&#123;</span></span><br><span class="line"><span class="regexp">    init();</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">    return 0;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
-    <div class="article-footer">
-      <blockquote class="mt-2x">
-  <ul class="post-copyright list-unstyled">
-    
-    <li class="post-copyright-link hidden-xs">
-      <strong>本文链接：</strong>
-      <a href="www.degage.xyz/2018/10/22/19/" title="ZJOI2006 书架" target="_blank" rel="external">www.degage.xyz/2018/10/22/19/</a>
-    </li>
-    
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</blockquote>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>degage</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/2018/10/22/19/" target="_blank" title="ZJOI2006 书架">www.degage.xyz/2018/10/22/19/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC80MjI0MS8xODc4OA==">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
 
 
-<div class="panel panel-default panel-badger">
-  <div class="panel-body">
-    <figure class="media">
-      <div class="media-left">
-        <a href="https://github.com/degageyisui" target="_blank" class="img-burn thumb-sm visible-lg">
-          <img src="/images/avatar.png" class="img-rounded w-full" alt="">
-        </a>
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/22/20/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          小W与卖酒
+        
       </div>
-      <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/degageyisui" target="_blank"><span class="text-dark">祎隋</span><small class="ml-1x">OIER</small></a></h3>
-        <div>弱省的一只蒟蒻qwq</div>
-      </div>
-    </figure>
-  </div>
-</div>
-
-
-    </div>
-  </article>
-  
-    
-  <section id="comments">
-  	
-           
-    
-  </section>
-
-
-  
-</div>
-
-  <nav class="bar bar-footer clearfix" data-stick-bottom>
-  <div class="bar-inner">
-  
-  <ul class="pager pull-left">
-    
-    <li class="prev">
-      <a href="/2018/10/22/20/" title="小W与卖酒"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
-    
-    <li class="next">
-      <a href="/2018/10/22/18/" title="SCOI2011 糖果"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
-    </li>
-    
-    
-  </ul>
+    </a>
   
   
+    <a href="/2018/10/22/18/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">SCOI2011 糖果</div>
+    </a>
   
-  <div class="bar-right">
-    
-    <div class="share-component" data-sites="weibo,qq,wechat" data-mobile-sites="weibo,qq,qzone"></div>
-    
-  </div>
-  </div>
 </nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Input"><span class="nav-number">2.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Output"><span class="nav-number">3.</span> <span class="nav-text">Output</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">3.1.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">3.2.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hint"><span class="nav-number">4.</span> <span class="nav-text">Hint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Solution"><span class="nav-number">5.</span> <span class="nav-text">Solution</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
   
 
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 祎隋 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
 
-</main>
-
-  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
-	
-	
-    <ul class="social-links">
-    	
-        <li><a href="https://github.com/degageyisui" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
-        
-        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
-        
-        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
-        
-        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
-        
-        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
-        
-    </ul>
-
-    <div class="copyright">
-    	
-        &copy; 2019 degage
-        
-        <div class="publishby">
-        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
-        </div>
-    </div>
+		
+  </div>
 </footer>
-  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+
+<!-- min height -->
+
 <script>
-window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
 </script>
-<script src="/js/plugin.min.js"></script>
-<script src="/js/application.js"></script>
-
-    <script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(未命名)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
-
-
-
-
-
-   
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-   
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
     
-  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
-  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
-  <script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: '82581591fd38ba2b1427',
-    clientSecret: '1b3fbb1c94f1ac092eaf9915e00b7b93d0f378f2',
-    repo: 'blog-comments',
-    owner: 'degageyisui',
-    admin: ['degageyisui'],
-    id: md5(location.pathname),
-    distractionFreeMode: true
-  })
-  gitalk.render('comments')
-  </script>
 
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
       
 
 
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
 
-  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
-  <script>
-  //利用 FancyBox 实现点击图片放大
-  $(document).ready(function() {
-    $('article img').not('[hidden]').not('.panel-body img').each(function() {
-      var $image = $(this);
-      var imageCaption = $image.attr('alt');
-      var $imageWrapLink = $image.parent('a');
-      if ($imageWrapLink.length < 1) {
-        var src = this.getAttribute('src');
-        var idx = src.lastIndexOf('?');
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
-        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
-      }
-      $imageWrapLink.attr('data-fancybox', 'images');
-      if (imageCaption) {
-        $imageWrapLink.attr('data-caption', imageCaption);
-      }
-    });
-    $().fancybox({
-      selector: '[data-fancybox="images"]',
-      hash: false,
-      loop: false,
-    });
-  });
-  </script>
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            祎隋
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 degage All Rights Reserved.
+          </div>
+        </div>
+      </div>
 
 
-
-
-
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
