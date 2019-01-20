@@ -312,8 +312,8 @@
         <category>正睿</category>
       </categories>
       <tags>
-        <tag>dp</tag>
         <tag>LIS</tag>
+        <tag>dp</tag>
         <tag>离散化</tag>
         <tag>树状数组</tag>
       </tags>
@@ -640,9 +640,9 @@
       <tags>
         <tag>模拟</tag>
         <tag>贪心</tag>
-        <tag>离线</tag>
         <tag>数学</tag>
         <tag>dp</tag>
+        <tag>离线</tag>
         <tag>正难则反</tag>
       </tags>
   </entry>
@@ -763,11 +763,11 @@
       </categories>
       <tags>
         <tag>概率期望</tag>
-        <tag>数学</tag>
-        <tag>dp</tag>
         <tag>LIS</tag>
         <tag>ST表</tag>
         <tag>二分答案</tag>
+        <tag>数学</tag>
+        <tag>dp</tag>
       </tags>
   </entry>
   <entry>
@@ -815,6 +815,11 @@
     <content type="text"></content>
   </entry>
   <entry>
+    <title><![CDATA[links]]></title>
+    <url>%2Flinks%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
@@ -822,11 +827,6 @@
   <entry>
     <title><![CDATA[timeline]]></title>
     <url>%2Ftimeline%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[links]]></title>
-    <url>%2Flinks%2Findex.html</url>
     <content type="text"></content>
   </entry>
 </search>
