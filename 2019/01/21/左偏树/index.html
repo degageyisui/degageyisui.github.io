@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>lct模板 | 祎隋</title>
+  <title>左偏树 | 祎隋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="c++" />
@@ -11,18 +11,18 @@
   
   
   
-  <meta name="description" content="lct模板：（一旦访问就要pushdown!!! （在一个点为该splay根节点时，不能对它父亲操作（否则造成巨大错误，性质2，认父不认子 #include&amp;lt;bits/stdc++.h&amp;gt;#define maxn 300005using namespace std;int n,m,op;int val[maxn],sum[maxn],fa[maxn],ch[maxn][2];int st">
-<meta name="keywords" content="lct,动态树">
+  <meta name="description" content="左偏树（可并堆 [也是logn维护优先级，比优先队列优在可logn合并两个优先队列而且本身更加灵活。 主要两个操作： merge: int merge(int x,int y)&amp;#123;	if(!x||!y) return x+y;	if(c[x]&amp;lt;c[y]) swap(x,y);	ch[x][1]=merge(ch[x][1],y);	if(dis[ch[x][0]]&amp;lt;dis[ch">
+<meta name="keywords" content="左偏树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lct模板">
-<meta property="og:url" content="www.degage.xyz/2019/01/19/lct/index.html">
+<meta property="og:title" content="左偏树">
+<meta property="og:url" content="www.degage.xyz/2019/01/21/左偏树/index.html">
 <meta property="og:site_name" content="祎隋">
-<meta property="og:description" content="lct模板：（一旦访问就要pushdown!!! （在一个点为该splay根节点时，不能对它父亲操作（否则造成巨大错误，性质2，认父不认子 #include&amp;lt;bits/stdc++.h&amp;gt;#define maxn 300005using namespace std;int n,m,op;int val[maxn],sum[maxn],fa[maxn],ch[maxn][2];int st">
+<meta property="og:description" content="左偏树（可并堆 [也是logn维护优先级，比优先队列优在可logn合并两个优先队列而且本身更加灵活。 主要两个操作： merge: int merge(int x,int y)&amp;#123;	if(!x||!y) return x+y;	if(c[x]&amp;lt;c[y]) swap(x,y);	ch[x][1]=merge(ch[x][1],y);	if(dis[ch[x][0]]&amp;lt;dis[ch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-19T02:07:54.297Z">
+<meta property="og:updated_time" content="2019-01-21T01:10:03.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lct模板">
-<meta name="twitter:description" content="lct模板：（一旦访问就要pushdown!!! （在一个点为该splay根节点时，不能对它父亲操作（否则造成巨大错误，性质2，认父不认子 #include&amp;lt;bits/stdc++.h&amp;gt;#define maxn 300005using namespace std;int n,m,op;int val[maxn],sum[maxn],fa[maxn],ch[maxn][2];int st">
+<meta name="twitter:title" content="左偏树">
+<meta name="twitter:description" content="左偏树（可并堆 [也是logn维护优先级，比优先队列优在可logn合并两个优先队列而且本身更加灵活。 主要两个操作： merge: int merge(int x,int y)&amp;#123;	if(!x||!y) return x+y;	if(c[x]&amp;lt;c[y]) swap(x,y);	ch[x][1]=merge(ch[x][1],y);	if(dis[ch[x][0]]&amp;lt;dis[ch">
   
     <link rel="alternate" href="/atom.xml" title="祎隋" type="application/atom+xml">
   
@@ -156,7 +156,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-lct" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-左偏树" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
@@ -164,7 +164,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      lct模板
+      左偏树
     </h1>
   
 
@@ -172,8 +172,8 @@
     
     <div class="article-meta">
       
-	<a href="/2019/01/19/lct/" class="article-date">
-	  <time datetime="2019-01-19T02:06:55.000Z" itemprop="datePublished">2019-01-19</time>
+	<a href="/2019/01/21/左偏树/" class="article-date">
+	  <time datetime="2019-01-21T01:09:04.000Z" itemprop="datePublished">2019-01-21</time>
 	</a>
 
       
@@ -191,10 +191,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>lct模板：（一旦访问就要pushdown!!!</p>
-<p>（在一个点为该splay根节点时，不能对它父亲操作（否则造成巨大错误，性质2，认父不认子</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 300005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,op;</span><br><span class="line"><span class="keyword">int</span> val[maxn],sum[maxn],fa[maxn],ch[maxn][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> st[maxn];</span><br><span class="line"><span class="keyword">bool</span> rev[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> ch[fa[x]][<span class="number">1</span>]==x;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">bool</span> kind)</span></span>&#123;</span><br><span class="line">	fa[x]=y;ch[y][kind]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">nroot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//not root 连父轻边 </span></span><br><span class="line">    <span class="keyword">return</span> ch[fa[x]][<span class="number">0</span>]==x||ch[fa[x]][<span class="number">1</span>]==x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upload</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    sum[x]=sum[ch[x][<span class="number">0</span>]]^sum[ch[x][<span class="number">1</span>]]^val[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">download</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!rev[x]) <span class="keyword">return</span>;</span><br><span class="line">    swap(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">    rev[ch[x][<span class="number">0</span>]]^=<span class="number">1</span>;rev[ch[x][<span class="number">1</span>]]^=<span class="number">1</span>;</span><br><span class="line">    rev[x]=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y=fa[x],z=fa[y];</span><br><span class="line">    <span class="keyword">int</span> kind=check(x);</span><br><span class="line">    <span class="keyword">int</span> k=ch[x][!kind];</span><br><span class="line">    link(k,y,kind);</span><br><span class="line">    <span class="keyword">if</span>(nroot(y)) link(x,z,check(y));fa[x]=z;</span><br><span class="line">    link(y,x,!kind);</span><br><span class="line">    upload(y);upload(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="comment">//一旦访问就要pushdown!!!</span></span><br><span class="line">    <span class="keyword">int</span> y=x,top=<span class="number">0</span>;</span><br><span class="line">    st[++top]=y;</span><br><span class="line">    <span class="keyword">while</span>(nroot(y)) st[++top]=fa[y],y=fa[y];</span><br><span class="line">    <span class="keyword">while</span>(top) download(st[top--]);</span><br><span class="line">    <span class="keyword">while</span>(nroot(x))&#123;</span><br><span class="line">        y=fa[x];</span><br><span class="line">        <span class="keyword">if</span>(nroot(y)) check(x)^check(y)?rotate(x):rotate(y);</span><br><span class="line">        rotate(x);</span><br><span class="line">    &#125;</span><br><span class="line">    upload(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">access</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> y=<span class="number">0</span>;x;y=x,x=fa[x])<span class="comment">//一直打通到根</span></span><br><span class="line">    splay(x),ch[x][<span class="number">1</span>]=y,upload(x); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeroot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    access(x);splay(x);</span><br><span class="line">    rev[x]^=<span class="number">1</span>;download(x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findroot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    access(x);splay(x);</span><br><span class="line">    <span class="keyword">while</span>(ch[x][<span class="number">0</span>]) download(x),x=ch[x][<span class="number">0</span>];</span><br><span class="line">    splay(x);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    makeroot(x);</span><br><span class="line">    access(y);</span><br><span class="line">    splay(y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">link</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    makeroot(x);</span><br><span class="line">    <span class="keyword">if</span>(findroot(y)==x) <span class="keyword">return</span>;<span class="comment">//是否在同一splay上,findroot找深度最小点（根 </span></span><br><span class="line">    fa[x]=y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cut</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    makeroot(x);</span><br><span class="line">    <span class="keyword">if</span>(findroot(y)==x&amp;&amp;fa[y]==x&amp;&amp;!ch[y][<span class="number">0</span>])<span class="comment">//findroot(y)如果找到了x，则将x提到了最高处(splay(x)) </span></span><br><span class="line">    fa[y]=ch[x][<span class="number">1</span>]=<span class="number">0</span>,upload(x);<span class="comment">//想象图，y左边如果有任何，则y和x深度相差不为1，则无边 </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;op,&amp;x,&amp;y);</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">0</span>) split(x,y),<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sum[y]);</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">1</span>) link(x,y);</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">2</span>) cut(x,y);</span><br><span class="line">        <span class="keyword">if</span>(op==<span class="number">3</span>) splay(x),val[x]=y;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以及最后的cut操作，想象图，利用深度严格递增的性质来解题</p>
+        <p>左偏树（可并堆</p>
+<p>[也是logn维护优先级，比优先队列优在可logn合并两个优先队列而且本身更加灵活。</p>
+<p>主要两个操作：</p>
+<p>merge:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!x||!y) <span class="keyword">return</span> x+y;</span><br><span class="line">	<span class="keyword">if</span>(c[x]&lt;c[y]) swap(x,y);</span><br><span class="line">	ch[x][<span class="number">1</span>]=merge(ch[x][<span class="number">1</span>],y);</span><br><span class="line">	<span class="keyword">if</span>(dis[ch[x][<span class="number">0</span>]]&lt;dis[ch[x][<span class="number">1</span>]]) swap(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">	dis[x]=dis[ch[x][<span class="number">1</span>]]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> x; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>del:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> merge(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.luogu.org/problemnew/show/P1552" target="_blank" rel="noopener">例题 [APIO2012]派遣</a></p>
+<p>实际上是用可并堆分开维护子树最大值，来保持可覆盖的点多，再依次尝试领导点。</p>
+<p>code:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 100005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[maxn];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>,first[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	e[++np]=(eage)&#123;v,first[u]&#125;;</span><br><span class="line">	first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m,x,ch[maxn][<span class="number">2</span>],dis[maxn],rt;</span><br><span class="line">ll c[maxn],sz[maxn],l[maxn],sum[maxn];</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!x||!y) <span class="keyword">return</span> x+y;</span><br><span class="line">	<span class="keyword">if</span>(c[x]&lt;c[y]) swap(x,y);</span><br><span class="line">	ch[x][<span class="number">1</span>]=merge(ch[x][<span class="number">1</span>],y);</span><br><span class="line">	<span class="keyword">if</span>(dis[ch[x][<span class="number">0</span>]]&lt;dis[ch[x][<span class="number">1</span>]]) swap(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">	dis[x]=dis[ch[x][<span class="number">1</span>]]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> x; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> merge(ch[x][<span class="number">0</span>],ch[x][<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="comment">//树型dp用可并堆维护最大值（最小的都留下了 贪心 </span></span><br><span class="line">	sum[i]=c[i];sz[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> A=i,B;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line">		<span class="keyword">int</span> j=e[p].to;</span><br><span class="line">		B=dfs(j);</span><br><span class="line">		A=merge(B,A);</span><br><span class="line">		sz[i]+=sz[j];sum[i]+=sum[j];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(sum[i]&gt;m)&#123;</span><br><span class="line">		sum[i]-=c[A];sz[i]--;</span><br><span class="line">		A=del(A);</span><br><span class="line">	&#125;</span><br><span class="line">	ans=max(ans,(ll)sz[i]*l[i]);</span><br><span class="line">	<span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%lld%lld"</span>,&amp;x,&amp;c[i],&amp;l[i]);</span><br><span class="line">		<span class="keyword">if</span>(x==<span class="number">0</span>) rt=i;</span><br><span class="line">		<span class="keyword">else</span> add(x,i);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(rt);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -208,7 +215,7 @@
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/2019/01/19/lct/" target="_blank" title="lct模板">www.degage.xyz/2019/01/19/lct/</a>
+          <a href="/2019/01/21/左偏树/" target="_blank" title="左偏树">www.degage.xyz/2019/01/21/左偏树/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -254,19 +261,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/01/21/左偏树/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <div class="article-nav-title">
-        
-          左偏树
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/18/权值平衡树/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/01/19/lct/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">平衡树板子</div>
+      <div class="article-nav-title">lct模板</div>
     </a>
   
 </nav>
