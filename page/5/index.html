@@ -257,6 +257,60 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-27"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/10/24/27/">棒棒糖</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/10/24/27/" class="article-date">
+	  <time datetime="2018-10-24T03:11:07.000Z" itemprop="datePublished">2018-10-24</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/正睿/">正睿</a>
+
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          Description相对于正常求LCA的步骤不同，这里求LCA时$dep_v=dep_u+random(0,1)$（u为v的父亲），然后给你一棵树和m个询问，每组询问两个数x,y，请求出这组询问的LCA求对的概率。对于所有概率要对998244353取模后输出.
+Hint$1&lt;=n,m&lt;=2 \times 10^5$
+Solution其实画个图想一下还是挺简单的，对于一组x,y，若y为x祖先，那么他俩之间的dep不能变，所以方案数为$2^{n-1-mv}$mv表示它们的dep差...
+        </p>
+        <p class="article-more-link">
+          <a href="/2018/10/24/27/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-26"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -738,61 +792,6 @@ Input输入的第一行是两个整数N，K。接下来K行，表示这些点需
         </p>
         <p class="article-more-link">
           <a href="/2018/10/22/18/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-17"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/10/20/17/">约束</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/10/20/17/" class="article-date">
-	  <time datetime="2018-10-20T15:47:38.000Z" itemprop="datePublished">2018-10-20</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/正睿/">正睿</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Description现有 n 个点， n 条有向边。 要求将 n 个点分入两个集合 A， B，使得对于集合A 中的每一个点 x，存在一个集合 B 中的点 y，从 y 到 x 有一条有向边。 问集合A 最多能包含几个点。
-Input第一行一个整数 n，表示总共有 n 个点。接下来一行 n 个整数，表示一个序列 a， a[i]代表存在一条从第 i 个点到第a[i]个点的有向边。
-Output一行一个数 ans， ans 是集合 A 最多能包含的点数。
-Sample Input52 4 5 3...
-        </p>
-        <p class="article-more-link">
-          <a href="/2018/10/20/17/#more">阅读全文</a>
         </p>
       
     </div>

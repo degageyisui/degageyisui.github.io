@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="www.degage.xyz/"/>
-  <updated>2019-01-21T01:10:03.043Z</updated>
+  <updated>2019-01-28T12:35:17.910Z</updated>
   <id>www.degage.xyz/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>生成函数</title>
+    <link href="www.degage.xyz/2019/01/28/%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0/"/>
+    <id>www.degage.xyz/2019/01/28/生成函数/</id>
+    <published>2019-01-28T12:31:51.000Z</published>
+    <updated>2019-01-28T12:35:17.910Z</updated>
+    
+    <content type="html"><![CDATA[<p>普通型生成函数：</p><p>数列$a_1,a_2,a_3…a_n$构造一个函数$F(x)=a_0f_0(x)+a_1f_1(x)+a_2f_2(x)+…..+a_nf_n(x)$，则称F(x)为数列的生成函数，其中f(x)只作为标志用，称为标志函数。</p><p>一般$F(x)=a_0+a_1x+a_2x^2+….+a_nx^n+…$</p><p>定理：</p><p>若限定元素$a_i$所出现的次数集合为$M_i$，则该组合数序列的母函数为：</p><p>$\prod_{i=1}^n(\sum_{m\in M_i}x^m)$</p><p>比如1,3,5g砝码各两个，考虑称出的物品情况。</p><p>设母函数为$(1+x^1+x^2)(1+x^3+x^6)(1+x^5+x^{10})$，然后就可以根据每一次的系数得到我们想要的数据。</p><p>当然也可以理解为$(1+a_1x^1+a_1^2x^2)(1+a_2x^3+a_2^2x^6)(1+a_3x^5+a_3^2x^{10})$</p><p>这样比如对于一项$a_1a_2^2x^7$就可以理解为a1选了1个，a2选了两个（当然在计算机具体执行中不知道怎么搞2333</p><p>常见变换：</p><p>$\frac{1}{1-x}=1+x+x^2+x^3+…..+x^n+…​$</p><p>$\frac{1}{(1-x)^2}=\frac{1}{1-x}\ast \frac{1}{1-x}=1+2x+3x^2+…+(n+1)x^n$</p><p>$\frac{1}{(1-x)^n}=1+nx+\frac{n\ast (n+1)}{2!}x^2+\frac{n\ast (n+1)\ast (n+2)}{3!}x^3+…..$</p><p>转换之后就可以求系数辣</p><p>指数型母函数：</p><script type="math/tex; mode=display">\prod_{i=1}^{n}(\sum_{m\in M_i}\frac{x^m}{m!})</script><p>ps.普通型母函数主要求组合问题，指数型主要求排列问题</p><p>常见变换：（用泰勒展开</p><p>$e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+….$</p><p>$（e^x+e^{-x}）/2=\sum_{n=0}^{\infty} \frac{x^{2n}}{2n!}=1+\frac{x^2}{2!}+\frac{x^4}{4!}+….+\frac{x^{2n}}{(2n)!}+..$</p><p>$(e^x-e^{-x}/2=\sum_{n=0}^{\infty} \frac{x^{2n+1}}{(2n+1)!}=x+\frac{x^3}{3!}+\frac{x^5}{5!}+….+\frac{x^{2n+1}}{(2n+1)!}+….$</p><p>$e^{-x}=1-x+\frac{x^2}{2!}-\frac{x^3}{3!}+…..$</p><p>例题：红色病毒问题</p><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2065" target="_blank" rel="noopener">链接</a></p><p>留坑待填2333</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;普通型生成函数：&lt;/p&gt;
+&lt;p&gt;数列$a_1,a_2,a_3…a_n$构造一个函数$F(x)=a_0f_0(x)+a_1f_1(x)+a_2f_2(x)+…..+a_nf_n(x)$，则称F(x)为数列的生成函数，其中f(x)只作为标志用，称为标志函数。&lt;/p&gt;
+&lt;p&gt;一般
+      
+    
+    </summary>
+    
+      <category term="省选" scheme="www.degage.xyz/categories/%E7%9C%81%E9%80%89/"/>
+    
+    
+      <category term="数学" scheme="www.degage.xyz/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="排列组合" scheme="www.degage.xyz/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/"/>
+    
+  </entry>
   
   <entry>
     <title>左偏树</title>
@@ -526,33 +555,6 @@
       <category term="枚举" scheme="www.degage.xyz/tags/%E6%9E%9A%E4%B8%BE/"/>
     
       <category term="map" scheme="www.degage.xyz/tags/map/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小G的树</title>
-    <link href="www.degage.xyz/2018/11/03/47/"/>
-    <id>www.degage.xyz/2018/11/03/47/</id>
-    <published>2018-11-03T02:25:42.000Z</published>
-    <updated>2019-01-16T13:28:19.957Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给出n个点的树，每条边长会等概率是1或2，求树的直径的期望。（$n≤60$）</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>只要会树型dp求树的直径，然后枚举就可以$O(n^4)$过了</p><p>上代码：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 70</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll g[maxn&lt;&lt;<span class="number">1</span>][maxn&lt;&lt;<span class="number">1</span>],ff[maxn][maxn&lt;&lt;<span class="number">1</span>][maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> n,x,y;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">eage</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> to,next;</span><br><span class="line">&#125;e[maxn&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> np=<span class="number">0</span>,first[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">e[++np]=(eage)&#123;v,first[u]&#125;;</span><br><span class="line">first[u]=np;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> sz[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> f)</span></span>&#123;</span><br><span class="line">     ff[i][<span class="number">0</span>][<span class="number">0</span>]=sz[i]=<span class="number">1</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> p=first[i];p;p=e[p].next)&#123;</span><br><span class="line"> <span class="keyword">int</span> j=e[p].to;</span><br><span class="line"> <span class="keyword">if</span>(j==f) <span class="keyword">continue</span>;</span><br><span class="line"> dfs(j,i);</span><br><span class="line"> <span class="built_in">memset</span>(g,<span class="number">0</span>,<span class="keyword">sizeof</span>(g));</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> l1=<span class="number">0</span>;l1&lt;=sz[i]*<span class="number">2</span>;l1++)</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> z1=l1;z1&lt;=sz[i]*<span class="number">2</span>;z1++)<span class="keyword">if</span>(ff[i][l1][z1])</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> l2=<span class="number">0</span>;l2&lt;=sz[j]*<span class="number">2</span>;l2++)</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> z2=l2;z2&lt;=sz[j]*<span class="number">2</span>;z2++) <span class="keyword">if</span>(ff[j][l2][z2])&#123;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">1</span>;len&lt;=<span class="number">2</span>;len++)&#123;</span><br><span class="line">     <span class="keyword">int</span> t=max(z1,z2);</span><br><span class="line">     t=max(t,l1+l2+len);</span><br><span class="line"> g[max(l1,l2+len)][t]+=ff[i][l1][z1]*ff[j][l2][z2];;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">sz[i]+=sz[j];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;=sz[i]*<span class="number">2</span>;l++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> z=l;z&lt;=sz[i]*<span class="number">2</span>;z++)</span><br><span class="line">ff[i][l][z]=g[l][z];</span><br><span class="line"> &#125; </span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x,&amp;y);add(x,y);add(y,x);</span><br><span class="line">&#125; </span><br><span class="line">dfs(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">double</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;=n*<span class="number">2</span>;l++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> z=l;z&lt;=n*<span class="number">2</span>;z++)&#123;</span><br><span class="line">ans+=ff[<span class="number">1</span>][l][z]*z;</span><br><span class="line">&#125; </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%lf"</span>,ans/(<span class="number">1l</span>l&lt;&lt;(n<span class="number">-1</span>)));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">init();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给出n个点的树，每条边长会等概率是1或2，求树的直径的期望。（$n≤
-      
-    
-    </summary>
-    
-      <category term="正睿" scheme="www.degage.xyz/categories/%E6%AD%A3%E7%9D%BF/"/>
-    
-    
-      <category term="概率期望" scheme="www.degage.xyz/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
-    
-      <category term="树型dp" scheme="www.degage.xyz/tags/%E6%A0%91%E5%9E%8Bdp/"/>
     
   </entry>
   
